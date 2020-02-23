@@ -1,0 +1,14 @@
+Group Project Manager
+Function
+->Noticification
+--->Email
+->Chatroom
+--->Real time
+--->Text message
+--->Video Conferencing
+->Schedule
+--->Noticification
+->Drive
+--->Link to Google Drive
+->To Do List
+--->Noticification
