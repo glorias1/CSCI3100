@@ -1,0 +1,20 @@
+### Database specification, Group Project Manager, CSCI3100
+* user
+  * user_id
+  * username
+* login
+  * user_id
+  * password
+* project
+  * project_id
+  * project_name
+* projectMember
+  * project_id
+  * user_id_1
+  * user_id_2
+  * user_id_3
+  * user_id_4...
+* chatroom
+  * chatroom_id
+  * project_id
+  * record_id 
