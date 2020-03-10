@@ -2,19 +2,21 @@
 * user
   * user_id
   * username
+  * email
+  * (any personal information if needed)
 * login
   * user_id
   * password
 * project
   * project_id
   * project_name
-* projectMember
+* project_member
   * project_id
-  * user_id_1
-  * user_id_2
-  * user_id_3
-  * user_id_4...
+  * user_id
 * chatroom
   * chatroom_id
   * project_id
   * record_id 
+* chatroom_record
+  * record_id
+  * content
