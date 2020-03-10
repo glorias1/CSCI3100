@@ -3,7 +3,7 @@
 * Create project
 * Chatroom
 * File sharing
-* Schedualing
+* Scheduling
   * Tasks management
     * Create
     * Update
