@@ -1,4 +1,4 @@
-### Group Project Managerc CSCI3100
+### Group Project Manager, CSCI3100
 
 * Create project
 * Chatroom
