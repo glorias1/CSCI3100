@@ -6,7 +6,7 @@
   * (any personal information if needed)
 * login
   * user_id
-  * password
+  * login_password
 * project
   * project_id
   * project_name
@@ -19,4 +19,9 @@
   * record_id 
 * chatroom_record
   * record_id
-  * content
+  * record_content
+* share_file
+  * file_id
+  * file_type
+  * file_size
+  * project_id
