@@ -1,5 +1,6 @@
 ### Group Project Manager, CSCI3100 Project
 
+1.1 Initial design outline (5-10 pages)
 - [ ] 1 INTRODUCTION
 - [ ]   1.1 Project Overview
 - [ ]   1.2 Objective
