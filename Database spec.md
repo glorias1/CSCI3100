@@ -1,17 +1,16 @@
 ### Database specification, Group Project Manager, CSCI3100
 * user
   * user_id
-  * username
+  * user_name
   * email
-  * (any personal information if needed)
-* login
-  * user_id
-  * login_password
+  * passwaord
 * project
   * project_id
   * project_name
+  * description
 * project_member
   * project_id
+  * project_ownerid
   * user_id
 * chatroom
   * chatroom_id
@@ -25,3 +24,5 @@
   * file_type
   * file_size
   * project_id
+* schedule
+  * schedule
