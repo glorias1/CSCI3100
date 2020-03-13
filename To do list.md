@@ -17,4 +17,4 @@
 - [ ]   4.2 System Components
 - [ ]   4.3 Description of Major System Components by UML
 - [x]   4.3.4 Sequence diagram (with text Desciption)
-- [ ]   
+ 
