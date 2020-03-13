@@ -1,3 +1,3 @@
 # CSCI3100
 
-All copyright reserved.
+*All rights reserved.*
