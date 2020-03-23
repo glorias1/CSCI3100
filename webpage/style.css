@@ -1,43 +1,55 @@
-.wrapper {
-    display: flex;
-	overflow: auto;
-    align-items: stretch;
-    background: #636363
-}
-#sidebar {
-    min-width: 250px;
-    max-width: 250px;
-    background: #474747;
-	padding-top: 10px;
-    padding-right: 10px;
-    padding-bottom: 10px;
-    padding-left: 10px;
-}
-#searchbar {
-    height: 48px;
-    padding-top: 0px;
-    padding-right: 10px;
-    padding-bottom: 0px;
-    padding-left: 10px;
-}
-#userbar{
-	height: 60px;
-	padding-top: 10px;
-    padding-right: 10px;
-    padding-bottom: 10px;
-    padding-left: 10px;
-}
-.usericon{
-	height: 36px;
-	width: 36px;
-}
-#username{
+.leftnav {
+	display: flex;
+	position: fixed;
+	width: 180px;
+	height: 100%;
+	float: left;
+	background-color: #2F2E2E
 	
 }
-.projectname-container{
-	height: 48px;
-	padding-top: 5px;
-    padding-right: 10px;
-    padding-bottom: 5px;
-    padding-left: 0px;
+.mapout-logo-container{
+	width: 180px;
+	height : 60px;
+}
+.user-container{
+	width: 180px;
+	height: 60px;
+}
+.user-icon-container{
+	display: inline-block;
+	height:60px;
+	width: 60px;
+}
+.icon{
+	border-radius: 50%;
+}
+.user-name-container{
+	display: inline-block;
+	height: 30px;
+	width: 120px;
+	float: right;
+	margin: 15px 0px 0px 0px;
+}
+.rightcontent {
+	margin-left: 180px;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background:#D5D5D5;
+}
+.searchbar-container{
+	display: flex;
+	height:60px;
+	width: 180px;
+}
+
+.resized-searchbox{
+	margin-top: 15px; 
+	margin-left: 7px;
+	width: 160px;
+	height: 30px;
+}
+.change::-webkit-input-placeholder {
+    /* WebKit, Blink, Edge */
+    color:#2F2E2E;
 }
