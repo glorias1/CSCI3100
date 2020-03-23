@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
   <html lang="en">
     <head>
 
@@ -14,17 +15,10 @@
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   </head>
 
-  <body class="login">      
-      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
-      <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-
-      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-
-
-    <div class="brand-wrapper" data-state="username">
-      <style>
-        h1 {
+<body>
+  <style>
+      h1 {
           font-family: "Arial Black", Gadget, sans-serif;
           margin: 45px auto 20px auto;
           padding: 110px 0 0;
@@ -34,12 +28,16 @@
           background: no-repeat center 30px;
           background-size:280px
         }
-      </style>
-      <div class="process">
-        <div class="hide--when-loading txt--left">
-          <h1>Log in to MapOut</h1>
-        </div>
-      </div>
-    </div>
+  </style>
+  
+  <h1>Log in to MapOut</h1>
 
-  </body>
+<form action="/login.php">
+  <label for="uname">User name:</label><br>
+  <input type="text" id="uname" name="uname"><br>
+  <label for="pw">Password:</label><br>
+  <input type="password" id="pw" name="pw"><br><br>
+</form>
+
+<button type="button">Forget password?</button>
+<button type="button" href="main.html">Login</button>
