@@ -1,0 +1,43 @@
+.wrapper {
+    display: flex;
+	overflow: auto;
+    align-items: stretch;
+    background: #636363
+}
+#sidebar {
+    min-width: 250px;
+    max-width: 250px;
+    background: #474747;
+	padding-top: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+}
+#searchbar {
+    height: 48px;
+    padding-top: 0px;
+    padding-right: 10px;
+    padding-bottom: 0px;
+    padding-left: 10px;
+}
+#userbar{
+	height: 60px;
+	padding-top: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+}
+.usericon{
+	height: 36px;
+	width: 36px;
+}
+#username{
+	
+}
+.projectname-container{
+	height: 48px;
+	padding-top: 5px;
+    padding-right: 10px;
+    padding-bottom: 5px;
+    padding-left: 0px;
+}
