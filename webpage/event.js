@@ -6,4 +6,7 @@ $(document).ready(function(){
     $.get("navbar_after_login.html", function(data){
         $("#navbar-logged").replaceWith(data);
     });
+    $(document).on("click", "button#create_project",function(){
+        window.location.href='./create_project.html';
+    });
 });
