@@ -61,4 +61,13 @@
   outline: none;
 	box-shadow: none;
 }
-
+.nav-function-container{
+	width: 160px;
+	height:40px;
+	margin-left: 9px;
+margin-right: 9px;
+	margin-bottom: 5px;
+}
+.btn-nav {
+    font-size: 15px;
+}
