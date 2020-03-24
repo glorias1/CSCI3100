@@ -9,33 +9,45 @@
 	<body style="background-color:rgb(255, 230, 230);">
 	<meta name="csrf-param" content="authenticity_token">
 	<meta name="csrf-token content="...">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 	<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+	<script src="event.js"></script>
 	<style>
-		h1.logo, h2 {
-			color: rgb(46, 108, 128);
-			text-align: center;
-			width: 100%;
-			background: no-repeat center 30px;
-			background-size:280px;
-			font-family: "Arial Black", Gadget, sans-serif;
-			text-align: center;
-		}
+		h1.title {
+            font-family: "Arial Black", Gadget, sans-serif;
+            margin: 45px auto 20px auto;
+            padding: 110px 0 0;
+            text-align: center;
+            width: 100%;
+            max-width: 988px;
+            background: no-repeat center 30px;
+            background-size:280px
+          }
 	</style>
 </head>
 <body>
-	<h1 class="logo">MapOut</h1>
-	<h2>Sign up</h2>
-	<form action="/signup.php">
-		<label class="username" for="uName">User name:</label><br>
-		<input type="text" id="uName" name="uName"><br>
-		<label for="email">Email:</label><br>
-		<input type="text" id="email" name="email"><br>
-		<label for="pw1">Password:</label><br>
-		<input type="password" id="pw1" name="pw1"><br>
-		<label for="pw2">Confirmed password:</label><br>
-		<input type="password" id="pw2" name="pw2"><br>
-		<label for="pwCondition">Your password <label style="color:red; font-weight: bold;">MUST</label> have at least six characters. (i.e. A, a, 1, =)</label><br>
-	</form>
-	<button type="button">Sign up</button>
+	<header id = "navbar"></header>
+	<div class="container">
+		<div class="row justify-content-center">
+			<h1 class="title">MapOut</h1>
+			<h6>Sign up you account.</h2>
+		</div>
+		<div class="row justify-content-center">
+			<div class="form-group col-3 col-offset-5 align-center">
+				<form action="/signup.php">
+					<label class="username" for="uName">User name:</label><br>
+					<input type="text" id="uName" name="uName"><br>
+					<label for="email">Email:</label><br>
+					<input type="text" id="email" name="email"><br>
+					<label for="pw1">Password:</label><br>
+					<input type="password" id="pw1" name="pw1"><br>
+					<label for="pw2">Confirmed password:</label><br>
+					<input type="password" id="pw2" name="pw2"><br>
+					<label for="pwCondition">Your password <label style="color:red; font-weight: bold;">MUST</label> have at least six characters. (i.e. A, a, 1, =)</label><br>
+				</form>
+				<button type="button">Sign up</button>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

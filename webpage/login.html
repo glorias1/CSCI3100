@@ -2,7 +2,7 @@
 
 <html lang="en">
     <head>
-      <title>MapOut Login</title>
+      <title>Sign in</title>
       <mera name="author" content="2020Fall CSCI3100 Group 10">
       <meta name="creation-date" content="22-Mar-2020 18:03:54">
       <meta charset="utf-8">
@@ -12,8 +12,9 @@
       <meta name="csrf-token content="...">
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
       <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+      <script src="event.js"></script>
       <style>
-        h1 {
+        h1.title {
             font-family: "Arial Black", Gadget, sans-serif;
             margin: 45px auto 20px auto;
             padding: 110px 0 0;
@@ -23,17 +24,27 @@
             background: no-repeat center 30px;
             background-size:280px
           }
-    </style>
+      </style>
     </head>
 <body>
-  <h1>Log in to MapOut</h1>
-<form action="/login.php">
-  <label for="uname">User name:</label><br>
-  <input type="text" id="uname" name="uname"><br>
-  <label for="pw">Password:</label><br>
-  <input type="password" id="pw" name="pw"><br><br>
-</form>
-<button type="button">Forget password?</button>
-<button type="button" href="main.html">Login</button>
+  <header id = "navbar"></header>
+  <div class="container">
+    <div class="row justify-content-center">
+      <h1 class="title">Sign in</h1>
+      <h6>Using your MapOut account.</h2>
+    </div>
+    <div class="row justify-content-center">
+      <div class="form-group col-3 col-offset-5 align-center">
+        <form action="/login.php">
+          <label for="uname">User name:</label><br>
+          <input type="text" id="uname" name="uname"><br>
+          <label for="pw">Password:</label><br>
+          <input type="password" id="pw" name="pw"><br><br>
+        </form>
+        <button type="button" href="main.html">Login</button>
+        <button type="button">Forget password?</button>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
