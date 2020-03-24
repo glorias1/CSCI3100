@@ -66,7 +66,7 @@
     color:#2F2E2E;
 	font-size: 10;
 }
-.btn:active {
+.btn:focus,.btn:active {
   outline: none;
 	box-shadow: none;
 }
@@ -82,6 +82,7 @@
 	color: #909090;
 	background:none;
 	border: none;
+	
 
 }
 .table-container{
