@@ -13,46 +13,18 @@
 	<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-	<style>
-	</style>
+	<script src="event.js"></script>
 </head>
 <body>
 	<div class="wrapper" tabindex="-1" >
-		<div class="leftnav"><span>
-			<div class="mapout-logo-container">
-			  <br><h4><span style="color:#707070">&nbsp;?? </span></h4>
-			</div>
-			<div class="user-container rounded">
-				<div class="user-icon-container">
-					<img src="../images/testing_icon.jpg" class="icon" style="margin-left:12px;margin-top:12px;" alt="Profile picture">
-				</div>
-				<div class="user-name-container" >
-					<a href="#" class="btn "><font size="+1" color="#909090">User name</font></a>
-				</div>
-			</div>
-			<div>
-				<hr width="90%" color="#404040">
-			</div>
-			
-			<hr width="90%" color="#404040">
-			<div>
-				<div class="nav-function-container rounded">
-					<a href="#" class="btn btn-light btn-nav btn-block text-left"><i class="fas fa-calendar"></i>&nbsp;&nbsp;<b> Schedule</b></a>
-				</div>
-				<div class="nav-function-container rounded">
-					<a href="#" class="btn btn-light btn-nav btn-block text-left"><b>Settings</b></a>
-				</div>
-				<div class="nav-function-container rounded">
-					<a href="#" class="btn btn-light btn-nav btn-block text-left"><i class="fas fa-hand-paper"></i>&nbsp;&nbsp;<b>Help</b></a>
-				</div>
-				<div class="nav-function-container rounded">
-					<a href="#" class="btn btn-light btn-nav btn-block text-left"><i class="fas fa-cog"></i>&nbsp;&nbsp;<b>Settings</b></a>
-				</div>
-			</div>
-			</span>
-		</div>
-		<div class="rightcontent">
-			<div>
+		<div id="nav-placeholder" z-index="10000"></div>
+		<script>
+		$(function(){
+		  $("#nav-placeholder").load("function_bar.html");
+		});
+		</script>
+		<div class="rightcontent" id="rightcontent">
+			<span style="margin-left: 10px;" >
 				manage projects and tasks here
 				<div class="searchbar-container rounded">
 					<div class="no-copy" style="margin-top:10px;margin-left:20px;">&#x2315;
@@ -61,16 +33,16 @@
 				</div>
 					<!--project-->
 					<div class="table-container">
-						<table class="table table-hover table-light round-table" style="border-radius:6px;">
-						  <thead class="thead-dark  table-borderless">
-							<tr class="table-dark">
+						<table class="table table-hover round-table" style="border-radius:6px;">
+						  <thead class="table-borderless" id="project-thead">
+							<tr>
 							  <th scope="col">#</th>
 							  <th scope="col">Project(click and go to project page or what?)</th>
 							  <th scope="col">Last modified</th>
 							  <th scope="col">Updates</th>
 							</tr>
 						  </thead>
-						  <tbody class="table-bordered" style="border: red;">
+						  <tbody class="table-bordered" id="project-tbody">
 							<tr>
 							  <th scope="row">1</th>
 							  <td>Project 1</td>
@@ -83,7 +55,7 @@
 							  <td>Thornton</td>
 							  <td>@fat</td>
 							</tr>
-							<tr class="table-borderless">
+							<tr>
 							  <th scope="row">3</th>
 							  <td>Project 3</td>
 							  <td>the Bird</td>
@@ -94,9 +66,9 @@
 					</div>
 					<!--task-->
 					<div class="table-container">
-						<table class="table table-hover table-light round-table" style="border-radius:6px;">
-						  <thead class="thead-dark  table-borderless">
-							<tr class="table-dark">
+						<table class="table table-hover round-table" style="border-radius:6px;">
+						  <thead class="table-borderless" id="task-thead">
+							<tr >
 							  <th scope="col">#</th>
 							  <th scope="col">mytask</th>
 							  <th scope="col">belongs</th>	
@@ -104,7 +76,7 @@
 							  <th scope="col">due date</th>
 							</tr>
 						  </thead>
-						  <tbody class="table-bordered" style="border: red;">
+						  <tbody class="table-bordered" id="task-tbody">
 							<tr>
 							  <th scope="row">1</th>
 							  <td>task 1</td>
@@ -119,7 +91,7 @@
 							  <td>Thornton</td>
 							  <td>@fat</td>
 							</tr>
-							<tr class="table-borderless">
+							<tr>
 							  <th scope="row">3</th>
 							  <td>task 3</td>
 							  <td>Project 2</td>	
@@ -129,10 +101,11 @@
 						  </tbody>
 						</table>
 					</div>	
-			</div>
+
 			  <div class="add-project-button">
-				 <a href="#" class="float"><i class="fas fa-plus fa-lg my-float"></i></a>
+				 <a href="#" class="float" data-container="body"><i class="fas fa-plus fa-lg my-float"></i></a>
 			  </div>
+			</span>
 		</div>
 	</div>
 </body>

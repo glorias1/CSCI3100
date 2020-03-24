@@ -1,11 +1,11 @@
 
+
 .leftnav {
-	display: flex;
-	position: fixed;
+	display:flex;
 	width: 180px;
 	height: 100%;
 	float: left;
-	background-color: #2F2E2E
+	background-color: #CE4747;
 	
 }
 .mapout-logo-container{
@@ -35,28 +35,27 @@
 	color:white;
 	background: white;
 }
-.user-name-container:hover{
-	color: aqua;
-}
 .rightcontent {
-	margin-left: 180px;
-	position: fixed;
-	width: 100%;
+	float: left;
+	display:inline-block;
+	width: auto;
 	height: 100%;
-	background:#D5D5D5;
+	background: #F2C7C7;
 }
 .searchbar-container{
 	display: flex;
 	height:45px;
-	width: 80%;
-	background:#AAAAAA;
-	margin: 7px 7px 7px 15px;
+	width: 100%;
+	background: #F7DDDD;
+	color: #AC2E2E;
+	margin: 7px 7px 7px 7px;
 }
+
 
 .resized-searchbox{
 	margin-top: 7px; 
 	margin-left: 10px;
-	width: 80%;
+	width: 100%;
 	height: 30px;
 	  outline: none;
 	box-shadow: none;
@@ -66,10 +65,7 @@
     color:#2F2E2E;
 	font-size: 10;
 }
-.btn:focus,.btn:active {
-  outline: none;
-	box-shadow: none;
-}
+
 .nav-function-container{
 	width: 160px;
 	height:40px;
@@ -77,19 +73,49 @@
 	margin-right: 9px;
 	margin-bottom: 0px;
 }
+
 .btn-nav {
     font-size: 15px;
-	color: #909090;
+	color: #E79494;
 	background:none;
 	border: none;
-	
+	outline: none;
+}
+.btn-nav:active{
+	color:#7A2121;
+	background: rgba(255,255,255,0.4);
 
 }
+.btn-nav:focus{
+	box-shadow: none;
+}
+.btn-nav:hover{
+	background:rgba(255,255,255,0.25);
+	color: #7A2121;
+}
+#project-thead{
+	background: #403434;
+	color: white;
+}
+#project-tbody{
+	background: #F9F3F3;
+	border: black;
+}
+#task-thead{
+	background: #344036;
+	color: white;
+}
+#task-tbody{
+	background: #F3F9F3;
+	border: black;
+}
+
+
 .table-container{
 	display: inline-block;
-	margin-left: 15px;
+	margin-left: 0px;
 	margin-top: 15px;
-	width:39.4%;
+	width:49%;
 }
 .add-project-button{
 	right:50px;
@@ -105,6 +131,15 @@
 	border-radius:50px;
 	text-align:center;
 	box-shadow: 2px 2px 3px #999;
+}
+.float:hover{
+	background-color: #00BC8D;
+	color: #FFF;
+}
+.float:active{
+	background-color: #00C291;
+	color: #EBEBEB;
+	bottom: -10;
 }
 .my-float{
 	margin-top:22px;
