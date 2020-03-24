@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>MapOut: About us</title>
-    <meta name="description" content="Creat">
+    <title>MapOut: Create Project</title>
+    <meta name="description" content="Create project">
     <mera name="author" content="2020Fall CSCI3100 Group 10">
     <meta name="creation-date" content="22-Mar-2020 13:09:14">
     <meta charset="utf-8">
@@ -36,9 +36,9 @@
 			<div class="form-group col-3 col-offset-5 align-center">
 				<form action="">
 					<label class="projectname" for="pName">Project name:</label><br>
-					<input type="text" id="pName" name="projectName"><br>
+					<input class="form-control" type="text" id="pName" name="projectName" placeholder="Your project name"><br>
 					<label for="pDescription">Project description:</label>
-                    <textarea class="form-control" rows="5" id="pDescription"></textarea>
+                    <textarea class="form-control" rows="5" id="pDescription" placeholder="Your project description."></textarea>
                     <div class="form-check">
                         <label class="form-check-label"><input type="radio" class="form-check-input" name="privacy" value="public">Public</label>
                     </div>
@@ -46,7 +46,7 @@
                         <label class="form-check-label"><input type="radio" class="form-check-input" name="privacy" value="private">Private</label>
                     </div>
                 </form>
-				<button type="button">Sign up</button>
+				<button type="button" class="btn btn-outline-primary">Create project</button>
 			</div>
 		</div>
 	</div>
