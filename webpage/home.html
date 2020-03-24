@@ -1,64 +1,36 @@
 <!DOCTYPE html>
-  <html lang="en">
-    <head>
-
-      <title>MapOut: Project Management & Team Communication Application</title>
-      <meta name="description" content="Puts everything you need for project management in one application">
-      <mera name="author" content="2020Fall CSCI3100 Group 10">
-      <meta name="creation-date" content="22-Mar-2020 13:09:14">
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-
-
-      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-  </head>
-
-  <body class="home-grid">      
-
-      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-
-      <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-
-      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-
-
-
-    <header class="bg-danger text-white sticky-top">    
-      <style>
-        a {
-        color: white;
+<html lang="en">
+<head>
+  <title>MapOut: Project Management & Team Communication Application</title>
+  <meta name="description" content="Puts everything you need for project management in one application">
+  <mera name="author" content="2020Fall CSCI3100 Group 10">
+  <meta name="creation-date" content="22-Mar-2020 13:09:14">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="event.js"></script>
+  <style>
+      h1, a {
+        color: black;
         font-family: "Arial Black", Gadget, sans-serif;
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
       }
-      </style>
+    </style>
+</head>
 
-      <nav class="navbar navbar-expand-md">
-              <div class="container-fluid">    
-                  <a class="navbar-brand" href="./">MapOut</a>
-                  <ul class="navbar-nav navbar-right"> <!--make it rightside-->
-                      <li class="nav-item active">
-                        <a class="nav-link" href="#">About Us</a></li>
-                      <li class="nav-item"><a class="nav-link" href="./login.html">Login</a></li>
-                      <li class="nav-item"><a class="nav-link" href="./signup.html">Sign Up</a></li>
-                  </ul>
-              </div>
-          </nav>    
-    </header>
-
-    <main id="content">
-      <section class="intro">
-        <style>
-          h1, a {
-            color: black;
-            font-family: "Arial Black", Gadget, sans-serif;
-            display: flex;
-            justify-content: center;
-            flex-direction: row;
-          }
-        </style>
-        <div class="grid grid--centered">
-          <h1>MapOut</h1>
-        </div>
-      </section>
-    </main>
-  </body>
+<body class="home-grid">
+  <header id = "navbar"></header>
+  <main id="content">
+    <section class="intro">
+    <div class="grid grid--centered">
+      <h1>MapOut</h1>
+    </div>
+    </section>
+  </main>
+</body>
 </html>
