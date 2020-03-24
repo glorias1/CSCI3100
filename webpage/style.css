@@ -31,6 +31,13 @@
 	float: right;
 	margin: 10px 0px 0px 0px;
 }
+.user-name-container::selection{
+	color:white;
+	background: white;
+}
+.user-name-container:hover{
+	color: aqua;
+}
 .rightcontent {
 	margin-left: 180px;
 	position: fixed;
@@ -43,7 +50,7 @@
 	height:45px;
 	width: 80%;
 	background:#AAAAAA;
-	margin: 7px 7px 7px 7px;
+	margin: 7px 7px 7px 15px;
 }
 
 .resized-searchbox{
@@ -59,7 +66,7 @@
     color:#2F2E2E;
 	font-size: 10;
 }
-.btn:focus, .btn:active {
+.btn:active {
   outline: none;
 	box-shadow: none;
 }
@@ -78,6 +85,32 @@
 
 }
 .table-container{
-	margin-left: 9px;
-	width:80%;
+	display: inline-block;
+	margin-left: 15px;
+	margin-top: 15px;
+	width:39.4%;
+}
+.add-project-button{
+	right:50px;
+}
+.float{
+	position:fixed;
+	width:60px;
+	height:60px;
+	bottom:40px;
+	right:40px;
+	background-color:#0C9;
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+	box-shadow: 2px 2px 3px #999;
+}
+.my-float{
+	margin-top:22px;
+}
+.round-table thead th:first-child{
+	border-radius: 6px 0 0 0;
+}
+.round-table thead th:last-child{
+	border-radius: 0 6px 0 0;
 }
