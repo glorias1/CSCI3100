@@ -17,22 +17,34 @@
 	<script>
 	$(document).ready( function() {
 		$("#load_home").on("click", function() {
-			$("#rightcontent").load("index.html");
+			$("#main1").load("index.html");
+		});
+	});
+	$(document).ready( function() {
+		$("#load_schedule").on("click", function() {
+			$("#main1").load("schedule.html");
+		});
+	});
+	$(document).ready( function() {
+		$("#load_help").on("click", function() {
+			$("#main1").load("help.html");
+		});
+	});
+	$(document).ready( function() {
+		$("#load_settings").on("click", function() {
+			$("#main1").load("settings.html");
 		});
 	});
 	</script>
 </head>
 <body>
 		<div class="leftnav"><span>
-			<div class="mapout-logo-container">
-			  <br><h4><span style="color:#707070">&nbsp;?? </span></h4>
-			</div>
 			<div class="user-container rounded">
 				<div class="user-icon-container">
 					<img src="../images/testing_icon.jpg" class="icon" style="margin-left:12px;margin-top:12px;" alt="Profile picture">
 				</div>
 				<div class="user-name-container" >
-					<a href="#" class="btn "><font size="+1" color="#E79494">User name</font></a>
+					<a href="#" class="btn "><font color="#E79494">User name</font></a>
 				</div>
 			</div>
 			<hr width="90%" color="#B02F2F">
@@ -41,13 +53,13 @@
 					<a href="#" id="load_home" class="btn btn-nav btn-block text-left"><i class="fas fa-home"></i>&nbsp;&nbsp;<b>Home</b></a>
 				</div>
 				<div class="nav-function-container rounded">
-					<a href="#" class="btn btn-nav btn-block text-left"><i class="fas fa-calendar"></i>&nbsp;&nbsp;<b>Schedule</b></a>
+					<a href="#" id="load_schedule" class="btn btn-nav btn-block text-left"><i class="fas fa-calendar"></i>&nbsp;&nbsp;<b>Schedule</b></a>
 				</div>
 				<div class="nav-function-container rounded">
-					<a href="#" class="btn btn-nav btn-block text-left"><i class="fas fa-hand-paper"></i>&nbsp;&nbsp;<b>Help</b></a>
+					<a href="#" id="load_help" class="btn btn-nav btn-block text-left"><i class="fas fa-hand-paper"></i>&nbsp;&nbsp;<b>Help</b></a>
 				</div>
 				<div class="nav-function-container rounded">
-					<a href="#" class="btn btn-nav btn-block text-left"><i class="fas fa-cog"></i>&nbsp;&nbsp;<b>Settings</b></a>
+					<a href="#" id="load_settings" class="btn btn-nav btn-block text-left"><i class="fas fa-cog"></i>&nbsp;&nbsp;<b>Settings</b></a>
 				</div>
 				
 			</div>

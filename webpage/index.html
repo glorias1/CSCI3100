@@ -15,99 +15,22 @@
 		$(function(){
 		  $("#nav-placeholder").load("function_bar.html");
 		});
+		$(function(){
+		  $("#nav-top").load("navbar_after_login.html");
+		});
+		$(function(){
+		  $("#main1").load("main.html");
+		});
 	</script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 	<script src="event.js"></script>
 </head>
 <body>
-	<header id = "navbar-logged"></header>
-	<div class="wrapper" tabindex="-1" >
-		<div id="nav-placeholder"></div>
-		<div class="rightcontent" id="rightcontent"  >
-			<span>
-				manage projects and tasks here
-				<div class="searchbar-container rounded">
-					<div class="no-copy" style="margin-top:10px;margin-left:20px;">&#x2315;
-					</div>
-					<input type="text" class="resized-searchbox rounded change" placeholder="search here.(or delete this bar)" style="background-color: rgba(0,0,0,0);;border:none" >
-				</div>
-					<!--project-->
-					<div class="table-container" style="margin-left: 10px;">
-						<table class="table table-hover round-table overflow-hidden" style="border-radius:6px;">
-						  <thead class="table-borderless" id="project-thead">
-							<tr>
-							  <th scope="col">#</th>
-							  <th scope="col">Project(click and go to project page or what?)</th>
-							  <th scope="col">Last modified</th>
-							  <th scope="col">Updates</th>
-							</tr>
-						  </thead>
-						  <tbody class="table-bordered" id="project-tbody">
-							<tr>
-							  <th scope="row">1</th>
-							  <td>Project 1</td>
-							  <td>Otto</td>
-							  <td>@mdo</td>
-							</tr>
-							<tr>
-							  <th scope="row">2</th>
-							  <td>Project 2</td>
-							  <td>Thornton</td>
-							  <td>@fat</td>
-							</tr>
-							<tr>
-							  <th scope="row">3</th>
-							  <td>Project 3</td>
-							  <td>the Bird</td>
-							  <td>@twitter</td>
-							</tr>
-						  </tbody>
-						</table>
-					</div>
-					<!--task-->
-					<div class="table-container">
-						<table class="table table-hover round-table overflow-hidden" style="border-radius:6px;">
-						  <thead class="table-borderless" id="task-thead">
-							<tr >
-							  <th scope="col">#</th>
-							  <th scope="col">mytask</th>
-							  <th scope="col">belongs</th>	
-							  <th scope="col">Last modified</th>
-							  <th scope="col">due date</th>
-							</tr>
-						  </thead>
-						  <tbody class="table-bordered" id="task-tbody">
-							<tr>
-							  <th scope="row">1</th>
-							  <td>task 1</td>
-							  <td>Project1</td>		
-							  <td>Otto</td>
-							  <td>@mdo</td>
-							</tr>
-							<tr>
-							  <th scope="row">2</th>
-							  <td>task 2</td>
-							  <td>Project 1</td>
-							  <td>Thornton</td>
-							  <td>@fat</td>
-							</tr>
-							<tr>
-							  <th scope="row">3</th>
-							  <td>task 3</td>
-							  <td>Project 2</td>	
-							  <td>the Bird</td>
-							  <td>@twitter</td>
-							</tr>
-						  </tbody>
-						</table>
-					</div>	
-
-			  <div class="add-project-button">
-				 <a href="#" class="float" data-container="body"><i class="fas fa-plus fa-lg my-float"></i></a>
-			  </div>
-			</span>
-		</div>
+	<header id = "nav-top"></header>
+	<div id="nav-placeholder"></div>
+	<div class="wrapper rightcontent" id="main1" tabindex="-1" >
+			
 	</div>
 	
 </body>
