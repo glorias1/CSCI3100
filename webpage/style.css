@@ -41,6 +41,7 @@
 	width: auto;
 	height: 100%;
 	background: #F2C7C7;
+	padding-left: 15px;
 }
 .searchbar-container{
 	display: flex;
