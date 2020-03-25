@@ -1,12 +1,21 @@
-
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
 
 .leftnav {
-	display:flex;
+	display: flex;
+	position: fixed;
 	width: 180px;
-	height: 100%;
+	height: 100vh;
 	float: left;
 	background-color: #CE4747;
 	
+}
+.rightcontent {
+padding-left: 180px;
+	background: #F2C7C7;
+	height: 100vh;
 }
 .mapout-logo-container{
 	width: 180px;
@@ -35,18 +44,11 @@
 	color:white;
 	background: white;
 }
-.rightcontent {
-	float: left;
-	display:inline-block;
-	width: auto;
-	height: 100%;
-	background: #F2C7C7;
-	padding-left: 15px;
-}
+
 .searchbar-container{
 	display: flex;
 	height:45px;
-	width: 100%;
+	width: 95%;
 	background: #F7DDDD;
 	color: #AC2E2E;
 	margin: 7px 7px 7px 7px;
@@ -56,7 +58,7 @@
 .resized-searchbox{
 	margin-top: 7px; 
 	margin-left: 10px;
-	width: 100%;
+	width: 90%;
 	height: 30px;
 	  outline: none;
 	box-shadow: none;
@@ -120,6 +122,27 @@
 }
 .add-project-button{
 	right:50px;
+}
+.split {
+  height: 100%;
+  width: 50%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+/* Control the left side */
+.left {
+  left: 0;
+  background-color: #111;
+}
+
+/* Control the right side */
+.right {
+  right: 0;
+  background-color: red;
 }
 .float{
 	position:fixed;
