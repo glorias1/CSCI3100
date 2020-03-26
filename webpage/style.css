@@ -16,7 +16,7 @@ html, body {
   right: 0;
   bottom: 0;
   left: 0;
-  width: 368px;
+  width: 500px;
   height: 100px;
 	-moz-user-select: none; 
 	-webkit-user-select: none; 
@@ -26,7 +26,14 @@ html, body {
 	color: white;
 	font-family:serif;
 	text-align: center;
-	letter-spacing: 5px;
+	
+}
+.home-features{
+	display: inline-block;
+	width:100px;
+	height:100px;
+	letter-spacing: 3px;
+	margin-left: 1rem;
 }
 .help-style{
 	width:90%;
