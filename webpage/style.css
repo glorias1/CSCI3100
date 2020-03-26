@@ -1,6 +1,32 @@
 html, body {
     max-width: 100%;
-    overflow-x: hidden;
+    overflow: hidden;
+}
+.overlay-div{
+   height:100%;
+   width: 100%;
+   position:absolute;
+   background-color:#120D0D;
+   opacity:.7;
+}
+#home-big-title{
+	position: absolute;
+  margin:auto;
+  top: -200px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 368px;
+  height: 100px;
+	-moz-user-select: none; 
+	-webkit-user-select: none; 
+	-ms-user-select:none; 
+	user-select:none;
+	-o-user-select:none;
+	color: white;
+	font-family:serif;
+	text-align: center;
+	letter-spacing: 5px;
 }
 .help-style{
 	width:90%;

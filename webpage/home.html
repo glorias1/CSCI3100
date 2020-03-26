@@ -3,11 +3,12 @@
 <head>
   <title>MapOut: Project Management & Team Communication Application</title>
   <meta name="description" content="Puts everything you need for project management in one application">
-  <mera name="author" content="2020Fall CSCI3100 Group 10">
+  <meta name="author" content="2020Fall CSCI3100 Group 10">
   <meta name="creation-date" content="22-Mar-2020 13:09:14">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	  <link rel="stylesheet" href="style.css">
   <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
@@ -27,11 +28,17 @@
 <body>
   <header id = "navbar"></header>
   <main id="content">
-    <section class="intro">
-    <div class="grid grid--centered">
-      <h1>MapOut</h1>
-    </div>
-    </section>
+<div class="overlay-div"></div> 
+	  <img src="../images/home_pic.jpeg" alt="">
+<div class="card-img-overlay d-flex align-items-center container" ></div>
+	  <div id="home-big-title"  unselectable="on"
+ onselectstart="return false;" 
+ onmousedown="return false;" >
+		  <span style="font-size: 80px;">MapOut</span><br>
+		  <span style="font-size: 20px;opacity: 0.9;">help you with you projects</span>
+		  
+	  </div>
+
   </main>
 </body>
 </html>
