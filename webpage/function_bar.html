@@ -16,8 +16,8 @@
 	<script src="event.js"></script>
 	<script>
 	$(document).ready( function() {
-		$("#load_home").on("click", function() {
-			$("#main1").load("index.html");
+		$("#load_main").on("click", function() {
+			$("#main1").load("main.html");
 		});
 	});
 	$(document).ready( function() {
@@ -48,9 +48,9 @@
 				</div>
 			</div>
 			<hr width="90%" color="#B02F2F">
-			<div>
+			<div class="btn-group-vertical" role="group" >
 				<div class="nav-function-container rounded">
-					<a href="#" id="load_home" class="btn btn-nav btn-block text-left"><i class="fas fa-home"></i>&nbsp;&nbsp;<b>Home</b></a>
+					<a href="#" id="load_main" class="btn btn-nav btn-block text-left"><i class="fas fa-home"></i>&nbsp;&nbsp;<b>Home</b></a>
 				</div>
 				<div class="nav-function-container rounded">
 					<a href="#" id="load_schedule" class="btn btn-nav btn-block text-left"><i class="fas fa-calendar"></i>&nbsp;&nbsp;<b>Schedule</b></a>
@@ -70,6 +70,6 @@
 			</span>
 			
 		</div>
-		
+
 </body>
 </html>
