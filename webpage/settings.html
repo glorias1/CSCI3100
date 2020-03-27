@@ -1,5 +1,5 @@
 <html>
-	<head>
+<head>
 		<title>MapOut - Settings</title>
 	<meta charset="UTF-8">
 	<meta name="description" content="The settings page">
@@ -10,17 +10,27 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 	<link rel="stylesheet" href="style.css">
 	<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
-
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 	<script src="event.js"></script>
-	</head>
-	<body>
+	<script>
+		$(document).on("click", "button#eda",function(){
+        	$("#edit_info_box").load("./personal_info_setting.html");
+		});
+	</script>
+</head>
+<body>
+	<div class="container" style="float: left;">
 		<h2 style="color: #701D1D">Settings</h2>
-		<div >
-			Reminders : on/of;
+		<div>
+			Reminders : on/off
 			<input type="checkbox" class="switch_1">
 		</div>
-		
-	</body>
+		<div>
+			<button id="eda" type="button" class="btn btn-outline-primary" style="margin-top: 15px;">Edit Account Information</button>
+		</div>
+		<div class="wrapper" id="edit_info_box">
+		</div>
+	</div>
+</body>
 </html>

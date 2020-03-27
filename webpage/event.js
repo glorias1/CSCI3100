@@ -9,4 +9,7 @@ $(document).ready(function(){
     $(document).on("click", "button#create_project",function(){
         window.location.href='./create_project.html';
     });
+    $(document).on("click", "button#login",function(){
+        window.location.href='./index.html';
+    });
 });

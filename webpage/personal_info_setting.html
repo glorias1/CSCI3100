@@ -12,7 +12,7 @@
 	<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
 	<script src="event.js"></script>
 	<style>
-		h1.title {
+		h1 {
             font-family: "Arial Black", Gadget, sans-serif;
             margin: 45px auto 20px auto;
             padding: 110px 0 0;
@@ -25,26 +25,20 @@
 	</style>
 </head>
 <body>
-	<div align="center">
-		<h1> Setting </h1>
-	</div>
-		<form action="" style="width: 500px; margin:auto">
-			<label for="username">Username</label>
-			<input type="text" name="username" id="username" class="form-control">
-			<label for="password">Password</label>
-			<input type="password" name="password" id="password" class="form-control">
-			<label for="password">Re-enter Password</label>
-			<input type="password" name="password" id="password" class="form-control">
-			<label for="privacy">Privacy Setting</label>
-			<select name="privacy" id="privacy" class="form-control">
-				<option value="public">public</option>
-				<option value="private">private</option>
-			</select>
-		</form>
-		<div align="center">
-			<button type="submit">Submit</button>
-		</div>
-		
+	<form action="" style="width: 500px">
+		<label for="username">Username</label>
+		<input type="text" name="username" id="username" class="form-control">
+		<label for="password">Password</label>
+		<input type="password" name="password" id="password" class="form-control">
+		<label for="r-password">Re-enter Password</label>
+		<input type="password" name="r-password" id="r-password" class="form-control">
+		<label for="privacy">Privacy Setting</label>
+		<select name="privacy" id="privacy" class="form-control">
+			<option value="public">public</option>
+			<option value="private">private</option>
+		</select>
+	</form>
+	<button type="button" class="btn btn-outline-primary" style="margin-top: 15px;">Save</button>
 </body>
 
 

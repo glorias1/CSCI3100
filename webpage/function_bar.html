@@ -1,16 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
-	<title>MapOut - index</title>
-	<meta charset="UTF-8">
-	<meta name="description" content="The main page">
-	<meta name="keywords" content="Project,Business,School,University,Budget Plan,">
-	<meta name="author" content="2020Fall CSCI3100 Group 10">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-	<link rel="stylesheet" href="style.css">
-	<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 	<script src="event.js"></script>
@@ -19,18 +7,15 @@
 		$("#load_main").on("click", function() {
 			$("#main1").load("main.html");
 		});
-	});
-	$(document).ready( function() {
+
 		$("#load_schedule").on("click", function() {
 			$("#main1").load("schedule.html");
 		});
-	});
-	$(document).ready( function() {
+
 		$("#load_help").on("click", function() {
 			$("#main1").load("help.html");
 		});
-	});
-	$(document).ready( function() {
+
 		$("#load_settings").on("click", function() {
 			$("#main1").load("settings.html");
 		});
@@ -62,7 +47,7 @@
 					<a href="#" id="load_settings" class="btn btn-nav btn-block text-left"><i class="fas fa-cog"></i>&nbsp;&nbsp;<b>Settings</b></a>
 				</div>
 				<div class="nav-function-container rounded">
-					<a href="#" class="btn btn-nav btn-block text-left"><i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp;<b>Logout</b></a>
+					<a href="./home.html" class="btn btn-nav btn-block text-left"><i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp;<b>Logout</b></a>
 				</div>
 				
 			</div>
@@ -72,4 +57,3 @@
 		</div>
 
 </body>
-</html>

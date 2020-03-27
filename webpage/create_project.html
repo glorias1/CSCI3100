@@ -39,15 +39,16 @@
 					<input class="form-control" type="text" id="pName" name="projectName" placeholder="Your project name"><br>
 					<label for="pDescription">Project description:</label>
                     <textarea class="form-control" rows="5" id="pDescription" placeholder="Your project description."></textarea>
-                    <div class="form-check">
-                        <label class="form-check-label"><input type="radio" class="form-check-input" name="privacy" value="public">Public</label>
-                    </div>
-                    <div class="form-check">
-                        <label class="form-check-label"><input type="radio" class="form-check-input" name="privacy" value="private">Private</label>
-                    </div>
+                    <label for="privacy">Privacy Setting</label>
+                    <select name="privacy" id="privacy" class="form-control">
+                        <option value="public">public</option>
+                        <option value="private">private</option>
+                    </select>
                 </form>
-				<button type="button" class="btn btn-outline-primary">Create project</button>
-			</div>
+                <div>
+                    <button type="button" class="btn btn-outline-primary" style="margin-top: 15px;">Create project</button>
+                </div>
+            </div>
 		</div>
 	</div>
 </body>
