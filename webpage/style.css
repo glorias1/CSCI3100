@@ -2,12 +2,12 @@ html, body {
     max-width: 100%;
     overflow: hidden;
 }
+
 .overlay-div{
    height:100%;
    width: 100%;
    position:absolute;
-   background-color:#120D0D;
-   opacity:.7;
+
 }
 #home-big-title{
 	position: absolute;
@@ -257,3 +257,7 @@ input[type="checkbox"].switch_1{
   input[type="checkbox"].switch_1:checked:after{
 	left: calc(100% - 1.5em);
   }
+
+.modal-backdrop {
+  z-index: -1;
+}

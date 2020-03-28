@@ -12,4 +12,7 @@ $(document).ready(function(){
     $(document).on("click", "button#login",function(){
         window.location.href='./index.html';
     });
+	$(function(){
+		$("#open-login-page").load("login.html");
+	});
 });

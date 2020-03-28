@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
   <title>MapOut: Project Management & Team Communication Application</title>
+  <link rel="icon" href="../images/web_icon.ico" type="image/x-icon" / >
+  <link rel="shortcut icon" href="../images/web_icon.ico" type="image/x-icon">
   <meta name="description" content="Puts everything you need for project management in one application">
   <meta name="author" content="2020Fall CSCI3100 Group 10">
   <meta name="creation-date" content="22-Mar-2020 13:09:14">
@@ -27,28 +29,30 @@
 </head>
 
 <body>
-  <header id = "navbar"></header>
+  <header id = "navbar" ></header>
   <main id="content">
-<div class="overlay-div"></div> 
-<div class="d-flex justify-content-center">
-  <img src="../images/home_pic.jpeg" alt="" style="text-align:center; display:block;">
-</div>
-<div class="card-img-overlay d-flex align-items-center container" ></div>
-	  
-	  <div id="home-big-title"  unselectable="on"
- onselectstart="return false;" 
- onmousedown="return false;" >
-		  <span style="font-size: 80px;letter-spacing: 5px;">MapOut</span><br>
-		  <span style="font-size: 20px;opacity: 0.9;letter-spacing: 5px;">helps you with you projects</span><br><br><br><br>
-		  <div class="home-features"><i class="fas fa-project-diagram fa-3x"></i><br>Projects
+	
+	<div class="d-flex justify-content-center">
+		<div class="overlay-div"></div> 
+	  <img src="../images/home_pic_dim.jpg" alt="" style="text-align:center; display:block;">
+	</div>
+	<div class="card-img-overlay d-flex align-items-center container" ></div>
+
+		  <div id="home-big-title"  unselectable="on"
+	 onselectstart="return false;" 
+	 onmousedown="return false;" >
+			  <span><img src="../images/logo_big.png" width="70%" alt=""></span><br>
+			  <span style="font-size: 20px;opacity: 0.9;letter-spacing: 5px;">helps you with your projects</span><br><br><br><br>
+			  <div class="home-features"><i class="fas fa-project-diagram fa-3x"></i><br>Projects
+			  </div>
+			  <div class="home-features"><i class="fas fa-tasks fa-3x"></i><br>Tasks</div>
+
+			  <div class="home-features"><i class="fas fa-envelope fa-3x"></i><br>Reminder
+			  </div>
+			  <div class="home-features"><i class="fas fa-calendar-alt fa-3x"></i><br>Calendadr</div><br><br>
+				<button href="signup.html" class="btn btn-lg btn-outline-light" style="border-radius: 40px;font-size: 40px;" data-toggle="modal" data-target="#sign-up-modal" ><span style="margin-left: 1rem; margin-right: 1rem;">Start now</span></button>
+			  
 		  </div>
-		  <div class="home-features"><i class="fas fa-tasks fa-3x"></i><br>Tasks</div>
-		  
-		  <div class="home-features"><i class="fas fa-envelope fa-3x"></i><br>Reminder
-		  </div>
-		  <div class="home-features"><i class="fas fa-calendar-alt fa-3x"></i><br>Calendadr</div><br><br>
-			<a href="signup.html" class="btn btn-lg btn-outline-light" style="border-radius: 40px;font-size: 40px;" >&nbsp;&nbsp;&nbsp;Start now&nbsp;&nbsp;&nbsp;</a>
-	  </div>
 
   </main>
 </body>
