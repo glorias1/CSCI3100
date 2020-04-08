@@ -65,10 +65,13 @@ padding: 20px 20px 20px 200px;
 }
 .user-container{
 	width: 180px;
-	height: 45px;
+	height: 120px;
 }
 .user-icon-container{
-	display: inline-block;
+	display:block;
+	text-align: center;
+	margin: 0 auto;
+	margin-top: 1rem;
 	height:60px;
 	width: 60px;
 }
@@ -76,11 +79,12 @@ padding: 20px 20px 20px 200px;
 	border-radius: 50%;
 }
 .user-name-container{
-	display: inline-block;
+	display:block;
 	height: 30px;
-	width: 120px;
-	float: right;
-	margin: 10px 0px 0px 0px;
+	width: 180px;
+	margin: 0 auto;
+	text-align: center;
+	color: #FFF7F7;
 }
 .user-name-container::selection{
 	color:white;

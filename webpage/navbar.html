@@ -10,14 +10,32 @@ a {
       <div class="container-fluid">
       <a class="navbar-brand" href="./home.html"><img src="../images/logo_small.png" alt=""></a>
         <ul class="navbar-nav navbar-right"> <!--make it rightside-->
-          <li class="nav-item navbar-dark"><a class="btn  btn-outline-light" style="border:none;font-size: 18px;" href="./about_us.html">About Us</a></li>
+          <li class="nav-item navbar-dark"><button class="btn  btn-outline-light" style="border:none;font-size: 18px;" href="./about_us.html" data-toggle="modal" data-target="#about-modal">About Us</button></li>
+			<!--modal for about us-->
+			<div class="modal fade" id="about-modal" tabindex="-1" role="dialog" aria-labelledby="aboutModalLabel" aria-hidden="true">
+			  <div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header" style="color: black;">
+						<h5 class="modal-title" style="margin: 1rem">About us</h5>
+						<button type="button" class="btn btn-light btn-sm" data-dismiss="modal"><i class="fas fa-times"></i></button>
+					</div>	
+				  <div class="modal-body" >
+					  <font color="#000">
+					  		(!!!!!!this is copy from init doc to tmp use!!!!!!)<br>
+						  MapOut offers an online web-based platform for project members to maintain their project progress. MapOut proposes to provide the users with better coordination of their projects. Having an overview of everyone’s progress and sharing materials would not be difficult anymore. MapOut makes project management no longer a vexing task.
+						  </font>
+					</div>
+				</div>
+			  </div>
+			</div>
+			
           <li class="nav-item navbar-dark"><button class="btn  btn-outline-light" style="border:none;font-size: 18px;" href="./login.html" data-toggle="modal" data-target="#login-modal">Login</button></li>
 			<!--modal for login form-->
 			<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
 			  <div class="modal-dialog" role="document">
 				<div class="modal-content">
 					<div class="modal-header" style="color: black;">
-						<h5 class="modal-title" style="margin: 1rem">Sign in</h5>
+						<h5 class="modal-title" style="margin: 1rem">Welcome back!</h5>
 						<button type="button" class="btn btn-light btn-sm" data-dismiss="modal"><i class="fas fa-times"></i></button>
 					</div>	
 				  <div class="modal-body">
@@ -45,7 +63,7 @@ a {
 			  <div class="modal-dialog" role="document">
 				<div class="modal-content">
 					<div class="modal-header" style="color: black;">
-						<h5 class="modal-title" style="margin: 1rem">Welcome back!</h5>
+						<h5 class="modal-title" style="margin: 1rem">Create an account</h5>
 						<button type="button" class="btn btn-light btn-sm" data-dismiss="modal"><i class="fas fa-times"></i></button>
 					</div>	
 				  <div class="modal-body">

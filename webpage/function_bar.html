@@ -24,15 +24,16 @@
 </head>
 <body>
 		<div class="leftnav"><span>
-			<div class="user-container rounded">
-				<div class="user-icon-container">
-					<img src="../images/testing_icon.jpg" class="icon" style="margin-left:12px;margin-top:12px;" alt="Profile picture">
+			<div class="user-container rounded" unselectable="on"
+	 onselectstart="return false;" 
+	 onmousedown="return false;">
+				<div class="user-icon-container" >
+					<img src="../images/testing_icon.jpg" class="icon mr-3 rounded-circle img-thumbnail shadow-sm"  alt="Profile picture">
 				</div>
 				<div class="user-name-container" >
-					<a href="#" class="btn "><font color="#E79494">User name</font></a>
-				</div>
+					<font>	User name</font></div>
 			</div>
-			<hr width="90%" color="#B02F2F">
+			<!--<hr width="90%" color="#B02F2F">-->
 			<div class="btn-group-vertical" role="group" >
 				<div class="nav-function-container rounded">
 					<a href="#" id="load_main" class="btn btn-nav btn-block text-left"><i class="fas fa-home"></i>&nbsp;&nbsp;<b>Home</b></a>
@@ -51,6 +52,7 @@
 				</div>
 				
 			</div>
+
 			
 			</span>
 			
