@@ -4,11 +4,12 @@ a {
     font-family: Calibri;
     }
 </style>
+{% load static %}
 <header class="bg-danger text-white sticky-top">
   <div class="overlay-div">
     <nav class="navbar navbar-expand-md navbar-dark">
       <div class="container-fluid">
-      <a class="navbar-brand" href="./home.html"><img src="../images/logo_small.png" alt=""></a>
+      <img src="{% static "logo_small.png" %}" alt="">
         <ul class="navbar-nav navbar-right"> <!--make it rightside-->
           <li class="nav-item navbar-dark"><button class="btn  btn-outline-light" style="border:none;font-size: 18px;" href="./about_us.html" data-toggle="modal" data-target="#about-modal">About Us</button></li>
 			<!--modal for about us-->
@@ -40,16 +41,19 @@ a {
 					</div>	
 				  <div class="modal-body">
 						  <div class="form-group">
+							{% csrf_token %}
 							<form action="/login.php" style="color: black;margin-left: 1rem;margin-right: 1rem">
+								
 							  <label for="uname">Username:</label><br>
-							  <input class="form-control" type="text" id="uname" name="uname" style="width: 70%" required><br>
+							  <input class="form-control" type="text" id="login-username" name="username" style="width: 70%" required><br>
 							  <label for="pw">Password:</label><br>
-							  <input class="form-control" type="password" id="pw" name="pw" style="width: 70%" required><br><br>
+							  <input class="form-control" type="login-password" id="pw" name="pw" style="width: 70%" required><br><br>
+							  {{ form.as_p }}
 							</form>
 						  </div>
 					</div>
 				  <div class="modal-footer"><span>
-					<button id="login" type="submit" class="btn btn-outline-primary">Login</button>
+					<button id="login-submit" type="submit" class="btn btn-outline-primary">Login</button>
 					<button type="button" class="btn btn-outline-primary">Forget password</button>
 					</span>
 				  </div>
@@ -68,7 +72,7 @@ a {
 					</div>	
 				  <div class="modal-body">
 						  <div class="form-group">
-								<form action="/signup.php" style="color: black;margin-left: 1rem;margin-right: 1rem">
+								<form action="/signUp/" style="color: black;margin-left: 1rem;margin-right: 1rem">
 									<label class="username" for="uName">Username:</label><br>
 									<input class="form-control" type="text" id="uName" name="uName" style="width: 70%" required><br>
 									<label for="email">Email:</label><br>

@@ -16,7 +16,7 @@
   <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-  <script src="{%static 'js/event.js'%}"></script>
+  <script src="{% static "js/event.js" %}"></script>
   <body style="background-color:rgb(255, 230, 230);"></body>
   <style>
       h1, a {
@@ -30,19 +30,19 @@
 </head>
 
 <body>
-  <header id = "navbar" ></header>
+  {% include "webpage/navbar.html" %}
   <main id="content">
 	
 	<div class="d-flex justify-content-center">
 		<div class="overlay-div"></div> 
-	  <img src="{% static "mapout/home_pic_dim.jpg" %}" alt="" style="text-align:center; display:block;">
+	  <img src="{% static "home_pic_dim.jpg" %}" alt="" style="text-align:center; display:block;">
 	</div>
 	<div class="card-img-overlay d-flex align-items-center container" ></div>
 
 		  <div id="home-big-title"  unselectable="on"
 	 onselectstart="return false;" 
 	 onmousedown="return false;" >
-			  <span><img src="{% static "mapout/logo_big.png" %}" width="70%" alt=""></span><br>
+			  <span><img src="{% static "logo_big.png" %}" width="70%" alt=""></span><br>
 			  <span style="font-size: 20px;opacity: 0.9;letter-spacing: 5px;">helps you with your projects</span><br><br><br><br>
 			  <div class="home-features"><i class="fas fa-project-diagram fa-3x"></i><br>Projects
 			  </div>
