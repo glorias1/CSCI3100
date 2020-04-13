@@ -1,0 +1,405 @@
+InnoDB: using atomic writes.
+2020-04-08 21:20:15 0 [Note] InnoDB: Mutexes and rw_locks use Windows interlocked functions
+2020-04-08 21:20:15 0 [Note] InnoDB: Uses event mutexes
+2020-04-08 21:20:15 0 [Note] InnoDB: Compressed tables use zlib 1.2.11
+2020-04-08 21:20:15 0 [Note] InnoDB: Number of pools: 1
+2020-04-08 21:20:15 0 [Note] InnoDB: Using SSE2 crc32 instructions
+2020-04-08 21:20:15 0 [Note] InnoDB: Initializing buffer pool, total size = 16M, instances = 1, chunk size = 16M
+2020-04-08 21:20:15 0 [Note] InnoDB: Completed initialization of buffer pool
+2020-04-08 21:20:15 0 [Note] InnoDB: Starting crash recovery from checkpoint LSN=300288
+2020-04-08 21:20:15 0 [Note] InnoDB: 128 out of 128 rollback segments are active.
+2020-04-08 21:20:15 0 [Note] InnoDB: Removed temporary tablespace data file: "ibtmp1"
+2020-04-08 21:20:15 0 [Note] InnoDB: Creating shared tablespace for temporary tables
+2020-04-08 21:20:15 0 [Note] InnoDB: Setting file 'C:\xampp\mysql\data\ibtmp1' size to 12 MB. Physically writing the file full; Please wait ...
+2020-04-08 21:20:15 0 [Note] InnoDB: File 'C:\xampp\mysql\data\ibtmp1' size is now 12 MB.
+2020-04-08 21:20:15 0 [Note] InnoDB: 10.4.11 started; log sequence number 300297; transaction id 171
+2020-04-08 21:20:15 0 [Note] InnoDB: Loading buffer pool(s) from C:\xampp\mysql\data\ib_buffer_pool
+2020-04-08 21:20:15 0 [Note] Plugin 'FEEDBACK' is disabled.
+2020-04-08 21:20:15 0 [Note] InnoDB: Buffer pool(s) load completed at 200408 21:20:15
+2020-04-08 21:20:15 0 [Note] Server socket created on IP: '::'.
+2020-04-08 21:20:15 0 [Note] Reading of all Master_info entries succeeded
+2020-04-08 21:20:15 0 [Note] Added new Master_info '' to hash table
+2020-04-08 21:20:15 0 [Note] C:\xampp\mysql\bin\mysqld.exe: ready for connections.
+Version: '10.4.11-MariaDB'  socket: ''  port: 3306  mariadb.org binary distribution
+2020-04-08 22:09:46 128 [Warning] Aborted connection 128 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-08 22:23:19 137 [Warning] Aborted connection 137 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-08 22:24:10 139 [Warning] Aborted connection 139 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-08 22:24:32 141 [Warning] Aborted connection 141 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-08 22:33:24 143 [Warning] Aborted connection 143 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-08 22:38:57 147 [Warning] Aborted connection 147 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-08 22:41:31 154 [Warning] Aborted connection 154 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-08 22:43:53 159 [Warning] Aborted connection 159 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-08 22:48:34 180 [Warning] Aborted connection 180 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-08 23:10:47 189 [Warning] Aborted connection 189 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-08 23:21:07 199 [Warning] Aborted connection 199 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-08 23:21:19 201 [Warning] Aborted connection 201 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-08 23:35:57 208 [Warning] Aborted connection 208 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-08 23:39:23 210 [Warning] Aborted connection 210 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-08 23:44:42 212 [Warning] Aborted connection 212 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-09 13:59:12 213 [Warning] IP address '61.147.103.168' could not be resolved: 無法識別這台主機。 
+2020-04-09 13:59:12 213 [Warning] Aborted connection 213 to db: 'unconnected' user: 'unauthenticated' host: '61.147.103.168' (This connection closed normally without authentication)
+2020-04-09 16:33:40 214 [Warning] Aborted connection 214 to db: 'unconnected' user: 'unauthenticated' host: '61.147.103.168' (This connection closed normally without authentication)
+2020-04-09 17:07:32 215 [Warning] Aborted connection 215 to db: 'unconnected' user: 'unauthenticated' host: 'scan-32.security.ipip.net' (This connection closed normally without authentication)
+2020-04-09 17:07:32 216 [Warning] Aborted connection 216 to db: 'unconnected' user: 'unauthenticated' host: 'scan-32.security.ipip.net' (This connection closed normally without authentication)
+2020-04-09 17:07:32 217 [Warning] Aborted connection 217 to db: 'unconnected' user: 'unauthenticated' host: 'scan-32.security.ipip.net' (This connection closed normally without authentication)
+2020-04-09 17:07:32 218 [Warning] Aborted connection 218 to db: 'unconnected' user: 'unauthenticated' host: 'scan-32.security.ipip.net' (This connection closed normally without authentication)
+2020-04-09 17:07:32 219 [Warning] Aborted connection 219 to db: 'unconnected' user: 'unauthenticated' host: 'scan-32.security.ipip.net' (This connection closed normally without authentication)
+2020-04-09 17:07:32 220 [Warning] Aborted connection 220 to db: 'unconnected' user: 'unauthenticated' host: 'scan-32.security.ipip.net' (This connection closed normally without authentication)
+2020-04-09 17:07:33 221 [Warning] Aborted connection 221 to db: 'unconnected' user: 'unauthenticated' host: 'scan-32.security.ipip.net' (This connection closed normally without authentication)
+2020-04-09 17:07:33 222 [Warning] Aborted connection 222 to db: 'unconnected' user: 'unauthenticated' host: 'scan-32.security.ipip.net' (This connection closed normally without authentication)
+2020-04-09 17:15:15 223 [Warning] Aborted connection 223 to db: 'unconnected' user: 'unauthenticated' host: '61.147.103.168' (This connection closed normally without authentication)
+2020-04-09 18:48:02 225 [Warning] Aborted connection 225 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-09 19:16:53 228 [Warning] Aborted connection 228 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-09 20:52:21 355 [Warning] Aborted connection 355 to db: 'unconnected' user: 'unauthenticated' host: 'ns3145752.ip-51-83-66.eu' (This connection closed normally without authentication)
+2020-04-09 22:28:54 257 [Warning] Aborted connection 257 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-09 22:43:59 371 [Warning] Aborted connection 371 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-09 22:52:06 379 [Warning] Aborted connection 379 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-09 22:52:14 382 [Warning] Aborted connection 382 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-09 22:54:13 384 [Warning] Aborted connection 384 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-09 22:55:31 386 [Warning] Aborted connection 386 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-09 22:56:48 388 [Warning] Aborted connection 388 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-09 23:02:16 390 [Warning] Aborted connection 390 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-09 23:04:52 395 [Warning] Aborted connection 395 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-09 23:05:38 397 [Warning] Aborted connection 397 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-09 23:13:03 399 [Warning] Aborted connection 399 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-09 23:37:10 408 [Warning] Aborted connection 408 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-09 23:37:10 409 [Warning] Aborted connection 409 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-09 23:37:10 458 [Warning] Aborted connection 458 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-09 23:37:10 454 [Warning] Aborted connection 454 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-09 23:37:10 455 [Warning] Aborted connection 455 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-09 23:37:10 457 [Warning] Aborted connection 457 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-09 23:37:10 456 [Warning] Aborted connection 456 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-10  0:01:46 461 [Warning] Aborted connection 461 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-10  0:01:46 476 [Warning] Aborted connection 476 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-10  0:01:46 474 [Warning] Aborted connection 474 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-10  0:01:46 472 [Warning] Aborted connection 472 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-10  0:01:46 464 [Warning] Aborted connection 464 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-10  0:01:46 471 [Warning] Aborted connection 471 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-10  0:01:46 463 [Warning] Aborted connection 463 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-10  0:01:46 477 [Warning] Aborted connection 477 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-10  0:01:46 475 [Warning] Aborted connection 475 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-10  0:01:46 473 [Warning] Aborted connection 473 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-10  0:02:49 479 [Warning] Aborted connection 479 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-10 17:23:51 653 [Warning] Aborted connection 653 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-10 17:24:55 655 [Warning] Aborted connection 655 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-10 17:34:13 657 [Warning] Aborted connection 657 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-10 17:41:08 659 [Warning] Aborted connection 659 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-10 17:43:02 663 [Warning] Aborted connection 663 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-10 17:44:18 667 [Warning] Aborted connection 667 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-10 17:49:25 671 [Warning] Aborted connection 671 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-10 17:50:35 674 [Warning] Aborted connection 674 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-10 17:52:52 678 [Warning] Aborted connection 678 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-10 17:54:20 680 [Warning] Aborted connection 680 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-10 17:56:49 682 [Warning] Aborted connection 682 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-10 18:14:13 687 [Warning] Aborted connection 687 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-10 18:15:22 690 [Warning] Aborted connection 690 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-10 18:25:26 692 [Warning] Aborted connection 692 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-10 18:26:36 694 [Warning] Aborted connection 694 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-10 18:26:46 696 [Warning] Aborted connection 696 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-10 18:29:23 699 [Warning] Aborted connection 699 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-10 18:29:34 701 [Warning] Aborted connection 701 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-10 18:30:07 703 [Warning] Aborted connection 703 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-10 18:30:31 705 [Warning] Aborted connection 705 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-10 18:30:48 707 [Warning] Aborted connection 707 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-10 18:31:33 709 [Warning] Aborted connection 709 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-10 18:35:32 711 [Warning] Aborted connection 711 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-10 18:35:46 714 [Warning] Aborted connection 714 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-10 18:36:24 716 [Warning] Aborted connection 716 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-10 18:36:38 720 [Warning] Aborted connection 720 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-10 18:45:16 723 [Warning] Aborted connection 723 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-10 18:45:22 727 [Warning] Aborted connection 727 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-10 18:54:01 729 [Warning] Aborted connection 729 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-10 18:54:18 753 [Warning] Aborted connection 753 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-10 18:55:07 756 [Warning] Aborted connection 756 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-10 18:57:54 759 [Warning] Aborted connection 759 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-10 22:40:23 764 [Warning] Aborted connection 764 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-10 22:41:16 795 [Warning] Aborted connection 795 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-10 22:43:26 804 [Warning] Aborted connection 804 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-10 22:44:26 815 [Warning] Aborted connection 815 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-10 22:54:27 818 [Warning] Aborted connection 818 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-10 22:59:12 821 [Warning] Aborted connection 821 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-10 23:00:11 828 [Warning] Aborted connection 828 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-10 23:04:14 834 [Warning] Aborted connection 834 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-10 23:12:45 838 [Warning] Aborted connection 838 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-10 23:14:06 851 [Warning] Aborted connection 851 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-10 23:15:58 855 [Warning] Aborted connection 855 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-10 23:17:05 860 [Warning] Aborted connection 860 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-10 23:19:49 867 [Warning] Aborted connection 867 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-10 23:21:42 872 [Warning] Aborted connection 872 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-10 23:22:55 875 [Warning] Aborted connection 875 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-10 23:23:57 880 [Warning] Aborted connection 880 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-10 23:31:05 882 [Warning] Aborted connection 882 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-10 23:52:37 894 [Warning] Aborted connection 894 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-11  0:02:52 900 [Warning] Aborted connection 900 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-11  0:03:27 906 [Warning] Aborted connection 906 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-11  0:07:55 909 [Warning] Aborted connection 909 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-11  0:19:05 917 [Warning] Aborted connection 917 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-11 13:50:19 927 [Warning] Aborted connection 927 to db: 'mapout_db' user: 'root' host: 'localhost' (Got timeout reading communication packets)
+InnoDB: using atomic writes.
+2020-04-13 14:20:35 0 [Note] InnoDB: Mutexes and rw_locks use Windows interlocked functions
+2020-04-13 14:20:35 0 [Note] InnoDB: Uses event mutexes
+2020-04-13 14:20:35 0 [Note] InnoDB: Compressed tables use zlib 1.2.11
+2020-04-13 14:20:35 0 [Note] InnoDB: Number of pools: 1
+2020-04-13 14:20:35 0 [Note] InnoDB: Using SSE2 crc32 instructions
+2020-04-13 14:20:35 0 [Note] InnoDB: Initializing buffer pool, total size = 16M, instances = 1, chunk size = 16M
+2020-04-13 14:20:35 0 [Note] InnoDB: Completed initialization of buffer pool
+2020-04-13 14:20:35 0 [Note] InnoDB: Starting crash recovery from checkpoint LSN=915139
+2020-04-13 14:20:36 0 [Note] InnoDB: 128 out of 128 rollback segments are active.
+2020-04-13 14:20:36 0 [Note] InnoDB: Removed temporary tablespace data file: "ibtmp1"
+2020-04-13 14:20:36 0 [Note] InnoDB: Creating shared tablespace for temporary tables
+2020-04-13 14:20:36 0 [Note] InnoDB: Setting file 'C:\xampp\mysql\data\ibtmp1' size to 12 MB. Physically writing the file full; Please wait ...
+2020-04-13 14:20:36 0 [Note] InnoDB: File 'C:\xampp\mysql\data\ibtmp1' size is now 12 MB.
+2020-04-13 14:20:36 0 [Note] InnoDB: Waiting for purge to start
+2020-04-13 14:20:36 0 [Note] InnoDB: 10.4.11 started; log sequence number 915148; transaction id 1122
+2020-04-13 14:20:36 0 [Note] InnoDB: Loading buffer pool(s) from C:\xampp\mysql\data\ib_buffer_pool
+2020-04-13 14:20:36 0 [Note] Plugin 'FEEDBACK' is disabled.
+2020-04-13 14:20:36 0 [Note] InnoDB: Buffer pool(s) load completed at 200413 14:20:36
+2020-04-13 14:20:36 0 [Note] Server socket created on IP: '::'.
+2020-04-13 14:20:36 0 [Note] Reading of all Master_info entries succeeded
+2020-04-13 14:20:36 0 [Note] Added new Master_info '' to hash table
+2020-04-13 14:20:36 0 [Note] C:\xampp\mysql\bin\mysqld.exe: ready for connections.
+Version: '10.4.11-MariaDB'  socket: ''  port: 3306  mariadb.org binary distribution
+2020-04-13 21:36:09 8 [Warning] Host name 'zg-0312c-348.stretchoid.com' could not be resolved: 無法識別這台主機。 
+2020-04-13 21:36:09 8 [Warning] Aborted connection 8 to db: 'unconnected' user: 'unauthenticated' host: '162.243.132.74' (This connection closed normally without authentication)
+2020-04-13 22:28:28 0 [Note] C:\xampp\mysql\bin\mysqld.exe (initiated by: unknown): Normal shutdown
+2020-04-13 22:28:28 0 [Note] InnoDB: FTS optimize thread exiting.
+2020-04-13 22:28:28 0 [Note] Event Scheduler: Purging the queue. 0 events
+2020-04-13 22:28:28 0 [Note] InnoDB: Starting shutdown...
+2020-04-13 22:28:28 0 [Note] InnoDB: Dumping buffer pool(s) to C:\xampp\mysql\data\ib_buffer_pool
+2020-04-13 22:28:28 0 [Note] InnoDB: Instance 0, restricted to 250 pages due to innodb_buf_pool_dump_pct=25
+2020-04-13 22:28:28 0 [Note] InnoDB: Buffer pool(s) dump completed at 200413 22:28:28
+2020-04-13 22:28:30 0 [Note] InnoDB: Shutdown completed; log sequence number 920650; transaction id 1155
+2020-04-13 22:28:30 0 [Note] InnoDB: Removed temporary tablespace data file: "ibtmp1"
+2020-04-13 22:28:30 0 [Note] C:\xampp\mysql\bin\mysqld.exe: Shutdown complete
+
+InnoDB: using atomic writes.
+2020-04-13 22:28:32 0 [Note] InnoDB: Mutexes and rw_locks use Windows interlocked functions
+2020-04-13 22:28:32 0 [Note] InnoDB: Uses event mutexes
+2020-04-13 22:28:32 0 [Note] InnoDB: Compressed tables use zlib 1.2.11
+2020-04-13 22:28:32 0 [Note] InnoDB: Number of pools: 1
+2020-04-13 22:28:32 0 [Note] InnoDB: Using SSE2 crc32 instructions
+2020-04-13 22:28:32 0 [Note] InnoDB: Initializing buffer pool, total size = 16M, instances = 1, chunk size = 16M
+2020-04-13 22:28:32 0 [Note] InnoDB: Completed initialization of buffer pool
+2020-04-13 22:28:32 0 [Note] InnoDB: 128 out of 128 rollback segments are active.
+2020-04-13 22:28:33 0 [Note] InnoDB: Creating shared tablespace for temporary tables
+2020-04-13 22:28:33 0 [Note] InnoDB: Setting file 'C:\xampp\mysql\data\ibtmp1' size to 12 MB. Physically writing the file full; Please wait ...
+2020-04-13 22:28:33 0 [Note] InnoDB: File 'C:\xampp\mysql\data\ibtmp1' size is now 12 MB.
+2020-04-13 22:28:33 0 [Note] InnoDB: Waiting for purge to start
+2020-04-13 22:28:33 0 [Note] InnoDB: 10.4.11 started; log sequence number 920650; transaction id 1157
+2020-04-13 22:28:33 0 [Note] InnoDB: Loading buffer pool(s) from C:\xampp\mysql\data\ib_buffer_pool
+2020-04-13 22:28:33 0 [Note] Plugin 'FEEDBACK' is disabled.
+2020-04-13 22:28:33 0 [Note] Server socket created on IP: '::'.
+2020-04-13 22:28:33 0 [Note] InnoDB: Buffer pool(s) load completed at 200413 22:28:33
+2020-04-13 22:28:33 0 [Note] Reading of all Master_info entries succeeded
+2020-04-13 22:28:33 0 [Note] Added new Master_info '' to hash table
+2020-04-13 22:28:33 0 [Note] C:\xampp\mysql\bin\mysqld.exe: ready for connections.
+Version: '10.4.11-MariaDB'  socket: ''  port: 3306  mariadb.org binary distribution
+2020-04-13 22:28:34 0 [Note] C:\xampp\mysql\bin\mysqld.exe (initiated by: unknown): Normal shutdown
+2020-04-13 22:28:34 0 [Note] Event Scheduler: Purging the queue. 0 events
+2020-04-13 22:28:34 0 [Note] InnoDB: FTS optimize thread exiting.
+2020-04-13 22:28:34 0 [Note] InnoDB: Starting shutdown...
+2020-04-13 22:28:34 0 [Note] InnoDB: Dumping buffer pool(s) to C:\xampp\mysql\data\ib_buffer_pool
+2020-04-13 22:28:34 0 [Note] InnoDB: Instance 0, restricted to 250 pages due to innodb_buf_pool_dump_pct=25
+2020-04-13 22:28:34 0 [Note] InnoDB: Buffer pool(s) dump completed at 200413 22:28:34
+2020-04-13 22:28:35 0 [Note] InnoDB: Shutdown completed; log sequence number 920659; transaction id 1158
+2020-04-13 22:28:35 0 [Note] InnoDB: Removed temporary tablespace data file: "ibtmp1"
+2020-04-13 22:28:35 0 [Note] C:\xampp\mysql\bin\mysqld.exe: Shutdown complete
+
+InnoDB: using atomic writes.
+2020-04-13 22:29:49 0 [Note] InnoDB: The first innodb_system data file 'ibdata1' did not exist. A new tablespace will be created!
+2020-04-13 22:29:49 0 [Note] InnoDB: Mutexes and rw_locks use Windows interlocked functions
+2020-04-13 22:29:49 0 [Note] InnoDB: Uses event mutexes
+2020-04-13 22:29:49 0 [Note] InnoDB: Compressed tables use zlib 1.2.11
+2020-04-13 22:29:49 0 [Note] InnoDB: Number of pools: 1
+2020-04-13 22:29:49 0 [Note] InnoDB: Using SSE2 crc32 instructions
+2020-04-13 22:29:49 0 [Note] InnoDB: Initializing buffer pool, total size = 16M, instances = 1, chunk size = 16M
+2020-04-13 22:29:49 0 [Note] InnoDB: Completed initialization of buffer pool
+2020-04-13 22:29:49 0 [Note] InnoDB: Setting file 'C:\xampp\mysql\data\ibdata1' size to 10 MB. Physically writing the file full; Please wait ...
+2020-04-13 22:29:49 0 [Note] InnoDB: File 'C:\xampp\mysql\data\ibdata1' size is now 10 MB.
+2020-04-13 22:29:49 0 [Note] InnoDB: Setting log file C:\xampp\mysql\data\ib_logfile101 size to 5242880 bytes
+2020-04-13 22:29:49 0 [Note] InnoDB: Setting log file C:\xampp\mysql\data\ib_logfile1 size to 5242880 bytes
+2020-04-13 22:29:49 0 [Note] InnoDB: Renaming log file C:\xampp\mysql\data\ib_logfile101 to C:\xampp\mysql\data\ib_logfile0
+2020-04-13 22:29:49 0 [Note] InnoDB: New log files created, LSN=11452
+2020-04-13 22:29:49 0 [Note] InnoDB: Doublewrite buffer not found: creating new
+2020-04-13 22:29:49 0 [Note] InnoDB: Doublewrite buffer created
+2020-04-13 22:29:49 0 [Note] InnoDB: 128 out of 128 rollback segments are active.
+2020-04-13 22:29:49 0 [Note] InnoDB: Creating foreign key constraint system tables.
+2020-04-13 22:29:49 0 [Note] InnoDB: Creating tablespace and datafile system tables.
+2020-04-13 22:29:49 0 [Note] InnoDB: Creating sys_virtual system tables.
+2020-04-13 22:29:49 0 [Note] InnoDB: Creating shared tablespace for temporary tables
+2020-04-13 22:29:49 0 [Note] InnoDB: Setting file 'C:\xampp\mysql\data\ibtmp1' size to 12 MB. Physically writing the file full; Please wait ...
+2020-04-13 22:29:49 0 [Note] InnoDB: File 'C:\xampp\mysql\data\ibtmp1' size is now 12 MB.
+2020-04-13 22:29:49 0 [Note] InnoDB: Waiting for purge to start
+2020-04-13 22:29:49 0 [Note] InnoDB: 10.4.11 started; log sequence number 0; transaction id 7
+2020-04-13 22:29:49 0 [Note] Plugin 'FEEDBACK' is disabled.
+2020-04-13 22:29:49 0 [Note] Server socket created on IP: '::'.
+2020-04-13 22:29:49 6 [Warning] Failed to load slave replication state from table mysql.gtid_slave_pos: 1932: Table 'mysql.gtid_slave_pos' doesn't exist in engine
+2020-04-13 22:29:49 0 [Note] Reading of all Master_info entries succeeded
+2020-04-13 22:29:49 0 [Note] Added new Master_info '' to hash table
+2020-04-13 22:29:49 0 [Note] C:\xampp\mysql\bin\mysqld.exe: ready for connections.
+Version: '10.4.11-MariaDB'  socket: ''  port: 3306  mariadb.org binary distribution
+2020-04-13 22:31:03 0 [Note] C:\xampp\mysql\bin\mysqld.exe (initiated by: unknown): Normal shutdown
+2020-04-13 22:31:03 0 [Note] Event Scheduler: Purging the queue. 0 events
+2020-04-13 22:31:03 0 [Note] InnoDB: FTS optimize thread exiting.
+2020-04-13 22:31:03 0 [Note] InnoDB: Starting shutdown...
+2020-04-13 22:31:03 0 [Note] InnoDB: Dumping buffer pool(s) to C:\xampp\mysql\data\ib_buffer_pool
+2020-04-13 22:31:03 0 [Note] InnoDB: Instance 0, restricted to 250 pages due to innodb_buf_pool_dump_pct=25
+2020-04-13 22:31:03 0 [Note] InnoDB: Buffer pool(s) dump completed at 200413 22:31:03
+2020-04-13 22:31:04 0 [Note] InnoDB: Shutdown completed; log sequence number 47064; transaction id 7
+2020-04-13 22:31:04 0 [Note] InnoDB: Removed temporary tablespace data file: "ibtmp1"
+2020-04-13 22:31:04 0 [Note] C:\xampp\mysql\bin\mysqld.exe: Shutdown complete
+
+InnoDB: using atomic writes.
+2020-04-13 22:31:11 0 [Note] InnoDB: Mutexes and rw_locks use Windows interlocked functions
+2020-04-13 22:31:11 0 [Note] InnoDB: Uses event mutexes
+2020-04-13 22:31:11 0 [Note] InnoDB: Compressed tables use zlib 1.2.11
+2020-04-13 22:31:11 0 [Note] InnoDB: Number of pools: 1
+2020-04-13 22:31:11 0 [Note] InnoDB: Using SSE2 crc32 instructions
+2020-04-13 22:31:11 0 [Note] InnoDB: Initializing buffer pool, total size = 16M, instances = 1, chunk size = 16M
+2020-04-13 22:31:11 0 [Note] InnoDB: Completed initialization of buffer pool
+2020-04-13 22:31:11 0 [Note] InnoDB: 128 out of 128 rollback segments are active.
+2020-04-13 22:31:11 0 [Note] InnoDB: Creating shared tablespace for temporary tables
+2020-04-13 22:31:11 0 [Note] InnoDB: Setting file 'C:\xampp\mysql\data\ibtmp1' size to 12 MB. Physically writing the file full; Please wait ...
+2020-04-13 22:31:11 0 [Note] InnoDB: File 'C:\xampp\mysql\data\ibtmp1' size is now 12 MB.
+2020-04-13 22:31:11 0 [Note] InnoDB: Waiting for purge to start
+2020-04-13 22:31:11 0 [Note] InnoDB: 10.4.11 started; log sequence number 47064; transaction id 9
+2020-04-13 22:31:11 0 [Note] InnoDB: Loading buffer pool(s) from C:\xampp\mysql\data\ib_buffer_pool
+2020-04-13 22:31:11 0 [Note] Plugin 'FEEDBACK' is disabled.
+2020-04-13 22:31:11 0 [Note] InnoDB: Buffer pool(s) load completed at 200413 22:31:11
+2020-04-13 22:31:11 0 [Note] Server socket created on IP: '::'.
+2020-04-13 22:31:11 6 [Warning] Failed to load slave replication state from table mysql.gtid_slave_pos: 1932: Table 'mysql.gtid_slave_pos' doesn't exist in engine
+2020-04-13 22:31:11 0 [Note] Reading of all Master_info entries succeeded
+2020-04-13 22:31:11 0 [Note] Added new Master_info '' to hash table
+2020-04-13 22:31:11 0 [Note] C:\xampp\mysql\bin\mysqld.exe: ready for connections.
+Version: '10.4.11-MariaDB'  socket: ''  port: 3306  mariadb.org binary distribution
+2020-04-13 22:37:03 0 [Note] C:\xampp\mysql\bin\mysqld.exe (initiated by: unknown): Normal shutdown
+2020-04-13 22:37:03 0 [Note] Event Scheduler: Purging the queue. 0 events
+2020-04-13 22:37:03 0 [Note] InnoDB: FTS optimize thread exiting.
+2020-04-13 22:37:03 0 [Note] InnoDB: Starting shutdown...
+2020-04-13 22:37:03 0 [Note] InnoDB: Dumping buffer pool(s) to C:\xampp\mysql\data\ib_buffer_pool
+2020-04-13 22:37:03 0 [Note] InnoDB: Instance 0, restricted to 250 pages due to innodb_buf_pool_dump_pct=25
+2020-04-13 22:37:03 0 [Note] InnoDB: Buffer pool(s) dump completed at 200413 22:37:03
+2020-04-13 22:37:04 0 [Note] InnoDB: Shutdown completed; log sequence number 47073; transaction id 9
+2020-04-13 22:37:04 0 [Note] InnoDB: Removed temporary tablespace data file: "ibtmp1"
+2020-04-13 22:37:04 0 [Note] C:\xampp\mysql\bin\mysqld.exe: Shutdown complete
+
+InnoDB: using atomic writes.
+2020-04-13 22:37:17 0 [Note] InnoDB: Mutexes and rw_locks use Windows interlocked functions
+2020-04-13 22:37:17 0 [Note] InnoDB: Uses event mutexes
+2020-04-13 22:37:17 0 [Note] InnoDB: Compressed tables use zlib 1.2.11
+2020-04-13 22:37:17 0 [Note] InnoDB: Number of pools: 1
+2020-04-13 22:37:17 0 [Note] InnoDB: Using SSE2 crc32 instructions
+2020-04-13 22:37:17 0 [Note] InnoDB: Initializing buffer pool, total size = 16M, instances = 1, chunk size = 16M
+2020-04-13 22:37:17 0 [Note] InnoDB: Completed initialization of buffer pool
+2020-04-13 22:37:17 0 [Note] InnoDB: 128 out of 128 rollback segments are active.
+2020-04-13 22:37:17 0 [Note] InnoDB: Creating shared tablespace for temporary tables
+2020-04-13 22:37:17 0 [Note] InnoDB: Setting file 'C:\xampp\mysql\data\ibtmp1' size to 12 MB. Physically writing the file full; Please wait ...
+2020-04-13 22:37:17 0 [Note] InnoDB: File 'C:\xampp\mysql\data\ibtmp1' size is now 12 MB.
+2020-04-13 22:37:17 0 [Note] InnoDB: Waiting for purge to start
+2020-04-13 22:37:17 0 [Note] InnoDB: 10.4.11 started; log sequence number 47073; transaction id 9
+2020-04-13 22:37:17 0 [Note] InnoDB: Loading buffer pool(s) from C:\xampp\mysql\data\ib_buffer_pool
+2020-04-13 22:37:17 0 [Note] Plugin 'FEEDBACK' is disabled.
+2020-04-13 22:37:17 0 [Note] InnoDB: Buffer pool(s) load completed at 200413 22:37:17
+2020-04-13 22:37:17 0 [Note] Server socket created on IP: '::'.
+2020-04-13 22:37:17 6 [Warning] Failed to load slave replication state from table mysql.gtid_slave_pos: 1932: Table 'mysql.gtid_slave_pos' doesn't exist in engine
+2020-04-13 22:37:17 0 [Note] Reading of all Master_info entries succeeded
+2020-04-13 22:37:17 0 [Note] Added new Master_info '' to hash table
+2020-04-13 22:37:17 0 [Note] C:\xampp\mysql\bin\mysqld.exe: ready for connections.
+Version: '10.4.11-MariaDB'  socket: ''  port: 3306  mariadb.org binary distribution
+2020-04-13 22:41:04 9 [Warning] Aborted connection 9 to db: 'mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-13 22:47:21 114 [Warning] Aborted connection 114 to db: 'unconnected' user: 'unauthenticated' host: 'ns3156319.ip-51-91-212.eu' (This connection closed normally without authentication)
+2020-04-13 22:49:51 0 [Note] C:\xampp\mysql\bin\mysqld.exe (initiated by: unknown): Normal shutdown
+2020-04-13 22:49:51 0 [Note] Event Scheduler: Purging the queue. 0 events
+2020-04-13 22:49:51 0 [Note] InnoDB: FTS optimize thread exiting.
+2020-04-13 22:49:51 0 [Note] InnoDB: Starting shutdown...
+2020-04-13 22:49:51 0 [Note] InnoDB: Dumping buffer pool(s) to C:\xampp\mysql\data\ib_buffer_pool
+2020-04-13 22:49:51 0 [Note] InnoDB: Instance 0, restricted to 250 pages due to innodb_buf_pool_dump_pct=25
+2020-04-13 22:49:51 0 [Note] InnoDB: Buffer pool(s) dump completed at 200413 22:49:51
+2020-04-13 22:49:52 0 [Note] InnoDB: Shutdown completed; log sequence number 47082; transaction id 11
+2020-04-13 22:49:52 0 [Note] C:\xampp\mysql\bin\mysqld.exe: Shutdown complete
+
+InnoDB: using atomic writes.
+2020-04-13 22:50:03 0 [Note] InnoDB: The first innodb_system data file 'ibdata1' did not exist. A new tablespace will be created!
+2020-04-13 22:50:03 0 [Note] InnoDB: Mutexes and rw_locks use Windows interlocked functions
+2020-04-13 22:50:03 0 [Note] InnoDB: Uses event mutexes
+2020-04-13 22:50:03 0 [Note] InnoDB: Compressed tables use zlib 1.2.11
+2020-04-13 22:50:03 0 [Note] InnoDB: Number of pools: 1
+2020-04-13 22:50:03 0 [Note] InnoDB: Using SSE2 crc32 instructions
+2020-04-13 22:50:03 0 [Note] InnoDB: Initializing buffer pool, total size = 16M, instances = 1, chunk size = 16M
+2020-04-13 22:50:03 0 [Note] InnoDB: Completed initialization of buffer pool
+2020-04-13 22:50:03 0 [Note] InnoDB: Setting file 'C:\xampp\mysql\data\ibdata1' size to 10 MB. Physically writing the file full; Please wait ...
+2020-04-13 22:50:03 0 [Note] InnoDB: File 'C:\xampp\mysql\data\ibdata1' size is now 10 MB.
+2020-04-13 22:50:03 0 [Note] InnoDB: Setting log file C:\xampp\mysql\data\ib_logfile101 size to 5242880 bytes
+2020-04-13 22:50:03 0 [Note] InnoDB: Setting log file C:\xampp\mysql\data\ib_logfile1 size to 5242880 bytes
+2020-04-13 22:50:03 0 [Note] InnoDB: Renaming log file C:\xampp\mysql\data\ib_logfile101 to C:\xampp\mysql\data\ib_logfile0
+2020-04-13 22:50:03 0 [Note] InnoDB: New log files created, LSN=11452
+2020-04-13 22:50:03 0 [Note] InnoDB: Doublewrite buffer not found: creating new
+2020-04-13 22:50:03 0 [Note] InnoDB: Doublewrite buffer created
+2020-04-13 22:50:03 0 [Note] InnoDB: 128 out of 128 rollback segments are active.
+2020-04-13 22:50:03 0 [Note] InnoDB: Creating foreign key constraint system tables.
+2020-04-13 22:50:03 0 [Note] InnoDB: Creating tablespace and datafile system tables.
+2020-04-13 22:50:03 0 [Note] InnoDB: Creating sys_virtual system tables.
+2020-04-13 22:50:03 0 [Note] InnoDB: Creating shared tablespace for temporary tables
+2020-04-13 22:50:03 0 [Note] InnoDB: Setting file 'C:\xampp\mysql\data\ibtmp1' size to 12 MB. Physically writing the file full; Please wait ...
+2020-04-13 22:50:03 0 [Note] InnoDB: File 'C:\xampp\mysql\data\ibtmp1' size is now 12 MB.
+2020-04-13 22:50:03 0 [Note] InnoDB: 10.4.11 started; log sequence number 0; transaction id 7
+2020-04-13 22:50:03 0 [Note] Plugin 'FEEDBACK' is disabled.
+2020-04-13 22:50:03 0 [Note] Server socket created on IP: '::'.
+2020-04-13 22:50:03 6 [Warning] Failed to load slave replication state from table mysql.gtid_slave_pos: 1932: Table 'mysql.gtid_slave_pos' doesn't exist in engine
+2020-04-13 22:50:03 0 [Note] Reading of all Master_info entries succeeded
+2020-04-13 22:50:03 0 [Note] Added new Master_info '' to hash table
+2020-04-13 22:50:03 0 [Note] C:\xampp\mysql\bin\mysqld.exe: ready for connections.
+Version: '10.4.11-MariaDB'  socket: ''  port: 3306  mariadb.org binary distribution
+2020-04-13 22:50:16 25 [ERROR] InnoDB: Table `mapout_db`.`auth_group` does not exist in the InnoDB internal data dictionary though MariaDB is trying to drop it. Have you copied the .frm file of the table to the MariaDB database directory from another database? Please refer to https://mariadb.com/kb/en/innodb-troubleshooting/ for how to resolve the issue.
+2020-04-13 22:50:16 25 [ERROR] InnoDB: Table `mapout_db`.`auth_group_permissions` does not exist in the InnoDB internal data dictionary though MariaDB is trying to drop it. Have you copied the .frm file of the table to the MariaDB database directory from another database? Please refer to https://mariadb.com/kb/en/innodb-troubleshooting/ for how to resolve the issue.
+2020-04-13 22:50:16 25 [ERROR] InnoDB: Table `mapout_db`.`auth_permission` does not exist in the InnoDB internal data dictionary though MariaDB is trying to drop it. Have you copied the .frm file of the table to the MariaDB database directory from another database? Please refer to https://mariadb.com/kb/en/innodb-troubleshooting/ for how to resolve the issue.
+2020-04-13 22:50:16 25 [ERROR] InnoDB: Table `mapout_db`.`auth_user` does not exist in the InnoDB internal data dictionary though MariaDB is trying to drop it. Have you copied the .frm file of the table to the MariaDB database directory from another database? Please refer to https://mariadb.com/kb/en/innodb-troubleshooting/ for how to resolve the issue.
+2020-04-13 22:50:16 25 [ERROR] InnoDB: Table `mapout_db`.`auth_user_groups` does not exist in the InnoDB internal data dictionary though MariaDB is trying to drop it. Have you copied the .frm file of the table to the MariaDB database directory from another database? Please refer to https://mariadb.com/kb/en/innodb-troubleshooting/ for how to resolve the issue.
+2020-04-13 22:50:16 25 [ERROR] InnoDB: Table `mapout_db`.`auth_user_user_permissions` does not exist in the InnoDB internal data dictionary though MariaDB is trying to drop it. Have you copied the .frm file of the table to the MariaDB database directory from another database? Please refer to https://mariadb.com/kb/en/innodb-troubleshooting/ for how to resolve the issue.
+2020-04-13 22:50:16 25 [ERROR] InnoDB: Table `mapout_db`.`django_admin_log` does not exist in the InnoDB internal data dictionary though MariaDB is trying to drop it. Have you copied the .frm file of the table to the MariaDB database directory from another database? Please refer to https://mariadb.com/kb/en/innodb-troubleshooting/ for how to resolve the issue.
+2020-04-13 22:50:16 25 [ERROR] InnoDB: Table `mapout_db`.`django_content_type` does not exist in the InnoDB internal data dictionary though MariaDB is trying to drop it. Have you copied the .frm file of the table to the MariaDB database directory from another database? Please refer to https://mariadb.com/kb/en/innodb-troubleshooting/ for how to resolve the issue.
+2020-04-13 22:50:16 25 [ERROR] InnoDB: Table `mapout_db`.`django_migrations` does not exist in the InnoDB internal data dictionary though MariaDB is trying to drop it. Have you copied the .frm file of the table to the MariaDB database directory from another database? Please refer to https://mariadb.com/kb/en/innodb-troubleshooting/ for how to resolve the issue.
+2020-04-13 22:50:16 25 [ERROR] InnoDB: Table `mapout_db`.`django_session` does not exist in the InnoDB internal data dictionary though MariaDB is trying to drop it. Have you copied the .frm file of the table to the MariaDB database directory from another database? Please refer to https://mariadb.com/kb/en/innodb-troubleshooting/ for how to resolve the issue.
+2020-04-13 22:50:16 25 [ERROR] InnoDB: Table `mapout_db`.`mapout_app_useraccount` does not exist in the InnoDB internal data dictionary though MariaDB is trying to drop it. Have you copied the .frm file of the table to the MariaDB database directory from another database? Please refer to https://mariadb.com/kb/en/innodb-troubleshooting/ for how to resolve the issue.
+2020-04-13 22:55:45 43 [Warning] Aborted connection 43 to db: 'db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-13 22:57:08 45 [Warning] Aborted connection 45 to db: 'db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-13 22:58:03 64 [ERROR] InnoDB: Table `mysql`.`innodb_table_stats` not found.
+2020-04-13 22:58:03 64 [Note] InnoDB: Recalculation of persistent statistics requested for table `db`.`django_content_type` index `django_content_type_app_label_model_76bd3d3b_uniq` but the required persistent statistics storage is not present or is corrupted. Using transient stats instead.
+2020-04-13 22:58:03 64 [Note] InnoDB: Recalculation of persistent statistics requested for table `db`.`auth_permission` index `auth_permission_content_type_id_codename_01ab375a_uniq` but the required persistent statistics storage is not present or is corrupted. Using transient stats instead.
+2020-04-13 22:58:03 64 [Note] InnoDB: Recalculation of persistent statistics requested for table `db`.`auth_group_permissions` index `auth_group_permissions_group_id_permission_id_0cd325b0_uniq` but the required persistent statistics storage is not present or is corrupted. Using transient stats instead.
+2020-04-13 22:58:04 64 [Note] InnoDB: Recalculation of persistent statistics requested for table `db`.`auth_user_groups` index `auth_user_groups_user_id_group_id_94350c0c_uniq` but the required persistent statistics storage is not present or is corrupted. Using transient stats instead.
+2020-04-13 22:58:04 64 [Note] InnoDB: Recalculation of persistent statistics requested for table `db`.`auth_user_user_permissions` index `auth_user_user_permissions_user_id_permission_id_14a6b632_uniq` but the required persistent statistics storage is not present or is corrupted. Using transient stats instead.
+2020-04-13 22:58:04 64 [Note] InnoDB: Recalculation of persistent statistics requested for table `db`.`django_session` index `django_session_expire_date_a5c62663` but the required persistent statistics storage is not present or is corrupted. Using transient stats instead.
+2020-04-13 23:00:24 0 [Note] C:\xampp\mysql\bin\mysqld.exe (initiated by: unknown): Normal shutdown
+2020-04-13 23:00:24 0 [Note] Event Scheduler: Purging the queue. 0 events
+2020-04-13 23:00:24 0 [Note] InnoDB: FTS optimize thread exiting.
+2020-04-13 23:00:24 0 [Note] InnoDB: Starting shutdown...
+2020-04-13 23:00:24 0 [Note] InnoDB: Dumping buffer pool(s) to C:\xampp\mysql\data\ib_buffer_pool
+2020-04-13 23:00:24 0 [Note] InnoDB: Buffer pool(s) dump completed at 200413 23:00:24
+2020-04-13 23:00:25 0 [Note] InnoDB: Shutdown completed; log sequence number 218957; transaction id 264
+2020-04-13 23:00:25 0 [Note] InnoDB: Removed temporary tablespace data file: "ibtmp1"
+2020-04-13 23:00:25 0 [Note] C:\xampp\mysql\bin\mysqld.exe: Shutdown complete
+
+InnoDB: using atomic writes.
+2020-04-13 23:02:56 0 [Note] InnoDB: Mutexes and rw_locks use Windows interlocked functions
+2020-04-13 23:02:56 0 [Note] InnoDB: Uses event mutexes
+2020-04-13 23:02:56 0 [Note] InnoDB: Compressed tables use zlib 1.2.11
+2020-04-13 23:02:56 0 [Note] InnoDB: Number of pools: 1
+2020-04-13 23:02:56 0 [Note] InnoDB: Using SSE2 crc32 instructions
+2020-04-13 23:02:56 0 [Note] InnoDB: Initializing buffer pool, total size = 16M, instances = 1, chunk size = 16M
+2020-04-13 23:02:56 0 [Note] InnoDB: Completed initialization of buffer pool
+2020-04-13 23:02:56 0 [Note] InnoDB: 128 out of 128 rollback segments are active.
+2020-04-13 23:02:56 0 [Note] InnoDB: Creating shared tablespace for temporary tables
+2020-04-13 23:02:56 0 [Note] InnoDB: Setting file 'C:\xampp\mysql\data\ibtmp1' size to 12 MB. Physically writing the file full; Please wait ...
+2020-04-13 23:02:56 0 [Note] InnoDB: File 'C:\xampp\mysql\data\ibtmp1' size is now 12 MB.
+2020-04-13 23:02:56 0 [Note] InnoDB: Waiting for purge to start
+2020-04-13 23:02:56 0 [Note] InnoDB: 10.4.11 started; log sequence number 218957; transaction id 266
+2020-04-13 23:02:56 0 [Note] InnoDB: Loading buffer pool(s) from C:\xampp\mysql\data\ib_buffer_pool
+2020-04-13 23:02:56 0 [Note] Plugin 'FEEDBACK' is disabled.
+2020-04-13 23:02:56 0 [Note] Server socket created on IP: '::'.
+2020-04-13 23:02:56 0 [Note] InnoDB: Buffer pool(s) load completed at 200413 23:02:56
+2020-04-13 23:02:56 6 [Warning] Failed to load slave replication state from table mysql.gtid_slave_pos: 1932: Table 'mysql.gtid_slave_pos' doesn't exist in engine
+2020-04-13 23:02:56 0 [Note] Reading of all Master_info entries succeeded
+2020-04-13 23:02:56 0 [Note] Added new Master_info '' to hash table
+2020-04-13 23:02:56 0 [Note] C:\xampp\mysql\bin\mysqld.exe: ready for connections.
+Version: '10.4.11-MariaDB'  socket: ''  port: 3306  mariadb.org binary distribution

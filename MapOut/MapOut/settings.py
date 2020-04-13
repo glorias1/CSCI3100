@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'MapOut.wsgi.application'
 DATABASES = {
 'default': {
 'ENGINE': 'django.db.backends.mysql',
-'NAME': 'mapout_db',
+'NAME': 'db',
 'USER': 'root',
 'PASSWORD': '',
 'HOST': '',
