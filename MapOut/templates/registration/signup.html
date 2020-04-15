@@ -1,3 +1,4 @@
+
 <div class="modal fade" id="sign-up-modal" tabindex="-1" role="dialog" aria-labelledby="sign-up-modal=label" aria-hidden="true">
 	<div class="modal-dialog" role="document">
 	  <div class="modal-content">
@@ -8,7 +9,7 @@
 		<div class="modal-body">
 				<div class="form-group">
 					  <form action="/accounts/signup/" method="POST" style="color: black;margin-left: 1rem;margin-right: 1rem">
-						  <label class="username" for="username">Username:</label><br>
+						  <!--<label class="username" for="username">Username:</label><br>
 						  <input class="form-control" type="text" id="username" name="username" style="width: 70%" required><br>
 						  <label for="email">Email:</label><br>
 						  <input class="form-control" type="text" id="email" name="email" style="width: 70%" required><br>
@@ -16,15 +17,15 @@
 						  <input class="form-control" type="password" id="password1" name="password1" style="width: 70%" required><br>
 						  <label for="pw2">Confirmed password:</label><br>
 						  <input class="form-control" type="password" id="password2" name="password2" style="width: 70%" required><br>
-						  <label for="pwCondition">Your password <label style="color:red; font-weight: bold;">MUST</label> have at least six characters. (i.e. A, a, 1, =)</label><br>
+						  <label for="pwCondition">Your password <label style="color:red; font-weight: bold;">MUST</label> have at least six characters. (i.e. A, a, 1, =)</label><br>-->
+						  {% csrf_token %}
+						  <p>{{form.as_p}}</p>
+						  <button type="submit" class="btn btn-outline-primary">Sign up</button>
 					  </form>
 					  
 				  </div>
 		  </div>
-		<div class="modal-footer"><span>
-		  <button type="submit" class="btn btn-outline-primary">Sign up</button>
-		  </span>
-		</div>
+
 	  </div>
 	</div>
   </div>
