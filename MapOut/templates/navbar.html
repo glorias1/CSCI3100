@@ -11,7 +11,7 @@ a {
   <div class="overlay-div">
     <nav class="navbar navbar-expand-md navbar-dark">
       <div class="container-fluid">
-      <img src="{% static "logo_small.png" %}" alt="">
+      <a herf="{% url 'home' %}"><img src="{% static "logo_small.png" %}" alt=""></a>
         <ul class="navbar-nav navbar-right"> <!--make it rightside-->
           <li class="nav-item navbar-dark"><button class="btn  btn-outline-light" style="border:none;font-size: 18px;" href="./about_us.html" data-toggle="modal" data-target="#about-modal">About Us</button></li>
 			<!--modal for about us-->
@@ -32,13 +32,10 @@ a {
 			  </div>
 			</div>
 			
-          <li class="nav-item navbar-dark"><button class="btn  btn-outline-light" style="border:none;font-size: 18px;" href="#" data-toggle="modal" data-target="#login-modal">Login</button></li>
-			<!--modal for login form-->
-			{% include "registration/login.html" %}
+          <li class="nav-item navbar-dark"><a class="btn  btn-outline-light" style="border:none;font-size: 18px;" href="{% url 'login' %}">Login</a></li>
 			
-          <li class="nav-item navbar-dark"><button class="btn  btn-outline-light" style="border:none;font-size: 18px;" href="#" data-toggle="modal" data-target="#sign-up-modal">Sign Up</button></li>
-			<!--modal for Sign up form-->
-			{% include "registration/signup.html" %}
+          <li class="nav-item navbar-dark"><a class="btn  btn-outline-light" style="border:none;font-size: 18px;" href="{% url 'signup' %}">Sign Up</a></li>
+
 			
         </ul>
       </div>

@@ -19,17 +19,19 @@ from django.conf.urls import url
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import authenticate, login
-from mapout_app.views import home, index, login_view1, signup_view, logout ,help_ ,schedule ,settings_
+from mapout_app.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('home/', home,name='home'),
+    path('home/', home, name='home'),
     path('accounts/', include('django.contrib.auth.urls')),
-    path('accounts/login/', login_view1),
-    path('accounts/signup/',signup_view,name='signup'),
-    path('logout/', logout),
+    path('accounts/login/', login_view1, name='login'),
+    path('accounts/signup/', signup_view, name='signup'),
+    path('logout/', logout1),
     path('index/', index, name='index'),
-    path('help/',help_, name='help'),
-    path('schedule/',schedule, name='schedule'),
-    path('settings/',settings_, name='settings'),
+    path('help/', help_, name='help'),
+    path('schedule/', schedule, name='schedule'),
+    path('settings/', settings_, name='settings'),
+    path('createproject', create_project, name='createproject'),
+    path('createtask', create_task, name='createtask'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

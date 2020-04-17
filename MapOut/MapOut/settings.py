@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'MapOut.wsgi.application'
 DATABASES = {
 'default': {
 'ENGINE': 'django.db.backends.mysql',
-'NAME': 'db',
+'NAME': 'real_mapout_db',
 'USER': 'root',
 'PASSWORD': '',
 'HOST': '',
@@ -130,3 +130,4 @@ STATICFILES_DIRS = (
 
 LOGIN_REDIRECT_URL = '/index/'
 LOGOUT_REDIRECT_URL = '/home/'
+

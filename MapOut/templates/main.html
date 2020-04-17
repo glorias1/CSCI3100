@@ -1,4 +1,5 @@
 {% extends 'index.html' %}
+{% load static %}
 {% block content %}
 <body>
 	<span>
@@ -15,29 +16,23 @@
 					<tr>
 						<th scope="col">#</th>
 						<th scope="col">Project</th> <!--(click and go to project page or what?)-->
-						<th scope="col">Last modified</th>
-						<th scope="col">Updates</th>
+						<th scope="col">Description</th>
+						<th scope="col">Creation date</th>
 					</tr>
 					</thead>
 					<tbody class="table-bordered" id="project-tbody">
-					<tr>
-						<th scope="row">1</th>
-						<td>Project 1</td>
-						<td>Otto</td>
-						<td>@mdo</td>
-					</tr>
-					<tr>
-						<th scope="row">2</th>
-						<td>Project 2</td>
-						<td>Thornton</td>
-						<td>@fat</td>
-					</tr>
-					<tr>
-						<th scope="row">3</th>
-						<td>Project 3</td>
-						<td>the Bird</td>
-						<td>@twitter</td>
-					</tr>
+						{% if projects %}
+							{% for one_project in projects %}
+							<tr>
+								<th scope="row">{{ forloop.counter }}</th>
+								<td>{{one_project.project_name}}</td>
+								<td>{{one_project.project_description}}</td>
+								<td>{{one_project.create_date}}</td>
+							</tr>
+							{% endfor %}
+						{% else %}
+							<td colspan="4">You currently does not invole in any projects. </td>
+						{% endif %}
 					</tbody>
 				</table>
 			</div>
@@ -47,14 +42,25 @@
 					<thead class="table-borderless" id="task-thead">
 					<tr >
 						<th scope="col">#</th>
-						<th scope="col">mytask</th>
-						<th scope="col">belongs</th>	
+						<th scope="col">Task name</th>
+						<th scope="col">belongs to project</th>	
 						<th scope="col">Last modified</th>
 						<th scope="col">due date</th>
 					</tr>
 					</thead>
 					<tbody class="table-bordered" id="task-tbody">
-					<tr>
+						{% if tasks %}
+							{% for one_task in tasks %}
+								<th scope="row">{{ forloop.counter }}</th>
+								<td>{{one_task.task_name}}</td>
+								<td>{{one_task.belong_project.project_name}}</td>
+								<td>wait to amend</td>
+								<td>{{one_task.due_date}}</td>
+							{% endfor %}
+							{% else %}
+								<th scope="row" colspan="5">you dont have any ask now!</th>
+						{% endif %}
+					<!--<tr>
 						<th scope="row">1</th>
 						<td>task 1</td>
 						<td>Project1</td>		
@@ -74,12 +80,21 @@
 						<td>Project 2</td>	
 						<td>the Bird</td>
 						<td>@twitter</td>
-					</tr>
+					</tr>-->
 					</tbody>
 				</table>
 			</div>	
 		<div class="add-project-button">
-			<a href="./create_project.html" class="float" data-container="body"><i class="fas fa-plus fa-lg my-float"></i></a>
+			<div class="dropup">
+				<button type="button" class="btn float" data-toggle="dropdown">
+					<i class="fas fa-plus fa-lg my-float" ></i>
+				</button>
+				<div class="dropdown-menu">
+				  <a class="dropdown-item" href="{% url 'createproject' %}">Create a project</a>
+				  <a class="dropdown-item" href="{% url 'createtask' %}">Create a task</a>
+				</div>
+			  </div>
+	
 		</div>
 	</span>
 </body>

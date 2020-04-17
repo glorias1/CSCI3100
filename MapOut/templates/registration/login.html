@@ -1,38 +1,25 @@
-
+{% extends 'home_base.html' %}
+{% load static %}
 {% block content %}
+<div id="home-big-title"   >
+  <div class="form-group rounded" style="background-color: rgba(255, 255, 255, 0.9);padding: 1rem;">
+   {% if form.errors %}
+   <p>Wrong Username or password. Please try again.</p>
+   {% endif %}
+   <form method="POST" action="{% url 'login' %}" style="color: black;margin-left: 1rem;margin-right: 1rem; ">
+      {% csrf_token %}
+   
 
-<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-  <div class="modal-content">
-    <div class="modal-header" style="color: black;">
-      <h5 class="modal-title" style="margin: 1rem">Welcome back!</h5>
-      <button type="button" class="btn btn-light btn-sm" data-dismiss="modal"><i class="fas fa-times"></i></button>
-    </div>	
-    <div class="modal-body">
-        <div class="form-group">
-          {% if form.errors %}
-          <p>Wrong Username or password. Please try again.</p>
-          {% endif %}
-        <form method="POST" action="/accounts/login/" style="color: black;margin-left: 1rem;margin-right: 1rem">
-          {% csrf_token %}
-          
+      <label for="username">User name:</label><br>
+      <input class="form-control" type="text" name="username" value="" id="username"><br>
+      <label for="password">Password:</label><br>
+      <input class="form-control" type="password" name="password" value="" id="password"><br>
 
-          <label for="username">User name:</label><br>
-          <input class="form-control" type="text" name="username" value="" id="username"><br>
-          <label for="password">Password:</label><br>
-          <input class="form-control" type="password" name="password" value="" id="password"><br>
-
-            <input id="login-submit" type="submit" value="login" class="btn btn-outline-primary">
-            <input type="hidden" name="next" value="{{ next|escape }}" />
-    <button type="button" class="btn btn-outline-primary">Forget password</button>
-        </form>
-        </div>
-    </div>
-    <div class="modal-footer"><span>
-    
-    </span>
-    </div>
+      <input id="login-submit" type="submit" value="login" class="btn btn-outline-primary">
+      <input type="hidden" name="next" value="{{ next|escape }}" />
+      <button type="button" class="btn btn-outline-primary" style="margin-left: 1rem;">Forget password</button>
+    </form>
   </div>
-  </div>
+       
 </div>
 {% endblock %}

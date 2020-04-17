@@ -3,6 +3,16 @@ html, body {
     overflow: hidden;
 }
 
+.btn:focus {
+	outline: none;
+	box-shadow: none;
+}
+.btn:active {
+	outline: none;
+	box-shadow: none;
+  }
+
+
 .overlay-div{
    height:100%;
    width: 100%;
@@ -144,19 +154,19 @@ padding: 20px 20px 20px 200px;
 	background:rgba(255,255,255,0.25);
 	color: #7A2121;
 }
-#project-thead{
+.project-thead{
 	background: #403434;
 	color: white;
 }
-#project-tbody{
+.project-tbody{
 	background: #F9F3F3;
 	border: black;
 }
-#task-thead{
+.task-thead{
 	background: #344036;
 	color: white;
 }
-#task-tbody{
+.task-tbody{
 	background: #F3F9F3;
 	border: black;
 }

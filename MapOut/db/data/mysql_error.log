@@ -637,3 +637,362 @@ Version: '10.4.11-MariaDB'  socket: ''  port: 3306  mariadb.org binary distribut
 2020-04-15  4:08:36 608 [Warning] Host name 'zg-0312b-142.stretchoid.com' could not be resolved: 無法識別這台主機。 
 2020-04-15  4:08:36 608 [Warning] Aborted connection 608 to db: 'unconnected' user: 'unauthenticated' host: '192.241.238.170' (This connection closed normally without authentication)
 2020-04-15 21:53:33 610 [Warning] Aborted connection 610 to db: 'db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-15 22:22:18 665 [Warning] Aborted connection 665 to db: 'db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-15 22:24:22 738 [Warning] Aborted connection 738 to db: 'db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-15 22:24:44 743 [Warning] Aborted connection 743 to db: 'db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-15 22:26:02 747 [Warning] Aborted connection 747 to db: 'db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-15 22:26:37 753 [Warning] Aborted connection 753 to db: 'db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-15 22:27:04 755 [Warning] Aborted connection 755 to db: 'db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-15 22:28:23 757 [Warning] Aborted connection 757 to db: 'db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-15 22:32:38 760 [Warning] Aborted connection 760 to db: 'db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-15 22:38:45 766 [Warning] Aborted connection 766 to db: 'db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-15 22:50:31 768 [Warning] Aborted connection 768 to db: 'db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-15 22:52:39 775 [Warning] Aborted connection 775 to db: 'db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-15 22:57:15 779 [Warning] Aborted connection 779 to db: 'db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-15 23:13:57 781 [Warning] Aborted connection 781 to db: 'db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-15 23:19:21 789 [Warning] Aborted connection 789 to db: 'db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-15 23:31:43 822 [Warning] Aborted connection 822 to db: 'db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-15 23:41:12 825 [Warning] Aborted connection 825 to db: 'db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-15 23:42:08 829 [Warning] Aborted connection 829 to db: 'db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-15 23:43:41 831 [Warning] Aborted connection 831 to db: 'db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-15 23:51:30 836 [Warning] Aborted connection 836 to db: 'db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-16  0:11:12 871 [Warning] Aborted connection 871 to db: 'db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-16  0:11:37 879 [Warning] Aborted connection 879 to db: 'db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-16  0:14:45 887 [Warning] Aborted connection 887 to db: 'db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-16  1:09:22 897 [Warning] Aborted connection 897 to db: 'db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-16  1:13:16 905 [Warning] Aborted connection 905 to db: 'db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-16  1:14:36 924 [Warning] Aborted connection 924 to db: 'db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-16  1:15:40 0 [Note] C:\xampp\mysql\bin\mysqld.exe (initiated by: unknown): Normal shutdown
+2020-04-16  1:15:40 0 [Note] Event Scheduler: Purging the queue. 0 events
+2020-04-16  1:15:40 0 [Note] InnoDB: FTS optimize thread exiting.
+2020-04-16  1:15:40 0 [Note] InnoDB: Starting shutdown...
+2020-04-16  1:15:40 0 [Note] InnoDB: Dumping buffer pool(s) to C:\xampp\mysql\data\ib_buffer_pool
+2020-04-16  1:15:40 0 [Note] InnoDB: Instance 0, restricted to 250 pages due to innodb_buf_pool_dump_pct=25
+2020-04-16  1:15:40 0 [Note] InnoDB: Buffer pool(s) dump completed at 200416  1:15:40
+2020-04-16  1:15:41 0 [Note] InnoDB: Shutdown completed; log sequence number 265275; transaction id 420
+2020-04-16  1:15:41 0 [Note] InnoDB: Removed temporary tablespace data file: "ibtmp1"
+2020-04-16  1:15:41 0 [Note] C:\xampp\mysql\bin\mysqld.exe: Shutdown complete
+
+InnoDB: using atomic writes.
+2020-04-16  1:16:02 0 [Note] InnoDB: Mutexes and rw_locks use Windows interlocked functions
+2020-04-16  1:16:02 0 [Note] InnoDB: Uses event mutexes
+2020-04-16  1:16:02 0 [Note] InnoDB: Compressed tables use zlib 1.2.11
+2020-04-16  1:16:02 0 [Note] InnoDB: Number of pools: 1
+2020-04-16  1:16:02 0 [Note] InnoDB: Using SSE2 crc32 instructions
+2020-04-16  1:16:02 0 [Note] InnoDB: Initializing buffer pool, total size = 16M, instances = 1, chunk size = 16M
+2020-04-16  1:16:02 0 [Note] InnoDB: Completed initialization of buffer pool
+2020-04-16  1:16:02 0 [Note] InnoDB: 128 out of 128 rollback segments are active.
+2020-04-16  1:16:02 0 [Note] InnoDB: Creating shared tablespace for temporary tables
+2020-04-16  1:16:02 0 [Note] InnoDB: Setting file 'C:\xampp\mysql\data\ibtmp1' size to 12 MB. Physically writing the file full; Please wait ...
+2020-04-16  1:16:02 0 [Note] InnoDB: File 'C:\xampp\mysql\data\ibtmp1' size is now 12 MB.
+2020-04-16  1:16:02 0 [Note] InnoDB: 10.4.11 started; log sequence number 265275; transaction id 422
+2020-04-16  1:16:02 0 [Note] InnoDB: Loading buffer pool(s) from C:\xampp\mysql\data\ib_buffer_pool
+2020-04-16  1:16:02 0 [Note] Plugin 'FEEDBACK' is disabled.
+2020-04-16  1:16:02 0 [Note] InnoDB: Buffer pool(s) load completed at 200416  1:16:02
+2020-04-16  1:16:02 0 [Note] Server socket created on IP: '::'.
+2020-04-16  1:16:02 6 [Warning] Failed to load slave replication state from table mysql.gtid_slave_pos: 1932: Table 'mysql.gtid_slave_pos' doesn't exist in engine
+2020-04-16  1:16:02 0 [Note] Reading of all Master_info entries succeeded
+2020-04-16  1:16:02 0 [Note] Added new Master_info '' to hash table
+2020-04-16  1:16:02 0 [Note] C:\xampp\mysql\bin\mysqld.exe: ready for connections.
+Version: '10.4.11-MariaDB'  socket: ''  port: 3306  mariadb.org binary distribution
+2020-04-16  1:16:02 8 [ERROR] InnoDB: Table `mysql`.`innodb_table_stats` not found.
+2020-04-16  2:31:14 17 [Warning] Aborted connection 17 to db: 'db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-16  4:16:42 111 [Warning] IP address '180.96.63.13' could not be resolved: 無法識別這台主機。 
+2020-04-16  4:16:42 111 [Warning] Aborted connection 111 to db: 'unconnected' user: 'unauthenticated' host: '180.96.63.13' (This connection closed normally without authentication)
+2020-04-16  4:26:29 112 [Warning] Host name 'zg-0312b-49.stretchoid.com' could not be resolved: 無法識別這台主機。 
+2020-04-16  4:26:29 112 [Warning] Aborted connection 112 to db: 'unconnected' user: 'unauthenticated' host: '192.241.237.100' (This connection closed normally without authentication)
+2020-04-16  4:29:57 113 [Warning] Aborted connection 113 to db: 'unconnected' user: 'unauthenticated' host: 'scan-32.security.ipip.net' (This connection closed normally without authentication)
+2020-04-16  4:29:57 114 [Warning] Aborted connection 114 to db: 'unconnected' user: 'unauthenticated' host: 'scan-32.security.ipip.net' (This connection closed normally without authentication)
+2020-04-16  4:29:57 115 [Warning] Aborted connection 115 to db: 'unconnected' user: 'unauthenticated' host: 'scan-32.security.ipip.net' (This connection closed normally without authentication)
+2020-04-16  4:29:57 116 [Warning] Aborted connection 116 to db: 'unconnected' user: 'unauthenticated' host: 'scan-32.security.ipip.net' (This connection closed normally without authentication)
+2020-04-16  4:29:57 117 [Warning] Aborted connection 117 to db: 'unconnected' user: 'unauthenticated' host: 'scan-32.security.ipip.net' (This connection closed normally without authentication)
+2020-04-16  4:29:57 118 [Warning] Aborted connection 118 to db: 'unconnected' user: 'unauthenticated' host: 'scan-32.security.ipip.net' (This connection closed normally without authentication)
+2020-04-16  4:29:57 119 [Warning] Aborted connection 119 to db: 'unconnected' user: 'unauthenticated' host: 'scan-32.security.ipip.net' (This connection closed normally without authentication)
+2020-04-16  4:29:57 120 [Warning] Aborted connection 120 to db: 'unconnected' user: 'unauthenticated' host: 'scan-32.security.ipip.net' (This connection closed normally without authentication)
+2020-04-16 20:20:15 343 [Note] InnoDB: Recalculation of persistent statistics requested for table `db`.`project` index `id` but the required persistent statistics storage is not present or is corrupted. Using transient stats instead.
+2020-04-16 20:31:26 269 [Warning] Aborted connection 269 to db: 'db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-16 20:33:13 349 [Warning] Aborted connection 349 to db: 'db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-16 20:34:14 355 [Warning] Aborted connection 355 to db: 'db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-16 20:41:20 365 [Warning] Aborted connection 365 to db: 'db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-16 20:42:52 396 [Warning] Aborted connection 396 to db: 'db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-16 20:43:33 405 [Warning] Aborted connection 405 to db: 'db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-16 20:43:51 411 [Warning] Aborted connection 411 to db: 'db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-16 20:43:59 414 [Warning] Aborted connection 414 to db: 'db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-16 20:44:03 417 [Warning] Aborted connection 417 to db: 'db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-16 20:45:56 419 [Warning] Aborted connection 419 to db: 'db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-16 20:48:23 439 [Warning] Aborted connection 439 to db: 'db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-16 22:12:25 516 [Warning] IP address '119.188.246.88' could not be resolved: 無法識別這台主機。 
+2020-04-16 22:12:25 516 [Warning] Aborted connection 516 to db: 'unconnected' user: 'unauthenticated' host: '119.188.246.88' (This connection closed normally without authentication)
+2020-04-16 22:12:25 517 [Warning] Aborted connection 517 to db: 'unconnected' user: 'unauthenticated' host: '119.188.246.88' (This connection closed normally without authentication)
+2020-04-16 22:12:26 518 [Warning] Aborted connection 518 to db: 'unconnected' user: 'unauthenticated' host: '119.188.246.88' (This connection closed normally without authentication)
+2020-04-16 22:12:26 519 [Warning] Aborted connection 519 to db: 'unconnected' user: 'unauthenticated' host: '119.188.246.88' (This connection closed normally without authentication)
+2020-04-16 22:12:26 520 [Warning] Aborted connection 520 to db: 'unconnected' user: 'unauthenticated' host: '119.188.246.88' (This connection closed normally without authentication)
+2020-04-16 22:12:27 521 [Warning] Aborted connection 521 to db: 'unconnected' user: 'unauthenticated' host: '119.188.246.88' (This connection closed normally without authentication)
+2020-04-16 22:43:19 493 [Warning] Aborted connection 493 to db: 'db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-16 22:48:34 583 [Warning] Aborted connection 583 to db: 'db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-16 22:50:38 588 [Warning] Aborted connection 588 to db: 'db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-16 22:51:21 590 [Warning] Aborted connection 590 to db: 'db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-16 23:04:10 595 [Warning] Aborted connection 595 to db: 'db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-16 23:41:12 662 [Warning] Host name '50-128.206.104.serverhubrdns.in-addr.arpa' could not be resolved: 無法識別這台主機。 
+2020-04-16 23:41:12 662 [Warning] Aborted connection 662 to db: 'unconnected' user: 'unauthenticated' host: '104.206.128.50' (This connection closed normally without authentication)
+2020-04-17  1:10:37 661 [Warning] Aborted connection 661 to db: 'db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-17  1:35:58 664 [Warning] Aborted connection 664 to db: 'unconnected' user: 'unauthenticated' host: '119.188.246.88' (This connection closed normally without authentication)
+2020-04-17  1:35:59 665 [Warning] Aborted connection 665 to db: 'unconnected' user: 'unauthenticated' host: '119.188.246.88' (This connection closed normally without authentication)
+2020-04-17  1:35:59 666 [Warning] Aborted connection 666 to db: 'unconnected' user: 'unauthenticated' host: '119.188.246.88' (This connection closed normally without authentication)
+2020-04-17  1:35:59 667 [Warning] Aborted connection 667 to db: 'unconnected' user: 'unauthenticated' host: '119.188.246.88' (This connection closed normally without authentication)
+2020-04-17  1:35:59 668 [Warning] Aborted connection 668 to db: 'unconnected' user: 'unauthenticated' host: '119.188.246.88' (This connection closed normally without authentication)
+2020-04-17  1:35:59 669 [Warning] Aborted connection 669 to db: 'unconnected' user: 'unauthenticated' host: '119.188.246.88' (This connection closed normally without authentication)
+2020-04-17  1:36:00 670 [Warning] Aborted connection 670 to db: 'unconnected' user: 'unauthenticated' host: '119.188.246.88' (This connection closed normally without authentication)
+2020-04-17  1:36:00 671 [Warning] Aborted connection 671 to db: 'unconnected' user: 'unauthenticated' host: '119.188.246.88' (This connection closed normally without authentication)
+2020-04-17  1:36:00 672 [Warning] Aborted connection 672 to db: 'unconnected' user: 'unauthenticated' host: '119.188.246.88' (This connection closed normally without authentication)
+2020-04-17  1:36:00 673 [Warning] Aborted connection 673 to db: 'unconnected' user: 'unauthenticated' host: '119.188.246.88' (This connection closed normally without authentication)
+2020-04-17  1:36:00 674 [Warning] Aborted connection 674 to db: 'unconnected' user: 'unauthenticated' host: '119.188.246.88' (This connection closed normally without authentication)
+2020-04-17  1:36:01 675 [Warning] Aborted connection 675 to db: 'unconnected' user: 'unauthenticated' host: '119.188.246.88' (This connection closed normally without authentication)
+2020-04-17  1:36:01 676 [Warning] Aborted connection 676 to db: 'unconnected' user: 'unauthenticated' host: '119.188.246.88' (This connection closed normally without authentication)
+2020-04-17  1:36:01 677 [Warning] Aborted connection 677 to db: 'unconnected' user: 'unauthenticated' host: '119.188.246.88' (This connection closed normally without authentication)
+2020-04-17  1:36:01 678 [Warning] Aborted connection 678 to db: 'unconnected' user: 'unauthenticated' host: '119.188.246.88' (This connection closed normally without authentication)
+2020-04-17  1:36:01 679 [Warning] Aborted connection 679 to db: 'unconnected' user: 'unauthenticated' host: '119.188.246.88' (This connection closed normally without authentication)
+2020-04-17  1:36:01 680 [Warning] Aborted connection 680 to db: 'unconnected' user: 'unauthenticated' host: '119.188.246.88' (This connection closed normally without authentication)
+2020-04-17  1:36:02 681 [Warning] Aborted connection 681 to db: 'unconnected' user: 'unauthenticated' host: '119.188.246.88' (This connection closed normally without authentication)
+2020-04-17  1:36:02 682 [Warning] Aborted connection 682 to db: 'unconnected' user: 'unauthenticated' host: '119.188.246.88' (This connection closed normally without authentication)
+2020-04-17  1:36:02 683 [Warning] Aborted connection 683 to db: 'unconnected' user: 'unauthenticated' host: '119.188.246.88' (This connection closed normally without authentication)
+2020-04-17  1:36:02 684 [Warning] Aborted connection 684 to db: 'unconnected' user: 'unauthenticated' host: '119.188.246.88' (This connection closed normally without authentication)
+2020-04-17  1:36:02 685 [Warning] Aborted connection 685 to db: 'unconnected' user: 'unauthenticated' host: '119.188.246.88' (This connection closed normally without authentication)
+2020-04-17  1:36:03 686 [Warning] Aborted connection 686 to db: 'unconnected' user: 'unauthenticated' host: '119.188.246.88' (This connection closed normally without authentication)
+2020-04-17  1:36:03 687 [Warning] Aborted connection 687 to db: 'unconnected' user: 'unauthenticated' host: '119.188.246.88' (This connection closed normally without authentication)
+2020-04-17  1:36:03 688 [Warning] Aborted connection 688 to db: 'unconnected' user: 'unauthenticated' host: '119.188.246.88' (This connection closed normally without authentication)
+2020-04-17  1:36:03 689 [Warning] Aborted connection 689 to db: 'unconnected' user: 'unauthenticated' host: '119.188.246.88' (This connection closed normally without authentication)
+2020-04-17  1:36:03 690 [Warning] Aborted connection 690 to db: 'unconnected' user: 'unauthenticated' host: '119.188.246.88' (This connection closed normally without authentication)
+2020-04-17  1:36:04 691 [Warning] Aborted connection 691 to db: 'unconnected' user: 'unauthenticated' host: '119.188.246.88' (This connection closed normally without authentication)
+2020-04-17  1:36:04 692 [Warning] Aborted connection 692 to db: 'unconnected' user: 'unauthenticated' host: '119.188.246.88' (This connection closed normally without authentication)
+2020-04-17  1:36:04 693 [Warning] Aborted connection 693 to db: 'unconnected' user: 'unauthenticated' host: '119.188.246.88' (This connection closed normally without authentication)
+2020-04-17  1:36:04 694 [Warning] Aborted connection 694 to db: 'unconnected' user: 'unauthenticated' host: '119.188.246.88' (This connection closed normally without authentication)
+2020-04-17  1:36:04 695 [Warning] Aborted connection 695 to db: 'unconnected' user: 'unauthenticated' host: '119.188.246.88' (This connection closed normally without authentication)
+2020-04-17  1:36:05 696 [Warning] Aborted connection 696 to db: 'unconnected' user: 'unauthenticated' host: '119.188.246.88' (This connection closed normally without authentication)
+2020-04-17  1:36:05 697 [Warning] Aborted connection 697 to db: 'unconnected' user: 'unauthenticated' host: '119.188.246.88' (This connection closed normally without authentication)
+2020-04-17  1:36:05 698 [Warning] Aborted connection 698 to db: 'unconnected' user: 'unauthenticated' host: '119.188.246.88' (This connection closed normally without authentication)
+2020-04-17  1:36:05 699 [Warning] Aborted connection 699 to db: 'unconnected' user: 'unauthenticated' host: '119.188.246.88' (This connection closed normally without authentication)
+2020-04-17  1:36:05 700 [Warning] Aborted connection 700 to db: 'unconnected' user: 'unauthenticated' host: '119.188.246.88' (This connection closed normally without authentication)
+2020-04-17  1:36:06 701 [Warning] Aborted connection 701 to db: 'unconnected' user: 'unauthenticated' host: '119.188.246.88' (This connection closed normally without authentication)
+2020-04-17  1:36:06 702 [Warning] Aborted connection 702 to db: 'unconnected' user: 'unauthenticated' host: '119.188.246.88' (This connection closed normally without authentication)
+2020-04-17  1:36:06 703 [Warning] Aborted connection 703 to db: 'unconnected' user: 'unauthenticated' host: '119.188.246.88' (This connection closed normally without authentication)
+2020-04-17  1:36:06 704 [Warning] Aborted connection 704 to db: 'unconnected' user: 'unauthenticated' host: '119.188.246.88' (This connection closed normally without authentication)
+2020-04-17  1:36:06 705 [Warning] Aborted connection 705 to db: 'unconnected' user: 'unauthenticated' host: '119.188.246.88' (This connection closed normally without authentication)
+2020-04-17  1:36:07 706 [Warning] Aborted connection 706 to db: 'unconnected' user: 'unauthenticated' host: '119.188.246.88' (This connection closed normally without authentication)
+2020-04-17  1:36:07 707 [Warning] Aborted connection 707 to db: 'unconnected' user: 'unauthenticated' host: '119.188.246.88' (This connection closed normally without authentication)
+2020-04-17  1:36:07 708 [Warning] Aborted connection 708 to db: 'unconnected' user: 'unauthenticated' host: '119.188.246.88' (This connection closed normally without authentication)
+2020-04-17  1:36:07 709 [Warning] Aborted connection 709 to db: 'unconnected' user: 'unauthenticated' host: '119.188.246.88' (This connection closed normally without authentication)
+2020-04-17  1:36:07 710 [Warning] Aborted connection 710 to db: 'unconnected' user: 'unauthenticated' host: '119.188.246.88' (This connection closed normally without authentication)
+2020-04-17  1:36:07 711 [Warning] Aborted connection 711 to db: 'unconnected' user: 'unauthenticated' host: '119.188.246.88' (This connection closed normally without authentication)
+2020-04-17 20:38:56 744 [Warning] Aborted connection 744 to db: 'db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-17 20:39:39 750 [Warning] Aborted connection 750 to db: 'db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-17 20:42:35 753 [Warning] Aborted connection 753 to db: 'db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-17 20:43:13 757 [Warning] Aborted connection 757 to db: 'db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-17 20:43:37 761 [Warning] Aborted connection 761 to db: 'db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-17 20:44:44 763 [Warning] Aborted connection 763 to db: 'db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-17 21:08:43 766 [Warning] Aborted connection 766 to db: 'db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-17 21:17:51 865 [Warning] Aborted connection 865 to db: 'db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-17 21:19:05 874 [Warning] Aborted connection 874 to db: 'db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-17 21:20:46 877 [Warning] Aborted connection 877 to db: 'db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-17 21:33:11 1002 [Note] InnoDB: Recalculation of persistent statistics requested for table `real_mapout_db`.`django_content_type` index `django_content_type_app_label_model_76bd3d3b_uniq` but the required persistent statistics storage is not present or is corrupted. Using transient stats instead.
+2020-04-17 21:33:11 1002 [Note] InnoDB: Recalculation of persistent statistics requested for table `real_mapout_db`.`auth_permission` index `auth_permission_content_type_id_codename_01ab375a_uniq` but the required persistent statistics storage is not present or is corrupted. Using transient stats instead.
+2020-04-17 21:33:11 1002 [Note] InnoDB: Recalculation of persistent statistics requested for table `real_mapout_db`.`auth_group_permissions` index `auth_group_permissions_group_id_permission_id_0cd325b0_uniq` but the required persistent statistics storage is not present or is corrupted. Using transient stats instead.
+2020-04-17 21:33:11 1002 [Note] InnoDB: Recalculation of persistent statistics requested for table `real_mapout_db`.`auth_user_groups` index `auth_user_groups_user_id_group_id_94350c0c_uniq` but the required persistent statistics storage is not present or is corrupted. Using transient stats instead.
+2020-04-17 21:33:11 1002 [Note] InnoDB: Recalculation of persistent statistics requested for table `real_mapout_db`.`auth_user_user_permissions` index `auth_user_user_permissions_user_id_permission_id_14a6b632_uniq` but the required persistent statistics storage is not present or is corrupted. Using transient stats instead.
+2020-04-17 21:33:12 1002 [Note] InnoDB: Recalculation of persistent statistics requested for table `real_mapout_db`.`django_session` index `django_session_expire_date_a5c62663` but the required persistent statistics storage is not present or is corrupted. Using transient stats instead.
+2020-04-17 21:51:16 1008 [Warning] Aborted connection 1008 to db: 'real_mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-17 21:57:10 1049 [Warning] Aborted connection 1049 to db: 'real_mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-17 22:05:39 1056 [Warning] Aborted connection 1056 to db: 'real_mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-17 22:06:38 1064 [Warning] Aborted connection 1064 to db: 'real_mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-17 22:11:13 1067 [Warning] Aborted connection 1067 to db: 'real_mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-17 22:28:19 1074 [Warning] Aborted connection 1074 to db: 'real_mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-17 22:34:40 1077 [Warning] Aborted connection 1077 to db: 'real_mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-17 22:35:19 1079 [Warning] Aborted connection 1079 to db: 'real_mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-17 22:36:08 1081 [Warning] Aborted connection 1081 to db: 'real_mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-17 22:36:36 1083 [Warning] Aborted connection 1083 to db: 'real_mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-17 22:38:05 1085 [Warning] Aborted connection 1085 to db: 'real_mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-18  1:53:02 1109 [Warning] Aborted connection 1109 to db: 'real_mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-18  2:00:55 1162 [Warning] Aborted connection 1162 to db: 'real_mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-18  2:01:14 1164 [Warning] Aborted connection 1164 to db: 'real_mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-18  2:01:48 1167 [Warning] Aborted connection 1167 to db: 'real_mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-18  2:02:17 1170 [Warning] Aborted connection 1170 to db: 'real_mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-18  2:02:39 1173 [Warning] Aborted connection 1173 to db: 'real_mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-18  2:03:09 1176 [Warning] Aborted connection 1176 to db: 'real_mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-18  2:03:29 1179 [Warning] Aborted connection 1179 to db: 'real_mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-18  2:09:57 1183 [Warning] Aborted connection 1183 to db: 'real_mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-18  2:10:41 1191 [Warning] Aborted connection 1191 to db: 'real_mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-18  2:16:25 1194 [Warning] Aborted connection 1194 to db: 'real_mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-18  2:43:14 1203 [Warning] Aborted connection 1203 to db: 'real_mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-18  2:43:36 1213 [Warning] Aborted connection 1213 to db: 'real_mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-18  2:44:59 1215 [Warning] Aborted connection 1215 to db: 'real_mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-18  2:46:27 1217 [Warning] Aborted connection 1217 to db: 'real_mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-18  2:50:58 1220 [Warning] Host name 'zg-0312b-60.stretchoid.com' could not be resolved: 無法識別這台主機。 
+2020-04-18  2:50:58 1220 [Warning] Aborted connection 1220 to db: 'unconnected' user: 'unauthenticated' host: '192.241.237.136' (This connection closed normally without authentication)
+2020-04-18  3:13:50 1219 [Warning] Aborted connection 1219 to db: 'real_mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-18  3:26:50 1231 [Note] InnoDB: Recalculation of persistent statistics requested for table `real_mapout_db`.`mapout_app_project_member` index `mapout_app_project_member_project_id_user_id_f356e98f_uniq` but the required persistent statistics storage is not present or is corrupted. Using transient stats instead.
+2020-04-18  3:26:50 1231 [Note] InnoDB: Recalculation of persistent statistics requested for table `real_mapout_db`.`mapout_app_project_owner` index `mapout_app_project_owner_project_id_user_id_e48550e2_uniq` but the required persistent statistics storage is not present or is corrupted. Using transient stats instead.
+2020-04-18  3:26:50 1231 [Note] InnoDB: Recalculation of persistent statistics requested for table `real_mapout_db`.`mapout_app_tasks_incharge` index `mapout_app_tasks_incharge_tasks_id_user_id_78e292e7_uniq` but the required persistent statistics storage is not present or is corrupted. Using transient stats instead.
+2020-04-18  3:27:17 0 [Note] C:\xampp\mysql\bin\mysqld.exe (initiated by: unknown): Normal shutdown
+2020-04-18  3:27:17 0 [Note] InnoDB: FTS optimize thread exiting.
+2020-04-18  3:27:17 0 [Note] Event Scheduler: Purging the queue. 0 events
+2020-04-18  3:27:17 0 [Note] InnoDB: Starting shutdown...
+2020-04-18  3:27:17 0 [Note] InnoDB: Dumping buffer pool(s) to C:\xampp\mysql\data\ib_buffer_pool
+2020-04-18  3:27:17 0 [Note] InnoDB: Buffer pool(s) dump completed at 200418  3:27:17
+2020-04-18  3:27:18 0 [Note] InnoDB: Shutdown completed; log sequence number 576201; transaction id 975
+2020-04-18  3:27:18 0 [Note] InnoDB: Removed temporary tablespace data file: "ibtmp1"
+2020-04-18  3:27:18 0 [Note] C:\xampp\mysql\bin\mysqld.exe: Shutdown complete
+
+InnoDB: using atomic writes.
+2020-04-18  3:27:28 0 [Note] InnoDB: Mutexes and rw_locks use Windows interlocked functions
+2020-04-18  3:27:28 0 [Note] InnoDB: Uses event mutexes
+2020-04-18  3:27:28 0 [Note] InnoDB: Compressed tables use zlib 1.2.11
+2020-04-18  3:27:28 0 [Note] InnoDB: Number of pools: 1
+2020-04-18  3:27:28 0 [Note] InnoDB: Using SSE2 crc32 instructions
+2020-04-18  3:27:28 0 [Note] InnoDB: Initializing buffer pool, total size = 16M, instances = 1, chunk size = 16M
+2020-04-18  3:27:28 0 [Note] InnoDB: Completed initialization of buffer pool
+2020-04-18  3:27:28 0 [ERROR] InnoDB: Operating system error number 3 in a file operation.
+2020-04-18  3:27:28 0 [ERROR] InnoDB: The error means the system cannot find the path specified.
+2020-04-18  3:27:28 0 [ERROR] InnoDB: If you are installing InnoDB, remember that you must create directories yourself, InnoDB does not create them.
+2020-04-18  3:27:28 0 [ERROR] InnoDB: Cannot open datafile for read-only: '.\db\auth_group.ibd' OS error: 203
+2020-04-18  3:27:28 0 [ERROR] InnoDB: Operating system error number 203 in a file operation.
+2020-04-18  3:27:28 0 [Note] InnoDB: Some operating system error numbers are described at https://mariadb.com/kb/en/library/operating-system-error-codes/
+2020-04-18  3:27:28 0 [ERROR] InnoDB: Could not find a valid tablespace file for ``db`.`auth_group``. Please refer to https://mariadb.com/kb/en/innodb-data-dictionary-troubleshooting/ for how to resolve the issue.
+2020-04-18  3:27:28 0 [Warning] InnoDB: Ignoring tablespace for `db`.`auth_group` because it could not be opened.
+2020-04-18  3:27:28 0 [ERROR] InnoDB: Operating system error number 3 in a file operation.
+2020-04-18  3:27:28 0 [ERROR] InnoDB: The error means the system cannot find the path specified.
+2020-04-18  3:27:28 0 [ERROR] InnoDB: If you are installing InnoDB, remember that you must create directories yourself, InnoDB does not create them.
+2020-04-18  3:27:28 0 [ERROR] InnoDB: Cannot open datafile for read-only: '.\db\auth_group_permissions.ibd' OS error: 203
+2020-04-18  3:27:28 0 [ERROR] InnoDB: Operating system error number 203 in a file operation.
+2020-04-18  3:27:28 0 [Note] InnoDB: Some operating system error numbers are described at https://mariadb.com/kb/en/library/operating-system-error-codes/
+2020-04-18  3:27:28 0 [ERROR] InnoDB: Could not find a valid tablespace file for ``db`.`auth_group_permissions``. Please refer to https://mariadb.com/kb/en/innodb-data-dictionary-troubleshooting/ for how to resolve the issue.
+2020-04-18  3:27:28 0 [Warning] InnoDB: Ignoring tablespace for `db`.`auth_group_permissions` because it could not be opened.
+2020-04-18  3:27:28 0 [ERROR] InnoDB: Operating system error number 3 in a file operation.
+2020-04-18  3:27:28 0 [ERROR] InnoDB: The error means the system cannot find the path specified.
+2020-04-18  3:27:28 0 [ERROR] InnoDB: If you are installing InnoDB, remember that you must create directories yourself, InnoDB does not create them.
+2020-04-18  3:27:28 0 [ERROR] InnoDB: Cannot open datafile for read-only: '.\db\auth_permission.ibd' OS error: 203
+2020-04-18  3:27:28 0 [ERROR] InnoDB: Operating system error number 203 in a file operation.
+2020-04-18  3:27:28 0 [Note] InnoDB: Some operating system error numbers are described at https://mariadb.com/kb/en/library/operating-system-error-codes/
+2020-04-18  3:27:28 0 [ERROR] InnoDB: Could not find a valid tablespace file for ``db`.`auth_permission``. Please refer to https://mariadb.com/kb/en/innodb-data-dictionary-troubleshooting/ for how to resolve the issue.
+2020-04-18  3:27:28 0 [Warning] InnoDB: Ignoring tablespace for `db`.`auth_permission` because it could not be opened.
+2020-04-18  3:27:28 0 [ERROR] InnoDB: Operating system error number 3 in a file operation.
+2020-04-18  3:27:28 0 [ERROR] InnoDB: The error means the system cannot find the path specified.
+2020-04-18  3:27:28 0 [ERROR] InnoDB: If you are installing InnoDB, remember that you must create directories yourself, InnoDB does not create them.
+2020-04-18  3:27:28 0 [ERROR] InnoDB: Cannot open datafile for read-only: '.\db\auth_user.ibd' OS error: 203
+2020-04-18  3:27:28 0 [ERROR] InnoDB: Operating system error number 203 in a file operation.
+2020-04-18  3:27:28 0 [Note] InnoDB: Some operating system error numbers are described at https://mariadb.com/kb/en/library/operating-system-error-codes/
+2020-04-18  3:27:28 0 [ERROR] InnoDB: Could not find a valid tablespace file for ``db`.`auth_user``. Please refer to https://mariadb.com/kb/en/innodb-data-dictionary-troubleshooting/ for how to resolve the issue.
+2020-04-18  3:27:28 0 [Warning] InnoDB: Ignoring tablespace for `db`.`auth_user` because it could not be opened.
+2020-04-18  3:27:28 0 [ERROR] InnoDB: Operating system error number 3 in a file operation.
+2020-04-18  3:27:28 0 [ERROR] InnoDB: The error means the system cannot find the path specified.
+2020-04-18  3:27:28 0 [ERROR] InnoDB: If you are installing InnoDB, remember that you must create directories yourself, InnoDB does not create them.
+2020-04-18  3:27:28 0 [ERROR] InnoDB: Cannot open datafile for read-only: '.\db\auth_user_groups.ibd' OS error: 203
+2020-04-18  3:27:28 0 [ERROR] InnoDB: Operating system error number 203 in a file operation.
+2020-04-18  3:27:28 0 [Note] InnoDB: Some operating system error numbers are described at https://mariadb.com/kb/en/library/operating-system-error-codes/
+2020-04-18  3:27:28 0 [ERROR] InnoDB: Could not find a valid tablespace file for ``db`.`auth_user_groups``. Please refer to https://mariadb.com/kb/en/innodb-data-dictionary-troubleshooting/ for how to resolve the issue.
+2020-04-18  3:27:28 0 [Warning] InnoDB: Ignoring tablespace for `db`.`auth_user_groups` because it could not be opened.
+2020-04-18  3:27:28 0 [ERROR] InnoDB: Operating system error number 3 in a file operation.
+2020-04-18  3:27:28 0 [ERROR] InnoDB: The error means the system cannot find the path specified.
+2020-04-18  3:27:28 0 [ERROR] InnoDB: If you are installing InnoDB, remember that you must create directories yourself, InnoDB does not create them.
+2020-04-18  3:27:28 0 [ERROR] InnoDB: Cannot open datafile for read-only: '.\db\auth_user_user_permissions.ibd' OS error: 203
+2020-04-18  3:27:28 0 [ERROR] InnoDB: Operating system error number 203 in a file operation.
+2020-04-18  3:27:28 0 [Note] InnoDB: Some operating system error numbers are described at https://mariadb.com/kb/en/library/operating-system-error-codes/
+2020-04-18  3:27:28 0 [ERROR] InnoDB: Could not find a valid tablespace file for ``db`.`auth_user_user_permissions``. Please refer to https://mariadb.com/kb/en/innodb-data-dictionary-troubleshooting/ for how to resolve the issue.
+2020-04-18  3:27:28 0 [Warning] InnoDB: Ignoring tablespace for `db`.`auth_user_user_permissions` because it could not be opened.
+2020-04-18  3:27:28 0 [ERROR] InnoDB: Operating system error number 3 in a file operation.
+2020-04-18  3:27:28 0 [ERROR] InnoDB: The error means the system cannot find the path specified.
+2020-04-18  3:27:28 0 [ERROR] InnoDB: If you are installing InnoDB, remember that you must create directories yourself, InnoDB does not create them.
+2020-04-18  3:27:28 0 [ERROR] InnoDB: Cannot open datafile for read-only: '.\db\django_admin_log.ibd' OS error: 203
+2020-04-18  3:27:28 0 [ERROR] InnoDB: Operating system error number 203 in a file operation.
+2020-04-18  3:27:28 0 [Note] InnoDB: Some operating system error numbers are described at https://mariadb.com/kb/en/library/operating-system-error-codes/
+2020-04-18  3:27:28 0 [ERROR] InnoDB: Could not find a valid tablespace file for ``db`.`django_admin_log``. Please refer to https://mariadb.com/kb/en/innodb-data-dictionary-troubleshooting/ for how to resolve the issue.
+2020-04-18  3:27:28 0 [Warning] InnoDB: Ignoring tablespace for `db`.`django_admin_log` because it could not be opened.
+2020-04-18  3:27:28 0 [ERROR] InnoDB: Operating system error number 3 in a file operation.
+2020-04-18  3:27:28 0 [ERROR] InnoDB: The error means the system cannot find the path specified.
+2020-04-18  3:27:28 0 [ERROR] InnoDB: If you are installing InnoDB, remember that you must create directories yourself, InnoDB does not create them.
+2020-04-18  3:27:28 0 [ERROR] InnoDB: Cannot open datafile for read-only: '.\db\django_content_type.ibd' OS error: 203
+2020-04-18  3:27:28 0 [ERROR] InnoDB: Operating system error number 203 in a file operation.
+2020-04-18  3:27:28 0 [Note] InnoDB: Some operating system error numbers are described at https://mariadb.com/kb/en/library/operating-system-error-codes/
+2020-04-18  3:27:28 0 [ERROR] InnoDB: Could not find a valid tablespace file for ``db`.`django_content_type``. Please refer to https://mariadb.com/kb/en/innodb-data-dictionary-troubleshooting/ for how to resolve the issue.
+2020-04-18  3:27:28 0 [Warning] InnoDB: Ignoring tablespace for `db`.`django_content_type` because it could not be opened.
+2020-04-18  3:27:28 0 [ERROR] InnoDB: Operating system error number 3 in a file operation.
+2020-04-18  3:27:28 0 [ERROR] InnoDB: The error means the system cannot find the path specified.
+2020-04-18  3:27:28 0 [ERROR] InnoDB: If you are installing InnoDB, remember that you must create directories yourself, InnoDB does not create them.
+2020-04-18  3:27:28 0 [ERROR] InnoDB: Cannot open datafile for read-only: '.\db\django_migrations.ibd' OS error: 203
+2020-04-18  3:27:28 0 [ERROR] InnoDB: Operating system error number 203 in a file operation.
+2020-04-18  3:27:28 0 [Note] InnoDB: Some operating system error numbers are described at https://mariadb.com/kb/en/library/operating-system-error-codes/
+2020-04-18  3:27:28 0 [ERROR] InnoDB: Could not find a valid tablespace file for ``db`.`django_migrations``. Please refer to https://mariadb.com/kb/en/innodb-data-dictionary-troubleshooting/ for how to resolve the issue.
+2020-04-18  3:27:28 0 [Warning] InnoDB: Ignoring tablespace for `db`.`django_migrations` because it could not be opened.
+2020-04-18  3:27:28 0 [ERROR] InnoDB: Operating system error number 3 in a file operation.
+2020-04-18  3:27:28 0 [ERROR] InnoDB: The error means the system cannot find the path specified.
+2020-04-18  3:27:28 0 [ERROR] InnoDB: If you are installing InnoDB, remember that you must create directories yourself, InnoDB does not create them.
+2020-04-18  3:27:28 0 [ERROR] InnoDB: Cannot open datafile for read-only: '.\db\django_session.ibd' OS error: 203
+2020-04-18  3:27:28 0 [ERROR] InnoDB: Operating system error number 203 in a file operation.
+2020-04-18  3:27:28 0 [Note] InnoDB: Some operating system error numbers are described at https://mariadb.com/kb/en/library/operating-system-error-codes/
+2020-04-18  3:27:28 0 [ERROR] InnoDB: Could not find a valid tablespace file for ``db`.`django_session``. Please refer to https://mariadb.com/kb/en/innodb-data-dictionary-troubleshooting/ for how to resolve the issue.
+2020-04-18  3:27:28 0 [Warning] InnoDB: Ignoring tablespace for `db`.`django_session` because it could not be opened.
+2020-04-18  3:27:28 0 [ERROR] InnoDB: Operating system error number 3 in a file operation.
+2020-04-18  3:27:28 0 [ERROR] InnoDB: The error means the system cannot find the path specified.
+2020-04-18  3:27:28 0 [ERROR] InnoDB: If you are installing InnoDB, remember that you must create directories yourself, InnoDB does not create them.
+2020-04-18  3:27:28 0 [ERROR] InnoDB: Cannot open datafile for read-only: '.\db\mapout_app_project.ibd' OS error: 203
+2020-04-18  3:27:28 0 [ERROR] InnoDB: Operating system error number 203 in a file operation.
+2020-04-18  3:27:28 0 [Note] InnoDB: Some operating system error numbers are described at https://mariadb.com/kb/en/library/operating-system-error-codes/
+2020-04-18  3:27:28 0 [ERROR] InnoDB: Could not find a valid tablespace file for ``db`.`mapout_app_project``. Please refer to https://mariadb.com/kb/en/innodb-data-dictionary-troubleshooting/ for how to resolve the issue.
+2020-04-18  3:27:28 0 [Warning] InnoDB: Ignoring tablespace for `db`.`mapout_app_project` because it could not be opened.
+2020-04-18  3:27:28 0 [Note] InnoDB: 128 out of 128 rollback segments are active.
+2020-04-18  3:27:28 0 [Note] InnoDB: Creating shared tablespace for temporary tables
+2020-04-18  3:27:28 0 [Note] InnoDB: Setting file 'C:\xampp\mysql\data\ibtmp1' size to 12 MB. Physically writing the file full; Please wait ...
+2020-04-18  3:27:28 0 [Note] InnoDB: File 'C:\xampp\mysql\data\ibtmp1' size is now 12 MB.
+2020-04-18  3:27:28 0 [Note] InnoDB: Waiting for purge to start
+2020-04-18  3:27:28 0 [Note] InnoDB: 10.4.11 started; log sequence number 576201; transaction id 977
+2020-04-18  3:27:28 0 [Note] InnoDB: Loading buffer pool(s) from C:\xampp\mysql\data\ib_buffer_pool
+2020-04-18  3:27:28 0 [Note] Plugin 'FEEDBACK' is disabled.
+2020-04-18  3:27:28 0 [Note] InnoDB: Buffer pool(s) load completed at 200418  3:27:28
+2020-04-18  3:27:28 0 [Note] Server socket created on IP: '::'.
+2020-04-18  3:27:29 6 [Warning] Failed to load slave replication state from table mysql.gtid_slave_pos: 1932: Table 'mysql.gtid_slave_pos' doesn't exist in engine
+2020-04-18  3:27:29 0 [Note] Reading of all Master_info entries succeeded
+2020-04-18  3:27:29 0 [Note] Added new Master_info '' to hash table
+2020-04-18  3:27:29 0 [Note] C:\xampp\mysql\bin\mysqld.exe: ready for connections.
+Version: '10.4.11-MariaDB'  socket: ''  port: 3306  mariadb.org binary distribution
+2020-04-18  3:28:00 9 [ERROR] InnoDB: Table `mysql`.`innodb_table_stats` not found.
+2020-04-18  3:32:43 9 [Warning] Aborted connection 9 to db: 'real_mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-18  3:34:36 16 [Warning] Aborted connection 16 to db: 'real_mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-18  3:35:07 19 [Warning] Aborted connection 19 to db: 'real_mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-18  3:35:37 22 [Warning] Aborted connection 22 to db: 'real_mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-18  3:38:48 25 [Warning] Aborted connection 25 to db: 'real_mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-18  3:42:42 29 [Note] InnoDB: Recalculation of persistent statistics requested for table `real_mapout_db`.`mapout_app_participate_participants` index `mapout_app_participate_p_participate_id_user_id_6030f2b1_uniq` but the required persistent statistics storage is not present or is corrupted. Using transient stats instead.
+2020-04-18  3:52:20 31 [Warning] Aborted connection 31 to db: 'real_mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-18  3:54:35 39 [Warning] Aborted connection 39 to db: 'real_mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-18  3:56:09 85 [Warning] Aborted connection 85 to db: 'real_mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-18  4:01:07 106 [Warning] Aborted connection 106 to db: 'real_mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-18  4:02:35 131 [Warning] Aborted connection 131 to db: 'real_mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-18  4:06:06 200 [Warning] Aborted connection 200 to db: 'real_mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-18  4:07:36 250 [Warning] Aborted connection 250 to db: 'real_mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-18  4:08:23 266 [Warning] Aborted connection 266 to db: 'real_mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-18  4:12:40 268 [Warning] Aborted connection 268 to db: 'real_mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-18  4:18:38 297 [Warning] Aborted connection 297 to db: 'real_mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-18  4:18:48 320 [Note] InnoDB: Recalculation of persistent statistics requested for table `real_mapout_db`.`mapout_app_project_members` index `mapout_app_project_members_project_id_user_id_3ae5b311_uniq` but the required persistent statistics storage is not present or is corrupted. Using transient stats instead.
+2020-04-18  4:21:36 317 [Warning] Aborted connection 317 to db: 'real_mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-18  4:23:01 341 [Warning] Aborted connection 341 to db: 'real_mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-18  4:23:29 345 [Warning] Aborted connection 345 to db: 'real_mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-18  4:24:18 349 [Warning] Aborted connection 349 to db: 'real_mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-18  4:27:15 384 [Warning] Aborted connection 384 to db: 'real_mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-18  4:32:00 401 [Warning] Aborted connection 401 to db: 'real_mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-18  4:34:19 403 [Warning] Aborted connection 403 to db: 'real_mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-18  4:42:16 409 [Warning] Aborted connection 409 to db: 'real_mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-18  4:43:39 416 [Warning] Aborted connection 416 to db: 'real_mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-18  4:48:40 429 [Warning] Aborted connection 429 to db: 'real_mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-18  4:52:15 431 [Warning] Aborted connection 431 to db: 'real_mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-18  4:52:26 517 [Warning] Aborted connection 517 to db: 'real_mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-18  4:57:22 520 [Warning] Aborted connection 520 to db: 'real_mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-18  4:57:37 526 [Warning] Aborted connection 526 to db: 'real_mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-18  4:57:47 528 [Warning] Aborted connection 528 to db: 'real_mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-18  4:59:17 531 [Warning] Aborted connection 531 to db: 'real_mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-18  5:00:39 533 [Warning] Aborted connection 533 to db: 'real_mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-18  5:04:08 535 [Warning] Aborted connection 535 to db: 'real_mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-18  5:07:01 539 [Warning] Aborted connection 539 to db: 'real_mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-18  5:07:08 541 [Warning] Aborted connection 541 to db: 'real_mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-18  5:07:23 543 [Warning] Aborted connection 543 to db: 'real_mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-18  5:15:34 546 [Warning] Aborted connection 546 to db: 'real_mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-18  5:20:11 564 [Warning] Aborted connection 564 to db: 'real_mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-18  5:21:22 574 [Warning] Aborted connection 574 to db: 'real_mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2020-04-18  5:22:23 579 [Warning] Aborted connection 579 to db: 'real_mapout_db' user: 'root' host: 'localhost' (Got an error reading communication packets)
