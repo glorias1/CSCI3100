@@ -23,7 +23,7 @@ from mapout_app.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('home/', home, name='home'),
+    path('', home, name='home'),
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/login/', login_view1, name='login'),
     path('accounts/signup/', signup_view, name='signup'),
@@ -34,4 +34,6 @@ urlpatterns = [
     path('settings/', settings_, name='settings'),
     path('createproject', create_project, name='createproject'),
     path('createtask', create_task, name='createtask'),
+    path(r'^project/(?P<id>\d+)/$', view_project, name='viewproject'),
+    path(r'^project/(?P<id1>\d+)/(?P<id2>\d+)/$', view_task, name='viewtask')
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

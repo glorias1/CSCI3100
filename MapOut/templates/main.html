@@ -25,7 +25,7 @@
 							{% for one_project in projects %}
 							<tr>
 								<th scope="row">{{ forloop.counter }}</th>
-								<td>{{one_project.project_name}}</td>
+								<td><a href="{% url 'viewproject' one_project.id %}">{{one_project.project_name}}</a></td>
 								<td>{{one_project.project_description}}</td>
 								<td>{{one_project.create_date}}</td>
 							</tr>
@@ -52,7 +52,7 @@
 						{% if tasks %}
 							{% for one_task in tasks %}
 								<th scope="row">{{ forloop.counter }}</th>
-								<td>{{one_task.task_name}}</td>
+								<td><a href="{% url 'viewtask' one_task.belong_project.id one_task.id %}">{{one_task.task_name}}</a></td>
 								<td>{{one_task.belong_project.project_name}}</td>
 								<td>wait to amend</td>
 								<td>{{one_task.due_date}}</td>
@@ -60,27 +60,6 @@
 							{% else %}
 								<th scope="row" colspan="5">you dont have any ask now!</th>
 						{% endif %}
-					<!--<tr>
-						<th scope="row">1</th>
-						<td>task 1</td>
-						<td>Project1</td>		
-						<td>Otto</td>
-						<td>@mdo</td>
-					</tr>
-					<tr>
-						<th scope="row">2</th>
-						<td>task 2</td>
-						<td>Project 1</td>
-						<td>Thornton</td>
-						<td>@fat</td>
-					</tr>
-					<tr>
-						<th scope="row">3</th>
-						<td>task 3</td>
-						<td>Project 2</td>	
-						<td>the Bird</td>
-						<td>@twitter</td>
-					</tr>-->
 					</tbody>
 				</table>
 			</div>	

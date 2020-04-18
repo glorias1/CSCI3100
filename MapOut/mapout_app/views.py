@@ -93,3 +93,15 @@ def create_task(request):
             createtask.save()
             createtask.incharge.add(request.user)
     return render(request, 'create_task.html', options)
+
+def view_project(request, id):
+    viewing_project = Project.objects.get(id=id)
+    tasks = Tasks.objects.filter(belong_project = viewing_project)
+    context = {'viewing_project':viewing_project, 'tasks':tasks}
+    return render(request, 'project.html', context)
+
+def view_task(request, id1 , id2):
+    task = Tasks.objects.get(id = id2)
+    viewing_project = Project.objects.get(id=id1)
+    context = {'viewing_project':viewing_project, 'task':task}
+    return render(request, 'task.html', context)
