@@ -3,7 +3,27 @@
     this is the dynamic project page of project: {{viewing_project.project_name}}<br>
     <h1>{{viewing_project.project_name}}</h1><br>
     Tasks:(here want to have a to-do list with ticks and box)<br>
-    {% for one_task in tasks %}
-        {{forloop.counter}}: {{one_task.task_name}}<br>
-    {% endfor %}
+    <form method="POST" action="{% url 'viewproject' viewing_project.id %}"><table class="table table-dark">
+        <thead>
+            <tr>
+                <th scope="col" style="width: 1rem;">Done</th>
+               <th scope="col">Tasks</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for one_task in tasks %}
+            <tr>
+                <th scope="row"><input type="checkbox" name="task_checkbox" id="task_checkbox"></th>
+                <td><a href="{% url 'viewtask' viewing_project.id one_task.id %}" class="btn">{{forloop.counter}}. {{one_task.task_name}}</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+        <tfoot>
+            <th colspan="2"><input type="submit" class="btn btn-light" value="Save"></th>
+        </tfoot>
+    </table></form>
+    need a chat room<br>
+    add member/ owner.<br>
+    manage project e.g close/delete project?
+
 {% endblock %}

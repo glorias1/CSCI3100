@@ -18,3 +18,13 @@ class Tasks(models.Model):
     finish = models.BooleanField(default=False)
     last_modify = models.DateField('Event Date')
     
+class Chat(models.Model):
+    belong_project = models.ForeignKey(Project, on_delete=models.CASCADE)
+    speaker = models.ForeignKey(User, on_delete=models.CASCADE)
+    sent_date = models.DateField('Event Date')
+    chat_content = models.TextField()
+
+class File(models.Model):
+    belong_task = models.ForeignKey(Tasks, on_delete=models.CASCADE)
+    filename = models.CharField(max_length=50)
+    file = models.FileField(upload_to='files')

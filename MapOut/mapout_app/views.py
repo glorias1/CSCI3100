@@ -5,6 +5,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.core.files.storage import FileSystemStorage
 from .forms import *
 from .models import Project
 
@@ -103,5 +104,12 @@ def view_project(request, id):
 def view_task(request, id1 , id2):
     task = Tasks.objects.get(id = id2)
     viewing_project = Project.objects.get(id=id1)
-    context = {'viewing_project':viewing_project, 'task':task}
+    taskfiles = File.objects.filter(belong_task = id2)
+    uploadfile = File()
+    context = {'viewing_project':viewing_project, 'task':task, 'taskfiles':taskfiles}
+    if request.method =='POST' and request.FILES['myfile']:
+        uploadfile.belong_task = Tasks.objects.get(id = id2)
+        uploadfile.file = request.FILES['myfile']
+        uploadfile.filename = request.FILES['myfile'].name
+        uploadfile.save()
     return render(request, 'task.html', context)

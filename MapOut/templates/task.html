@@ -1,4 +1,32 @@
 {% extends 'index.html' %}
 {% block content %}
-this is a dynamic task page of task: {{task.task_name}} in project: {{viewing_project.project_name}}
+this is a dynamic task page of task: {{task.task_name}} in project: {{viewing_project.project_name}}<br>
+upload file:
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="file" name="myfile">
+    <button type="submit">Upload</button>
+  </form>
+  <table class="table table-dark">
+      <thead>
+            <tr>
+            <th>#</th>
+            <th>File name</th>
+            <th>Size</th>
+            <th><i class="fas fa-arrow-down"></i></th>
+            <th><i class="fas fa-trash-alt"></i></th>
+            </tr>
+      </thead>
+      <tbody>
+          {% for one_file in taskfiles %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{one_file.filename}}</td>
+                <td>{{one_file.file.size|filesizeformat}}</td>
+                <td><button class="btn btn-dark" href="#"><i class="fas fa-arrow-down"></i></button></td>
+                <td><button class="btn btn-dark" href="#"><i class="fas fa-trash-alt"></i></button></td>
+            </tr>
+          {% endfor %}
+      </tbody>
+  </table>
 {% endblock %}
