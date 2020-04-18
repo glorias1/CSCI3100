@@ -1,51 +1,137 @@
-{% extends 'index.html'%}
-{% block content %}
-<h2 style="color:#701D1D;">Help</h2>
-<div id="accordion" class="help-style">
-  <div class="card">
-	<div class="card-header help-collapse-head" id="headingOne">
-	  <h5 class="mb-0">
-		<button type="button" class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" >
-		  <font color="#FFF">Tasks</font>
-		</button>
-	  </h5>
+<!--extends 'index.html'-->
+<!--block content-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style>
+		body {
+			height: 100%;
+		}
+		footer {
+			height: 7%;
+			box-sizing: border-box;
+			position: absolute;
+			bottom: 0;
+			width: 100%;
+			background-color: #badfdb;
+		}
+		button {
+			font: 1.2em "Fira Sans", sans-serif;;
+			background-color: #fcf9ea;
+			border: none;
+			color: #49beb7;
+		}
+		.hide {
+			display: none;
+		}
+
+		hr {
+			width: 70%;
+		}
+
+		p {
+			font: 1.2em "Fira Sans", sans-serif;
+		}
+	</style>
+	<title>Get Help</title>
+
+</head>
+
+<body style="background-color:#fcf9ea;">
+	<center>
+	<br>
+	<h1 style="color: #ff8a5c;"><center>Help Center</center></h1>
+	<hr>
+
+ 	<div class="Tasks">
+		<button id="tasksT" onclick="myFunction()">▶ How to add Tasks?</button>
+		<p id="article" class="hide">
+			In MapOut, project leader can add tasks to a project by clicking the plus (+) sign in the right bottom corner. 
+			<br> Task name, due date and responsible members should be filled in. 
+			<br> Then you click <i><b>Add</b></i> to finish the process.
+			<br> Tasks can be set to finished by the responsible members. 
+			<br> Reminder email will be sent to resopnsible members in a certain periods before the due date of the tasks.
+		</p>
 	</div>
 
-	<div id="collapseOne" class="collapse help-collapse-body" aria-labelledby="headingOne" data-parent="#accordion">
-	  <div class="card-body">
-		In MapOut, project leader can add tasks to a project by clicking the + sign in the right bottom corner. Task name, due date and responsible members should be filled in. Then you click Add to finish the process.
-		  <br>
-		<br> Tasks can be set to finished by the responsible members. Reminder email will be sent to resopnsible members in a certain periods before the due date of the tasks.
-	  </div>
+	<script>
+		function myFunction() {
+  		var x = document.getElementById("article");
+		var y = document.getElementById("tasksT");
+ 		if (x.style.display === "none") {
+    		x.style.display = "block";
+			if(y.innerHTML === "▶ How to add Tasks?"){
+				y.innerHTML = "▼ How to add Tasks?";
+			}
+  		} else {
+    		x.style.display = "none";
+			y.innerHTML = "▶ How to add Tasks?";
+  		}
+		}
+	</script>
+	
+	<hr>
+
+	<div class="create">
+		<button onclick="f()" id="createT">▶ How to create a project?</button>
+
+		<p id="a2" class="hide">
+			For creating a project, first click the + sign in the right bottom corner and select 'Create a project'.
+			<br>You need to enter the name and description of the project. 
+			<br>The person who created the project will be set as the Projectc leader as default. 
+			<br>Then, the project leader can invite other people to be project members.		
+		</p>
 	</div>
-  </div>
-  <div class="card">
-	<div class="card-header help-collapse-head" id="headingTwo">
-	  <h5 class="mb-0">
-		<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-		  <font color="#FFF">How to create a project?</font>
-		</button>
-	  </h5>
+	
+	<script>
+		function f() {
+  		var x = document.getElementById("a2");
+		var y = document.getElementById("createT")
+ 		if (x.style.display === "none") {
+			if(y.innerHTML === "▶ How to create a project?"){
+				y.innerHTML = "▼ How to create a project?";
+			}
+    		x.style.display = "block";
+  		} else {
+    		x.style.display = "none";
+			y.innerHTML = "▶ How to create a project?";
+  		}
+		}
+	</script>
+
+	<hr>
+
+	<div class="schedule">
+		<button onclick="f2()" id="scheduleT">▶ What is Schedule? </button>
+
+		<p id="a1" class="hide">
+			The Google calendar is connected if you allow the permission. 
+			<br> You can manage your schedule when the tasks are added. 
+			<br> The event will be created on your calendar accordingly.
+		</p>
 	</div>
-	<div id="collapseTwo" class="collapse help-collapse-body" aria-labelledby="headingTwo" data-parent="#accordion">
-	  <div class="card-body">
-		For creating a project, first click the + sign in the right bottom corner and select 'Create a project' .You need to enter the name and description of the project. The person who created the project will be set as the Projectc leader as default. Then, the project leader can invite other people to be project members.
-	  </div>
-	</div>
-  </div>
-  <div class="card">
-	<div class="card-header help-collapse-head" id="headingThree">
-	  <h5 class="mb-0">
-		<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-		  <font color="#FFF">What is Schedule?</font>
-		</button>
-	  </h5>
-	</div>
-	<div id="collapseThree" class="collapse help-collapse-body" aria-labelledby="headingThree" data-parent="#accordion">
-	  <div class="card-body">
-		The Google calendar is connected if you allow the permission. You can manage your schedule when the tasks are added. The event will be created on your calendar accordingly.
-	  </div>
-	</div>
-  </div>
-</div>
-{% endblock %}
+	
+	<script>
+		function f2() {
+  		var x = document.getElementById("a1");
+		var y = document.getElementById("scheduleT")
+ 		if (x.style.display === "none") {
+			if(y.innerHTML === "▶ What is Schedule?"){
+				y.innerHTML = "▼ What is Schedule?";
+			}
+    		x.style.display = "block";
+  		} else {
+    		x.style.display = "none";
+			y.innerHTML = "▶ What is Schedule?";
+  		}
+		}
+	</script>
+		<footer id="footer">
+			<a href="./about_us.html">About MapOut</p>
+		</footer>
+	</center>
+
+</body>
+</html>
