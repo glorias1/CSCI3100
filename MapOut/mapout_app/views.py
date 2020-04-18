@@ -7,7 +7,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.core.files.storage import FileSystemStorage
 from .forms import *
-from .models import Project
+from .models import *
 
 
 def home(request):

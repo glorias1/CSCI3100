@@ -4,7 +4,7 @@
 <div id="home-big-title"   >
   <div class="form-group rounded" style="background-color: rgba(255, 255, 255, 0.9);padding: 1rem;">
    {% if form.errors %}
-   <p>Wrong Username or password. Please try again.</p>
+   <span style="color: red;"><p>Wrong Username or password. Please try again.</p></span>
    {% endif %}
    <form method="POST" action="{% url 'login' %}" style="color: black;margin-left: 1rem;margin-right: 1rem; ">
       {% csrf_token %}

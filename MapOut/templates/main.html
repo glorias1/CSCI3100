@@ -12,7 +12,7 @@
 			<!--project-->
 			<div class="table-container" >
 				<table class="table table-dark round-table overflow-hidden" style="border-radius:6px;">
-					<thead class="table-borderless" id="project-thead">
+					<thead class="table-borderless">
 					<tr>
 						<th scope="col">#</th>
 						<th scope="col">Project</th> <!--(click and go to project page or what?)-->
@@ -20,7 +20,7 @@
 						<th scope="col">Creation date</th>
 					</tr>
 					</thead>
-					<tbody class="table-bordered" id="project-tbody">
+					<tbody class="table-bordered">
 						{% if projects %}
 							{% for one_project in projects %}
 							<tr>
@@ -39,7 +39,7 @@
 			<!--task-->
 			<div class="table-container">
 				<table class="table table-dark round-table overflow-hidden" style="border-radius:6px;">
-					<thead class="table-borderless" id="task-thead">
+					<thead class="table-borderless">
 					<tr >
 						<th scope="col">#</th>
 						<th scope="col">Task name</th>
@@ -48,7 +48,7 @@
 						<th scope="col">due date</th>
 					</tr>
 					</thead>
-					<tbody class="table-bordered" id="task-tbody">
+					<tbody class="table-bordered">
 						{% if tasks %}
 							{% for one_task in tasks %}
 								<th scope="row">{{ forloop.counter }}</th>

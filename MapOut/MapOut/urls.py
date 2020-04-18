@@ -23,7 +23,7 @@ from mapout_app.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', home, name='home'),
+    path('home/', home, name='home'),
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/login/', login_view1, name='login'),
     path('accounts/signup/', signup_view, name='signup'),
