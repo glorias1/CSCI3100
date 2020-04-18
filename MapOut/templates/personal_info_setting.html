@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Setting</title>
+	<title>Personal Information Setting</title>
 	<meta name="author" content="2020Fall CSCI3100 Group 10">
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=100%, initial-scale=1">
-	<body style="background-color:rgb(255, 230, 230);">
 	<meta name="csrf-param" content="authenticity_token">
 	<meta name="csrf-token content="...">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -22,10 +21,23 @@
             background: no-repeat center 30px;
             background-size:280px
           }
+
+		footer {
+			height: 5%;
+			box-sizing: border-box;
+			position: absolute;
+			bottom: 0;
+			width: 100%;
+			background-color: #badfdb;
+			font: caption;
+            font-size: medium;
+        }
 	</style>
 </head>
 <body>
-	<form action="" style="width: 500px">
+	<h1>MapOut</h1>
+	<center>
+	<form action="" style="width: 30%">
 		<label for="username">Username</label>
 		<input type="text" name="username" id="username" class="form-control">
 		<label for="password">Password</label>
@@ -34,11 +46,16 @@
 		<input type="password" name="r-password" id="r-password" class="form-control">
 		<label for="privacy">Privacy Setting</label>
 		<select name="privacy" id="privacy" class="form-control">
-			<option value="public">public</option>
-			<option value="private">private</option>
+			<option value="public">Public</option>
+			<option value="private">Private</option>
 		</select>
 	</form>
 	<button type="button" class="btn btn-outline-primary" style="margin-top: 15px;">Save</button>
+	
+	<footer id="footer">
+        <a href="./help.html" style="color:black;"> Need help? </p>
+    </footer>
+	</center>
 </body>
 
 
