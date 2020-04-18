@@ -16,9 +16,10 @@
 			bottom: 0;
 			width: 100%;
 			background-color: #badfdb;
+			font: caption;
 		}
 		button {
-			font: 1.2em "Fira Sans", sans-serif;;
+			font: 1.2em "Arial Black", Gadget, sans-serif;
 			background-color: #fcf9ea;
 			border: none;
 			color: #ff8a5c;
@@ -28,11 +29,21 @@
 		}
 
 		hr {
-			width: 70%;
+			width: 60%;
 		}
 
 		p {
-			font: 1.2em "Fira Sans", sans-serif;
+			font: caption;
+			width: 60%;
+		}
+
+		h1 {
+			margin: 25px auto 10px auto;
+			padding-left: 20%;
+			color: black;
+			font-family: "Arial Black", Gadget, sans-serif;
+			display: flex;
+			flex-direction: row;
 		}
 	</style>
 	<title>Get Help</title>
@@ -40,19 +51,18 @@
 </head>
 
 <body style="background-color:#fcf9ea;">
-	<center>
 	<br>
-	<h1 style="color: Black;"><center>Help Center</center></h1>
+	<h1>Help Center</h1>
 	<hr>
-
+	<center>
  	<div class="Tasks">
 		<button id="tasksT" onclick="myFunction()">▶ How to add Tasks?</button>
 		<p id="article" class="hide">
 			In MapOut, project leader can add tasks to a project by clicking the plus (+) sign in the right bottom corner. 
-			<br> Task name, due date and responsible members should be filled in. 
-			<br> Then you click <i><b>Add</b></i> to finish the process.
-			<br> Tasks can be set to finished by the responsible members. 
-			<br> Reminder email will be sent to resopnsible members in a certain periods before the due date of the tasks.
+			Task name, due date and responsible members should be filled in. 
+			Then you click <i><b>Add</b></i> to finish the process.
+			Tasks can be set to finished by the responsible members. 
+			Reminder email will be sent to resopnsible members in a certain periods before the due date of the tasks.
 		</p>
 	</div>
 
