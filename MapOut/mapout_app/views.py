@@ -21,7 +21,12 @@ def index(request):
     projects = Project.objects.filter(members = request.user)
     tasks = Tasks.objects.filter(belong_project__in = projects)   ##filter all the task in the list of project objects
     context = {'projects':projects, 'tasks':tasks}
-    return render(request, 'main.html', context)
+    return render(request, 'main_projects.html', context)
+
+def index_tasks(request):
+    tasks = Tasks.objects.filter(incharge = request.user)
+    context = {'tasks':tasks}
+    return render(request, 'main_tasks.html', context)
 
 def login_btn(request):
     return render(request, 'registration/login.html')
@@ -112,19 +117,33 @@ def view_project(request, id):
             viewing_project.delete()
             time.sleep(3)
             return redirect('/index/')
+        if request.POST.get('add_name'):
+            target_user_name = request.POST.get('add_name')
+            if User.objects.get(username=target_user_name):
+                target_user = User.objects.get(username=target_user_name)
+                viewing_project.members.add(target_user)
+
     return render(request, 'project.html', context)
 
 def view_task(request, id1 , id2):
     task = Tasks.objects.get(id = id2)
     viewing_project = Project.objects.get(id=id1)
     taskfiles = File.objects.filter(belong_task = id2)
+    project_members = viewing_project.members.all()
     uploadfile = File()
     #list_of_proj = Project.objects.filter(members=request.user)
     isinproject = True
-    context = {'viewing_project':viewing_project, 'task':task, 'taskfiles':taskfiles, 'isinproject':isinproject}
-    if request.method =='POST' and request.FILES['myfile']:
-        uploadfile.belong_task = Tasks.objects.get(id = id2)
-        uploadfile.file = request.FILES['myfile']
-        uploadfile.filename = request.FILES['myfile'].name
-        uploadfile.save()
+    context = {'viewing_project':viewing_project, 'task':task, 'taskfiles':taskfiles, 'isinproject':isinproject, 'project_members':project_members}
+    if request.method =='POST':
+        if request.POST.get('add_incharge'):
+            add_incharge_id = request.POST.get('add_incharge')
+            add_incharge_user = User.objects.get(id = add_incharge_id)
+            task.incharge.add(add_incharge_user)
+        if request.POST.get('myfile'):
+            if request.FILES['myfile']:
+                uploadfile.belong_task = Tasks.objects.get(id = id2)
+                uploadfile.file = request.FILES['myfile']
+                uploadfile.filename = request.FILES['myfile'].name
+                uploadfile.save()
+        
     return render(request, 'task.html', context)

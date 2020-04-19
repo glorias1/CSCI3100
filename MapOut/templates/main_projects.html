@@ -2,25 +2,27 @@
 {% load static %}
 {% block content %}
 {% if projects %}
-
-	{% spaceless %}{% for one_project in projects %}
+<div class="project-top-header"></div>
+<div class="card-group">
+	{% for one_project in projects %}
 	<a href="{% url 'viewproject' one_project.id %}"><div class="card" style="width: 15rem;height: 15rem; display: inline-block; margin:0.3rem;">
-		<div class="card-body">
+		<div class="card-header">
 			<h5 class="card-title">{{one_project.project_name}}</h5>
+		</div>
+		<div class="card-body">
 			<h7 class="card-subtitle mb-2 text-muted">Tasks</h7>
-			{% with count=0 %}
 			{% for one_task in tasks %}
 				{% if forloop.counter < 5 %}
 					{% if one_task.belong_project == one_project  %}
 						<li class="card-text">{{one_task.task_name}}</li>
 					{% endif %}
 				{% else %}
-				...
+				<p>...</p>
 				{% endif %}
 			{% endfor %}
-			{% endwith %}
 		</div>
 	</div></a>
-	{% endfor %}{% endspaceless %}
+	{% endfor %}
+</div>
 {% endif %}
 {% endblock %}

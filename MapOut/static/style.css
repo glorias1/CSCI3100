@@ -64,7 +64,7 @@ html, body {
 	
 }
 .rightcontent {
-padding: 20px 20px 20px 200px;
+	padding-left:180px;
 	background: #fcf9ea;
 	height: 100vh;
 }
@@ -263,7 +263,9 @@ input[type="checkbox"].switch_1{
   z-index: -1;
 }
 
-.project_name_area{
-	background:#ebe5ca ;
-	height: 50rem;
+.project-top-header{
+	background:#fffef9 ;
+	height: 3rem;
 }
+
+
