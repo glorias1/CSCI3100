@@ -2,12 +2,13 @@
 {% load static %}
 {% block content %}
 <div class="project-top-header unselectable">
-  <h5 style="padding-top: 10px;display: inline-block;" >Task: {{task.task_name}} of Project: {{viewing_project.project_name}}</h5>
+  <h5 style="padding-top: 10px;display: inline-block;" ><span style="color: darkgray;">Task •</span> {{task.task_name}} <span style="color: darkgray;">of Project: {{viewing_project.project_name}}</span></h5>
   {% if task.finish == False %}
     <p class="badge badge-primary text-wrap" style="color: white;">Not yet finished</p>
   {% else %}
     <p class="badge badge-secondary text-wrap" style="color: white;">Finished</p>
   {% endif %}
+{% if is_member %}  
   <button class="btn btn-sm" type="button" data-toggle="modal" data-target="#tasknameModal"><i class="fas fa-pen fa-xs"></i></button>
 </div>
 <div class="button-bar rounded">
@@ -172,4 +173,7 @@
       </div>
     </div>
   </div>
+  {% else %}
+    <span>You does not belong to this project.</span>
+  {% endif %}
 {% endblock %}
