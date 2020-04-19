@@ -5,9 +5,10 @@
 <form method="POST" action="{% url 'createproject' %}">
     {% csrf_token %}
     <label for="project_name">Project name:</label>
-    <input type="text" name="project_name" id="project_name" ><br>
+    <input type="text" name="project_name" id="project_name" class="form-control" style="width: 30rem;" size="100" required><br>
     <label for="project_description">Description:</label>
-    <input type="text" name="project_description" id="project_description"><br>
+    <textarea name="project_description" id="project_description" class="form-control" style="width: 40rem;" required></textarea><br>
     <button class='btn btn-light' type="submit">Create</button>
 </form>
+
 {% endblock%}

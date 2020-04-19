@@ -1,6 +1,5 @@
 html, body {
     max-width: 100%;
-    overflow: hidden;
 }
 
 .btn:focus {
@@ -187,7 +186,6 @@ padding: 20px 20px 20px 200px;
   position: fixed;
   z-index: 1;
   top: 0;
-  overflow-x: hidden;
   padding-top: 20px;
 }
 
@@ -263,4 +261,9 @@ input[type="checkbox"].switch_1{
 
 .modal-backdrop {
   z-index: -1;
+}
+
+.project_name_area{
+	background:#ebe5ca ;
+	height: 50rem;
 }

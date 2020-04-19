@@ -29,12 +29,24 @@
 	{% if request.user.is_authenticated %}
 	<header id = "nav-top"></header>
 	<div id="nav-placeholder">{% include 'function_bar.html' %}</div>
-	<div class="wrapper rightcontent" tabindex="-1">
+	<div class="wrapper rightcontent" tabindex="-1" style="overflow-y: auto;">
 		{% block content %}
 		{% endblock %}
 	</div>
 	{% else %}
 	<p >please login! </p>
 	{% endif %}
+	<div class="add-project-button">
+		<div class="dropup">
+			<button type="button" class="btn float" data-toggle="dropdown">
+				<i class="fas fa-plus fa-lg my-float" ></i>
+			</button>
+			<div class="dropdown-menu">
+			  <a class="dropdown-item" href="{% url 'createproject' %}">Create a project</a>
+			  <a class="dropdown-item" href="{% url 'createtask' %}">Create a task</a>
+			</div>
+		  </div>
+
+	</div>
 </body>
 </html>

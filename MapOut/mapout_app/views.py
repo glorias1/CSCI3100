@@ -3,11 +3,14 @@ from datetime import datetime
 from django.shortcuts import render, redirect
 # Create your views here.
 from django.http import HttpResponse
+from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.core.files.storage import FileSystemStorage
+from django.urls import reverse
 from .forms import *
 from .models import *
+import time
 
 
 def home(request):
@@ -73,6 +76,8 @@ def create_project(request):
             createproject.save()
             createproject.owner.add(request.user)    ##add current usre as owner
             createproject.members.add(request.user)   ##add current user as a member
+            messages.success(request, 'You have successfully created a project.')
+            return HttpResponseRedirect(reverse('viewproject', args=[createproject.id]))
     return render(request, 'create_project.html')
 
 
@@ -93,12 +98,20 @@ def create_task(request):
                 createtask.task_description = request.POST.get('task_description')
             createtask.save()
             createtask.incharge.add(request.user)
+            return HttpResponseRedirect(reverse('viewtask', args=[createtask.belong_project.id,createtask.id]))
     return render(request, 'create_task.html', options)
 
 def view_project(request, id):
     viewing_project = Project.objects.get(id=id)
     tasks = Tasks.objects.filter(belong_project = viewing_project)
     context = {'viewing_project':viewing_project, 'tasks':tasks}
+    if request.method=='POST':
+        if request.POST.get('deleteyes'):
+            for each in tasks:
+                each.delete()
+            viewing_project.delete()
+            time.sleep(3)
+            return redirect('/index/')
     return render(request, 'project.html', context)
 
 def view_task(request, id1 , id2):
@@ -106,7 +119,9 @@ def view_task(request, id1 , id2):
     viewing_project = Project.objects.get(id=id1)
     taskfiles = File.objects.filter(belong_task = id2)
     uploadfile = File()
-    context = {'viewing_project':viewing_project, 'task':task, 'taskfiles':taskfiles}
+    #list_of_proj = Project.objects.filter(members=request.user)
+    isinproject = True
+    context = {'viewing_project':viewing_project, 'task':task, 'taskfiles':taskfiles, 'isinproject':isinproject}
     if request.method =='POST' and request.FILES['myfile']:
         uploadfile.belong_task = Tasks.objects.get(id = id2)
         uploadfile.file = request.FILES['myfile']
