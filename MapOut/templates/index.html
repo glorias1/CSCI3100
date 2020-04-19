@@ -26,16 +26,13 @@
     }</style>
 </head>
 <body>
-	{% if request.user.is_authenticated %}
+	{% if loggedin == True %}
 	<header id = "nav-top"></header>
 	<div id="nav-placeholder">{% include 'function_bar.html' %}</div>
 	<div class="wrapper rightcontent" tabindex="-1" style="overflow-y: auto;">
 		{% block content %}
 		{% endblock %}
 	</div>
-	{% else %}
-	<a href="{% url 'login' %}">please login! </a>
-	{% endif %}
 	<div class="add-project-button">
 		<div class="dropup">
 			<button type="button" class="btn float" data-toggle="dropdown">
@@ -46,7 +43,9 @@
 			  <a class="dropdown-item" href="{% url 'createtask' %}">Create a task</a>
 			</div>
 		  </div>
-
 	</div>
+	{% else %}
+		<a href="{% url 'login' %}">please login! </a>
+	{% endif %}
 </body>
 </html>

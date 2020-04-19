@@ -17,9 +17,14 @@ def home(request):
     return render(request, 'home.html')
 
 def index(request):
-    mytasks = Tasks.objects.filter(incharge=request.user).order_by('due_date')
-    context = {'mytasks':mytasks}
-    return render(request, 'main.html', context)
+    if not request.user.is_authenticated:
+        not_loggedin = True
+        context = {'not_loggedin':not_loggedin}
+        return render(request, 'main.html', context)
+    else:
+        mytasks = Tasks.objects.filter(incharge=request.user).order_by('due_date')
+        context = {'mytasks':mytasks}
+        return render(request, 'main.html', context)
 
 def index_projects(request):
     #get the projects involed by the current user

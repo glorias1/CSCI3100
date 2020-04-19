@@ -1,9 +1,11 @@
 {% extends 'index.html' %}
 {% load static %}
 {% block content %}
-<div class="project-top-header unselectable">Tasks</div>
+    <div class="project-top-header unselectable">
+        <h5 style="padding-top: 10px;display: inline-block;" >Tasks</h5>
+    </div>
 {% if tasks %}
-    <div class="card-group">
+    <div class="card-group" style="margin: 1rem 1rem 1rem 1rem;">
         {% for one_task in tasks %}
             <a href="{% url 'viewtask' one_task.belong_project.id one_task.id %}">
                 <div class="card" style="width: 15rem;height: 13rem; display: inline-block; margin:0.3rem;">
