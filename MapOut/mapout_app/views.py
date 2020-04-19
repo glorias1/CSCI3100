@@ -23,13 +23,13 @@ def index(request):
 
 def index_projects(request):
     #get the projects involed by the current user
-    projects = Project.objects.filter(members = request.user)
-    tasks = Tasks.objects.filter(belong_project__in = projects)   ##filter all the task in the list of project objects
+    projects = Project.objects.filter(members = request.user).order_by('closed')
+    tasks = Tasks.objects.filter(belong_project__in = projects)  ##filter all the task in the list of project objects
     context = {'projects':projects, 'tasks':tasks}
     return render(request, 'main_projects.html', context)
 
 def index_tasks(request):
-    tasks = Tasks.objects.filter(incharge = request.user)
+    tasks = Tasks.objects.filter(incharge = request.user).order_by('finish')
     context = {'tasks':tasks}
     return render(request, 'main_tasks.html', context)
 
@@ -119,7 +119,6 @@ def view_project(request, id):
     project_leader = viewing_project.owner.all()
     project_members_not_owner = viewing_project.members.exclude(id__in = project_leader)
     ## see if the request user is the owner of the project
-    
     try:
         if viewing_project.owner.get(id = request.user.id):
             is_owner = True
@@ -148,8 +147,12 @@ def view_project(request, id):
                 viewing_project.members.add(target_user)
         if request.POST.get('add_owner'):
             target_user_name = request.POST.get('add_owner')
-
-
+        if request.POST.get('change_project_name'):
+            viewing_project.project_name = request.POST.get('change_project_name')
+            viewing_project.save()
+        if request.POST.get('change_project_description'):
+            viewing_project.project_description = request.POST.get('change_project_description')
+            viewing_project.save()
     return render(request, 'project.html', context)
 
 def view_task(request, id1 , id2):
@@ -161,8 +164,12 @@ def view_task(request, id1 , id2):
     project_members_in_charge = task.incharge.all()
     project_members_not_in_charge = viewing_project.members.exclude(id__in = project_members_in_charge)
     uploadfile = File()
-    isinproject = True
-    context = {'viewing_project':viewing_project, 'task':task, 'taskfiles':taskfiles, 'isinproject':isinproject, 'project_members_not_in_charge':project_members_not_in_charge}
+    try:
+        if task.incharge.get(id = request.user.id):
+            is_incharge = True
+    except:
+        is_incharge = False
+    context = {'viewing_project':viewing_project, 'task':task, 'taskfiles':taskfiles, 'is_incharge':is_incharge, 'project_members_not_in_charge':project_members_not_in_charge}
     if request.method =='POST':
         ##user add new incharge person from members of the project of the task
         if request.POST.get('add_incharge'):
@@ -176,5 +183,13 @@ def view_task(request, id1 , id2):
                 uploadfile.file = request.FILES['myfile']
                 uploadfile.filename = request.FILES['myfile'].name
                 uploadfile.save()
-        
+        if request.POST.get('finished'):
+            task.finish = True
+            task.save()
+        if request.POST.get('change_task_name'):
+            task.task_name = request.POST.get('change_task_name')
+            task.save()
+        if request.POST.get('change_task_description'):
+            task.task_description = request.POST.get('change_task_description')
+            task.save()
     return render(request, 'task.html', context)

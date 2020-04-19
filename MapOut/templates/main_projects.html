@@ -11,9 +11,9 @@
 			</div>
 			<div class="card-body text-muted">
 				{% if one_project.closed == False %}
-					<span style="color: chartreuse;">●</span> open
+					<span class="badge badge-light" ><span style="color: chartreuse;">●</span> Open</span>
 				{% else %}
-					<span style="color:crimson;">●</span> closed
+					<span class="badge badge-light" ><span style="color:crimson;">●</span> Closed</span>
 				{% endif %}<br>
 				<h7 class="card-subtitle mb-2 text-muted">Tasks</h7>
 				{% for one_task in tasks %}

@@ -11,11 +11,14 @@
                         <h5 class="card-title">{{one_task.task_name}}</h5>
                     </div>
                     <div class="card-body" style="height:7rem ;">
-                        <h7 class="card-subtitle mb-2 text-muted">Project: {{one_task.belong_project.project_name}}</h7>
-                        <p class="card-text">{{one_task.task_description}}</p>
                         {% if one_task.finish == False %}
-                            <p class="text-muted">Not yet finished</p>
-                        {% endif %}
+                            <p class="badge badge-primary text-wrap" style="color: white;">Not yet finished</p>
+                        {% else %}
+                            <p class="badge badge-secondary text-wrap" style="color: white;">Finished</p>
+                        {% endif %}<br>
+                        <h7 class="card-subtitle mb-2 text-muted">Project: {{one_task.belong_project.project_name}}</h7>
+                        
+                        
                     </div>
                     <div class="card-footer text-muted" style="height: 3rem;">
                         Due date: {{one_task.due_date}}

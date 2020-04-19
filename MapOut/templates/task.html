@@ -1,41 +1,71 @@
 {% extends 'index.html' %}
 {% load static %}
 {% block content %}
-<div class="project-top-header">
-  <h1>{{viewing_project.project_name}}/{{task.task_name}}</h1>
+<div class="project-top-header unselectable">
+  <h5 style="padding-top: 10px;display: inline-block;" >Task: {{task.task_name}} of Project: {{viewing_project.project_name}}</h5>
+  {% if task.finish == False %}
+    <p class="badge badge-primary text-wrap" style="color: white;">Not yet finished</p>
+  {% else %}
+    <p class="badge badge-secondary text-wrap" style="color: white;">Finished</p>
+  {% endif %}
+  <button class="btn btn-sm" type="button" data-toggle="modal" data-target="#tasknameModal"><i class="fas fa-pen fa-xs"></i></button>
+</div>
+<div class="button-bar rounded">
+{% if is_incharge %}
+<button type="button" class="btn btn-info" data-toggle="modal" data-target="#addmemberModal">Add a in-charge member</button>
+{% endif %}
+<button type="button" class="btn btn-info" data-toggle="modal" data-target="#finishModal">Task finished</button>
 </div>
 
-<button type="button" class="btn btn-light" data-toggle="modal" data-target="#addmemberModal">Add a in-charge member</button>
+  <!--main section-->
+  <div class="rounded main-section">
+    <!--show task description-->
+    <div style="margin-bottom: 1rem;">
+      <h6 class="unselectable" >Task Description <button class="btn btn-sm" type="button" data-toggle="modal" data-target="#taskdescriptionModal"><i class="fas fa-pen fa-xs"></i></button></h6>
+      {% if task.task_description %}
+        {{task.task_description}}
+      {% else %}
+        <i>None</i>
+      {% endif %}
 
-upload file:
-<form method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
-    <input type="file" name="myfile" id="myfile" class="btn btn-light">
-    <button type="submit" class="btn btn-light">Upload</button>
-  </form>
-  <table class="table table-dark">
-      <thead>
-            <tr>
-            <th>#</th>
-            <th>File name</th>
-            <th>Size</th>
-            <th>Download</th>
-            <th>Delete</th>
-            </tr>
-      </thead>
-      <tbody>
-          {% for one_file in taskfiles %}
-            <tr>
-                <td>{{forloop.counter}}</td>
-                <td>{{one_file.filename}}</td>
-                <td>{{one_file.file.size|filesizeformat}}</td>
-                <td><button class="btn btn-dark" href="#"><i class="fas fa-arrow-down"></i></button></td>
-                <td><button class="btn btn-dark" href="#"><i class="fas fa-trash-alt"></i></button></td>
-            </tr>
-          {% endfor %}
-      </tbody>
-  </table>
+    </div>
 
+      upload file:
+      <form method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          <input type="file" name="myfile" id="myfile" class="btn btn-light">
+          <button type="submit" class="btn btn-light">Upload</button>
+        </form>
+        <table class="table table-dark rounded">
+            <thead>
+                  <tr>
+                  <th>#</th>
+                  <th>File name</th>
+                  <th>Size</th>
+                  <th>Download</th>
+                  <th>Delete</th>
+                  </tr>
+            </thead>
+            <tbody>
+              {% if taskfiles %}
+                {% for one_file in taskfiles %}
+                  <tr>
+                      <td>{{forloop.counter}}</td>
+                      <td>{{one_file.filename}}</td>
+                      <td>{{one_file.file.size|filesizeformat}}</td>
+                      <td><button class="btn btn-dark" href="#"><i class="fas fa-arrow-down"></i></button></td>
+                      <td><button class="btn btn-dark" href="#"><i class="fas fa-trash-alt"></i></button></td>
+                  </tr>
+                {% endfor %}
+              {% else %}
+                  <tr>
+                    <td colspan="5">There is no file in this task</td>
+                  </tr>
+              {% endif %}
+            </tbody>
+        </table>
+  </div>
+  
   <!--div of add a member modal-->
   <div class="modal fade" tabindex="-1" role="dialog" id="addmemberModal">
     <div class="modal-dialog" role="document">
@@ -61,6 +91,83 @@ upload file:
           <input type="submit" class="btn btn-info" value="Add" onclick="successmessage()">
           </form>
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--div of add a member modal-->
+  <div class="modal fade" tabindex="-1" role="dialog" id="finishModal">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Finished</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Finished this task and mark it as finished?</p>
+        </div>
+        <div class="modal-footer">
+          <form method="POST">
+            {% csrf_token %}
+            <input type="hidden" id="finished" name="finished" value="1">
+            <input type="submit" class="btn btn-info" value="Yes">
+          </form>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--div of changing task name modal-->
+  <div class="modal fade" tabindex="-1" role="dialog" id="tasknameModal">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Change task name</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form method="POST">
+            {% csrf_token %}
+          <p>Please enter the new task name:</p>
+          <input type="text" class="form-control" name="change_task_name" id="change_task_name">
+        </div>
+        <div class="modal-footer">
+          
+            <input type="submit" class="btn btn-info" value="Change">
+          </form>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--div of changing task description modal-->
+  <div class="modal fade" tabindex="-1" role="dialog" id="taskdescriptionModal">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Change task description</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form method="POST">
+            {% csrf_token %}
+          <p>Please enter the new task description:</p>
+          <textarea class="form-control" name="change_task_description" id="change_task_description">{{task.task_description}}</textarea>
+        </div>
+        <div class="modal-footer">
+          
+            <input type="submit" class="btn btn-info" value="Change">
+          </form>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
         </div>
       </div>
     </div>

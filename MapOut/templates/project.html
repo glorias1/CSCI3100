@@ -2,44 +2,78 @@
 {% load static %}
 {% block content %}
     <div class="project-top-header unselectable">
-        <h4 ><span style="color: darkgray;">Project •</span> {{viewing_project.project_name}}
+        <h5 style="padding-top: 10px;display: inline-block;"><span style="color: darkgray;">Project •</span> {{viewing_project.project_name}}
           {% if viewing_project.closed == False %}
             <span style="color: chartreuse;">●</span> <span style="color:gray;">open</span>
           {% else %}
             <span style="color: crimson;">●</span> <span style="color:gray;">closed</span>
-          {% endif %}
-        </h4>
+          {% endif %}<button class="btn btn-sm" type="button" data-toggle="modal" data-target="#projectnameModal"><i class="fas fa-pen fa-xs"></i></button>
+        </h5>
     </div>
-    {% if is_owner %}
-    <button type="button" class="btn btn-light" data-toggle="modal" data-target="#deleteModal">Delete Project</button>
-    <button type="button" class="btn btn-light" data-toggle="modal" data-target="#closeModal">Close Project</button>
-    <button type="button" class="btn btn-light" data-toggle="modal" data-target="#addmemberModal">Add a Member</button>
-    <button type="button" class="btn btn-light" data-toggle="modal" data-target="#addownerModal">Add a Leader</button>
-    {% endif %}
-    <a href="#"></a>
-    Tasks:(here want to have a to-do list with ticks and box)<br>
-    <form method="POST" action="{% url 'viewproject' viewing_project.id %}"><table class="table table-dark">
-        {% csrf_token %}
-        <thead>
-            <tr>
-                <th scope="col" style="width: 1rem;">Done</th>
-               <th scope="col">Tasks</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for one_task in tasks %}
-            <tr>
-                <th scope="row"><input type="checkbox" name="task_checkbox" id="task_checkbox"></th>
-                <td><a href="{% url 'viewtask' viewing_project.id one_task.id %}" class="btn">{{forloop.counter}}. {{one_task.task_name}}</a></td>
-            </tr>
-        {% endfor %}
-        </tbody>
-        <tfoot>
-            <th colspan="2"><input type="submit" class="btn btn-light" value="Save"></th>
-        </tfoot>
-    </table></form>
-    need a chat room<br>
-    manage project e.g close/delete project?
+    <div class="button-bar rounded">
+      {% if is_owner %}
+        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">Delete Project</button>
+        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#closeModal">Close Project</button>
+        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#addmemberModal">Add a Member</button>
+        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#addownerModal">Add a Leader</button>
+      {% endif %}
+        <button type="button" class="btn" style="background: #ff8a5c; color: white;">Budget Plan</button>
+    </div>
+    
+    <!--main section-->
+    <div class="rounded main-section">
+      <!--project description-->
+      <div style="margin-bottom: 1rem;">
+        <h6 class="unselectable">Project Description <button class="btn btn-sm" type="button" data-toggle="modal" data-target="#projectdescriptionModal"><i class="fas fa-pen fa-xs"></i></button></h6>
+        {% if viewing_project.project_description %}
+          {{viewing_project.project_description}}
+        {% else %}
+          <i>None</i>
+        {% endif %}
+      </div>
+      <div class="card-group">
+        <div class="card rounded">
+          <table class="table table-dark rounded unselectable">
+              {% csrf_token %}
+              <thead>
+                  <tr>
+                      <th scope="col" style="width: 1rem;">Done</th>
+                      <th >#</th>
+                    <th>Tasks</th>
+                  </tr>
+              </thead>
+              <tbody>
+                {% if tasks %}
+                  {% for one_task in tasks %}
+                      <tr>
+                          <th scope="row">
+                            {% if one_task.finish == False %}
+                              <i class="fas fa-circle" style="color: greenyellow;padding-left: 1rem;"></i>
+                            {% else %}
+                              <i class="fas fa-circle" style="color:#ff8a5c;padding-left: 1rem;"></i>
+                            {% endif %}
+                          </th>
+                          <td>{{forloop.counter}}</td>
+                          <td><a href="{% url 'viewtask' viewing_project.id one_task.id %}" class="btn" style="color: white;"> {{one_task.task_name}}</a></td>
+                      </tr>
+                  {% endfor %}
+                {% else %}
+                    <tr>
+                      <td colspan="2">There is no task in this project</td>
+                    </tr>
+                {% endif %}
+              </tbody>
+              
+          </table>
+        </div>
+        <!--chatroom card-->
+        <div class="card rounded" style="margin-left:1rem;">
+          <div class="chat-room">
+            chatroom here.
+          </div>
+        </div>
+
+      </div>
 
 
     <!--div of delete project modal-->
@@ -56,7 +90,7 @@
               <p>Are you sure you want to delete this project? A deleted project cannot be restored!</p>
                     <!--message after project is deleted-->
                     <div class="alert rounded" style="display: none;background: #ff8a5c;" id="deletedmessage">
-                        You have successfully deleted this project. You will be redirected to index after <strong>5</strong> seconds
+                        You have successfully deleted this project. You will be redirected to index after <strong>3</strong> seconds
                     </div>
 
             </div>
@@ -157,6 +191,58 @@
       </div>
     </div>
   </div>
+
+    <!--div of changing task name modal-->
+    <div class="modal fade" tabindex="-1" role="dialog" id="projectnameModal">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Change project name</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form method="POST">
+              {% csrf_token %}
+            <p>Please enter the new project name:</p>
+            <input type="text" class="form-control" name="change_project_name" id="change_project_name">
+          </div>
+          <div class="modal-footer">
+            
+              <input type="submit" class="btn btn-info" value="Change">
+            </form>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!--div of changing task description modal-->
+    <div class="modal fade" tabindex="-1" role="dialog" id="projectdescriptionModal">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Change project description</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form method="POST">
+              {% csrf_token %}
+            <p>Please enter the new project description:</p>
+            <textarea class="form-control" name="change_project_description" id="change_project_description">{{task.task_description}}</textarea>
+          </div>
+          <div class="modal-footer">
+            
+              <input type="submit" class="btn btn-info" value="Change">
+            </form>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
 
       <script>
