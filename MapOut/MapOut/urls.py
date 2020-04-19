@@ -22,20 +22,20 @@ from django.contrib.auth import authenticate, login
 from mapout_app.views import *
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('home/', home, name='home'),
-    path('accounts/', include('django.contrib.auth.urls')),
-    path('accounts/login/', login_view1, name='login'),
-    path('accounts/signup/', signup_view, name='signup'),
-    path('logout/', logout1),
-    path('index/', index, name='index'),
-    path('projects/',index_projects, name='index_projects'),
-    path('tasks/', index_tasks, name='index_tasks'),
-    path('help/', help_, name='help'),
-    path('schedule/', schedule, name='schedule'),
-    path('settings/', settings_, name='settings'),
-    path('createproject', create_project, name='createproject'),
-    path('createtask', create_task, name='createtask'),
-    re_path(r'^project/(?P<id>\d+)/$', view_project, name='viewproject'),
-    re_path(r'^project/(?P<id1>\d+)/task/(?P<id2>\d+)/$', view_task, name='viewtask')
+    path('admin/', admin.site.urls),                            ##admin page
+    path('home/', home, name='home'),                           ##home page before log in
+    path('accounts/', include('django.contrib.auth.urls')),     ##for account use(no .html return)
+    path('accounts/login/', login_view1, name='login'),         ##page for login    
+    path('accounts/signup/', signup_view, name='signup'),       ##page for sign up (maybe can add email verrification if have time)
+    path('logout/', logout1),                                   ##url of logout
+    path('index/', index, name='index'),                        ##home page, user can see their nearest dueing task or other things
+    path('projects/',index_projects, name='index_projects'),    ##overview of all projects, user can click on one of the project(card) to enter the detailed project page
+    path('tasks/', index_tasks, name='index_tasks'),            ##overview of all tasks, user can click on one of the task(card) to enter the detailed task page
+    path('help/', help_, name='help'),                          ##FAQ page
+    path('schedule/', schedule, name='schedule'),               ##showing the calendar of this month(?) and tasks are list on there
+    path('settings/', settings_, name='settings'),              ##change settings
+    path('createproject', create_project, name='createproject'),        ##user enter project name and description to create a new project
+    path('createtask', create_task, name='createtask'),                 ##user enter task name and description and due date to create a new task
+    re_path(r'^project/(?P<id>\d+)/$', view_project, name='viewproject'),       ##dynamic detailed page of a project, have chatroom and list of task, team leader can close/delete the project, add new members and add team leader 
+    re_path(r'^project/(?P<id1>\d+)/task/(?P<id2>\d+)/$', view_task, name='viewtask')       ##dynamic detailed page of a task, can upload file and delete file and download file, user can set the task as finished
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
