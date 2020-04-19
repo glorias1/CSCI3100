@@ -115,6 +115,7 @@ def view_project(request, id):
     ##see the detail page of a project
     viewing_project = Project.objects.get(id=id)
     tasks = Tasks.objects.filter(belong_project = viewing_project)
+    
     project_members = viewing_project.members.all()
     project_leader = viewing_project.owner.all()
     project_members_not_owner = viewing_project.members.exclude(id__in = project_leader)
@@ -124,8 +125,13 @@ def view_project(request, id):
             is_owner = True
     except:
         is_owner = False
+    try:
+        if viewing_project.members.get(id = request.user.id):
+            is_member = True
+    except:
+        is_member = False
 
-    context = {'viewing_project':viewing_project, 'tasks':tasks, 'is_owner':is_owner, 'project_members_not_owner':project_members_not_owner}
+    context = {'viewing_project':viewing_project, 'tasks':tasks, 'is_owner':is_owner, 'project_members_not_owner':project_members_not_owner, 'project_members':project_members, 'is_member':is_member}
     ##action when a form is submitted
     if request.method=='POST':
         ##user delete the project
@@ -136,21 +142,33 @@ def view_project(request, id):
             time.sleep(3)
             return redirect('/index/')
         ##user close this project
-        if request.POST.get('closeyes'):
+        elif request.POST.get('closeyes'):
             viewing_project.closed = True
             viewing_project.save()
         ##user add new members into the project
-        if request.POST.get('add_name'):
+        elif request.POST.get('add_name'):
             target_user_name = request.POST.get('add_name')
             if User.objects.get(username=target_user_name):
                 target_user = User.objects.get(username=target_user_name)
                 viewing_project.members.add(target_user)
-        if request.POST.get('add_owner'):
-            target_user_name = request.POST.get('add_owner')
-        if request.POST.get('change_project_name'):
+        ##remove a member
+        elif request.POST.get('remove_name'):
+            target_user_id = request.POST.get('remove_name')
+            target_user = viewing_project.members.get(id=target_user_id)
+            viewing_project.members.remove(target_user)
+            try:
+                if viewing_project.owner.get(id=target_user_id):
+                    viewing_project.owner.remove(target_user)
+            except:
+                pass
+        elif request.POST.get('add_owner'):
+            target_user_id = request.POST.get('add_owner')
+            target_user = User.objects.get(id=target_user_id)
+            viewing_project.owner.add(target_user)
+        elif request.POST.get('change_project_name'):
             viewing_project.project_name = request.POST.get('change_project_name')
             viewing_project.save()
-        if request.POST.get('change_project_description'):
+        elif request.POST.get('change_project_description'):
             viewing_project.project_description = request.POST.get('change_project_description')
             viewing_project.save()
     return render(request, 'project.html', context)
