@@ -17,22 +17,25 @@
 			<!--<hr width="90%" color="#B02F2F">-->
 			<div class="btn-group-vertical" role="group" >
 				<div class="nav-function-container rounded">
-					<a href="{% url 'index' %}" class="btn btn-nav btn-block text-left"><i class="fas fa-project-diagram"></i>&nbsp;&nbsp;<b>Projects</b></a>
+					<a href="{% url 'index' %}" class="btn btn-nav btn-block text-left"><i class="fas fa-home"></i>&nbsp;&nbsp;&nbsp;<b>home</b></a>
 				</div>
 				<div class="nav-function-container rounded">
-					<a href="{% url 'index_tasks' %}" class="btn btn-nav btn-block text-left"><i class="fas fa-file-alt"></i>&nbsp;&nbsp;<b>Tasks</b></a>
+					<a href="{% url 'index_projects' %}" class="btn btn-nav btn-block text-left"><i class="fas fa-project-diagram"></i>&nbsp;&nbsp;<b>Projects</b></a>
 				</div>
 				<div class="nav-function-container rounded">
-					<a href="{% url 'schedule' %}" class="btn btn-nav btn-block text-left"><i class="fas fa-calendar"></i>&nbsp;&nbsp;<b>Schedule</b></a>
+					<a href="{% url 'index_tasks' %}" class="btn btn-nav btn-block text-left"><i class="fas fa-file-alt"></i>&nbsp;&nbsp;&nbsp;&nbsp;<b>Tasks</b></a>
 				</div>
 				<div class="nav-function-container rounded">
-					<a href="{% url 'help' %}" class="btn btn-nav btn-block text-left"><i class="fas fa-hand-paper"></i>&nbsp;&nbsp;<b>Help</b></a>
+					<a href="{% url 'schedule' %}" class="btn btn-nav btn-block text-left"><i class="fas fa-calendar"></i>&nbsp;&nbsp;&nbsp;&nbsp;<b>Schedule</b></a>
 				</div>
 				<div class="nav-function-container rounded">
-					<a href="{% url 'settings' %}" class="btn btn-nav btn-block text-left"><i class="fas fa-cog"></i>&nbsp;&nbsp;<b>Settings</b></a>
+					<a href="{% url 'help' %}" class="btn btn-nav btn-block text-left"><i class="fas fa-hand-paper"></i>&nbsp;&nbsp;&nbsp;&nbsp;<b>Help</b></a>
 				</div>
 				<div class="nav-function-container rounded">
-					<a href="/accounts/logout/" class="btn btn-nav btn-block text-left"><i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp;<b>Logout</b></a>
+					<a href="{% url 'settings' %}" class="btn btn-nav btn-block text-left"><i class="fas fa-cog"></i>&nbsp;&nbsp;&nbsp;&nbsp;<b>Settings</b></a>
+				</div>
+				<div class="nav-function-container rounded">
+					<a href="/accounts/logout/" class="btn btn-nav btn-block text-left"><i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp;&nbsp;&nbsp;<b>Logout</b></a>
 				</div>
 				
 			</div>

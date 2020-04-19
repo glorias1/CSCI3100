@@ -2,6 +2,14 @@ html, body {
     max-width: 100%;
 }
 
+.unselectable { 
+	-webkit-user-select: none; 
+	-webkit-touch-callout: none; 
+	-moz-user-select: none; 
+	-ms-user-select: none; 
+	user-select: none;    
+} 
+
 .btn:focus {
 	outline: none;
 	box-shadow: none;
@@ -266,6 +274,10 @@ input[type="checkbox"].switch_1{
 .project-top-header{
 	background:#fffef9 ;
 	height: 3rem;
+	padding-left: 1rem;
+	border-bottom: 1px gray;
 }
 
-
+.no-project-pic{
+	margin: auto;
+}

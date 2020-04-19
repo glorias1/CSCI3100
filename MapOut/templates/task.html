@@ -1,7 +1,10 @@
 {% extends 'index.html' %}
 {% load static %}
 {% block content %}
-<h1>{{viewing_project.project_name}}/{{task.task_name}}</h1><br>
+<div class="project-top-header">
+  <h1>{{viewing_project.project_name}}/{{task.task_name}}</h1>
+</div>
+
 <button type="button" class="btn btn-light" data-toggle="modal" data-target="#addmemberModal">Add a in-charge member</button>
 
 upload file:
@@ -48,11 +51,8 @@ upload file:
             {% csrf_token %}
           <p>Please choose the member of the project to add as person-in-charge of this task:</p>
             <select id="add_incharge" name="add_incharge" class="custom-select" style="max-width: 30rem;" required>
-              {% for one_user in project_members %}
-                {% if one_user != request.user %}
+              {% for one_user in project_members_not_in_charge %}
                   <option value="{{one_user.id}}">{{one_user.username}}</option>
-                {% else %}
-                {% endif %}
               {% endfor %}
             </select>
                 <!--message after member added successfully-->

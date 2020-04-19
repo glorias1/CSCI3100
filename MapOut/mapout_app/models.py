@@ -8,6 +8,7 @@ class Project(models.Model):
     owner = models.ManyToManyField(User, related_name='owner')
     create_date = models.DateField('Event Date')
     members = models.ManyToManyField(User, related_name='members')
+    closed = models.BooleanField(default=False)
 
 class Tasks(models.Model):
     task_name = models.CharField(max_length=100)

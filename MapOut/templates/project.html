@@ -1,12 +1,21 @@
 {% extends 'index.html' %}
 {% load static %}
 {% block content %}
-    <div style="background-color: #fffdf2; height: 3rem;">
-        <h4 >Project: {{viewing_project.project_name}}</h4>
+    <div class="project-top-header unselectable">
+        <h4 ><span style="color: darkgray;">Project •</span> {{viewing_project.project_name}}
+          {% if viewing_project.closed == False %}
+            <span style="color: chartreuse;">●</span> <span style="color:gray;">open</span>
+          {% else %}
+            <span style="color: crimson;">●</span> <span style="color:gray;">closed</span>
+          {% endif %}
+        </h4>
     </div>
-    
+    {% if is_owner %}
     <button type="button" class="btn btn-light" data-toggle="modal" data-target="#deleteModal">Delete Project</button>
-    <button type="button" class="btn btn-light" data-toggle="modal" data-target="#addmemberModal">Add a member</button>
+    <button type="button" class="btn btn-light" data-toggle="modal" data-target="#closeModal">Close Project</button>
+    <button type="button" class="btn btn-light" data-toggle="modal" data-target="#addmemberModal">Add a Member</button>
+    <button type="button" class="btn btn-light" data-toggle="modal" data-target="#addownerModal">Add a Leader</button>
+    {% endif %}
     <a href="#"></a>
     Tasks:(here want to have a to-do list with ticks and box)<br>
     <form method="POST" action="{% url 'viewproject' viewing_project.id %}"><table class="table table-dark">
@@ -30,7 +39,6 @@
         </tfoot>
     </table></form>
     need a chat room<br>
-    add member/ owner.<br>
     manage project e.g close/delete project?
 
 
@@ -64,6 +72,36 @@
         </div>
       </div>
 
+      <!--div of close project modal-->
+    <div class="modal fade" tabindex="-1" role="dialog" id="closeModal">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Delete project {{viewing_project.project_name}}</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>Are you sure you want to close this project?</p>
+                  <!--message after project is closed-->
+                  <div class="alert rounded" style="display: none;background: #ff8a5c;" id="closemessage">
+                      You have successfully closed this project.
+                  </div>
+          </div>
+          <div class="modal-footer">
+            <form method="POST"> 
+              {% csrf_token %}
+              <input type="hidden" id="closeyes" name="closeyes" value="1">
+            <input type="submit" class="btn btn-danger" value="Yes">
+            </form>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
       <!--div of add a member modal-->
     <div class="modal fade" tabindex="-1" role="dialog" id="addmemberModal">
       <div class="modal-dialog" role="document">
@@ -89,6 +127,36 @@
         </div>
       </div>
     </div>
+
+    <!--div of add a leader modal-->
+  <div class="modal fade" tabindex="-1" role="dialog" id="addownerModal">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Add a leader to project: {{viewing_project.project_name}}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form method="POST"> 
+            {% csrf_token %}
+          <p>Please choose the member of the project to add as Leader of this project:</p>
+            <select id="add_owner" name="add_owner" class="custom-select" style="max-width: 30rem;" required>
+              {% for one_user in project_members_not_owner %}
+                  <option value="{{one_user.id}}">{{one_user.username}}</option>
+              {% endfor %}
+            </select>
+                <!--message after member added successfully-->
+        </div>
+        <div class="modal-footer">
+          <input type="submit" class="btn btn-info" value="Add" onclick="successmessage()">
+          </form>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
 
       <script>

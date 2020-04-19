@@ -1,28 +1,37 @@
 {% extends 'index.html' %}
 {% load static %}
 {% block content %}
+	<div class="project-top-header unselectable">Projects</div>
 {% if projects %}
-<div class="project-top-header"></div>
-<div class="card-group">
-	{% for one_project in projects %}
-	<a href="{% url 'viewproject' one_project.id %}"><div class="card" style="width: 15rem;height: 15rem; display: inline-block; margin:0.3rem;">
-		<div class="card-header">
-			<h5 class="card-title">{{one_project.project_name}}</h5>
-		</div>
-		<div class="card-body">
-			<h7 class="card-subtitle mb-2 text-muted">Tasks</h7>
-			{% for one_task in tasks %}
-				{% if forloop.counter < 5 %}
-					{% if one_task.belong_project == one_project  %}
-						<li class="card-text">{{one_task.task_name}}</li>
-					{% endif %}
+	<div class="card-group">
+		{% for one_project in projects %}
+		<a href="{% url 'viewproject' one_project.id %}"><div class="card" style="width: 15rem;height: 15rem; display: inline-block; margin:0.3rem;">
+			<div class="card-header">
+				<h5 class="card-title">{{one_project.project_name}}</h5>
+			</div>
+			<div class="card-body text-muted">
+				{% if one_project.closed == False %}
+					<span style="color: chartreuse;">●</span> open
 				{% else %}
-				<p>...</p>
-				{% endif %}
-			{% endfor %}
-		</div>
-	</div></a>
-	{% endfor %}
-</div>
+					<span style="color:crimson;">●</span> closed
+				{% endif %}<br>
+				<h7 class="card-subtitle mb-2 text-muted">Tasks</h7>
+				{% for one_task in tasks %}
+					{% if forloop.counter < 5 %}
+						{% if one_task.belong_project == one_project  %}
+							<li class="card-text">{{one_task.task_name}}</li>
+						{% endif %}
+					{% else %}
+					<p>...</p>
+					{% endif %}
+				{% endfor %}
+			</div>
+		</div></a>
+		{% endfor %}
+	</div>
+{% else %}
+	<div class="no-project-pic unselectable">
+		<img src="{% static "project.png" %}" width="35%">you dont have projects!Click the plus sign to create one.
+	</div>
 {% endif %}
 {% endblock %}
