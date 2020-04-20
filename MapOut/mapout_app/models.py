@@ -5,6 +5,15 @@ from django.dispatch import receiver
 from django.db.models.signals import post_save
 
 # Create your models here.
+class Budget(models.Model):
+    transition_id =         models.AutoField(primary_key=True)  # Auto increament
+#    belong_project =        models.ForeignKey(Project, on_delete=models.CASCADE)
+    name =                  models.CharField(max_length=50)  # if it is capital, name='capital'
+    amount =                models.IntegerField(blank=True, null=True) # if it is expense, amount = negative number
+
+    def __str__(self):
+        return self.budget_transition_id
+
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     #username = models.ForeignKey(User, on_delete=models.CASCADE)
