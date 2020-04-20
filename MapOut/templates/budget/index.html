@@ -1,0 +1,19 @@
+{% extends 'home_base.html' %}
+{% load static %}
+{% block content %}
+<div id="home-big-title"   >
+  <div><h3>Budget Plans</h3>
+  </div>
+  <form method="POST" action="{% url 'index' %}" style="color: black;margin-left: 1rem;margin-right: 1rem; ">
+  	  {% csrf_token %}
+
+	  <div class="form-group rounded" style="background-color: rgba(255, 255, 255, 0.9);padding: 1rem;">
+	  	<input type="submit" name="createplan" value="Create" class="btn btn-outline-primary">
+	    <input type="hidden" name="next" value="{{ next|escape }}" />
+	  	<input type="submit" name="updateplan" value="Update" class="btn btn-outline-primary">
+	    <input type="hidden" name="next" value="{{ next|escape }}" />
+	  	<input type="submit" name="viewplan" value="View" class="btn btn-outline-primary">
+	  </div>
+  </form>     
+</div>
+{% endblock %}
