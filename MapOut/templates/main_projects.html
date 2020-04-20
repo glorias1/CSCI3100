@@ -2,7 +2,7 @@
 {% load static %}
 {% block content %}
 	<div class="project-top-header unselectable">
-		<h5 style="padding-top: 10px;display: inline-block;" >Projects</h5>
+		<h5 style="padding-top: 10px;display: inline-block;" >Your Projects</h5>
 	</div>
 {% if projects %}
 	<div class="card-group" style="margin: 1rem 1rem 1rem 1rem;">
@@ -32,8 +32,30 @@
 		{% endfor %}
 	</div>
 {% else %}
-	<div class="no-project-pic unselectable">
-		<img src="{% static "project.png" %}" width="400px" style="margin: 0 auto;display: block"><br>you dont have projects!Click the plus sign to create one.
+	<div class="no-project-pic unselectable" style="margin: 1rem 1rem 1rem 1rem;">
+		<img src="{% static "project.png" %}" width="400px" style="margin: 0 auto;display: block"><br>You don't have any projects! Click the plus sign to create one.
 	</div>
 {% endif %}
+
+<div class="project-top-header unselectable">
+	<h5 style="padding-top: 10px;display: inline-block;" >Public Area</h5>
+</div>
+<div style="margin: 1rem 1rem 1rem 1rem;">
+<!-- Search form -->
+<div class="md-form active-cyan active-cyan-2 mb-3">
+	<input class="form-control" type="text" placeholder="Search For Public Projects" aria-label="Search">
+</div>
+<div>
+	<ul class="list-group" style="margin: 1rem 1rem 1rem 1rem;">
+		{% for a_project in all_public_project%}
+		<div class="row">
+			<li class="list-group-item col-10">{{ a_project }}</li>
+			<button type="button" class="btn btn-outline-primary col-1">View</button>
+			<button type="button" class="btn btn-outline-primary col-1">Join</button>
+		</div>
+		{% endfor %}
+	</ul>
+</div>
+</div>
+
 {% endblock %}

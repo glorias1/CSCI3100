@@ -4,26 +4,28 @@
 <div>
     <div class="project-top-header unselectable">
 		<h5 style="padding-top: 10px;display: inline-block;" >Create a Task</h5>
-	</div>
-    <form method="POST" action="{% url 'createtask' %}">
-        {% csrf_token %}
-        <label for="task_name">Task name:</label><br>
-        <input type="text" name="task_name" id="task_name" class="form-control" style="width: 30rem;" size="100" required><br>
-        <label for="project">Belongs to project</label><br>
-        <select id="belong_project_select" name="belong_project_select" class="custom-select" style="max-width: 50rem;" required>
-            {% if projects %}
-                {% for one_project in projects %}
-                    <option value="{{one_project.id}}">{{one_project.project_name}}</option>
-                {% endfor %}
-            {% else %}
-                    <option value="">-----</option>
-            {% endif %}
-        </select><br>
-        <label for="task_description">Task description:</label><br>
-        <textarea name="task_description" id="task_description" class="form-control" style="width: 50rem;"></textarea><br>
-        <label for="due_date" >Due date:</label><br>
-        <input type="date" name="due_date" id="due_date" class="form-control" style="max-width: 10rem;" required><br>
-        <button class='btn btn-light' type="submit">Create</button>
-    </form>
+    </div>
+    <div style="margin: 1rem 1rem 1rem 1rem;">
+        <form method="POST" action="{% url 'createtask' %}">
+            {% csrf_token %}
+            <label for="task_name">Task name:</label><br>
+            <input type="text" name="task_name" id="task_name" class="form-control" style="width: 30rem;" size="100" required><br>
+            <label for="project">Belongs to project</label><br>
+            <select id="belong_project_select" name="belong_project_select" class="custom-select" style="max-width: 50rem;" required>
+                {% if projects %}
+                    {% for one_project in projects %}
+                        <option value="{{one_project.id}}">{{one_project.project_name}}</option>
+                    {% endfor %}
+                {% else %}
+                        <option value="">-----</option>
+                {% endif %}
+            </select><br>
+            <label for="task_description">Task description:</label><br>
+            <textarea name="task_description" id="task_description" class="form-control" style="width: 50rem;"></textarea><br>
+            <label for="due_date" >Due date:</label><br>
+            <input type="date" name="due_date" id="due_date" class="form-control" style="max-width: 10rem;" required><br>
+            <button class='btn btn-light' type="submit">Create</button>
+        </form>
+    </div>
 </div>
 {% endblock %}
