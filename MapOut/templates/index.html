@@ -26,7 +26,7 @@
     }</style>
 </head>
 <body>
-	{% if loggedin == True %}
+	<!--{% if loggedin == True %}-->
 	<header id = "nav-top"></header>
 	<div id="nav-placeholder">{% include 'function_bar.html' %}</div>
 	<div class="wrapper rightcontent" tabindex="-1" style="overflow-y: auto;">
@@ -44,8 +44,9 @@
 			</div>
 		  </div>
 	</div>
-	{% else %}
+	<!--
+		{% else %}
 		<a href="{% url 'login' %}">please login! </a>
-	{% endif %}
+	{% endif %}-->
 </body>
 </html>
