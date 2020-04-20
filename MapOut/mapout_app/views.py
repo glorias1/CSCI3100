@@ -62,14 +62,15 @@ def signup_view(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
         if form.is_valid():
-            user = form.save()
+            form.save()
             username = form.cleaned_data.get('username')
             raw_password = form.cleaned_data.get('password1')
-            user.refresh_from_db()
-            user.profile.private = form.cleaned_data.get('privacy')
-            user.save()
             user = authenticate(username=username, password=raw_password)
             login(request, user)
+            new_registration = User_Privacy(
+                username = user,
+                private = form.cleaned_data.get('privacy')
+            )
             return redirect('home')
     else:
         form = SignUpForm()

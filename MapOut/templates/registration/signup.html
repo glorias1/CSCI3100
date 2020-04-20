@@ -13,8 +13,46 @@
 		{% endif %}
 		<div class="form-group">
  			<form action="/accounts/signup/" method="POST" style="color: black;">
- 				{% csrf_token %}
-				<p>{{form.as_p}}</p>
+				{% csrf_token %}
+				{% for non_field_error in form.non_field_error %}
+					<p>{{ non_field_error }}</p>
+				{% endfor %}
+				{% for field in form %}
+					<div>
+						{% if field.label == "Privacy" %}
+							<div>
+								{{ field.label }}
+							</div>
+							{% for radio in form.choice %}
+								<label for="{{ field.html_name }}">
+									<input type="radio"
+										id="{{ field.html_name }}"
+										value="{{ radio.0 }}"
+										name="{{ field.html_name }}" />
+									{{ radio.1 }}
+								</label>
+							{% endfor %}
+						{% else %}
+							<label for="{{ field.id_for_label }}" class="label">
+								{% if field.label == "Password2" %}
+									Comfirm Password:
+								{% else %}
+									{{ field.label }}:
+								{% endif %}
+							</label>
+							<div> {{ field }} </div>
+						{% endif %}
+						{% if field.help_text %}
+							<p>{{ field.help_text }}</p>
+						{% endif %}
+						{% for error in field.errors %}
+							<p>{{ error }}</p>
+						{% endfor %}
+					</div>
+				{% endfor %}
+
+				<!--<p>{{form.as_p}}</p>
+				-->
  				<button type="submit" class="btn btn-outline-primary">Sign up</button>
 			</form>
 		</div>
