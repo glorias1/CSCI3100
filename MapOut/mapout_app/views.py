@@ -13,6 +13,37 @@ from .models import *
 import time
 import os
 
+def index_budgets(request):
+    return render(request, 'budget/index.html')
+
+def create_budget(request):
+    if request.method == 'POST':
+        transition_capital =            Budget()
+        transition_capital.name =       "capital"
+        transition_capital.amount =     request.POST.get('capital')
+        transition_capital.save()
+
+        transition_expense_1 =          Budget()
+        transition_expense_1.name =     request.POST.get('expense_1_name')
+        amount =                        request.POST.get('expense_1_amount') * 1
+        transition_expense_1.amount =   amount
+        transition_expense_1.save()
+
+        transition_expense_2 =          Budget()
+        transition_expense_2.name =     request.POST.get('expense_2_name')
+        amount =                        request.POST.get('expense_2_amount') * 1
+        transition_expense_2.amount =   amount
+        transition_expense_2.save()
+
+        transition_expense_3 =          Budget()
+        transition_expense_3.name =     request.POST.get('expense_3_name')
+        amount =                        request.POST.get('expense_3_amount') * 1
+        transition_expense_3.amount =   amount
+        transition_expense_3.save()
+
+        return render(request, 'budget/create_plan.html', {'form': [transition_capital]})
+    return render(request, 'budget/create_plan.html')
+
 def home(request):
     return render(request, 'home.html')
 
