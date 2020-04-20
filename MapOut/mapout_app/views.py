@@ -62,9 +62,12 @@ def signup_view(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
         if form.is_valid():
-            form.save()
+            user = form.save()
             username = form.cleaned_data.get('username')
             raw_password = form.cleaned_data.get('password1')
+            user.refresh_from_db()
+            user.profile.private = form.cleaned_data.get('privacy')
+            user.save()
             user = authenticate(username=username, password=raw_password)
             login(request, user)
             return redirect('home')
@@ -87,6 +90,7 @@ def create_project(request):
         if request.POST.get('project_name') and request.POST.get('project_description'):
             createproject.project_name = request.POST.get('project_name')
             createproject.project_description = request.POST.get('project_description')
+            createproject.private = request.POST.get('project_privacy')
             createproject.create_date = datetime.now()
             createproject.save()
             createproject.owner.add(request.user)    ##add current usre as owner

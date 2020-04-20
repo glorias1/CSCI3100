@@ -8,7 +8,11 @@ class Project(models.Model):
     owner = models.ManyToManyField(User, related_name='owner')
     create_date = models.DateField('Event Date')
     members = models.ManyToManyField(User, related_name='members')
+    private = models.BooleanField(default=False)
     closed = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.project_name
 
 class Tasks(models.Model):
     task_name = models.CharField(max_length=100)
@@ -18,6 +22,9 @@ class Tasks(models.Model):
     belong_project = models.ForeignKey(Project, on_delete=models.CASCADE)
     finish = models.BooleanField(default=False)
     last_modify = models.DateField('Event Date')
+
+    def __str__(self):
+        return self.task_name
     
 class Chat(models.Model):
     belong_project = models.ForeignKey(Project, on_delete=models.CASCADE)
@@ -25,7 +32,13 @@ class Chat(models.Model):
     sent_date = models.DateField('Event Date')
     chat_content = models.TextField()
 
+    def __str__(self):
+        return self.belong_project
+
 class File(models.Model):
     belong_task = models.ForeignKey(Tasks, on_delete=models.CASCADE)
     filename = models.CharField(max_length=50)
     file = models.FileField(upload_to='files')
+
+    def __str__(self):
+        return self.filename
