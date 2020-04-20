@@ -3,21 +3,34 @@
 <div style="padding: 1rem;color:coral" class="unselectable">
     <h2>Welcome back! {{request.user.username}}</h2>
 </div>
-<div style="margin:1rem 1rem 1rem 1rem;">
-    <div class="card unselectable" style="width: 20rem;height: 20rem;">
-        <div class="card-header"><i class="fas fa-file-alt"></i> Upcoming Tasks
+<div class="card-deck unselectable" style="margin:1rem 1rem 1rem 1rem;">
+    <div class="card unselectable rounded" style="width: 20rem;height: 20rem;">
+        <div class="card-header"><i class="fas fa-file-alt"></i> <div style="width: 2rem;display: inline;margin-left: 1rem;"></div>Upcoming Tasks
         </div>
         <div class="card-body">
             <div class="card-text">
                 <!--show 3 tasks by most near due date from today-->
                 {% if mytasks %}
-                    {% for one_task in mytasks|slice:":5" %}
+                    {% for one_task in mytasks %}
                         <li>{{one_task.task_name}}:{{one_task.due_date}}</li>
                     {% endfor %}
                 {% else %}
-                <i>You do not have any task now. Create one by clicking the plus sign.</i>
+                <i>You currently do not have any task. Create one by clicking the plus sign.</i>
                 {% endif %}
             </div>
+        </div>
+    </div>
+    <div class="card unselectable rounded">
+        <div class="card-header"><i class="fas fa-project-diagram"></i> <div style="width: 2rem;display: inline;margin-left: 1rem;"></div>Opening projects
+        </div>
+        <div class="card-body">
+            {% if myprojects %}
+                {% for one_project in myprojects %}
+                    <li>{{one_project.project_name}}</li>
+                {% endfor %}
+            {% else %}
+                <i>You currently do not have any opening project. Create one by clicking the plus sign.</i>
+            {% endif %}
         </div>
     </div>
 </div>

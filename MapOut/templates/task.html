@@ -34,35 +34,40 @@
       upload file:
       <form method="POST" enctype="multipart/form-data">
           {% csrf_token %}
+          <input type="hidden" value="1" id="myfile_flag" name="myfile_flag">
           <input type="file" name="myfile" id="myfile" class="btn btn-light">
           <button type="submit" class="btn btn-light">Upload</button>
         </form>
-        <table class="table table-dark rounded">
+        <table class="table table-dark table-hover rounded">
             <thead>
                   <tr>
                   <th>#</th>
                   <th>File name</th>
                   <th>Size</th>
+                  <th>Last Update</th>
                   <th>Download</th>
                   <th>Delete</th>
                   </tr>
             </thead>
             <tbody>
-              {% if taskfiles %}
-                {% for one_file in taskfiles %}
-                  <tr>
-                      <td>{{forloop.counter}}</td>
-                      <td>{{one_file.filename}}</td>
-                      <td>{{one_file.file.size|filesizeformat}}</td>
-                      <td><button class="btn btn-dark" href="#"><i class="fas fa-arrow-down"></i></button></td>
-                      <td><button class="btn btn-dark" href="#"><i class="fas fa-trash-alt"></i></button></td>
-                  </tr>
-                {% endfor %}
-              {% else %}
-                  <tr>
-                    <td colspan="5">There is no file in this task</td>
-                  </tr>
-              {% endif %}
+              
+                {% if taskfiles %}
+                  {% for one_file in taskfiles %}
+                    <tr>
+                        <td>{{forloop.counter}}</td>
+                        <td>{{one_file.filename}}</td>
+                        <td>{{one_file.file.size|filesizeformat}}</td>
+                        <td>{{one_file.last_modify}}</td>
+                        <td><form method="POST">{% csrf_token %}<input type="hidden" value="{{one_file.id}}" id="download_file" name="download_file"><button type="submit" class="btn btn-dark"><i class="fas fa-arrow-down"></i></button></td>
+                        <td><input type="hidden" value="{{one_file.id}}" id="delete_file" name="delete_file"><button type="submit" class="btn btn-dark"><i class="fas fa-trash-alt"></i></button></form></td>
+                    </tr>
+                  {% endfor %}
+                {% else %}
+                    <tr>
+                      <td colspan="65">There is no file in this task</td>
+                    </tr>
+                {% endif %}
+              </form>
             </tbody>
         </table>
   </div>

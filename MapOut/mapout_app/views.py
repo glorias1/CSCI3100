@@ -1,4 +1,4 @@
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, FileResponse, StreamingHttpResponse
 from datetime import datetime
 from django.shortcuts import render, redirect
 # Create your views here.
@@ -11,7 +11,7 @@ from django.urls import reverse
 from .forms import *
 from .models import *
 import time
-
+import os
 
 def home(request):
     return render(request, 'home.html')
@@ -22,8 +22,9 @@ def index(request):
         context = {'not_loggedin':not_loggedin}
         return render(request, 'main.html', context)
     else:
+        myprojects = Project.objects.filter(members = request.user, closed = False)
         mytasks = Tasks.objects.filter(incharge=request.user).order_by('due_date')
-        context = {'mytasks':mytasks}
+        context = {'mytasks':mytasks, 'myprojects':myprojects}
         return render(request, 'main.html', context)
 
 def index_projects(request):
@@ -204,7 +205,12 @@ def view_task(request, id1 , id2):
             is_incharge = True
     except:
         is_incharge = False
-    context = {'viewing_project':viewing_project, 'task':task, 'taskfiles':taskfiles, 'is_incharge':is_incharge, 'project_members_not_in_charge':project_members_not_in_charge}
+    try:
+        if viewing_project.members.get(id = request.user.id):
+            is_member = True
+    except:
+        is_member = False
+    context = {'viewing_project':viewing_project, 'task':task, 'taskfiles':taskfiles, 'is_incharge':is_incharge, 'project_members_not_in_charge':project_members_not_in_charge, 'is_member':is_member}
     if request.method =='POST':
         ##user add new incharge person from members of the project of the task
         if request.POST.get('add_incharge'):
@@ -212,19 +218,37 @@ def view_task(request, id1 , id2):
             add_incharge_user = User.objects.get(id = add_incharge_id)
             task.incharge.add(add_incharge_user)
         ##user upload files for this task
-        if request.POST.get('myfile'):
+        elif request.POST.get('myfile_flag'):
             if request.FILES['myfile']:
                 uploadfile.belong_task = Tasks.objects.get(id = id2)
                 uploadfile.file = request.FILES['myfile']
                 uploadfile.filename = request.FILES['myfile'].name
+                uploadfile.last_modify = datetime.now()
                 uploadfile.save()
-        if request.POST.get('finished'):
+        elif request.POST.get('finished'):
             task.finish = True
             task.save()
-        if request.POST.get('change_task_name'):
+        elif request.POST.get('change_task_name'):
             task.task_name = request.POST.get('change_task_name')
             task.save()
-        if request.POST.get('change_task_description'):
+        elif request.POST.get('change_task_description'):
             task.task_description = request.POST.get('change_task_description')
             task.save()
+        elif request.POST.get('delete_file'):
+            target_file_id = request.POST.get('delete_file')
+            target_file = File.objects.get(id = target_file_id)
+            target_file.delete()
     return render(request, 'task.html', context)
+
+def download(request, id):
+    target_file = File.objects.get(id = id)
+    target_file_name = target_file.filename
+    target_file_name = target_file_name.replace(" ","_")
+    file_type = target_file_name.split(".")
+    target_file_path = os.path.join(settings.MEDIA_ROOT, target_file_name)
+    fp = open(target_file_path ,'rb')
+    response = StreamingHttpResponse(fp)
+    response['Content-Type'] =  'image/png'
+    response['Content-Disposition'] = 'attachment;filename="%s"' % (urlquote(target_file_name))
+    return response
+    
