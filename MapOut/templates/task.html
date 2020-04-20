@@ -8,7 +8,7 @@
   {% else %}
     <p class="badge badge-secondary text-wrap" style="color: white;">Finished</p>
   {% endif %}
-{% if is_member %}  
+{% if is_member or viewing_project.private == False %}  
   <button class="btn btn-sm" type="button" data-toggle="modal" data-target="#tasknameModal"><i class="fas fa-pen fa-xs"></i></button>
 </div>
 <div class="button-bar rounded">

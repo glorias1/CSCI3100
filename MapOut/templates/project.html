@@ -10,14 +10,31 @@
           {% endif %}<button class="btn btn-sm" type="button" data-toggle="modal" data-target="#projectnameModal"><i class="fas fa-pen fa-xs"></i></button>
         </h5>
     </div>
-    {% if is_member %}
-    <div class="button-bar rounded">
+    {% if is_member or viewing_project.private == False %}
+    <div class="btn-group rounded " style="margin-left: 1rem;">
       {% if is_owner %}
         <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">Delete Project</button>
         <button type="button" class="btn btn-info" data-toggle="modal" data-target="#closeModal">Close Project</button>
         <button type="button" class="btn btn-info" data-toggle="modal" data-target="#addmemberModal">Add a Member</button>
         <button type="button" class="btn btn-info" data-toggle="modal" data-target="#removememberModal">Remove a Member</button>
         <button type="button" class="btn btn-info" data-toggle="modal" data-target="#addownerModal">Add a Leader</button>
+        
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              {% if viewing_project.private == False %}<i class="fas fa-globe-asia"></i>
+              {% else %}<i class="fas fa-user-friends"></i>
+              {% endif %}
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <form method="POST">{% csrf_token %}
+                <input type="hidden" value="1" id="make_public" name="make_public">
+              <button class="dropdown-item" type="submit">Public {% if viewing_project.private == False %}<i class="fas fa-check"></i>{% endif %}</button></form>
+              <form method="POST">{% csrf_token %}
+                <input type="hidden" value="1" id="make_private" name="make_private">
+              <button class="dropdown-item" type="submit">Private{% if viewing_project.private == True %}<i class="fas fa-check"></i>{% endif %}</button></form>
+            </div>
+          </div>
+        </form>
       {% endif %}
         <button type="button" class="btn" style="background: #ff8a5c; color: white;">Budget Plan</button>
     </div>
@@ -279,6 +296,7 @@
     {% else %}
     <span>You does not belong to this project.</span>
     {% endif %}
+    
 
 
       <script>

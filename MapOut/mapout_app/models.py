@@ -22,7 +22,7 @@ class Project(models.Model):
     owner = models.ManyToManyField(User, related_name='owner')
     create_date = models.DateField('Event Date')
     members = models.ManyToManyField(User, related_name='members')
-    private = models.BooleanField(default=False)
+    private = models.BooleanField(default=True) ##default as private project
     closed = models.BooleanField(default=False)
 
     def __str__(self):
