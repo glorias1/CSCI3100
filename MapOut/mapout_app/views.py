@@ -181,6 +181,12 @@ def view_project(request, id):
         elif request.POST.get('change_project_description'):
             viewing_project.project_description = request.POST.get('change_project_description')
             viewing_project.save()
+        elif request.POST.get('make_public'):
+            viewing_project.private = False
+            viewing_project.save()
+        elif request.POST.get('make_private'):
+            viewing_project.private = True
+            viewing_project.save()
     return render(request, 'project.html', context)
 
 def view_task(request, id1 , id2):

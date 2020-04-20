@@ -10,9 +10,13 @@
         <div class="card-body">
             <div class="card-text">
                 <!--show 3 tasks by most near due date from today-->
-                {% for one_task in mytasks|slice:":5" %}
-                    <li>{{one_task.task_name}}:{{one_task.due_date}}</li>
-                {% endfor %}
+                {% if mytasks %}
+                    {% for one_task in mytasks|slice:":5" %}
+                        <li>{{one_task.task_name}}:{{one_task.due_date}}</li>
+                    {% endfor %}
+                {% else %}
+                <i>You do not have any task now. Create one by clicking the plus sign.</i>
+                {% endif %}
             </div>
         </div>
     </div>

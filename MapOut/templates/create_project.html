@@ -1,8 +1,10 @@
 {% extends 'index.html' %}
 {% load static %}
 {% block content %}
-<div style="margin: 25px 50px 75px 100px;">
-    <h1>Create a project  </h1>
+<div>
+    <div class="project-top-header unselectable">
+		<h5 style="padding-top: 10px;display: inline-block;" >Create a Project</h5>
+	</div>
     <form method="POST" action="{% url 'createproject' %}">
         {% csrf_token %}
         <label for="project_name">Project name:</label>
