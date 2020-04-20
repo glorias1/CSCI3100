@@ -22,6 +22,10 @@ from django.contrib.auth import authenticate, login
 from mapout_app.views import *
 
 urlpatterns = [
+    path('budget/index/', index_budgets, name='index_budgets'), ##budget plans
+    path('budget/createplan/', create_budget, name='createbudget'), ##budget plans
+#    re_path(r'^budget/(?P<id>\d+)/$', view_budget, name='viewbudget')
+    
     path('admin/', admin.site.urls),                            ##admin page
     path('home/', home, name='home'),                           ##home page before log in
     path('accounts/', include('django.contrib.auth.urls')),     ##for account use(no .html return)
