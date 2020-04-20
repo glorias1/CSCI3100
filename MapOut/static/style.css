@@ -303,3 +303,10 @@ input[type="checkbox"].switch_1{
 .chat-room{
 	background:#ff8a5c;
 }
+
+.chat-content{
+	background: white;
+	color: darkslategray;
+	height: 50%;
+	width: 100%;
+}

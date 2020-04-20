@@ -47,6 +47,6 @@ class File(models.Model):
     belong_task = models.ForeignKey(Tasks, on_delete=models.CASCADE)
     filename = models.CharField(max_length=50)
     file = models.FileField(upload_to='files')
-
+    last_modify = models.DateField('Event Date')
     def __str__(self):
         return self.filename

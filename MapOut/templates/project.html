@@ -7,36 +7,56 @@
             <span style="color: chartreuse;">●</span> <span style="color:gray;">open</span>
           {% else %}
             <span style="color: crimson;">●</span> <span style="color:gray;">closed</span>
-          {% endif %}<button class="btn btn-sm" type="button" data-toggle="modal" data-target="#projectnameModal"><i class="fas fa-pen fa-xs"></i></button>
+          {% endif %}
+          <button class="btn btn-sm" type="button" data-toggle="modal" data-target="#projectnameModal"><i class="fas fa-pen fa-xs"></i></button>
         </h5>
+          {% if viewing_project.private == False %}
+            <div class="badge badge-pill badge-primary" >Public</div>
+          {% else %}
+            <div class="badge badge-pill badge-primary">Private</div>
+          {% endif %}
+        
     </div>
     {% if is_member or viewing_project.private == False %}
-    <div class="btn-group rounded " style="margin-left: 1rem;">
-      {% if is_owner %}
-        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">Delete Project</button>
-        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#closeModal">Close Project</button>
-        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#addmemberModal">Add a Member</button>
-        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#removememberModal">Remove a Member</button>
-        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#addownerModal">Add a Leader</button>
-        
+    <div class="btn-toolbar" style="margin-top: 1rem;">
+        <div class="btn-group rounded " style="margin-left: 1rem;">
+          {% if is_owner %}
           <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              {% if viewing_project.private == False %}<i class="fas fa-globe-asia"></i>
-              {% else %}<i class="fas fa-user-friends"></i>
-              {% endif %}
-            </button>
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Manage Project</button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <form method="POST">{% csrf_token %}
-                <input type="hidden" value="1" id="make_public" name="make_public">
-              <button class="dropdown-item" type="submit">Public {% if viewing_project.private == False %}<i class="fas fa-check"></i>{% endif %}</button></form>
-              <form method="POST">{% csrf_token %}
-                <input type="hidden" value="1" id="make_private" name="make_private">
-              <button class="dropdown-item" type="submit">Private{% if viewing_project.private == True %}<i class="fas fa-check"></i>{% endif %}</button></form>
+              <a href="#" class="dropdown-item" data-toggle="modal" data-target="#deleteModal">Delete Project</a>
+              <a href="#" class="dropdown-item" data-toggle="modal" data-target="#closeModal">Close Project</a>
             </div>
           </div>
-        </form>
-      {% endif %}
-        <button type="button" class="btn" style="background: #ff8a5c; color: white;">Budget Plan</button>
+
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Manage members</button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a href="#" class="dropdown-item" data-toggle="modal" data-target="#addmemberModal">Add a Member</a>
+                <a href="#" class="dropdown-item" data-toggle="modal" data-target="#removememberModal">Remove a Member</a>
+                <a href="#" class="dropdown-item" data-toggle="modal" data-target="#addownerModal">Add a Leader</a>
+              </div>
+            </div>
+
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  {% if viewing_project.private == False %}<i class="fas fa-globe-asia"></i>
+                  {% else %}<i class="fas fa-user-friends"></i>
+                  {% endif %}
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <form method="POST">{% csrf_token %}
+                    <input type="hidden" value="1" id="make_public" name="make_public">
+                  <button class="dropdown-item" type="submit">Public {% if viewing_project.private == False %}<i class="fas fa-check"></i>{% endif %}</button></form>
+                  <form method="POST">{% csrf_token %}
+                    <input type="hidden" value="1" id="make_private" name="make_private">
+                  <button class="dropdown-item" type="submit">Private{% if viewing_project.private == True %}<i class="fas fa-check"></i>{% endif %}</button></form>
+                </div>
+            </div>
+          {% endif %}
+            
+        </div>
+      <button type="button" class="btn btn-warning" style="color: white;right: 1rem;position: absolute;">Budget Plan</button>
     </div>
     
     <!--main section-->
@@ -52,7 +72,7 @@
       </div>
       <div class="card-group">
         <div class="card rounded" style="border: none;">
-          <table class="table table-dark rounded unselectable">
+          <table class="table table-dark table-hover rounded unselectable">
               {% csrf_token %}
               <thead>
                   <tr>
@@ -86,10 +106,14 @@
           </table>
         </div>
         <!--chatroom card-->
-        <div class="card rounded" style="margin-left:1rem;border: none;">
-          <div class="chat-room">
-            chatroom here.
-          </div>
+        <div class="card shadow bg-white rounded" style="margin-left:1rem;border: none;">
+          <div class="card-header">Discussion</div>
+            <div class="card-body" style="overflow: auto;">
+              chatroom here.
+            </div>
+            <div class="card-footer bg-white">
+              enter meaasge here.
+            </div>
         </div>
 
       </div>
