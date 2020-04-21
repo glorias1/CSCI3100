@@ -47,10 +47,10 @@
                   {% endif %}
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <form method="POST">{% csrf_token %}
+                  <form method="POST"  >{% csrf_token %}
                     <input type="hidden" value="1" id="make_public" name="make_public">
                   <button class="dropdown-item" type="submit">Public {% if viewing_project.private == False %}<i class="fas fa-check"></i>{% endif %}</button></form>
-                  <form method="POST">{% csrf_token %}
+                  <form method="POST"  >{% csrf_token %}
                     <input type="hidden" value="1" id="make_private" name="make_private">
                   <button class="dropdown-item" type="submit">Private{% if viewing_project.private == True %}<i class="fas fa-check"></i>{% endif %}</button></form>
                 </div>
@@ -122,19 +122,26 @@
               
           </table>
         </div>
+
         <!--chatroom card-->
         <div class="card shadow bg-white rounded" style="margin-left:1rem;border: none;">
           <div class="card-header">Discussion</div>
-            <div class="card-body" style="overflow: auto;">
+            <div class="card-body" style="overflow: auto;max-height: 19rem;">
               {% for one_msg in msgs %}
-              {{one_msg.speaker}}: {{one_msg.chat_content}}<br>
+                {% if one_msg.speaker == request.user %}
+                <span class="badge badge-pill badge-primary">{{one_msg.speaker}}: {{one_msg.chat_content}}</span><br>
+                {% else %}
+                <span class="badge badge-pill badge-secondary">{{one_msg.speaker}}: {{one_msg.chat_content}}</span><br>
+                {% endif %}
               {% endfor %}
             </div>
+            {% if is_member %}
             <div class="card-footer bg-white">
-              <form method="POST">{% csrf_token %}
-                <input type="text" name="chat_text" id="chat_text"><input type="submit">
+              <form method="POST"  >{% csrf_token %}
+                <input type="text" name="chat_text" id="chat_text" style="width: 25rem;"><input type="submit" class="btn btn-primary" value="Enter">
               </form>
             </div>
+            {% endif %}
         </div>
 
       </div>
@@ -159,7 +166,7 @@
 
             </div>
             <div class="modal-footer">
-              <form method="POST"> 
+              <form method="POST"  > 
                 {% csrf_token %}
                 <input type="hidden" id="deleteyes" name="deleteyes" value="1">
               <input type="submit" class="btn btn-danger" value="Yes" onclick="successmessage()">
@@ -188,7 +195,7 @@
                   </div>
           </div>
           <div class="modal-footer">
-            <form method="POST"> 
+            <form method="POST"  > 
               {% csrf_token %}
               <input type="hidden" id="closeyes" name="closeyes" value="1">
             <input type="submit" class="btn btn-danger" value="Yes">
@@ -211,7 +218,7 @@
             </button>
           </div>
           <div class="modal-body">
-            <form method="POST"> 
+            <form method="POST"  > 
               {% csrf_token %}
             <p>Please enter the username to add to this project:</p>
             <input type="text" class="form-control" name="add_name" id="add_name">
@@ -237,7 +244,7 @@
               </button>
             </div>
             <div class="modal-body">
-              <form method="POST"> 
+              <form method="POST"  > 
                 {% csrf_token %}
               <p>Please select the username to remove from this project:</p>
               <select id="remove_name" name="remove_name" class="form-control">
@@ -268,7 +275,7 @@
           </button>
         </div>
         <div class="modal-body">
-          <form method="POST"> 
+          <form method="POST"  > 
             {% csrf_token %}
           <p>Please choose the member of the project to add as Leader of this project:</p>
             <select id="add_owner" name="add_owner" class="custom-select" style="max-width: 30rem;" required>
@@ -298,7 +305,7 @@
             </button>
           </div>
           <div class="modal-body">
-            <form method="POST">
+            <form method="POST"  >
               {% csrf_token %}
             <p>Please enter the new project name:</p>
             <input type="text" class="form-control" name="change_project_name" id="change_project_name">
@@ -324,7 +331,7 @@
             </button>
           </div>
           <div class="modal-body">
-            <form method="POST">
+            <form method="POST"  >
               {% csrf_token %}
             <p>Please enter the new project description:</p>
             <textarea class="form-control" name="change_project_description" id="change_project_description">{{task.task_description}}</textarea>
