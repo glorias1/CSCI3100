@@ -3,6 +3,7 @@
 <div class="project-top-header unselectable">
 	<h5 style="padding-top: 10px;display: inline-block;" >Settings</h5>
 </div>
+
 <div style="margin: 1rem 1rem 1rem 1rem;">
 			Reminders : on/off
 		<input type="checkbox" class="switch_1">
@@ -12,4 +13,17 @@
 		<div class="wrapper" id="edit_info_box"></div>
 </div>
 
+
+</div>
+<script>
+	function checkpassword(form){
+		if (form.pw1.value != form.pw2.value)
+		{
+			alert('The 2 passwords do not match.');
+			return false;
+		}
+	} else {
+		return true;
+	}
+</script>
 {% endblock %}
