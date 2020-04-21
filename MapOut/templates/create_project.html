@@ -4,21 +4,23 @@
 <div>
     <div class="project-top-header unselectable">
 		<h5 style="padding-top: 10px;display: inline-block;" >Create a Project</h5>
-	</div>
-    <form method="POST" action="{% url 'createproject' %}">
-        {% csrf_token %}
-        <label for="project_name">Project name:</label>
-        <input type="text" name="project_name" id="project_name" class="form-control" style="width: 30rem;" size="100" required><br>
-        <label for="project_description">Description:</label>
-        <textarea name="project_description" id="project_description" class="form-control" style="width: 40rem;" required></textarea><br>
-        
-        <label for="project_privacy">Privacy:</label><br>
-        <input type="radio" id="public" name="project_privacy" value="False" checked>
-        <label for="public">Public</label><br>
-        <input type="radio" id="private" name="project_privacy" value="True">
-        <label for="private">Private</label><br>
-        
-        <button class='btn btn-light' type="submit">Create</button>
-    </form>
+    </div>
+    <div style="margin: 1rem 1rem 1rem 1rem;">
+        <form method="POST" action="{% url 'createproject' %}">
+            {% csrf_token %}
+            <label for="project_name">Project name:</label>
+            <input type="text" name="project_name" id="project_name" class="form-control" style="width: 30rem;" size="100" required><br>
+            <label for="project_description">Description:</label>
+            <textarea name="project_description" id="project_description" class="form-control" style="width: 40rem;" required></textarea><br>
+            
+            <label for="project_privacy">Privacy:</label><br>
+            <input type="radio" id="public" name="project_privacy" value="False">
+            <label for="public">Public</label><br>
+            <input type="radio" id="private" name="project_privacy" value="True" checked>
+            <label for="private">Private</label><br>
+            
+            <button class='btn btn-light' type="submit">Create</button>
+        </form>
+    </div>
 </div>
 {% endblock%}

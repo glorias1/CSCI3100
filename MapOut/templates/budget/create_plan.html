@@ -1,0 +1,40 @@
+{% extends 'home_base.html' %}
+{% load static %}
+{% block content %}
+<div id="home-big-title"   >
+  <div><h3>Create Budget Plan</h3>
+  </div>
+  <div class="form-group rounded" style="background-color: rgba(255, 255, 255, 0.9);padding: 1rem;">
+   {% if form.errors %}
+   <span style="color: red;"><p>Invalid.</p></span>
+   {% endif %}
+    <form action="{% url 'createbudget' %}" method="POST" style="color: black;margin-left: 1rem;margin-right: 1rem; ">
+    	{% csrf_token %}
+    	<label for="capital">Capital:</label><br>
+    	<input id="capital-submit" type="text" name="capital" value=""><br>
+
+    	<label for="expense_1_name">Expense 1 Name:</label><br>
+    	<input id="expense_1_name-submit" type="text" name="expense_1_name" value=""><br>
+    	<label for="expense_1_amount">Expense 1 Amount:</label><br>
+    	<input id="expense_1_amount-submit" type="text" name="expense_1_amount" value=""><br>
+
+    	<label for="expense_2_name">Expense 2 Name:</label><br>
+    	<input id="expense_2_name-submit" type="text" name="expense_2_name" value=""><br>
+    	<label for="expense_2_amount">Expense 2 Amount:</label><br>
+    	<input id="expense_2_amount-submit" type="text" name="expense_2_amount" value="">  <br>   
+
+    	<label for="expense_3_name">Expense 3 Name:</label><br>
+    	<input id="expense_3_name-submit" type="text" name="expense_3_name" value=""><br>
+    	<label for="expense_3_amount">Expense 3 Amount:</label><br>
+    	<input id="expense_3_amount-submit" type="text" name="expense_3_amount" value=""><br><br>
+
+      <button type="submit" class="btn btn-outline-primary" style="margin-left: 1rem;">Create Plan</button>
+
+      <button type="button" class="btn btn-outline-primary" style="margin-left: 1rem;">New Expense</button>
+    </form>
+
+    <p style="margin-left: 1rem;>{{ form }}</p>
+  </div>
+       
+</div>
+{% endblock %}

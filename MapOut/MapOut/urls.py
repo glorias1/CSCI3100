@@ -22,6 +22,10 @@ from django.contrib.auth import authenticate, login
 from mapout_app.views import *
 
 urlpatterns = [
+    path('budget/index/', index_budgets, name='index_budgets'), ##budget plans
+    path('budget/createplan/', create_budget, name='createbudget'), ##budget plans
+#    re_path(r'^budget/(?P<id>\d+)/$', view_budget, name='viewbudget')
+    
     path('admin/', admin.site.urls),                            ##admin page
     path('home/', home, name='home'),                           ##home page before log in
     path('accounts/', include('django.contrib.auth.urls')),     ##for account use(no .html return)
@@ -37,5 +41,8 @@ urlpatterns = [
     path('createproject', create_project, name='createproject'),        ##user enter project name and description to create a new project
     path('createtask', create_task, name='createtask'),                 ##user enter task name and description and due date to create a new task
     re_path(r'^project/(?P<id>\d+)/$', view_project, name='viewproject'),       ##dynamic detailed page of a project, have chatroom and list of task, team leader can close/delete the project, add new members and add team leader 
-    re_path(r'^project/(?P<id1>\d+)/task/(?P<id2>\d+)/$', view_task, name='viewtask')       ##dynamic detailed page of a task, can upload file and delete file and download file, user can set the task as finished
+    re_path(r'^project/(?P<id1>\d+)/task/(?P<id2>\d+)/$', view_task, name='viewtask'),       ##dynamic detailed page of a task, can upload file and delete file and download file, user can set the task as finished
+    
+    re_path(r'^project/checkout(?P<id>\d+)/$', check_out_project, name='checkoutproject'),  ##path for non member user check out project.
+    re_path(r'^project/join(?P<id>\d+)/$', join_project, name='joinproject'),    ##======================
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

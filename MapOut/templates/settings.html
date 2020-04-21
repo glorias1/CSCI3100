@@ -3,23 +3,15 @@
 <div class="project-top-header unselectable">
 	<h5 style="padding-top: 10px;display: inline-block;" >Settings</h5>
 </div>
-<div>
-	<div>
-		<h6>Change password</h6>
-		<form method="POST" onsubmit="return checkpassword(this)">{% csrf_token %}
-			<label for="">Enter the original password:</label>
-			<input type="password" name="pw" id="pw" size="50" class="form-control"><br>
-			<label>Enter the new password:</label>
-			<input type="password" name="pw1" id="pw1" size="50" class="form-control"><br>
-			<label>Enter the new password again:</label>
-			<input type="password" name="pw2" id="pw2" size="50" class="form-control"><br>
-			<button type="submit">submit</button>
-		</form>
-	</div>
 
-	
+<div style="margin: 1rem 1rem 1rem 1rem;">
 			Reminders : on/off
-			<input type="checkbox" class="switch_1">
+		<input type="checkbox" class="switch_1">
+		<div>
+			<button id="eda" type="button" class="btn btn-outline-primary" style="margin-top: 15px;">Edit Account Information</button>
+		</div>
+		<div class="wrapper" id="edit_info_box"></div>
+</div>
 
 
 </div>

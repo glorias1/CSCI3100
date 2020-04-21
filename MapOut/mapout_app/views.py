@@ -13,6 +13,37 @@ from .models import *
 import time
 import os
 
+def index_budgets(request):
+    return render(request, 'budget/index.html')
+
+def create_budget(request):
+    if request.method == 'POST':
+        transition_capital =            Budget()
+        transition_capital.name =       "capital"
+        transition_capital.amount =     request.POST.get('capital')
+        transition_capital.save()
+
+        transition_expense_1 =          Budget()
+        transition_expense_1.name =     request.POST.get('expense_1_name')
+        amount =                        request.POST.get('expense_1_amount') * 1
+        transition_expense_1.amount =   amount
+        transition_expense_1.save()
+
+        transition_expense_2 =          Budget()
+        transition_expense_2.name =     request.POST.get('expense_2_name')
+        amount =                        request.POST.get('expense_2_amount') * 1
+        transition_expense_2.amount =   amount
+        transition_expense_2.save()
+
+        transition_expense_3 =          Budget()
+        transition_expense_3.name =     request.POST.get('expense_3_name')
+        amount =                        request.POST.get('expense_3_amount') * 1
+        transition_expense_3.amount =   amount
+        transition_expense_3.save()
+
+        return render(request, 'budget/create_plan.html', {'form': [transition_capital]})
+    return render(request, 'budget/create_plan.html')
+
 def home(request):
     return render(request, 'home.html')
 
@@ -30,8 +61,10 @@ def index(request):
 def index_projects(request):
     #get the projects involed by the current user
     projects = Project.objects.filter(members = request.user).order_by('closed')
+    all_public_project = Project.objects.filter(private = False).order_by('project_name')
+    print(all_public_project)
     tasks = Tasks.objects.filter(belong_project__in = projects)  ##filter all the task in the list of project objects
-    context = {'projects':projects, 'tasks':tasks}
+    context = {'projects':projects, 'tasks':tasks, 'all_public_project': all_public_project}
     return render(request, 'main_projects.html', context)
 
 def index_tasks(request):
@@ -250,3 +283,16 @@ def download(request, id):
     response['Content-Disposition'] = 'attachment;filename="%s"' % (urlquote(target_file_name))
     return response
     
+def join_btn(request):
+    return render(request, 'join_project.html')
+
+def join_project(request, id):
+    join = Project.objects.get(id=id)
+    return render(request, 'join_project.html')
+
+def check_out_project(request, id):
+    checking = Project.objects.get(id=id)
+    owners = checking.owner.all()
+    members = checking.members.exclude(id__in = owners)
+    context = {'checking':checking, 'owners':owners, 'members':members}
+    return render(request, 'check_out_project.html')
