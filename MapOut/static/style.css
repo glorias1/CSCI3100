@@ -310,7 +310,7 @@ input[type="checkbox"].switch_1{
 	width: 100%;
 }
 
-#joinForm{
+div.joinFormStyle{
 	position: absolute;
 	margin:auto;
 	top: -250px;

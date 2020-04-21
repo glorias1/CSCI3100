@@ -302,7 +302,11 @@ def join_project(request, id):
             join_request.pj = pj
             join_request.user = request.user
             join_request.message = request.POST.get('message')
+            join_request.save()
     context = {"pj": pj}
     return render(request, 'join_project.html', context)
  #   join = Project.objects.get(id=id)
   #  return render(request, 'join_project.html')
+
+def join_btn(request):
+    return render(request, 'join_project.html')

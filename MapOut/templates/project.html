@@ -351,9 +351,9 @@
     
     {% if is_member == False %}
     <div style="margin: 1rem; color: #000;"></div>
-      <button class="btn btn-outline-primary col-12" style="margin-top: 1rem" onclick="openForm()">Join This Project</button>
+    <button id="j{{viewing_project.id}}" class="btn btn-outline-primary col-12" style="margin-top: 1rem" onclick="openForm(this)">Join This Project</button>
     </div>
-    {% block joinForm %}{% include 'join_project.html' %}{% endblock %}
+    {% block joinForm %}{% include 'join_project.html' with id=viewing_project.id %}{% endblock %}
     {% endif %}
       <script>
           function successmessage(){
