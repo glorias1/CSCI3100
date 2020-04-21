@@ -37,6 +37,15 @@ class Project(models.Model):
     def __str__(self):
         return self.project_name
 
+class JoinMessage(models.Model):
+    pj = models.ForeignKey(Project, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    message = models.TextField()
+    not_approved = models.BooleanField(default=True)
+
+    def __str__(self):
+        return {self.pj.project_name, self.user.username}
+
 class Tasks(models.Model):
     task_name = models.CharField(max_length=100)
     task_description = models.TextField()
