@@ -342,7 +342,11 @@
     <span>You does not belong to this project.</span>
     {% endif %}
     
-
+    {% if is_member == False %}
+    <div style="margin: 1rem; color: #000;"></div>
+      <a href="{% url 'join_project' viewing_project.id %}" role="button" class="btn btn-outline-primary btn-lg col-12" style="margin: 5rem 1rem 1rem 1rem;">Join</a>
+    </div>
+    {% endif %}
 
       <script>
           function successmessage(){

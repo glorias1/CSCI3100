@@ -300,11 +300,3 @@ def join_btn(request):
 def join_project(request, id):
     join = Project.objects.get(id=id)
     return render(request, 'join_project.html')
-
-def check_out_project(request, id):
-    print("CLICKED CHECK OUT BOTTON")
-    checking = Project.objects.get(id=id)
-    owners = checking.owner.all()
-    members = checking.members.exclude(id__in = owners)
-    context = {'checking':checking, 'owners':owners, 'members':members}
-    return render(request, 'check_out_project.html', context)
