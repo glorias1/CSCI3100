@@ -30,7 +30,9 @@
 
       <button type="submit" class="btn btn-outline-primary" style="margin-left: 1rem;">Create Plan</button>
 
-      <button type="button" class="btn btn-outline-primary" style="margin-left: 1rem;">New Expense</button>
+    <form action="{% url 'createbudget2' %}" method="POST" style="color: black;margin-left: 1rem;margin-right: 1rem; ">
+      {% csrf_token %}
+      <button type="submit" class="btn btn-outline-primary" style="margin-left: 1rem;">New Expense</button>
     </form>
 
     <p style="margin-left: 1rem;>{{ form }}</p>
