@@ -161,6 +161,7 @@ def view_project(request, id):
     project_members = viewing_project.members.all()
     project_leader = viewing_project.owner.all()
     project_members_not_owner = viewing_project.members.exclude(id__in = project_leader)
+    msgs = Chat.objects.filter(belong_project = viewing_project).order_by('sent_date')
     ## see if the request user is the owner of the project
     try:
         if viewing_project.owner.get(id = request.user.id):
@@ -173,7 +174,7 @@ def view_project(request, id):
     except:
         is_member = False
 
-    context = {'viewing_project':viewing_project, 'tasks':tasks, 'is_owner':is_owner, 'project_members_not_owner':project_members_not_owner, 'project_members':project_members, 'is_member':is_member, 'all_leaders':all_leaders ,}
+    context = {'viewing_project':viewing_project, 'tasks':tasks, 'is_owner':is_owner, 'project_members_not_owner':project_members_not_owner, 'project_members':project_members, 'is_member':is_member, 'all_leaders':all_leaders , 'msgs':msgs}
     ##action when a form is submitted
     if request.method=='POST':
         ##user delete the project
@@ -219,6 +220,14 @@ def view_project(request, id):
         elif request.POST.get('make_private'):
             viewing_project.private = True
             viewing_project.save()
+        elif request.POST.get('chat_text'):
+            newchatmessage = Chat()
+            newchatmessage.belong_project = viewing_project
+            newchatmessage.chat_content = request.POST.get('chat_text')
+            newchatmessage.speaker = request.user
+            newchatmessage.sent_date = datetime.now()
+            newchatmessage.save()
+
     return render(request, 'project.html', context)
 
 def view_task(request, id1 , id2):

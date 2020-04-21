@@ -126,10 +126,14 @@
         <div class="card shadow bg-white rounded" style="margin-left:1rem;border: none;">
           <div class="card-header">Discussion</div>
             <div class="card-body" style="overflow: auto;">
-              chatroom here.
+              {% for one_msg in msgs %}
+              {{one_msg.speaker}}: {{one_msg.chat_content}}<br>
+              {% endfor %}
             </div>
             <div class="card-footer bg-white">
-              enter meaasge here.
+              <form method="POST">{% csrf_token %}
+                <input type="text" name="chat_text" id="chat_text"><input type="submit">
+              </form>
             </div>
         </div>
 
