@@ -20,7 +20,7 @@
     <button type="button" class="btn btn-info" data-toggle="modal" data-target="#unfinishModal">Unfinish task</button>
     {% endif %}
 {% endif %}
-<a class="btn btn-dark">Go to project</a>
+<a class="btn btn-success" role="button"><span class="text-light">Go to project</span></a>
 </div>
 
   <!--main section-->
@@ -47,7 +47,7 @@
       <form method="POST" enctype="multipart/form-data">
           {% csrf_token %}
           <input type="hidden" value="1" id="myfile_flag" name="myfile_flag">
-          <input type="file" name="myfile" id="myfile" class="btn btn-light">
+          <input type="file" name="myfile" id="myfile"z class="btn btn-light  form-control-file">
           <button type="submit" class="btn btn-light">Upload</button>
         </form>
         <table class="table table-dark table-hover rounded">

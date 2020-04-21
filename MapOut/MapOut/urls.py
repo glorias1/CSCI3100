@@ -20,6 +20,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import authenticate, login
 from mapout_app.views import *
+from django.views.generic.base import RedirectView
 
 urlpatterns = [
     path('budget/index/', index_budgets, name='index_budgets'), ##budget plans
@@ -28,6 +29,7 @@ urlpatterns = [
     
     path('admin/', admin.site.urls),                            ##admin page
     path('home/', home, name='home'),                           ##home page before log in
+    path('', RedirectView.as_view(url='/home/')),              ##redirect to /home/ if empty url
     path('accounts/', include('django.contrib.auth.urls')),     ##for account use(no .html return)
     path('accounts/login/', login_view1, name='login'),         ##page for login    
     path('accounts/signup/', signup_view, name='signup'),       ##page for sign up (maybe can add email verrification if have time)
