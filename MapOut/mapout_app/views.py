@@ -125,7 +125,7 @@ def view_project(request, id):
     ##see the detail page of a project
     viewing_project = Project.objects.get(id=id)
     tasks = Tasks.objects.filter(belong_project = viewing_project)
-    
+    all_leaders = viewing_project.owner.all()
     project_members = viewing_project.members.all()
     project_leader = viewing_project.owner.all()
     project_members_not_owner = viewing_project.members.exclude(id__in = project_leader)
@@ -141,7 +141,7 @@ def view_project(request, id):
     except:
         is_member = False
 
-    context = {'viewing_project':viewing_project, 'tasks':tasks, 'is_owner':is_owner, 'project_members_not_owner':project_members_not_owner, 'project_members':project_members, 'is_member':is_member}
+    context = {'viewing_project':viewing_project, 'tasks':tasks, 'is_owner':is_owner, 'project_members_not_owner':project_members_not_owner, 'project_members':project_members, 'is_member':is_member, 'all_leaders':all_leaders ,}
     ##action when a form is submitted
     if request.method=='POST':
         ##user delete the project
@@ -208,7 +208,7 @@ def view_task(request, id1 , id2):
             is_member = True
     except:
         is_member = False
-    context = {'viewing_project':viewing_project, 'task':task, 'taskfiles':taskfiles, 'is_incharge':is_incharge, 'project_members_not_in_charge':project_members_not_in_charge, 'is_member':is_member}
+    context = {'viewing_project':viewing_project, 'task':task, 'taskfiles':taskfiles, 'is_incharge':is_incharge, 'project_members_not_in_charge':project_members_not_in_charge, 'is_member':is_member, 'project_members_in_charge':project_members_in_charge}
     if request.method =='POST':
         ##user add new incharge person from members of the project of the task
         if request.POST.get('add_incharge'):

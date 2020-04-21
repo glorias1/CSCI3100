@@ -21,6 +21,13 @@
   <!--main section-->
   <div class="rounded main-section">
     <!--show task description-->
+    <div>
+      <h6 class="unselectable" >Task person-in-charge:<button class="btn btn-sm" type="button" data-toggle="modal" data-target="#taskdescriptionModal"><i class="fas fa-pen fa-xs"></i></button></h6>
+      {% for one_user in project_members_in_charge %}
+          {{one_user.username}}
+      {% endfor %}
+    </div>
+    <hr>
     <div style="margin-bottom: 1rem;">
       <h6 class="unselectable" >Task Description <button class="btn btn-sm" type="button" data-toggle="modal" data-target="#taskdescriptionModal"><i class="fas fa-pen fa-xs"></i></button></h6>
       {% if task.task_description %}
@@ -30,7 +37,7 @@
       {% endif %}
 
     </div>
-
+    <hr>
       upload file:
       <form method="POST" enctype="multipart/form-data">
           {% csrf_token %}
