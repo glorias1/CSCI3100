@@ -179,6 +179,8 @@ def view_project(request, id):
     if request.method=='POST':
         ##user delete the project
         if request.POST.get('deleteyes'):
+            for each in tasks:
+                each.delete()
             viewing_project.delete()
             time.sleep(3)
             return redirect('/index/')
