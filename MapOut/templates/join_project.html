@@ -1,39 +1,20 @@
+{% extends 'main_projects.html' %}
 {% load static %}
-{% block joinForm %}
-<div id="joinForm" class="border border-primary rounded" style="display: none;">
-        <h3>Join Project</h3>
-    <div class="form-group"></div>
-        {% if form.errors %}
-            <span style="color: red;"><p>ERROR</p></span>
-        {% endif %}
-        <form method="POST" action=""> <!--{% url 'join_project' pj.id%-->
-            {% csrf_token %}
-            <div class="align-items-center">
-                <div class="col">
-                    <label for="message">Message to owners:</label>
-                    <textarea class="form-control rounded-0" id="message" rows="3" required></textarea><br>
-                </div>
-                <div class="col">
-                    <label for="va_password">Your Password (for validation):</label>
-                    <input class="form-control" type="password" name="va_password" value="" id="va_password"><br>    
-                </div>
-                <div class="col">
-                    <input id="join_submit" type="submit" value="Submit" class="btn btn-outline-primary">
-                    <button type="button" class="btn btn-outline-danger" onclick="closeForm()">Close</button>
-                </div>
-            </div>
-        </form>
-    </div>
+{% block content %}
+<div id="home-big-title"   >
+  <div>
+      <h3>Join Project</h3>
+  </div>
+  <div class="form-group rounded" style="background-color: rgba(255, 255, 255, 0.9);padding: 1rem;">
+   {% if form.errors %}
+   <span style="color: red;"><p>ERROR</p></span>
+   {% endif %}
+   <form method="POST" action="" style="color: black;margin-left: 1rem;margin-right: 1rem; ">
+      {% csrf_token %}
+        <label for="message">Message to owner:</label>
+        <textarea class="form-control rounded-0" id="message" rows="3"></textarea><br>
+        <input id="join_submit" type="submit" value="submit" class="btn btn-outline-primary">
+    </form>
+  </div>
 </div>
-
-<script>
-    function openForm() {
-      document.getElementById("joinForm").style.display = "block";
-    }
-    function closeForm() {
-      document.getElementById("joinForm").style.display = "none";
-      document.getElementById("message").value = "";
-      document.getElementById("va_password").value = "";
-    }
-</script>
 {% endblock %}

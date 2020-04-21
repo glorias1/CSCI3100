@@ -344,15 +344,14 @@
     
     {% if is_member == False %}
     <div style="margin: 1rem; color: #000;"></div>
-      <button class="btn btn-outline-primary col-12" style="margin-top: 1rem" onclick="openForm()">Join This Project</button>
+      <a href="{% url 'join_project' viewing_project.id %}" role="button" class="btn btn-outline-primary btn-lg col-12" style="margin: 5rem 1rem 1rem 1rem;">Join</a>
     </div>
-    {% block joinForm %}{% include 'join_project.html' %}{% endblock %}
     {% endif %}
+
       <script>
           function successmessage(){
             document.getElementById('deletedmessage').style.display = "block";
           }
       </script>
-
       
 {% endblock %}

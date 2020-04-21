@@ -294,17 +294,9 @@ def download(request, id):
     response['Content-Disposition'] = 'attachment;filename="%s"' % (urlquote(target_file_name))
     return response
     
+def join_btn(request):
+    return render(request, 'join_project.html')
+
 def join_project(request, id):
-    pj = Project.objects.get(id=id)
-    join_request = JoinMessage()
-    if request.method == "POST":
-        if request.POST.get('va_password') != request.user.password:
-            print("wrong pw")
-        else:
-            join_request.pj = pj
-            join_request.user = request.user
-            join_request.message = request.POST.get('message')
-    context = {"pj": pj}
-    return render(request, 'join_project.html', context)
- #   join = Project.objects.get(id=id)
-  #  return render(request, 'join_project.html')
+    join = Project.objects.get(id=id)
+    return render(request, 'join_project.html')
