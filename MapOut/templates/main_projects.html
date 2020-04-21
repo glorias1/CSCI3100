@@ -16,17 +16,27 @@
 					<span class="badge badge-light" ><span style="color: chartreuse;">●</span> Open</span>
 				{% else %}
 					<span class="badge badge-light" ><span style="color:crimson;">●</span> Closed</span>
-				{% endif %}<br>
-				<h7 class="card-subtitle mb-2 text-muted">Tasks</h7>
-				{% for one_task in tasks %}
-					{% if forloop.counter < 5 %}
-						{% if one_task.belong_project == one_project  %}
-							<li class="card-text">{{one_task.task_name}}</li>
+				{% endif %}
+				{% if one_project.private == False %}
+				<span class="badge badge-light" ><span style="color: chartreuse;">●</span> Public</span>
+				{% else %}
+				<span class="badge badge-light" ><span style="color:crimson;">●</span> Private</span>
+				{% endif %}
+				<br>
+				<h7 class="card-subtitle mb-2 text-muted">Tasks</h7><br>
+				{% if tasks %}
+					{% for one_task in tasks %}
+						{% if forloop.counter < 5 %}
+							{% if one_task.belong_project == one_project  %}
+								<li class="card-text">{{one_task.task_name}}</li>
+							{% endif %}
+						{% else %}
+						<p>...</p>
 						{% endif %}
-					{% else %}
-					<p>...</p>
-					{% endif %}
-				{% endfor %}
+					{% endfor %}
+				{% else %}
+				<i>No task in this project currently.</i>
+				{% endif %}
 			</div>
 		</div></a>
 		{% endfor %}
@@ -50,7 +60,7 @@
 		{% for a_project in all_public_project%}
 		<div class="row">
 			<li class="list-group-item col-10">{{ a_project }}</li>
-			<button type="button" class="btn btn-outline-primary col-1">View</button>
+			<a href="{% url 'viewproject' a_project.id %}" class="btn btn-outline-primary col-1">View</a>
 			<button type="button" class="btn btn-outline-primary col-1">Join</button>
 		</div>
 		{% endfor %}

@@ -259,6 +259,9 @@ def view_task(request, id1 , id2):
         elif request.POST.get('finished'):
             task.finish = True
             task.save()
+        elif request.POST.get('unfinished'):
+            task.finish = False
+            task.save()
         elif request.POST.get('change_task_name'):
             task.task_name = request.POST.get('change_task_name')
             task.save()

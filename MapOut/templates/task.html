@@ -9,20 +9,25 @@
     <p class="badge badge-secondary text-wrap" style="color: white;">Finished</p>
   {% endif %}
 {% if is_member or viewing_project.private == False %}  
-  <button class="btn btn-sm" type="button" data-toggle="modal" data-target="#tasknameModal"><i class="fas fa-pen fa-xs"></i></button>
-</div>
-<div class="button-bar rounded">
-{% if is_incharge %}
-<button type="button" class="btn btn-info" data-toggle="modal" data-target="#addmemberModal">Add a in-charge member</button>
+      <button class="btn btn-sm" type="button" data-toggle="modal" data-target="#tasknameModal"><i class="fas fa-pen fa-xs"></i></button>
+    </div>
+    <div class="button-bar rounded">
+    {% if is_incharge %}
+    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#addmemberModal">Add a in-charge member</button>
+    {% if task.finish == False %}
+    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#finishModal">Task finished</button>
+    {% else %}
+    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#unfinishModal">Unfinish task</button>
+    {% endif %}
 {% endif %}
-<button type="button" class="btn btn-info" data-toggle="modal" data-target="#finishModal">Task finished</button>
+<a class="btn btn-dark">Go to project</a>
 </div>
 
   <!--main section-->
   <div class="rounded main-section">
     <!--show task description-->
     <div>
-      <h6 class="unselectable" >Task person-in-charge:<button class="btn btn-sm" type="button" data-toggle="modal" data-target="#taskdescriptionModal"><i class="fas fa-pen fa-xs"></i></button></h6>
+      <h6 class="unselectable" >Task person-in-charge:</h6>
       {% for one_user in project_members_in_charge %}
           {{one_user.username}}
       {% endfor %}
@@ -109,7 +114,7 @@
     </div>
   </div>
 
-  <!--div of add a member modal-->
+  <!--div of add a mark finish modal-->
   <div class="modal fade" tabindex="-1" role="dialog" id="finishModal">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -126,6 +131,31 @@
           <form method="POST">
             {% csrf_token %}
             <input type="hidden" id="finished" name="finished" value="1">
+            <input type="submit" class="btn btn-info" value="Yes">
+          </form>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--div of add a unmark finish modal-->
+  <div class="modal fade" tabindex="-1" role="dialog" id="unfinishModal">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Unfinish</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Unfinish this task?</p>
+        </div>
+        <div class="modal-footer">
+          <form method="POST">
+            {% csrf_token %}
+            <input type="hidden" id="unfinished" name="unfinished" value="1">
             <input type="submit" class="btn btn-info" value="Yes">
           </form>
           <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>

@@ -8,7 +8,9 @@
           {% else %}
             <span style="color: crimson;">●</span> <span style="color:gray;">closed</span>
           {% endif %}
+          {% if is_member %}
           <button class="btn btn-sm" type="button" data-toggle="modal" data-target="#projectnameModal"><i class="fas fa-pen fa-xs"></i></button>
+          {% endif %}
         </h5>
           {% if viewing_project.private == False %}
             <div class="badge badge-pill badge-primary" >Public</div>
@@ -21,7 +23,7 @@
     <div class="btn-toolbar" style="margin-top: 1rem;">
         <div class="btn-group rounded " style="margin-left: 1rem;">
           {% if is_owner %}
-          <div class="dropdown">
+          <div class="dropdown" style="margin: 0 5px;  ">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Manage Project</button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
               <a href="#" class="dropdown-item" data-toggle="modal" data-target="#deleteModal">Delete Project</a>
@@ -29,7 +31,7 @@
             </div>
           </div>
 
-            <div class="dropdown">
+            <div class="dropdown" style="margin: 0 5px;  ">
               <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Manage members</button>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <a href="#" class="dropdown-item" data-toggle="modal" data-target="#addmemberModal">Add a Member</a>
@@ -38,7 +40,7 @@
               </div>
             </div>
 
-            <div class="dropdown">
+            <div class="dropdown" style="margin: 0 5px;  ">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   {% if viewing_project.private == False %}<i class="fas fa-globe-asia"></i>
                   {% else %}<i class="fas fa-user-friends"></i>
@@ -54,9 +56,9 @@
                 </div>
             </div>
           {% endif %}
-            
+          
         </div>
-      <button type="button" class="btn btn-warning" style="color: white;right: 1rem;position: absolute;">Budget Plan</button>
+        <button type="button" class="btn btn-warning" style="color: white;right: 1rem;display:inline-block;">Budget Plan</button>
     </div>
     
     <!--main section-->
@@ -71,7 +73,10 @@
       <hr>
       <!--project description-->
       <div style="margin-bottom: 1rem;">
-        <h6 class="unselectable">Project Description <button class="btn btn-sm" type="button" data-toggle="modal" data-target="#projectdescriptionModal"><i class="fas fa-pen fa-xs"></i></button></h6>
+        <h6 class="unselectable">Project Description: 
+          {% if is_member %}
+          <button class="btn btn-sm" type="button" data-toggle="modal" data-target="#projectdescriptionModal"><i class="fas fa-pen fa-xs"></i></button>
+          {% endif %}</h6>
         {% if viewing_project.project_description %}
           {{viewing_project.project_description}}
         {% else %}
@@ -89,6 +94,7 @@
                       <th scope="col" style="width: 1rem;">Done</th>
                       <th >#</th>
                     <th>Tasks</th>
+                    <th>Due Date</th>
                   </tr>
               </thead>
               <tbody>
@@ -96,19 +102,20 @@
                   {% for one_task in tasks %}
                       <tr>
                           <th scope="row">
-                            {% if one_task.finish == False %}
-                              <i class="fas fa-circle" style="color: greenyellow;padding-left: 1rem;"></i>
+                            {% if one_task.finish == True %}
+                              <i class="fas fa-check-circle" style="color: greenyellow;padding-left: 1rem;"></i>
                             {% else %}
                               <i class="fas fa-circle" style="color:#ff8a5c;padding-left: 1rem;"></i>
                             {% endif %}
                           </th>
                           <td>{{forloop.counter}}</td>
                           <td><a href="{% url 'viewtask' viewing_project.id one_task.id %}" class="btn" style="color: white;"> {{one_task.task_name}}</a></td>
+                          <td>{{one_task.due_date}}</td>
                       </tr>
                   {% endfor %}
                 {% else %}
                     <tr>
-                      <td colspan="2">There is no task in this project</td>
+                      <td colspan="4">There is no task in this project</td>
                     </tr>
                 {% endif %}
               </tbody>
