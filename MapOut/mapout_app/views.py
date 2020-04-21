@@ -62,7 +62,6 @@ def index_projects(request):
     #get the projects involed by the current user
     projects = Project.objects.filter(members = request.user).order_by('closed')
     all_public_project = Project.objects.filter(private = False).order_by('project_name')
-    print(all_public_project)
     tasks = Tasks.objects.filter(belong_project__in = projects)  ##filter all the task in the list of project objects
     context = {'projects':projects, 'tasks':tasks, 'all_public_project': all_public_project}
     return render(request, 'main_projects.html', context)
@@ -294,8 +293,9 @@ def join_project(request, id):
     return render(request, 'join_project.html')
 
 def check_out_project(request, id):
+    print("CLICKED CHECK OUT BOTTON")
     checking = Project.objects.get(id=id)
     owners = checking.owner.all()
     members = checking.members.exclude(id__in = owners)
     context = {'checking':checking, 'owners':owners, 'members':members}
-    return render(request, 'check_out_project.html')
+    return render(request, 'check_out_project.html', context)

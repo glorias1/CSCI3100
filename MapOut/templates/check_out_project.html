@@ -1,0 +1,29 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+    <div class="project-top-header unselectable">
+        <h5 style="padding-top: 10px;display: inline-block;">
+            <span style="color: darkgray;">
+                Project •
+            </span> 
+            {{ checking.project_name }}
+        </h5>
+    </div>
+    <div style="margin: 1rem 1rem 1rem 1rem;">
+        <div style="margin: 0rem 1rem 0rem 1rem;"> 
+            Owners: <br>{{ owners }}
+        </div>
+        <div style="margin: 0rem 1rem 0rem 1rem;">
+            Members: <br>{{ members }}
+        </div>
+        <div style="margin: 0rem 1rem 0rem 1rem;">
+            Project Description: <br>{{checking.project_description}}
+        </div>
+        <div style="margin: 0rem 1rem 0rem 1rem;">
+            Creation Date: <br>{{checking.create_date}}
+        </div>
+    </div>
+    <div style="margin: 1rem 1rem 1rem 1rem;">
+        <a href="{% url 'join_project' checking.id %}" role="button" class="btn btn-outline-primary btn-lg col-12">Join</a>
+    </div>
+{% endblock %}

@@ -51,21 +51,47 @@
 	<h5 style="padding-top: 10px;display: inline-block;" >Public Area</h5>
 </div>
 <div style="margin: 1rem 1rem 1rem 1rem;">
-<!-- Search form -->
-<div class="md-form active-cyan active-cyan-2 mb-3">
-	<input class="form-control" type="text" placeholder="Search For Public Projects" aria-label="Search">
+	<!-- Search form -->
+	<div class="md-form active-cyan active-cyan-2 mb-3">
+		<form method="get">
+			<input id="search" name="search" class="form-control col-12" type="text" placeholder="Search For Public Projects" aria-label="Search">
+		</form>
+	</div>
+	<div class="table-responsive">
+		<table class="table table-hover table-bordered table-striped">
+			<caption>All of the {{ all_public_project.all.count }} public projects.</caption>
+			<thead>
+				<tr>
+				<th scope="col" class="table-info text-nowrap" style="width: 10%">PID</th>
+				<th scope="col" class="table-info text-nowrap" style="width: 60%">Project Name</th>
+				<th scope="col" class="table-info text-nowrap" style="width: 10%"># of Members</th>
+				<th scope="col" class="table-info text-nowrap" style="width: 15%">View / Join</th>
+				</tr>
+			</thead>
+			{% for a_project in all_public_project%}
+				<tbody>
+					<tr>
+						<th scope="row">{{ a_project.id }}</th>
+						<td>{{ a_project.project_name }}</td>
+						<td>
+							<div style=" vertical-align: middle; margin: auto">
+								{{ a_project.members.all.count }}
+							</div>
+						</td>
+						<td>
+							<div class="row" style="margin: 3px 3px;">
+								<a href="{% url 'viewproject' a_project.id %}" class="btn btn-outline-primary col-1">V</a>
+								<a href="{% url 'join_project' a_project.id %}" role="button" class="btn btn-outline-primary col-6">J</a>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			{% endfor %}
+		</table>
+	</div>
 </div>
-<div>
-	<ul class="list-group" style="margin: 1rem 1rem 1rem 1rem;">
-		{% for a_project in all_public_project%}
-		<div class="row">
-			<li class="list-group-item col-10">{{ a_project }}</li>
-			<a href="{% url 'viewproject' a_project.id %}" class="btn btn-outline-primary col-1">View</a>
-			<button type="button" class="btn btn-outline-primary col-1">Join</button>
-		</div>
-		{% endfor %}
-	</ul>
-</div>
-</div>
+<!--<script type="text/javascript">
+	document.getElementById("search").value = ""
+</script>-->
 
 {% endblock %}
