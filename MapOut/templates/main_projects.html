@@ -63,9 +63,9 @@
 				<caption>All of the {{ all_public_project.all.count }} public projects.</caption>
 				<thead>
 					<tr>
-						<th scope="col" class="table-info text-nowrap" style="width: 10%">PID</th>
-						<th scope="col" class="table-info text-nowrap" style="width: 60%">Project Name</th>
-						<th scope="col" class="table-info text-nowrap" style="width: 10%"># of Members</th>
+						<th scope="col" class="table-info text-nowrap" onclick="Sorting(0)" style="width: 10%">PID</th>
+						<th scope="col" class="table-info text-nowrap" onclick="Sorting(1)" style="width: 60%">Project Name</th>
+						<th scope="col" class="table-info text-nowrap" onclick="Sorting(2)" style="width: 10%"># of Members</th>
 						<th scope="col" class="table-info text-nowrap" style="width: 5%">View</th>
 						<th scope="col" class="table-info text-nowrap" style="width: 5%">Join</th>
 					</tr>
@@ -126,6 +126,45 @@
 					tr[i].style.display = "";
 				} else {
 					tr[i].style.display = "none";
+				}
+			}
+		}
+
+		function Sorting(idx){
+			var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+			table = document.getElementById("allPPj");
+			switching = true;
+			dir = "asc";
+			while (switching) {
+				switching = false;
+				rows = table.rows;
+				for (i = 1; i < (rows.length - 1); i++) {
+					shouldSwitch = false;
+					x = rows[i].getElementsByTagName("TD")[idx];
+					y = rows[i + 1].getElementsByTagName("TD")[idx];
+					if (dir == "asc") {
+						if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+						shouldSwitch = true;
+						break;
+						}
+					} 
+					else if (dir == "desc") {
+						if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+						shouldSwitch = true;
+						break;
+						}
+					}
+				}
+				if (shouldSwitch) {
+					rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+					switching = true;
+					switchcount ++;
+				} 
+				else {
+					if (switchcount == 0 && dir == "asc") {
+						dir = "desc";
+						switching = true;
+					}
 				}
 			}
 		}
