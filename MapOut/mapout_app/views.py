@@ -8,6 +8,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.core.files.storage import FileSystemStorage
 from django.urls import reverse
+from django.core.mail import send_mail
 from .forms import *
 from .models import *
 import time
