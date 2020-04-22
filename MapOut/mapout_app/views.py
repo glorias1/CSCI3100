@@ -140,6 +140,13 @@ def signup_view(request):
             user.refresh_from_db()
             user.profile.private = form.cleaned_data.get('privacy')
             user.save()
+            send_mail(
+    'TEst',
+    'csci3100',
+    'mapoutproject',
+    ['to@example.com'],
+    fail_silently=False,
+)
             username = form.cleaned_data.get('username')
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
