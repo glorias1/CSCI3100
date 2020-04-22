@@ -118,7 +118,21 @@ def index_tasks(request):
     return render(request, 'main_tasks.html', context)
 
 def login_btn(request):
-    return render(request, 'registration/login.html')
+    return render(request, 'registration/login.html') 
+
+def pw_enter(request):
+    if request.method == 'POST':
+        form = AuthenticationForm(data=request.POST)
+        if form.is_valid():
+            email = form.cleaned_data.get('email')
+            html_msg = render_to_string('reset_email.html', {'content': 'request.user.username'})
+            plain_msg = strip_tags(html_msg)
+            send_mail('Reset Password', plain_msg,
+                'mapoutproject@gmail.com',[request.user.email],
+                html_message=html_msg)
+            messages.info(request, 'Email sent!')
+            return redirect("home")
+    else: return render(request, 'registration/password_reset_form.html')
 
 def login_view1(request):
     if request.user.is_authenticated(): 
