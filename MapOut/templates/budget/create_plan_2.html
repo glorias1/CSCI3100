@@ -2,27 +2,27 @@
 {% load static %}
 {% block content %}
 <!--add new expense-->
-<h1>New Expense</h1>
+<div class="project-top-header unselectable">
+  <h5 style="padding-top: 10px;display: inline-block;"><span style="color: darkgray;">Project • {{viewing_project.project_name}} • Budget Plan</span> • New Expense</h5></div>
+  <div style="margin-left: 1rem;">
    {% if form.errors %}
    <span style="color: red;"><p>Invalid.</p></span>
    {% endif %}
     <form action="{% url 'createbudget2' viewing_project.id %}" method="POST" style="color: black;margin-left: 1rem;margin-right: 1rem; ">
     	{% csrf_token %}
     	<label for="expense_name">New Expense Name:</label><br>
-    	<input id="expense_name-submit" type="text" name="expense_name" value=""><br>
+    	<input id="expense_name-submit" type="text" name="expense_name" value="" class="form-control" style="width: 20rem;" required><br>
     	<label for="expense_amount">New Expense Amount:</label><br>
-    	<input id="expense_amount-submit" type="text" name="expense_amount" value=""><br>
+    	<input id="expense_amount-submit" type="text" name="expense_amount" value="" class="form-control" style="width: 20rem;" required><br>
 
-      <button type="submit" class="btn btn-info" style="margin-left: 1rem;">Add Expense</button><br>
+      <button type="submit" class="btn btn-info" style="margin-left: 1rem;">Add Expense</button>
+      
     </form>
-
-    <form action="{% url 'createbudget2' viewing_project.id %}" method="POST" style="color: black;margin-left: 1rem;margin-right: 1rem; ">
-      {% csrf_token %}
-      <button type="submit" class="btn btn-outline-primary" style="margin-left: 1rem;">New Expense</button>
-    </form>
+    <div style="margin-top: 1rem;">
+    <a class="btn btn-info" href="{% url 'viewbudget' viewing_project.id %}" ><i class="fas fa-arrow-left"></i> Go back to budget plan</a>
+    </div>
 
     <p style="margin-left: 1rem;">{{ form }}</p>
   </div>
        
-</div>
 {% endblock %}
