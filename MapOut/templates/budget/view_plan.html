@@ -21,45 +21,108 @@
   <table class="table table-dark rounded table-hover">
   <thead>
         <tr>
-        <th>Capital</th>
-        <th>Amount($)</th>
+        <th>Budget</th>
+        <th>Amount</th>
+        <th>%</th>
+        <th>Expense</th>
+        <th>Amount</th>
+        <th>%</th>
         </tr>
   </thead>
   <tbody>
-    {% for one_capital in all_capital %}
         <tr>
-            <td>{{one_capital.name}}</td>
-            <td>{{one_capital.amount}}</td>
+            <td>Capital:</td>
+            <td>${{total_budget_capital}}</td>
+            <th>{{budget_capital_percent}}%</th>
+            <td>Manpower:</td>
+            <td>${{total_expense_manpower}}</td>
+            <th>{{expense_manpower_percent}}%</th>
         </tr>
-      {% endfor %}
-      <tr>
-        <td><strong>Total:</strong></td>
-        <td>{{total_capital}}</td>
-      </tr>
+        <tr>
+            <td>Subsidize:</td>
+            <td>${{total_budget_subsidize}}</td>
+            <th>{{budget_subsidize_percent}}%</th>
+            <td>Equipment:</td>
+            <td>${{total_expense_equipment}}</td>
+            <th>{{expense_equipment_percent}}%</th>
+        </tr>
+        <tr>
+            <td>Other:</td>
+            <td>${{total_budget_other}}</td>
+            <th>{{budget_other_percent}}%</th>
+            <td>Transport:</td>
+            <td>${{total_expense_transport}}</td>
+            <th>{{expense_transport_percent}}%</th>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <th></th>
+            <td>Administrative Fee:</td>
+            <td>${{total_expense_administrative_fee}}</td>
+            <th>{{expense_administrative_fee_percent}}%</th>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <th></th>
+            <td>Consultant Fee:</td>
+            <td>${{total_expense_consultant_fee}}</td>
+            <th>{{expense_consultant_fee_percent}}%</th>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <th></th>
+            <td>Professional Service:</td>
+            <td>${{total_expense_professional_service}}</td>
+            <th>{{expense_professional_service_percent}}%</th>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <th></th>
+            <td>Miscellaneous:</td>
+            <td>${{total_expense_miscellaneous}}</td>
+            <th>{{expense_miscellaneous_percent}}%</th>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <th></th>
+            <td>Other:</td>
+            <td>${{total_expense_other}}</td>
+            <th>{{expense_other_percent}}%</th>
+        </tr>
+        <tr>
+            <td>Total:</td>
+            <td>${{total_budget}}</td>
+            <th>100%</th>
+            <td>Total:</td>
+            <td>${{total_expense}}</td>
+            <th>100%</th>
+        </tr>
   </tbody>
-  </table></div>
-  <div style="display: inline-table; width: 40%;">
-  <table class="table table-dark rounded table-hover">
-    <thead>
-          <tr>
-          <th>Expense</th>
-          <th>Amount($)</th>
-          </tr>
-    </thead>
-    <tbody>
-      {% for one_expense in all_expense %}
-          <tr>
-              <td>{{one_expense.name}}</td>
-              <td>{{one_expense.amount}}</td>
-          </tr>
-          {% endfor %}
-          <tr>
-            <td><strong>Total:</strong></td>
-            <td>{{total_expense}}</td>
-          </tr>
-    </tbody>
-    </table></div></div></div>
+  </table>
 
+  <table class="table table-dark">
+  <thead>
+        <tr>
+        <th>Budget remaining:</th>
+        <th></th>
+        </tr>
+  </thead>
+  <tbody>
+        <tr>
+            <th>${{net}}</th>
+            <th>{{net_percent}}%</th>
+        </tr>
+        <tr>
+            <th>{{arg}}</th>
+        </tr>
+  </tbody>
+  </table>
+    
 <!--what is this?
 <form action="{% url 'index_budgets' %}" method="POST" style="color: black;margin-left: 1rem;margin-right: 1rem; ">
   {% csrf_token %}
