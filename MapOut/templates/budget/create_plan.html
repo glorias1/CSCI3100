@@ -2,7 +2,7 @@
 {% load static %}
 {% block content %}
 <h1>Create a budget plan</h1>
-<form method="POST" action="{% url 'createbudget' %}">
+<form method="POST" action="{% url 'createbudget' viewing_project.id %}">
     {% csrf_token %}
     <label for="project">Belongs to project:</label>
     <select id="belong_project_select" name="belong_project_select">
@@ -34,11 +34,11 @@
     <label for="expense_3_amount">Expense 3 Amount:</label><br>
     <input id="expense_3_amount-submit" type="text" name="expense_3_amount" value=""><br><br>
 
-    <button type="submit" class="btn btn-outline-primary" style="margin-left: 1rem;">Create Plan</button>
+    <button type="submit" class="btn btn-info" style="margin-left: 1rem;">Add recored</button>
 
 </form>
 
-<form action="{% url 'createbudget2' %}" method="POST" style="color: black;margin-left: 1rem;margin-right: 1rem; ">
+<form action="{% url 'createbudget2' viewing_project.id %}" method="POST" style="color: black;margin-left: 1rem;margin-right: 1rem; ">
       {% csrf_token %}
       <button type="submit" class="btn btn-outline-primary" style="margin-left: 1rem;">New Expense</button>
 </form>

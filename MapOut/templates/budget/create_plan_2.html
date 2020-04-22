@@ -5,7 +5,7 @@
    {% if form.errors %}
    <span style="color: red;"><p>Invalid.</p></span>
    {% endif %}
-    <form action="{% url 'createbudget2' %}" method="POST" style="color: black;margin-left: 1rem;margin-right: 1rem; ">
+    <form action="{% url 'createbudget2' viewing_project.id %}" method="POST" style="color: black;margin-left: 1rem;margin-right: 1rem; ">
     	{% csrf_token %}
 
       <label for="project">Belongs to project:</label>
@@ -23,10 +23,10 @@
     	<label for="expense_amount">New Expense Amount:</label><br>
     	<input id="expense_amount-submit" type="text" name="expense_amount" value=""><br>
 
-      <button type="submit" class="btn btn-outline-primary" style="margin-left: 1rem;">Create Plan</button><br>
+      <button type="submit" class="btn btn-info" style="margin-left: 1rem;">Add Expense</button><br>
     </form>
 
-    <form action="{% url 'createbudget2' %}" method="POST" style="color: black;margin-left: 1rem;margin-right: 1rem; ">
+    <form action="{% url 'createbudget2' viewing_project.id %}" method="POST" style="color: black;margin-left: 1rem;margin-right: 1rem; ">
       {% csrf_token %}
       <button type="submit" class="btn btn-outline-primary" style="margin-left: 1rem;">New Expense</button>
     </form>

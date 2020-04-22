@@ -4,16 +4,7 @@ from django.conf import settings
 from django.dispatch import receiver
 from django.db.models.signals import post_save
 
-# Create your models here.
-class Budget(models.Model):
-    transition_id =         models.AutoField(primary_key=True)
-    belong_project =        models.ForeignKey('Project', on_delete=models.CASCADE)
-    transition_type =       models.CharField(max_length=10, blank=True, null=True)  # expense/ capital
-    name =                  models.CharField(max_length=50, blank=True, null=True)  # if it is capital, name='capital'
-    amount =                models.IntegerField(blank=True, null=True) # if it is expense, amount = negative number
 
-    def __str__(self):
-        return self.budget_transition_id
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -37,6 +28,20 @@ class Project(models.Model):
 
     def __str__(self):
         return self.project_name
+
+# Create your models here.
+class Budgetplan(models.Model):
+    belong_project =        models.ForeignKey(Project, on_delete=models.CASCADE)
+
+class Budget(models.Model):
+    belong_plan = models.ForeignKey(Budgetplan, on_delete=models.CASCADE)
+    transition_id =         models.AutoField(primary_key=True)
+    transition_type =       models.CharField(max_length=10, blank=True, null=True)  # expense/ capital
+    name =                  models.CharField(max_length=50, blank=True, null=True)  # if it is capital, name='capital'
+    amount =                models.IntegerField(blank=True, null=True) # if it is expense, amount = negative number
+
+    def __str__(self):
+        return self.budget_transition_id
 
 class JoinMessage(models.Model):
     pj = models.ForeignKey(Project, on_delete=models.CASCADE)

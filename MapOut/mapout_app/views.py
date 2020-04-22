@@ -13,7 +13,6 @@ from django.contrib.auth.hashers import check_password
 from MapOut.settings import EMAIL_HOST_USER
 from .forms import *
 from .models import *
-#from .settings import EMAIL_HOST_USER
 import time
 import os
 
@@ -23,9 +22,10 @@ def index_budgets(request):
             return render(request, 'budget/create_plan.html')
     return render(request, 'budget/index.html')
 
-def create_budget(request):
-    projects = Project.objects.filter(id = 1)
-    options = {'projects':projects}
+def create_budget(request, id1):
+    viewing_project = Project.objects.get(id = id1)
+    viewing_plan = Budgetplan.objects.get(belong_project = viewing_project)
+    context = {'viewing_project':viewing_project, 'viewing_plan':viewing_plan}
     if request.method == 'POST':
         if request.POST.get('belong_project_select'):
             selected_project_id = request.POST.get('belong_project_select')
@@ -33,7 +33,7 @@ def create_budget(request):
             if (request.POST.get('capital_name') != '') and (request.POST.get('capital_amount') != ''):
                 transition_capital =            Budget()
                 transition_capital.transition_type = "capital"
-                transition_capital.belong_project = Project.objects.get(id = selected_project_id)
+                transition_capital.belong_plan = viewing_plan
                 transition_capital.name =       request.POST.get('capital_name')
                 transition_capital.amount =     int(request.POST.get('capital_amount'))
                 transition_capital.save()
@@ -41,7 +41,7 @@ def create_budget(request):
             if (request.POST.get('expense_1_name') != '') and (request.POST.get('expense_1_amount') != ''):
                 transition_expense_1 =          Budget()
                 transition_expense_1.transition_type = "expense"
-                transition_expense_1.belong_project = Project.objects.get(id = selected_project_id)
+                transition_expense_1.belong_plan = viewing_plan
                 transition_expense_1.name =     request.POST.get('expense_1_name')
                 transition_expense_1.amount =   int(request.POST.get('expense_1_amount'))
                 transition_expense_1.save()
@@ -49,7 +49,7 @@ def create_budget(request):
             if (request.POST.get('expense_2_name') != '') and (request.POST.get('expense_2_amount') != ''):       
                 transition_expense_2 =          Budget()
                 transition_expense_2.transition_type = "expense"
-                transition_expense_2.belong_project = Project.objects.get(id = selected_project_id)
+                transition_expense_2.belong_plan = viewing_plan
                 transition_expense_2.name =     request.POST.get('expense_2_name')
                 transition_expense_2.amount =   int(request.POST.get('expense_2_amount'))
                 transition_expense_2.save()
@@ -57,37 +57,46 @@ def create_budget(request):
             if (request.POST.get('expense_3_name') != '') and (request.POST.get('expense_3_amount') != ''):     
                 transition_expense_3 =          Budget()
                 transition_expense_3.transition_type = "expense"
-                transition_expense_3.belong_project = Project.objects.get(id = selected_project_id)
+                transition_expense_3.belong_plan = viewing_plan
                 transition_expense_3.name =     request.POST.get('expense_3_name')
                 transition_expense_3.amount =   int(request.POST.get('expense_3_amount'))
                 transition_expense_3.save()
 
-    return render(request, 'budget/create_plan.html')
+    return render(request, 'budget/create_plan.html',context)
 
-def create_budget_2(request):
+def create_budget_2(request, id1):
+    viewing_project = Project.objects.get(id = id1)
+    viewing_plan = Budgetplan.objects.get(belong_project = viewing_project)
+    context = {'viewing_project':viewing_project, 'viewing_plan':viewing_plan}
     if request.method == 'POST':
         if request.POST.get('expense_name'):
             transition_expense =          Budget()
             transition_expense.transition_type = "expense"
-            transition_expense.belong_project = Project.objects.get(id = 1) # selected_project_id)
+            transition_expense.belong_plan = viewing_plan # selected_project_id)
             transition_expense.name =     request.POST.get('expense_name')
             transition_expense.amount =   int(request.POST.get('expense_amount'))
             transition_expense.save()
-    return render(request, 'budget/create_plan_2.html')
+    return render(request, 'budget/create_plan_2.html', context)
 
-def view_budget(request, id3): # id3 is project id 
-    if request.method == 'GET':
-        total_expense = 0
-        capital = Budget.objects.raw('SELECT * FROM mapout_app_budget WHERE belong_project_id = %s AND transition_type = "capital"', [id3])
-        expense = Budget.objects.raw('SELECT * FROM mapout_app_budget WHERE belong_project_id = %s AND transition_type = "expense"', [id3])
-        for i in expense:
-            total_expense += i.amount
-        context = {
-            "capital": capital[0].amount,
-            "expense": total_expense
-        }
-        return render(request, 'budget/view_plan.html', context)
-    return render(request, 'budget/view_plan.html', context)
+def view_budget(request, id3): # id3 is project id \
+    viewing_project = Project.objects.get(id = id3)
+    viewing_plan = Budgetplan.objects.get(belong_project = viewing_project)
+    all_budget_records = Budget.objects.filter(belong_plan = viewing_plan)
+    #if request.method == 'GET':
+    #    total_expense = 0
+    #    capital = Budget.objects.raw('SELECT * FROM mapout_app_budget WHERE belong_project_id = %s AND transition_type = "capital"', [id3])
+    #    expense = Budget.objects.raw('SELECT * FROM mapout_app_budget WHERE belong_project_id = %s AND transition_type = "expense"', [id3])
+    #    for i in expense:
+    #        total_expense += i.amount
+    context = {
+        #"capital": capital[0].amount,
+        #"expense": total_expense,
+        "viewing_project": viewing_project,
+        "all_budget_records": all_budget_records,
+        "viewing_plan":viewing_plan
+    }
+        #return render(request, 'budget/view_plan.html', context)
+    return render(request, 'budget/view_plan.html',context)
 
 def home(request):
     return render(request, 'home.html')
@@ -174,6 +183,7 @@ def settings_(request):
 
 def create_project(request):
     createproject = Project()
+    createbudgetplan = Budgetplan()
     if request.method == 'POST':
         if request.POST.get('project_name') and request.POST.get('project_description'):
             createproject.project_name = request.POST.get('project_name')
@@ -183,6 +193,8 @@ def create_project(request):
             createproject.save()
             createproject.owner.add(request.user)    ##add current usre as owner
             createproject.members.add(request.user)   ##add current user as a member
+            createbudgetplan.belong_project = createproject
+            createbudgetplan.save()
             messages.success(request, 'You have successfully created a project.')
             return HttpResponseRedirect(reverse('viewproject', args=[createproject.id]))
     return render(request, 'create_project.html')
@@ -199,6 +211,7 @@ def create_task(request):
             createtask.last_modify = datetime.now()
             selected_project_id = request.POST.get('belong_project_select')
             createtask.belong_project = Project.objects.get(id = selected_project_id)
+            createtask.start_date = request.POST.get('start_date')
             if request.POST.get('due_date'):
                 createtask.due_date = request.POST.get('due_date')
             if request.POST.get('task_description'):
@@ -228,7 +241,6 @@ def view_project(request, id):
             is_member = True
     except:
         is_member = False
-
     context = {'viewing_project':viewing_project, 'tasks':tasks, 'is_owner':is_owner, 'project_members_not_owner':project_members_not_owner, 'project_members':project_members, 'is_member':is_member, 'all_leaders':all_leaders , 'msgs':msgs}
     ##action when a form is submitted
     if request.method=='POST':
