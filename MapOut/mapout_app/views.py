@@ -333,8 +333,11 @@ def view_project(request, id):
     project_leader = viewing_project.owner.all()
     project_members_not_owner = viewing_project.members.exclude(id__in = project_leader)
     msgs = Chat.objects.filter(belong_project = viewing_project).order_by('sent_date')
-    join_requests = JoinMessage.objects.filter(pj = viewing_project)
-    join_requests = join_requests.filter(not_approved = True)
+    join_requests = JoinMessage.objects.filter(pj_id = viewing_project.id)
+    sender = {}
+    for jq in join_requests:
+        sender[jq] = User.objects.get(id=jq.user_id).username
+    #join_requests = join_requests.filter(not_approved = True)
     ## see if the request user is the owner of the project
     try:
         if viewing_project.owner.get(id = request.user.id):
@@ -354,7 +357,8 @@ def view_project(request, id):
         'is_member':is_member, 
         'all_leaders':all_leaders , 
         'msgs':msgs,
-        'join_requests':join_requests
+        'join_requests':join_requests,
+        'sender':sender
     }
     ##action when a form is submitted
     if request.method=='POST':
@@ -475,18 +479,18 @@ def download(request, id):
     return response
     
 def join_project(request, pid):
-    print("PID:::::::" + pid)
     pj = Project.objects.get(id=pid)
     join_request = JoinMessage()
+    ##should not allow dup. messages.
     if request.method == "POST":
-        print("typein pas: " + request.POST.get('va_password'))
-        print("user's pw: " + request.user.password)
+        #print("typein pas: " + request.POST.get('va_password'))
+        #print("user's pw: " + request.user.password)
         if check_password(request.POST.get('va_password'), request.user.password):
             join_request.pj = pj
             join_request.user = request.user
             join_request.message = request.POST.get('message')
             join_request.save()
         else:
-            print("wrong password")
-        context={"join_request": join_request, "pj": pj}
-    return render(request, 'join_project_message.html', context)
+            pass#print("wrong password")
+        #context={"join_request": join_request, "pj": pj}
+    return HttpResponseRedirect("/projects/")#render(request, 'main_projects.html')

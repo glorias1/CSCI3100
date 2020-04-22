@@ -1,7 +1,45 @@
-{% extends 'index.html' %}
-{% load static %}
-{% block content%}
-    <div>
-        this is the join message {{join_request.message}}.
+{% block requestModal%}
+<div class="modal fade" tabindex="-1" role="dialog" id="requestModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                {% if join_requests %}
+                    <h5 class="modal-title">You have {{join_requests.all.count}} request:</h5>
+                {% else %}
+                    <h5 class="modal-title">No join request</h5>
+                {% endif %}
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table id="allJR" class="table rounded">
+                    <caption>Total {{ join_requests.all.count }} join request.</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col" class="table-info text-nowrap">User</th>
+                            <th scope="col" class="table-info text-nowrap">Message</th>
+                            <th scope="col" class="table-info text-nowrap"></th>
+                        </tr>
+                    </thead>
+                    {% for jq in join_requests %}
+                        <tbody>
+                            <tr>
+                                <td>{{ jq.user_id }}</td>
+                                <!--I want to show name, but dont know how.-->
+                                <td>{{ jq.message }}</td>
+                                <td>
+                                    <form method="POST" action="">
+                                        <input id="accept{{jp.pj_id}}&{{jp.user.id}}" class="btn btn-outline-primary btn-sm btn-block" value="Accept" type="submit"/>
+                                        <input id="reject{{jp.pj_id}}&{{jp.user.id}}" class="btn btn-outline-primary btn-sm btn-block" value="Reject" type="submit"/>
+                                    </form>
+                                </td>
+                            </tr>
+                        </tbody>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
     </div>
+</div>
 {% endblock %}

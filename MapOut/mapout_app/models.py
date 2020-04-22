@@ -52,7 +52,7 @@ class JoinMessage(models.Model):
     not_approved = models.BooleanField(default=True)
 
     def __str__(self):
-        return {self.pj.project_name, self.user.username}
+        return self.message
 
 class Tasks(models.Model):
     task_name = models.CharField(max_length=100)
