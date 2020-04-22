@@ -11,19 +11,24 @@
    {% endif %}
     <form action="{% url 'createbudget' viewing_project.id %}" method="POST" style="color: black;margin-left: 1rem;margin-right: 1rem; ">
     	{% csrf_token %}
-        <label for="capital_name">Budget Name: </label>
-        <input id="capital_name-submit" type="text" name="c apital_name" value="">
-        <label for="budget">Budget Type:</label>
-        <select id="capital_transition_type" name="c    apital_transition_type">
-            <option value="Capital">Capital</option>
-            <option value="Subsidize">Subsidize</option>
-            <option value="Others">Subsidize</option>
-            <option value="">-----</option>
-        </select>
-        <label for="capital_amount">Budget Description:</label>
-        <input id="capital_amount-submit" type="text" name="c   apital_description" value="">
-        <label for="capital_amount">Budget Amount:</label>
-        <input id="capital_amount-submit" type="text" name="c   apital_amount" value=""><br>
+          <label for="expense_name">Expense Name:</label>
+          <input id ="expense_name-submit" type="text" name="expense_name" value="">
+          <label for="expense">Expense Type:</label>
+          <select id="expense_transition_type" name="expense_transition_type">
+              <option value="Manpower">Manpower</option>
+              <option value="Equipment">Equipment</option>
+              <option value="Transport">Transport</option>
+              <option value="Administrative_Fee">Administrative Fee</option>
+              <option value="Consultant_Fee">Consultant Fee</option>
+              <option value="Professional_Service">Professional Service</option>
+              <option value="Miscellaneous">Miscellaneous</option>
+              <option value="Other">Other</option>
+              <option value="">-----</option>
+          </select>
+          <label for="expense_amount">Budget Description:</label>
+          <input id ="expense_amount-submit" type="text" name="expense_description" value="">
+          <label for="expense_amount">Budget Amount:</label>
+          <input id ="expense_amount-submit" type="text" name="expense_amount" value=""><br>
       <button type="submit" class="btn btn-info" style="margin-left: 1rem;">Add Capital</button>
       
     </form>
