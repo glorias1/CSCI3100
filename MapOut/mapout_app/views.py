@@ -207,7 +207,7 @@ def create_project(request):
             messages.success(request, 'You have successfully created a project.')
             send_mail(
                 'Welcome To MapOut!',
-                'Dear @'+ request.user + '\nYou have successfully created project' + createproject.project_name + 
+                'Dear @'+ request.user.username + '\nYou have successfully created project' + createproject.project_name + 
                 'on MapOut. Have fun!\n Best, \nMapOut Team',
                 'mapoutproject@gmail.com',
                 [request.user.email],
