@@ -5,9 +5,13 @@
         {% if form.errors %}
             <span style="color: red;"><p>ERROR</p></span>
         {% endif %}
-        <form method="POST" action="{% url 'join_project' jpid %}">
+        <form method="POST">
             {% csrf_token %}
             <div class="align-items-center">
+                <div style="display: none;">
+                    <label for="JPID{{jpid}}"></label>
+                    <input name="JPID" id="JPID{{jpid}}" value="{{jpid}}" required>
+                </div>
                 <div class="col">
                     <label for="message{{jpid}}">Message to owners:</label>
                     <textarea class="form-control rounded-0" name="message" id="message{{jpid}}" rows="3" required></textarea><br>
@@ -17,7 +21,7 @@
                     <input class="form-control" type="password" name="va_password" value="" id="va_password{{jpid}}"><br>    
                 </div>
                 <div class="col">
-                    <input id="join_submit{{jpid}}" type="submit" value="Submit" class="btn btn-outline-primary">
+                    <input type="submit" value="Submit" class="btn btn-outline-primary">
                     <button id='cancelJ{{jpid}}' type="button" class="btn btn-outline-danger" onclick="closeForm(this)">Close</button>
                 </div>
             </div>

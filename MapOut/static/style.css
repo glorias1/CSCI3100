@@ -325,3 +325,19 @@ div.joinFormStyle{
 	font-family:serif;
 	text-align: center;
 }
+
+div.validationBox{
+	position: absolute;
+	margin:auto;
+	top: -250px;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	width: 100px;
+	height: 50px;
+	user-select:none;
+	color: black;
+	background-color: white;
+	font-family:serif;
+	text-align: center;
+}

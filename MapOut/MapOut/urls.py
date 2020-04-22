@@ -49,7 +49,7 @@ urlpatterns = [
     re_path(r'^project/(?P<id>\d+)/$', view_project, name='viewproject'),       ##dynamic detailed page of a project, have chatroom and list of task, team leader can close/delete the project, add new members and add team leader 
     re_path(r'^project/(?P<id1>\d+)/task/(?P<id2>\d+)/$', view_task, name='viewtask'),       ##dynamic detailed page of a task, can upload file and delete file and download file, user can set the task as finished
     
-    re_path(r'^projects/join/(?P<pid>\d+)/$', join_project, name='join_project'),
-    
+    #re_path(r'^projects/join/(?P<pid>\d+)/$', join_project, name='join_project'),
+
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
