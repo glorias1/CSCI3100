@@ -105,7 +105,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
@@ -126,8 +125,8 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'mapoutproject@gmail.com'
 EMAIL_HOST_PASSWORD = 'csci3100'
 EMAIL_USE_TLS = True
-ACCOUNT_EMAIL_VERIFICATION = 'none'
 EMAIL_USE_SSL = False
+ACCOUNT_EMAIL_VERIFICATION = 'none'
 
 
 # Static files (CSS, JavaScript, Images)
