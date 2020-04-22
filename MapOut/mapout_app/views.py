@@ -143,16 +143,15 @@ def signup_view(request):
             user.profile.
             private = form.cleaned_data.get('privacy')
             user.save()
-            user_email = str(form.cleaned_data.get('email').value())
-            send_mail(
-                        'TEst',
-                        'csci3100',
-                        'mapoutproject',
-                        [user_email],
-                        fail_silently=False,
-                    )
             username = form.cleaned_data.get('username')
             raw_password = form.cleaned_data.get('password1')
+            send_mail(
+                        'Welcome To MapOut!',
+                        'Dear '+ username + '\nYou have successfully registered on MapOut. Have Fun!:)\n Best, \nMapOut Team',
+                        'mapoutproject',
+                        [user.email],
+                        fail_silently=False,
+                    )
             user = authenticate(username=username, password=raw_password)
             login(request, user)
             return redirect('home')
