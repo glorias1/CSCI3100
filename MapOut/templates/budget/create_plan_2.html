@@ -1,23 +1,13 @@
 {% extends 'index.html' %}
 {% load static %}
 {% block content %}
+<!--add new expense-->
 <h1>New Expense</h1>
    {% if form.errors %}
    <span style="color: red;"><p>Invalid.</p></span>
    {% endif %}
     <form action="{% url 'createbudget2' viewing_project.id %}" method="POST" style="color: black;margin-left: 1rem;margin-right: 1rem; ">
     	{% csrf_token %}
-
-      <label for="project">Belongs to project:</label>
-      <select id="belong_project_select" name="belong_project_select">
-          {% if projects %}
-              {% for one_project in projects %}
-                  <option value="{{one_project.id}}">{{one_project.project_name}}</option>
-              {% endfor %}
-          {% else %}
-                  <option value="">-----</option>
-          {% endif %}
-      </select><br>
     	<label for="expense_name">New Expense Name:</label><br>
     	<input id="expense_name-submit" type="text" name="expense_name" value=""><br>
     	<label for="expense_amount">New Expense Amount:</label><br>
