@@ -6,9 +6,10 @@ from django.db.models.signals import post_save
 
 # Create your models here.
 class Budget(models.Model):
-    transition_id =         models.AutoField(primary_key=True)  # Auto increament
-#    belong_project =        models.ForeignKey(Project, on_delete=models.CASCADE)
-    name =                  models.CharField(max_length=50)  # if it is capital, name='capital'
+    transition_id =         models.AutoField(primary_key=True)
+    belong_project =        models.ForeignKey('Project', on_delete=models.CASCADE)
+    transition_type =       models.CharField(max_length=10, blank=True, null=True)  # expense/ capital
+    name =                  models.CharField(max_length=50, blank=True, null=True)  # if it is capital, name='capital'
     amount =                models.IntegerField(blank=True, null=True) # if it is expense, amount = negative number
 
     def __str__(self):
