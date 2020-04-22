@@ -29,13 +29,15 @@ def create_budget(request, id1):
     viewing_plan = Budgetplan.objects.get(belong_project = viewing_project)
     context = {'viewing_project':viewing_project, 'viewing_plan':viewing_plan}
     if request.method == 'POST':
-        if request.POST.get('capital_name'):
-            transition_capital =          Budget()
-            transition_capital.transition_type = "capital"
-            transition_capital.belong_plan = viewing_plan # selected_project_id)
-            transition_capital.name =     request.POST.get('capital_name')
-            transition_capital.amount =   int(request.POST.get('capital_amount'))
-            transition_capital.save()
+        if (request.POST.get('capital_name') != '') and (request.POST.get('capital_amount') != ''):
+                transition_capital =                        Budget()
+                transition_capital.transition_category =    "budget"
+                transition_capital.transition_type =        request.POST.get('capital_transition_type')
+                transition_capital.belong_project =         Project.objects.get(id = id1)
+                transition_capital.name =                   request.POST.get('capital_name')
+                transition_capital.description =            request.POST.get('capital_description')
+                transition_capital.amount =                 int(request.POST.get('capital_amount'))
+                transition_capital.save()
     return render(request, 'budget/create_plan.html', context)
 
 ##this is add expense
