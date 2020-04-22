@@ -15,6 +15,8 @@ from .forms import *
 from .models import *
 import time
 import os
+from fullcalendar.models import CalendarEvent
+from fullcalendar.util import events_to_json, calendar_options
 
 
 def index_budgets(request):
@@ -288,8 +290,26 @@ def signup_view(request):
         form = SignUpForm()
     return render(request, 'registration/signup.html', {'form': form})
 
+
 def schedule(request):
-    return  render(request, 'schedule.html')
+    days = [31,28,31,30,31,30,31,31,30,31,30,31]
+    months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
+    user_tasks = Tasks.objects.filter(incharge = request.user)
+    today = datetime.now()
+    #print((str(today.month))+'haaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa')
+    this_month = int(str(today.month))
+    get_days = days[this_month-1]
+    this_month = months[this_month-1]
+    #print(str(get_days) + 'YOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO')
+    user_tasks = user_tasks.filter(due_date__year = today.year, due_date__month = today.month).order_by('due_date')
+    user_tasks_date = user_tasks.all()
+    array = []
+    for each_date in user_tasks_date:
+        array.append(int(each_date.due_date.strftime('%d')))
+    print(array)
+    context = {'user_tasks':user_tasks, 'today':today, 'this_month':this_month, 'get_days':range(1,get_days+1),'days_of_tasks':array}
+    return  render(request, 'schedule.html',context)
+
 
 def help_(request):
     return  render(request, 'help.html')

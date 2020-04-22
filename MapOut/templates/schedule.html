@@ -1,9 +1,36 @@
 {% extends 'index.html'%}
+
 {% block content %}
 <div class="project-top-header unselectable">
 	<h5 style="padding-top: 10px;display: inline-block;" >Schedule</h5>
 </div>
-<div style="margin: 1rem 1rem 1rem 1rem;">
-	
+<div style="overflow: auto;">
+	<table class="table">
+		<thead>
+			<tr>
+				<th scope="row">
+					{{this_month}}
+				</th>
+			</tr>
+			<tr>
+				{% for i in get_days %}
+					<td>{{i}}</td>
+				{% endfor %}
+			</tr>
+			<tr>
+				{% for i in get_days %}
+				<td>
+					{% for one_task_day in dayss_of_tasks %}
+					hi
+						{% if i == one_task_day|add:0 %}
+							<p>hi</p>hi
+						{% endif %}
+					{% endfor %}
+					</td>
+				{% endfor %}
+			</tr>
+		</thead>
+	</table>
 </div>
+
 {% endblock %}
