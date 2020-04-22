@@ -82,20 +82,20 @@
 							<td>
 								<div class="row" style="margin: 3px 3px;">
 									<a href="{% url 'viewproject' a_project.id %}" class="btn btn-outline-primary col-6">V</a>
-									<!--
-										<a href="{% url 'join_project' a_project.id %}" role="button" class="btn btn-outline-primary col-6">J</a>
-									-->
-									<button class="btn btn-outline-primary col-6" onclick="openForm()">J</button>
+									<!--<a href="{% url 'join_project' a_project.id %}" role="button" onclick="openForm()" class="btn btn-outline-primary col-6">J</a>-->
+									{% if cuser not in a_project.members.all %}
+										<button id="j{{a_project.id}}" class="btn btn-outline-primary col-6" onclick="openForm(this)">J</button>
+									{% endif %}
 								</div>
 							</td>
 						</tr>
 					</tbody>
+					{% block joinForm %}
+						{% include 'join_project.html' with jpid=a_project.id%}
+					{% endblock %}
 				{% endfor %}
 			</table>
 		</div>
-	</div>
-	<div>
-		{% block joinForm %}{% include 'join_project.html' %}{% endblock %}
 	</div>
 
 	<script>

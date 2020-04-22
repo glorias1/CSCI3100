@@ -1,25 +1,24 @@
-{% load static %}
 {% block joinForm %}
-<div id="joinForm" class="border border-primary rounded" style="display: none;">
-        <h3>Join Project</h3>
+<div id="joinForm{{jpid}}" class="joinFormStyle border border-primary rounded" style="display: none;">
+        <h3>Join Project (PID: {{jpid}})</h3>
     <div class="form-group"></div>
         {% if form.errors %}
             <span style="color: red;"><p>ERROR</p></span>
         {% endif %}
-        <form method="POST" action=""> <!--{% url 'join_project' pj.id%-->
+        <form method="POST" action=""> <!--{% url 'join_project' jpid %-->
             {% csrf_token %}
             <div class="align-items-center">
                 <div class="col">
-                    <label for="message">Message to owners:</label>
-                    <textarea class="form-control rounded-0" id="message" rows="3" required></textarea><br>
+                    <label for="message{{jpid}}">Message to owners:</label>
+                    <textarea class="form-control rounded-0" id="message{{jpid}}" rows="3" required></textarea><br>
                 </div>
                 <div class="col">
-                    <label for="va_password">Your Password (for validation):</label>
-                    <input class="form-control" type="password" name="va_password" value="" id="va_password"><br>    
+                    <label for="va_password{{jpid}}">Your Password (for validation):</label>
+                    <input class="form-control" type="password" name="va_password" value="" id="va_password{{jpid}}"><br>    
                 </div>
                 <div class="col">
-                    <input id="join_submit" type="submit" value="Submit" class="btn btn-outline-primary">
-                    <button type="button" class="btn btn-outline-danger" onclick="closeForm()">Close</button>
+                    <input id="join_submit{{jpid}}" type="submit" value="Submit" class="btn btn-outline-primary">
+                    <button id='cancelJ{{jpid}}' type="button" class="btn btn-outline-danger" onclick="closeForm(this)">Close</button>
                 </div>
             </div>
         </form>
@@ -27,13 +26,16 @@
 </div>
 
 <script>
-    function openForm() {
-      document.getElementById("joinForm").style.display = "block";
+    function openForm(openbutton) {
+        id = openbutton.id.split("j")[1];
+        document.getElementById("joinForm" + id).style.display = "block";
+      
     }
-    function closeForm() {
-      document.getElementById("joinForm").style.display = "none";
-      document.getElementById("message").value = "";
-      document.getElementById("va_password").value = "";
+    function closeForm(closebutton) {
+        id = closebutton.id.split("J")[1];
+        document.getElementById("joinForm" + id).style.display = "none";
+        document.getElementById("message" + id).value = "";
+        document.getElementById("va_password" + id).value = "";
     }
 </script>
 {% endblock %}
