@@ -133,11 +133,12 @@ def pw_enter(request):
             html_msg = render_to_string('reset_email.html', {'content': 'request.user.username'})
             plain_msg = strip_tags(html_msg)
             send_mail('Reset Password', plain_msg,
-                'mapoutproject@gmail.com',[request.user.email],
+                'mapoutproject@gmail.com',[email],
                 html_message=html_msg)
             messages.info(request, 'Email sent!')
             return redirect("home")
-    else: return render(request, 'registration/password_reset_form.html')
+    else:
+        return render(request, 'registration/password_reset_form.html')
 
 def login_view1(request):
     if request.user.is_authenticated(): 
@@ -207,7 +208,7 @@ def create_project(request):
             messages.success(request, 'You have successfully created a project.')
             send_mail(
                 'Welcome To MapOut!',
-                'Dear @'+ request.user + '\nYou have successfully created project' + createproject.project_name + 
+                'Dear @'+ request.user.username + '\nYou have successfully created project' + createproject.project_name + 
                 'on MapOut. Have fun!\n Best, \nMapOut Team',
                 'mapoutproject@gmail.com',
                 [request.user.email],
