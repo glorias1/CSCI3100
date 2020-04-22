@@ -16,6 +16,7 @@ from .models import *
 import time
 import os
 
+
 def index_budgets(request):
     if request.method == 'POST':
         if request.POST.get('createplan'):
@@ -122,7 +123,21 @@ def index_tasks(request):
     return render(request, 'main_tasks.html', context)
 
 def login_btn(request):
-    return render(request, 'registration/login.html')
+    return render(request, 'registration/login.html') 
+
+def pw_enter(request):
+    if request.method == 'POST':
+        form = AuthenticationForm(data=request.POST)
+        if form.is_valid():
+            email = form.cleaned_data.get('email')
+            html_msg = render_to_string('reset_email.html', {'content': 'request.user.username'})
+            plain_msg = strip_tags(html_msg)
+            send_mail('Reset Password', plain_msg,
+                'mapoutproject@gmail.com',[request.user.email],
+                html_message=html_msg)
+            messages.info(request, 'Email sent!')
+            return redirect("home")
+    else: return render(request, 'registration/password_reset_form.html')
 
 def login_view1(request):
     if request.user.is_authenticated(): 
@@ -149,17 +164,15 @@ def signup_view(request):
             user.refresh_from_db()
             user.profile.private = form.cleaned_data.get('privacy')
             user.save()
-            #user_email = str(form.cleaned_data.get('email').value())
-            send_mail(
-
-            'Welcome to MapOut!',
-            'Dear New User! Welcome to MapOut!This is a kind reminder. Best regards, MapOut Team',
-            'mapoutproject@gmail.com',
-            [user.email],
-            fail_silently=False,
-        )
-
             username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password1')
+            send_mail(
+                        'Welcome To MapOut!',
+                        'Dear @'+ username + '\nYou have successfully registered on MapOut. Have Fun!:)\n Best, \nMapOut Team',
+                        'mapoutproject@gmail.com',
+                        [user.email],
+                        fail_silently=False,
+                    )
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
             login(request, user)
@@ -187,11 +200,20 @@ def create_project(request):
             createproject.private = request.POST.get('project_privacy')
             createproject.create_date = datetime.now()
             createproject.save()
-            createproject.owner.add(request.user)    ##add current usre as owner
+            createproject.owner.add(request.user)    ##add current user as owner
             createproject.members.add(request.user)   ##add current user as a member
             createbudgetplan.belong_project = createproject
             createbudgetplan.save()
             messages.success(request, 'You have successfully created a project.')
+            send_mail(
+                'Welcome To MapOut!',
+                'Dear @'+ request.user + '\nYou have successfully created project' + createproject.project_name + 
+                'on MapOut. Have fun!\n Best, \nMapOut Team',
+                'mapoutproject@gmail.com',
+                [request.user.email],
+                fail_silently=False,
+            )
+            
             return HttpResponseRedirect(reverse('viewproject', args=[createproject.id]))
     return render(request, 'create_project.html')
 
@@ -226,6 +248,8 @@ def view_project(request, id):
     project_leader = viewing_project.owner.all()
     project_members_not_owner = viewing_project.members.exclude(id__in = project_leader)
     msgs = Chat.objects.filter(belong_project = viewing_project).order_by('sent_date')
+    join_requests = JoinMessage.objects.filter(pj = viewing_project)
+    join_requests = join_requests.filter(not_approved = True)
     ## see if the request user is the owner of the project
     try:
         if viewing_project.owner.get(id = request.user.id):
@@ -237,7 +261,16 @@ def view_project(request, id):
             is_member = True
     except:
         is_member = False
-    context = {'viewing_project':viewing_project, 'tasks':tasks, 'is_owner':is_owner, 'project_members_not_owner':project_members_not_owner, 'project_members':project_members, 'is_member':is_member, 'all_leaders':all_leaders , 'msgs':msgs}
+    context = {
+        'viewing_project':viewing_project, 
+        'tasks':tasks, 'is_owner':is_owner, 
+        'project_members_not_owner':project_members_not_owner, 
+        'project_members':project_members, 
+        'is_member':is_member, 
+        'all_leaders':all_leaders , 
+        'msgs':msgs,
+        'join_requests':join_requests
+    }
     ##action when a form is submitted
     if request.method=='POST':
         ##user delete the project
