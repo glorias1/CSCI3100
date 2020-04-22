@@ -15,6 +15,7 @@ from .settings import EMAIL_HOST_USER
 import time
 import os
 
+
 def index_budgets(request):
     if request.method == 'POST':
         if request.POST.get('createplan'):
@@ -147,8 +148,8 @@ def signup_view(request):
             raw_password = form.cleaned_data.get('password1')
             send_mail(
                         'Welcome To MapOut!',
-                        'Dear '+ username + '\nYou have successfully registered on MapOut. Have Fun!:)\n Best, \nMapOut Team',
-                        'mapoutproject',
+                        'Dear @'+ username + '\nYou have successfully registered on MapOut. Have Fun!:)\n Best, \nMapOut Team',
+                        'mapoutproject@gmail.com',
                         [user.email],
                         fail_silently=False,
                     )
@@ -177,9 +178,18 @@ def create_project(request):
             createproject.private = request.POST.get('project_privacy')
             createproject.create_date = datetime.now()
             createproject.save()
-            createproject.owner.add(request.user)    ##add current usre as owner
+            createproject.owner.add(request.user)    ##add current user as owner
             createproject.members.add(request.user)   ##add current user as a member
             messages.success(request, 'You have successfully created a project.')
+            send_mail(
+                'Welcome To MapOut!',
+                'Dear @'+ request.user + '\nYou have successfully created project' + createproject.project_name + 
+                'on MapOut. Have fun!\n Best, \nMapOut Team',
+                'mapoutproject@gmail.com',
+                [request.user.email],
+                fail_silently=False,
+            )
+            
             return HttpResponseRedirect(reverse('viewproject', args=[createproject.id]))
     return render(request, 'create_project.html')
 
