@@ -49,7 +49,7 @@ class JoinMessage(models.Model):
     pj = models.ForeignKey(Project, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     message = models.TextField()
-    not_approved = models.BooleanField(default=True)
+    not_reply = models.BooleanField(default=True)
 
     def __str__(self):
         return self.message

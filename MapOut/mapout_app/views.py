@@ -334,10 +334,7 @@ def view_project(request, id):
     project_members_not_owner = viewing_project.members.exclude(id__in = project_leader)
     msgs = Chat.objects.filter(belong_project = viewing_project).order_by('sent_date')
     join_requests = JoinMessage.objects.filter(pj_id = viewing_project.id)
-    sender = {}
-    for jq in join_requests:
-        sender[jq] = User.objects.get(id=jq.user_id).username
-    #join_requests = join_requests.filter(not_approved = True)
+    non_r_msg = join_requests.filter(not_reply = True)
     ## see if the request user is the owner of the project
     try:
         if viewing_project.owner.get(id = request.user.id):
@@ -358,7 +355,7 @@ def view_project(request, id):
         'all_leaders':all_leaders , 
         'msgs':msgs,
         'join_requests':join_requests,
-        'sender':sender
+        'non_r_msg': non_r_msg
     }
     ##action when a form is submitted
     if request.method=='POST':
@@ -411,6 +408,16 @@ def view_project(request, id):
             newchatmessage.speaker = request.user
             newchatmessage.sent_date = datetime.now()
             newchatmessage.save()
+        elif request.POST.get('accept'):
+            target_msg = JoinMessage.objects.get(id=request.POST.get('accept'))
+            sender = User.objects.get(id=target_msg.user_id)
+            viewing_project.members.add(sender)
+            target_msg.not_reply=False
+            target_msg.save()
+        elif request.POST.get('reject'):
+            target_msg = JoinMessage.objects.get(id=request.POST.get('reject'))
+            target_msg.not_reply=False
+            target_msg.save()
 
     return render(request, 'project.html', context)
 

@@ -41,7 +41,7 @@
             </div>
 
             <div style="position:relative">
-              {% if join_requests %}
+              {% if non_r_msg %}
               <div style="position:absolute;right: -1px; top: -2px;color: red;"><strong>。</strong></div>
               {% endif %}
               {% block requestModal%}{% include 'join_project_message.html' %}{% endblock %}
@@ -227,7 +227,7 @@
             </button>
           </div>
           <div class="modal-body">
-            <form method="POST"  > 
+            <form method="POST"> 
               {% csrf_token %}
             <p>Please enter the username to add to this project:</p>
             <input type="text" class="form-control" name="add_name" id="add_name">

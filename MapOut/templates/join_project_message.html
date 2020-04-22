@@ -23,19 +23,26 @@
                         </tr>
                     </thead>
                     {% for jq in join_requests %}
-                        <tbody>
-                            <tr>
-                                <td>{{ jq.user_id }}</td>
-                                <!--I want to show name, but dont know how.-->
-                                <td>{{ jq.message }}</td>
-                                <td>
-                                    <form method="POST" action="">
-                                        <input id="accept{{jp.pj_id}}&{{jp.user.id}}" class="btn btn-outline-primary btn-sm btn-block" value="Accept" type="submit"/>
-                                        <input id="reject{{jp.pj_id}}&{{jp.user.id}}" class="btn btn-outline-primary btn-sm btn-block" value="Reject" type="submit"/>
-                                    </form>
-                                </td>
-                            </tr>
-                        </tbody>
+                        {% if jq in non_r_msg%}
+                            <tbody>
+                                <tr>
+                                    <td>{{ jq.user_id }}</td>
+                                    <!--I want to show name, but dont know how.-->
+                                    <td>{{ jq.message }}</td>
+                                    <td>
+                                        <form method="POST">
+                                            {% csrf_token %}
+                                            <label for="accept" style="display: none"></label>
+                                            <input type="number" id="accept" name="accept" style="display: none" value="{{jq.id}}">
+                                            <input class="btn btn-outline-primary btn-sm btn-block" value="Accept" type="submit"/>
+                                            <label for="reject" style="display: none"></label>
+                                            <input type="number" id="reject" name="reject" style="display: none" value="{{jq.id}}">
+                                            <input class="btn btn-outline-primary btn-sm btn-block" value="Reject" type="submit"/>
+                                        </form>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        {% endif %}
                     {% endfor %}
                 </table>
             </div>
