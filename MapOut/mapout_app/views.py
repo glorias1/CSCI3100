@@ -29,13 +29,15 @@ def create_budget(request, id1):
     viewing_plan = Budgetplan.objects.get(belong_project = viewing_project)
     context = {'viewing_project':viewing_project, 'viewing_plan':viewing_plan}
     if request.method == 'POST':
-        if request.POST.get('capital_name'):
-            transition_capital =          Budget()
-            transition_capital.transition_type = "capital"
-            transition_capital.belong_plan = viewing_plan # selected_project_id)
-            transition_capital.name =     request.POST.get('capital_name')
-            transition_capital.amount =   int(request.POST.get('capital_amount'))
-            transition_capital.save()
+        if (request.POST.get('capital_name') != '') and (request.POST.get('capital_amount') != ''):
+                transition_capital =                        Budget()
+                transition_capital.transition_category =    "budget"
+                transition_capital.transition_type =        request.POST.get('capital_transition_type')
+                transition_capital.belong_project =         Project.objects.get(id = id1)
+                transition_capital.name =                   request.POST.get('capital_name')
+                transition_capital.description =            request.POST.get('capital_description')
+                transition_capital.amount =                 int(request.POST.get('capital_amount'))
+                transition_capital.save()
     return render(request, 'budget/create_plan.html', context)
 
 ##this is add expense
@@ -45,20 +47,33 @@ def create_budget_2(request, id1):
     context = {'viewing_project':viewing_project, 'viewing_plan':viewing_plan}
     if request.method == 'POST':
         if request.POST.get('expense_name'):
-            transition_expense =          Budget()
-            transition_expense.transition_type = "expense"
-            transition_expense.belong_plan = viewing_plan # selected_project_id)
-            transition_expense.name =     request.POST.get('expense_name')
-            transition_expense.amount =   int(request.POST.get('expense_amount'))
-            transition_expense.save()
+                transition_expense =                        Budget()
+                transition_expense.transition_category =    "expense"
+                transition_expense.transition_type =        request.POST.get('expense_transition_type')
+                transition_expense.belong_project =         Project.objects.get(id = id1)
+                transition_expense.name =                   request.POST.get('expense_name')
+                transition_expense.description =            request.POST.get('expense_description')
+                transition_expense.amount =                 int(request.POST.get('expense_amount'))
+                transition_expense.save()
     return render(request, 'budget/create_plan_2.html', context)
 
 def view_budget(request, id3): # id3 is project id \
-    total_capital=0
-    total_expense=0
+    total_budget  = 0
+    total_expense = 0
+    total_budget_capital = 0
+    total_budget_subsidize = 0
+    total_budget_other = 0
+    total_expense_manpower = 0
+    total_expense_equipment = 0
+    total_expense_transport = 0
+    total_expense_administrative_fee = 0
+    total_expense_consultant_fee = 0
+    total_expense_professional_service = 0
+    total_expense_miscellaneous = 0
+    total_expense_other = 0
     viewing_project = Project.objects.get(id = id3)
-    viewing_plan = Budgetplan.objects.get(belong_project = viewing_project)
-    all_budget_records = Budget.objects.filter(belong_plan = viewing_plan)
+    viewing_plan = Budgetplan.objects.get(belong_project = viewing_pro
+    all_budget_records = Budget.objects.filter(belong_plan = viewing_p
     try:
         if viewing_project.members.get(id = request.user.id):
             is_member = True
@@ -66,31 +81,100 @@ def view_budget(request, id3): # id3 is project id \
         is_member = False
     ##filter out all capital/expense
     all_budget = Budget.objects.filter(belong_plan = viewing_plan)
-    all_capital = all_budget.filter(transition_type = 'capital')
-    all_expense = all_budget.filter(transition_type = 'expense')
-
-    for one_capital in all_capital:
-        total_capital += one_capital.amount
-    for one_expense in all_expense:
-        total_expense += one_expense.amount
-    
-    #if request.method == 'GET':
-    #    total_expense = 0
-    #    capital = Budget.objects.raw('SELECT * FROM mapout_app_budget WHERE belong_project_id = %s AND transition_type = "capital"', [id3])
-    #    expense = Budget.objects.raw('SELECT * FROM mapout_app_budget WHERE belong_project_id = %s AND transition_type = "expense"', [id3])
-    #    for i in expense:
-    #        total_expense += i.amount
+    budget  = all_budget.filter(transition_category = 'capital')
+    expense = all_budget.filter(transition_category = 'expense')
+    budget_capital =                all_budget.filter(transition_type 
+    budget_subsidize =              all_budget.filter(transition_type 
+    budget_other =                  all_budget.filter(transition_type 
+    expense_manpower =              all_budget.filter(transition_type 
+    expense_equipment =             all_budget.filter(transition_type 
+    expense_transport =             all_budget.filter(transition_type 
+    expense_administrative_fee =    all_budget.filter(transition_type 
+    expense_consultant_fee =        all_budget.filter(transition_type 
+    expense_professional_service =  all_budget.filter(transition_type 
+    expense_miscellaneous =         all_budget.filter(transition_type 
+    expense_other =                 all_budget.filter(transition_type 
+    for i in budget:
+        total_budget += i.amount
+    for i in expense:
+        total_expense += i.amount
+    for i in budget_capital:
+        total_budget_capital += i.amount
+    for i in budget_subsidize:
+        total_budget_subsidize += i.amount
+    for i in budget_other:
+        total_budget_other += i.amount
+    for i in expense_manpower:
+        total_expense_manpower += i.amount
+    for i in expense_equipment:
+        total_expense_equipment += i.amount
+    for i in expense_transport:
+        total_expense_transport += i.amount
+    for i in expense_administrative_fee:
+        total_expense_administrative_fee += i.amount
+    for i in expense_consultant_fee:
+        total_expense_consultant_fee += i.amount
+    for i in expense_professional_service:
+        total_expense_professional_service += i.amount
+    for i in expense_miscellaneous:
+        total_expense_miscellaneous += i.amount
+    for i in expense_other:
+        total_expense_other += i.amount
+    budget_capital_percent      = total_budget_capital  /total_budget*
+    budget_subsidize_percent    = total_budget_subsidize/total_budget*
+    budget_other_percent        = total_budget_other    /total_budget*
+    expense_manpower_percent    = total_expense_manpower    /total_exp
+    expense_equipment_percent   = total_expense_equipment   /total_exp
+    expense_transport_percent   = total_expense_transport   /total_exp
+    expense_administrative_fee_percent      = total_expense_administra
+    expense_consultant_fee_percent          = total_expense_consultant
+    expense_professional_service_percent    = total_expense_profession
+    expense_miscellaneous_percent   = total_expense_miscellaneous   /t
+    expense_other_percent           = total_expense_other           /t
+    net = total_budget-total_expense
+    net_percent = net/total_budget*100
+    arg = ""
+    if net_percent>0:
+        if net_percent>50:
+            arg = "You have more than half of budget remaining."
+        else:
+            if net_percent>20:
+                arg = "You have less than half of budget remaining."
+            else:
+                arg = "You have little budget remaining. Please be car
+    else:
+        if net_percent>-50:
+            arg = "You are over budget. Please be careful of consumpti
+        else:
+            arg = "You are seriously over budget. Please be careful of
     context = {
-        #"capital": capital[0].amount,
-        #"expense": total_expense,
-        "viewing_project": viewing_project,
-        "all_budget_records": all_budget_records,
-        "viewing_plan":viewing_plan,
-        "is_member":is_member,
-        "all_capital":all_capital,
-        "all_expense":all_expense,
-        "total_capital":total_capital,
-        "total_expense":total_expense
+        "total_budget": total_budget,
+        "total_expense": total_expense,
+        "total_budget_capital": total_budget_capital,
+        "total_budget_subsidize": total_budget_subsidize,
+        "total_budget_other": total_budget_other,
+        "total_expense_manpower": total_expense_manpower,
+        "total_expense_equipment": total_expense_equipment,
+        "total_expense_transport": total_expense_transport,
+        "total_expense_administrative_fee": total_expense_administrati
+        "total_expense_consultant_fee": total_expense_consultant_fee,
+        "total_expense_professional_service": total_expense_profession
+        "total_expense_miscellaneous": total_expense_miscellaneous,
+        "total_expense_other": total_expense_other,
+        "budget_capital_percent"   : budget_capital_percent,
+        "budget_subsidize_percent" : budget_subsidize_percent,
+        "budget_other_percent"     : budget_other_percent,
+        "expense_manpower_percent" : expense_manpower_percent,
+        "expense_equipment_percent": expense_equipment_percent,
+        "expense_transport_percent": expense_transport_percent,
+        "expense_administrative_fee_percent"   : expense_administrativ
+        "expense_consultant_fee_percent"       : expense_consultant_fe
+        "expense_professional_service_percent" : expense_professional_
+        "expense_miscellaneous_percent": expense_miscellaneous_percent
+        "expense_other_percent"        : expense_other_percent,
+        "net": net,
+        "net_percent": net/total_budget*100,
+        "arg": arg
     }
         #return render(request, 'budget/view_plan.html', context)
     return render(request, 'budget/view_plan.html',context)
@@ -133,11 +217,12 @@ def pw_enter(request):
             html_msg = render_to_string('reset_email.html', {'content': 'request.user.username'})
             plain_msg = strip_tags(html_msg)
             send_mail('Reset Password', plain_msg,
-                'mapoutproject@gmail.com',[request.user.email],
+                'mapoutproject@gmail.com',[email],
                 html_message=html_msg)
             messages.info(request, 'Email sent!')
             return redirect("home")
-    else: return render(request, 'registration/password_reset_form.html')
+    else:
+        return render(request, 'registration/password_reset_form.html')
 
 def login_view1(request):
     if request.user.is_authenticated(): 
