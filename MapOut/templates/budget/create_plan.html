@@ -11,11 +11,19 @@
    {% endif %}
     <form action="{% url 'createbudget' viewing_project.id %}" method="POST" style="color: black;margin-left: 1rem;margin-right: 1rem; ">
     	{% csrf_token %}
-    	<label for="capital_name">New Capital Name:</label><br>
-    	<input id="capital_name-submit" type="text" name="capital_name" value="" class="form-control" style="width: 20rem;" required><br>
-    	<label for="capital_amount">New Capital Amount:</label><br>
-    	<input id="capital_amount-submit" type="text" name="capital_amount" value="" class="form-control" style="width: 20rem;" required><br>
-
+        <label for="capital_name">Budget Name: </label>
+        <input id="capital_name-submit" type="text" name="c apital_name" value="">
+        <label for="budget">Budget Type:</label>
+        <select id="capital_transition_type" name="c    apital_transition_type">
+            <option value="Capital">Capital</option>
+            <option value="Subsidize">Subsidize</option>
+            <option value="Others">Subsidize</option>
+            <option value="">-----</option>
+        </select>
+        <label for="capital_amount">Budget Description:</label>
+        <input id="capital_amount-submit" type="text" name="c   apital_description" value="">
+        <label for="capital_amount">Budget Amount:</label>
+        <input id="capital_amount-submit" type="text" name="c   apital_amount" value=""><br>
       <button type="submit" class="btn btn-info" style="margin-left: 1rem;">Add Capital</button>
       
     </form>
