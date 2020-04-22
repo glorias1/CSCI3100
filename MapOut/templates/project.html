@@ -41,9 +41,10 @@
             </div>
 
             <div style="position:relative">
-              {% if join_requests %}
+              {% if non_r_msg %}
               <div style="position:absolute;right: -1px; top: -2px;color: red;"><strong>。</strong></div>
               {% endif %}
+              {% block requestModal%}{% include 'join_project_message.html' %}{% endblock %}
               <button class="btn btn-secondary" data-toggle="modal" data-target="#requestModal">Requests</button>
             </div>
 
@@ -226,7 +227,7 @@
             </button>
           </div>
           <div class="modal-body">
-            <form method="POST"  > 
+            <form method="POST"> 
               {% csrf_token %}
             <p>Please enter the username to add to this project:</p>
             <input type="text" class="form-control" name="add_name" id="add_name">
@@ -350,27 +351,6 @@
             </form>
             <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
           </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="modal fade" tabindex="-1" role="dialog" id="requestModal">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Request to join</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <form method="POST"  >
-              {% csrf_token %}
-            <p>Show request here</p>
-          </form>
-          </div>
-            
-            
         </div>
       </div>
     </div>
