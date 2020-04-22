@@ -405,4 +405,4 @@ def join_project(request, pid):
         else:
             print("wrong password")
         context={"join_request": join_request, "pj": pj}
-    return render(request, 'join_project_message.html', context) #redirect
+    return render(request, 'join_project_message.html', context)
