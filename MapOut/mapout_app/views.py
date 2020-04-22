@@ -13,6 +13,7 @@ from django.contrib.auth.hashers import check_password
 from MapOut.settings import EMAIL_HOST_USER
 from .forms import *
 from .models import *
+#from .settings import EMAIL_HOST_USER
 import time
 import os
 

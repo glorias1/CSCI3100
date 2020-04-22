@@ -50,6 +50,7 @@ class JoinMessage(models.Model):
 class Tasks(models.Model):
     task_name = models.CharField(max_length=100)
     task_description = models.TextField()
+    start_date = models.DateField()
     due_date = models.DateField('Event Date')
     incharge = models.ManyToManyField(User)
     belong_project = models.ForeignKey(Project, on_delete=models.CASCADE)

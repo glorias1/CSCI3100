@@ -58,15 +58,16 @@
 					placeholder="Search For Public Projects (By PID or Project Name)" aria-label="Search">
 			</form>
 		</div>
-		<div class="table-responsive">
-			<table id="allPPj" class="table table-hover table-bordered table-striped">
+		<div class="table-responsive rounded">
+			<table id="allPPj" class="table table-light table-hover table-bordered table-striped rounded">
 				<caption>All of the {{ all_public_project.all.count }} public projects.</caption>
 				<thead>
 					<tr>
 						<th scope="col" class="table-info text-nowrap" style="width: 10%">PID</th>
 						<th scope="col" class="table-info text-nowrap" style="width: 60%">Project Name</th>
 						<th scope="col" class="table-info text-nowrap" style="width: 10%"># of Members</th>
-						<th scope="col" class="table-info text-nowrap" style="width: 15%">View / Join</th>
+						<th scope="col" class="table-info text-nowrap" style="width: 5%">View</th>
+						<th scope="col" class="table-info text-nowrap" style="width: 5%">Join</th>
 					</tr>
 				</thead>
 				{% for a_project in all_public_project%}
@@ -80,13 +81,14 @@
 								</div>
 							</td>
 							<td>
-								<div class="row" style="margin: 3px 3px;">
-									<a href="{% url 'viewproject' a_project.id %}" class="btn btn-outline-primary col-6">V</a>
+									<a href="{% url 'viewproject' a_project.id %}" class="btn btn-info btn-sm"><i class="fas fa-search-plus"></i></a>
 									<!--<a href="{% url 'join_project' a_project.id %}" role="button" onclick="openForm()" class="btn btn-outline-primary col-6">J</a>-->
-									{% if cuser not in a_project.members.all %}
-										<button id="j{{a_project.id}}" class="btn btn-outline-primary col-6" onclick="openForm(this)">J</button>
-									{% endif %}
-								</div>
+							</td>
+							<td>
+								{% if cuser not in a_project.members.all %}
+										<button id="j{{a_project.id}}" class="btn btn-info btn-sm" onclick="openForm(this)"><i class="fas fa-plus"></i></button>
+								{% else %} <i class="fas fa-times bg-sm"></i>		
+								{% endif %}
 							</td>
 						</tr>
 					</tbody>
