@@ -10,9 +10,9 @@ from django.core.files.storage import FileSystemStorage
 from django.urls import reverse
 from django.core.mail import send_mail
 from django.contrib.auth.hashers import check_password
+from MapOut.settings import EMAIL_HOST_USER
 from .forms import *
 from .models import *
-from .settings import EMAIL_HOST_USER
 import time
 import os
 
@@ -142,8 +142,7 @@ def signup_view(request):
         if form.is_valid():
             user = form.save()
             user.refresh_from_db()
-            user.profile.
-            private = form.cleaned_data.get('privacy')
+            user.profile.private = form.cleaned_data.get('privacy')
             user.save()
             username = form.cleaned_data.get('username')
             raw_password = form.cleaned_data.get('password1')
