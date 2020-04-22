@@ -140,15 +140,17 @@ def signup_view(request):
         if form.is_valid():
             user = form.save()
             user.refresh_from_db()
-            user.profile.private = form.cleaned_data.get('privacy')
+            user.profile.
+            private = form.cleaned_data.get('privacy')
             user.save()
+            user_email = str(form.cleaned_data.get('email').value())
             send_mail(
-    'TEst',
-    'csci3100',
-    'mapoutproject',
-    ['to@example.com'],
-    fail_silently=False,
-)
+                        'TEst',
+                        'csci3100',
+                        'mapoutproject',
+                        [user_email],
+                        fail_silently=False,
+                    )
             username = form.cleaned_data.get('username')
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
