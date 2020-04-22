@@ -11,7 +11,7 @@ from django.urls import reverse
 from django.core.mail import send_mail
 from .forms import *
 from .models import *
-from .settings import EMAIL_HOST_USER
+#from .settings import EMAIL_HOST_USER
 import time
 import os
 
@@ -138,20 +138,20 @@ def signup_view(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
         if form.is_valid():
-            user = form.save()
-            user.refresh_from_db()
-            user.profile.
-            private = form.cleaned_data.get('privacy')
+            user = form.save(commit=False)
+            user.is_active = False
             user.save()
-            user_email = str(form.cleaned_data.get('email').value())
+            #user_email = str(form.cleaned_data.get('email').value())
+            '''
             send_mail(
 
-    'Welcome to MapOut!',
-    'Dear New User! Welcome to MapOut!This is a kind reminder.',
-    'mapoutproject@gmail.com',
-    [user.email],
-    fail_silently=False,
-)
+            'Welcome to MapOut!',
+            'Dear New User! Welcome to MapOut!This is a kind reminder. Best regards, MapOut Team',
+            'mapoutproject@gmail.com',
+            [user.email],
+            fail_silently=False,
+        )
+        '''
 
             username = form.cleaned_data.get('username')
             raw_password = form.cleaned_data.get('password1')
