@@ -142,10 +142,10 @@ def signup_view(request):
             user.profile.private = form.cleaned_data.get('privacy')
             user.save()
             send_mail(
-    'TEst',
-    'csci3100',
-    'mapoutproject',
-    ['to@example.com'],
+    'Welcome to MapOut!',
+    'Dear New User! Welcome to MapOut!This is a kind reminder.',
+    'mapoutproject@gmail.com',
+    [user.email],
     fail_silently=False,
 )
             username = form.cleaned_data.get('username')
