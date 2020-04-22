@@ -47,12 +47,14 @@ def create_budget_2(request, id1):
     context = {'viewing_project':viewing_project, 'viewing_plan':viewing_plan}
     if request.method == 'POST':
         if request.POST.get('expense_name'):
-            transition_expense =          Budget()
-            transition_expense.transition_type = "expense"
-            transition_expense.belong_plan = viewing_plan # selected_project_id)
-            transition_expense.name =     request.POST.get('expense_name')
-            transition_expense.amount =   int(request.POST.get('expense_amount'))
-            transition_expense.save()
+                transition_expense =                        Budget()
+                transition_expense.transition_category =    "expense"
+                transition_expense.transition_type =        request.POST.get('expense_transition_type')
+                transition_expense.belong_project =         Project.objects.get(id = id1)
+                transition_expense.name =                   request.POST.get('expense_name')
+                transition_expense.description =            request.POST.get('expense_description')
+                transition_expense.amount =                 int(request.POST.get('expense_amount'))
+                transition_expense.save()
     return render(request, 'budget/create_plan_2.html', context)
 
 def view_budget(request, id3): # id3 is project id \
