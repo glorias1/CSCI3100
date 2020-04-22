@@ -8,8 +8,10 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.core.files.storage import FileSystemStorage
 from django.urls import reverse
+from django.core.mail import send_mail
 from .forms import *
 from .models import *
+from .settings import EMAIL_HOST_USER
 import time
 import os
 
@@ -186,6 +188,7 @@ def view_project(request, id):
         elif request.POST.get('closeyes'):
             viewing_project.closed = True
             viewing_project.save()
+
         ##user add new members into the project
         elif request.POST.get('add_name'):
             target_user_name = request.POST.get('add_name')
@@ -291,7 +294,7 @@ def download(request, id):
     response['Content-Type'] =  'image/png'
     response['Content-Disposition'] = 'attachment;filename="%s"' % (urlquote(target_file_name))
     return response
-    
+
 def join_project(request, id):
     pj = Project.objects.get(id=id)
     join_request = JoinMessage()

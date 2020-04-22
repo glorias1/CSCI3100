@@ -105,7 +105,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
@@ -122,12 +121,14 @@ USE_TZ = True
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 0
+EMAIL_PORT = 587
 EMAIL_HOST_USER = 'wendywong.cuhk@gmail.com'
 EMAIL_HOST_PASSWORD = 'Viqko8-dichab-cyfsod'
+DEFAULT_FROM_EMAIL = 'MapOutTeam <wendywong.cuhk@gmail.com>'
 EMAIL_USE_TLS = True
-ACCOUNT_EMAIL_VERIFICATION = 'none'
 EMAIL_USE_SSL = False
+SERVER_EMAIL = 'wendywong.cuhk@gmail.com'
+ACCOUNT_EMAIL_VERIFICATION = 'none'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
