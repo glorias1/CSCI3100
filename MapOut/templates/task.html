@@ -33,6 +33,11 @@
       {% endfor %}
     </div>
     <hr>
+    <div>
+      <h6 class="unselectable" >Due date:</h6>
+      {{task.due_date}}
+    </div>
+    <hr>
     <div style="margin-bottom: 1rem;">
       <h6 class="unselectable" >Task Description <button class="btn btn-sm" type="button" data-toggle="modal" data-target="#taskdescriptionModal"><i class="fas fa-pen fa-xs"></i></button></h6>
       {% if task.task_description %}
