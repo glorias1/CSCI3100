@@ -63,7 +63,7 @@ def index_projects(request):
     projects = Project.objects.filter(members = request.user).order_by('closed')
     all_public_project = Project.objects.filter(private = False).order_by('project_name')
     tasks = Tasks.objects.filter(belong_project__in = projects)  ##filter all the task in the list of project objects
-    context = {'projects':projects, 'tasks':tasks, 'all_public_project': all_public_project}
+    context = {'projects':projects, 'tasks':tasks, 'all_public_project': all_public_project, 'cuser':request.user}
     return render(request, 'main_projects.html', context)
 
 def index_tasks(request):
@@ -305,8 +305,3 @@ def join_project(request, id):
             join_request.save()
     context = {"pj": pj}
     return render(request, 'join_project.html', context)
- #   join = Project.objects.get(id=id)
-  #  return render(request, 'join_project.html')
-
-def join_btn(request):
-    return render(request, 'join_project.html')

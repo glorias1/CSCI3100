@@ -1,24 +1,24 @@
 {% block joinForm %}
-<div id="joinForm{{id}}" class="joinFormStyle border border-primary rounded" style="display: none;">
-        <h3>Join Project (PID: {{id}})</h3>
+<div id="joinForm{{jpid}}" class="joinFormStyle border border-primary rounded" style="display: none;">
+        <h3>Join Project (PID: {{jpid}})</h3>
     <div class="form-group"></div>
         {% if form.errors %}
             <span style="color: red;"><p>ERROR</p></span>
         {% endif %}
-        <form method="POST" action=""> <!--{% url 'join_project' id %-->
+        <form method="POST" action=""> <!--{% url 'join_project' jpid %-->
             {% csrf_token %}
             <div class="align-items-center">
                 <div class="col">
-                    <label for="message{{id}}">Message to owners:</label>
-                    <textarea class="form-control rounded-0" id="message{{id}}" rows="3" required></textarea><br>
+                    <label for="message{{jpid}}">Message to owners:</label>
+                    <textarea class="form-control rounded-0" id="message{{jpid}}" rows="3" required></textarea><br>
                 </div>
                 <div class="col">
-                    <label for="va_password{{id}}">Your Password (for validation):</label>
-                    <input class="form-control" type="password" name="va_password" value="" id="va_password{{id}}"><br>    
+                    <label for="va_password{{jpid}}">Your Password (for validation):</label>
+                    <input class="form-control" type="password" name="va_password" value="" id="va_password{{jpid}}"><br>    
                 </div>
                 <div class="col">
-                    <input id="join_submit{{id}}" type="submit" value="Submit" class="btn btn-outline-primary">
-                    <button id='cancelJ{{id}}' type="button" class="btn btn-outline-danger" onclick="closeForm(this)">Close</button>
+                    <input id="join_submit{{jpid}}" type="submit" value="Submit" class="btn btn-outline-primary">
+                    <button id='cancelJ{{jpid}}' type="button" class="btn btn-outline-danger" onclick="closeForm(this)">Close</button>
                 </div>
             </div>
         </form>
