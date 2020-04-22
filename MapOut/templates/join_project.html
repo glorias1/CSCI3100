@@ -5,15 +5,15 @@
         {% if form.errors %}
             <span style="color: red;"><p>ERROR</p></span>
         {% endif %}
-        <form method="POST" action=""> <!--{% url 'join_project' jpid %-->
+        <form method="POST" action="{% url 'join_project' jpid %}">
             {% csrf_token %}
             <div class="align-items-center">
                 <div class="col">
                     <label for="message{{jpid}}">Message to owners:</label>
-                    <textarea class="form-control rounded-0" id="message{{jpid}}" rows="3" required></textarea><br>
+                    <textarea class="form-control rounded-0" name="message" id="message{{jpid}}" rows="3" required></textarea><br>
                 </div>
                 <div class="col">
-                    <label for="va_password{{jpid}}">Your Password (for validation):</label>
+                    <label for="va_password{{jpid}}">Your Password (for varification):</label>
                     <input class="form-control" type="password" name="va_password" value="" id="va_password{{jpid}}"><br>    
                 </div>
                 <div class="col">
@@ -29,7 +29,6 @@
     function openForm(openbutton) {
         id = openbutton.id.split("j")[1];
         document.getElementById("joinForm" + id).style.display = "block";
-      
     }
     function closeForm(closebutton) {
         id = closebutton.id.split("J")[1];

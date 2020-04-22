@@ -9,8 +9,10 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.core.files.storage import FileSystemStorage
 from django.urls import reverse
 from django.core.mail import send_mail
+from django.contrib.auth.hashers import check_password
 from .forms import *
 from .models import *
+from .settings import EMAIL_HOST_USER
 import time
 import os
 
@@ -139,15 +141,19 @@ def signup_view(request):
         if form.is_valid():
             user = form.save()
             user.refresh_from_db()
-            user.profile.private = form.cleaned_data.get('privacy')
+            user.profile.
+            private = form.cleaned_data.get('privacy')
             user.save()
+            user_email = str(form.cleaned_data.get('email').value())
             send_mail(
-    'TEst',
-    'csci3100',
-    'mapoutproject',
-    ['to@example.com'],
+
+    'Welcome to MapOut!',
+    'Dear New User! Welcome to MapOut!This is a kind reminder.',
+    'mapoutproject@gmail.com',
+    [user.email],
     fail_silently=False,
 )
+
             username = form.cleaned_data.get('username')
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
@@ -235,6 +241,7 @@ def view_project(request, id):
         elif request.POST.get('closeyes'):
             viewing_project.closed = True
             viewing_project.save()
+
         ##user add new members into the project
         elif request.POST.get('add_name'):
             target_user_name = request.POST.get('add_name')
@@ -341,16 +348,19 @@ def download(request, id):
     response['Content-Disposition'] = 'attachment;filename="%s"' % (urlquote(target_file_name))
     return response
     
-def join_project(request, id):
-    pj = Project.objects.get(id=id)
+def join_project(request, pid):
+    print("PID:::::::" + pid)
+    pj = Project.objects.get(id=pid)
     join_request = JoinMessage()
     if request.method == "POST":
-        if request.POST.get('va_password') != request.user.password:
-            print("wrong pw")
-        else:
+        print("typein pas: " + request.POST.get('va_password'))
+        print("user's pw: " + request.user.password)
+        if check_password(request.POST.get('va_password'), request.user.password):
             join_request.pj = pj
             join_request.user = request.user
             join_request.message = request.POST.get('message')
             join_request.save()
-    context = {"pj": pj}
-    return render(request, 'join_project.html', context)
+        else:
+            print("wrong password")
+        context={"join_request": join_request, "pj": pj}
+    return render(request, 'join_project_message.html', context) #redirect
