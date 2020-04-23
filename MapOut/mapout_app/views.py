@@ -584,6 +584,12 @@ def view_task(request, id1 , id2):
             target_file_id = request.POST.get('delete_file')
             target_file = File.objects.get(id = target_file_id)
             target_file.delete()
+        elif request.POST.get('download_file'):
+            file = File.objects.get(id =request.POST.get('download_file'))
+            filename = file.file.name.split('/')[-1]
+            response = HttpResponse(file.file, content_type='text/plain')
+            response['Content-Disposition'] = 'attachment; filename=%s' % filename
+            return response
     return render(request, 'task.html', context)
 
 def download(request, id):
