@@ -1,0 +1,76 @@
+{% block editProfile %}
+<div class="container">
+    <div id="CPF" class="changeProfileForm border border-primary rounded row align-items-center fixed-top" style="display: none;">
+            <h3 style="margin: 3rem 0rem;">Change Your User Profile</h3>
+        <div class="form-group"></div>
+        {% if form.errors %}
+            <span style="color: red;"><p>ERROR</p></span>
+        {% endif %}
+        <form method="POST">
+            {% csrf_token %}
+            <!--anything that user can change-->
+            <div class="align-items-center">
+                <div class="col">
+                    <label for="cUsername">Username:</label>
+                    <input class="form-control rounded-0" name="cUsername" id="cUsername" value="{{user.username}}" type="text">
+                </div>
+                <div class="col">
+                    <label for="cEmail">Email address:</label>
+                    <input class="form-control rounded-0" name="cEmail" id="cEmail" value="{{user.email}}" type="email">
+                </div>
+                <div class="col">
+                    Gender:<br>
+                    <div class="row text-center">
+                        <div class="col form-check">
+                            <input class="form-check-input" type="radio" id="male" name="gender" value="Male">
+                            <label class="form-check-label" for="male">Male</label><br>
+                        </div>
+                        <div class="col form-check">
+                            <input class="form-check-input" type="radio" id="female" name="gender" value="Female">
+                            <label class="form-check-label" for="female">Female</label><br>
+                        </div>
+                        <div class="col form-check">
+                            <input class="form-check-input" type="radio" id="other" name="gender" value="Hidden" checked>
+                            <label class="form-check-label" for="Hidden">Hidden</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <label for="birthday">Birthday:</label>
+                    <input class="form-control rounded-0" name="birthday" id="birthday" value="{{profile.date_birth | date:'Y-m-d'}}" type="date">
+                </div>
+                <div class="col">
+                    <label for="sdes"">Message to owners:</label>
+                    <textarea class="form-control rounded-0" name="sdes" id="sdes" rows="5">{{profile.description}}</textarea>
+                </div>
+                <div class="col">
+                    Privacy:<br>
+                    <div class="row text-center">
+                        <div class="col form-check">
+                            <input type="radio" id="private" name="Privacy" value="1">
+                            <label for="private">Private</label><br>
+                        </div>
+                        <div class="col form-check">
+                            <input type="radio" id="public" name="Privacy" value="0" checked>
+                            <label for="public">Public</label><br>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <input type="submit" value="Submit" class="btn btn-outline-primary">
+                    <button id='' type="button" class="btn btn-outline-danger" onclick="closeForm(this)">cancel</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    function openForm(openbutton) {
+        document.getElementById("CPF").style.display = "block";
+    }
+    function closeForm(closebutton) {
+        document.getElementById("CPF").style.display = "none";
+    }
+</script>
+{% endblock %}
