@@ -9,12 +9,25 @@
    <span style="color: red;"><p>Invalid.</p></span>
    {% endif %}
     <form action="{% url 'createbudget2' viewing_project.id %}" method="POST" style="color: black;margin-left: 1rem;margin-right: 1rem; ">
-    	{% csrf_token %}
-    	<label for="expense_name">New Expense Name:</label><br>
-    	<input id="expense_name-submit" type="text" name="expense_name" value="" class="form-control" style="width: 20rem;" required><br>
-    	<label for="expense_amount">New Expense Amount:</label><br>
-    	<input id="expense_amount-submit" type="text" name="expense_amount" value="" class="form-control" style="width: 20rem;" required><br>
-
+      {% csrf_token %}
+          <label for="expense_name">Expense Name:</label>
+          <input id ="expense_name-submit" type="text" name="expense_name" value=""><br>
+          <label for="expense">Expense Type:</label>
+          <select id="expense_transition_type" name="expense_transition_type"><br>
+              <option value="Manpower">Manpower</option>
+              <option value="Equipment">Equipment</option>
+              <option value="Transport">Transport</option>
+              <option value="Administrative_Fee">Administrative Fee</option>
+              <option value="Consultant_Fee">Consultant Fee</option>
+              <option value="Professional_Service">Professional Service</option>
+              <option value="Miscellaneous">Miscellaneous</option>
+              <option value="Other">Other</option>
+              <option value="">-----</option>
+          </select><br>
+          <label for="expense_amount">Budget Description:</label>
+          <input id ="expense_amount-submit" type="text" name="expense_description" value=""><br>
+          <label for="expense_amount">Budget Amount:</label>
+          <input id ="expense_amount-submit" type="text" name="expense_amount" value=""><br><br>
       <button type="submit" class="btn btn-info" style="margin-left: 1rem;">Add Expense</button>
       
     </form>
