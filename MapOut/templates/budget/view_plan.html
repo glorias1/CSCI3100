@@ -9,8 +9,8 @@
   <div class="btn-group rounded " style="margin-left: 1rem;">
     <a href="{% url 'viewproject' viewing_project.id %}" class="btn btn-info"><i class="fas fa-arrow-left"></i> Back to project</a>
     {% if is_member %}
-    <a href="{% url 'createbudget' viewing_project.id %}" class="btn btn-dark">Add new capital</a>
-    <a href="{% url 'createbudget2' viewing_project.id %}" class="btn btn-dark">Add new expense</a>
+    <a href="{% url 'createbudget' viewing_project.id %}" class="btn btn-dark">Add new expense</a>
+    <a href="{% url 'createbudget2' viewing_project.id %}" class="btn btn-dark">Add new budget</a>
     {% endif %}
     
   </div>

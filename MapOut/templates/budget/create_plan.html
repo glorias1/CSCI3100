@@ -9,12 +9,12 @@
    {% if form.errors %}
    <span style="color: red;"><p>Invalid.</p></span>
    {% endif %}
-    <form action="{% url 'createbudget' viewing_project.id %}" method="POST" style="color: black;margin-left: 1rem;margin-right: 1rem; ">
+    <form action="{% url 'createbudget' viewing_project.id %}" method="POST" style="color: black;margin-left: 1rem;margin-right: 1rem;width: 30rem; ">
     	{% csrf_token %}
           <label for="expense_name">Expense Name:</label>
-          <input id ="expense_name-submit" type="text" name="expense_name" value="">
+          <input id ="expense_name-submit" type="text" name="expense_name" value="" class="form-control"><br>
           <label for="expense">Expense Type:</label>
-          <select id="expense_transition_type" name="expense_transition_type">
+          <select id="expense_transition_type" name="expense_transition_type" class="form-control">
               <option value="Manpower">Manpower</option>
               <option value="Equipment">Equipment</option>
               <option value="Transport">Transport</option>
@@ -24,11 +24,11 @@
               <option value="Miscellaneous">Miscellaneous</option>
               <option value="Other">Other</option>
               <option value="">-----</option>
-          </select>
+          </select><br>
           <label for="expense_amount">Budget Description:</label>
-          <input id ="expense_amount-submit" type="text" name="expense_description" value="">
+          <input id ="expense_amount-submit" type="text" name="expense_description" value="" class="form-control"><br>
           <label for="expense_amount">Budget Amount:</label>
-          <input id ="expense_amount-submit" type="text" name="expense_amount" value=""><br>
+          <input id ="expense_amount-submit" type="text" name="expense_amount" value="" class="form-control"><br>
       <button type="submit" class="btn btn-info" style="margin-left: 1rem;">Add Capital</button>
       
     </form>
