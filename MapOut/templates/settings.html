@@ -1,29 +1,36 @@
 {% extends 'index.html'%}
 {% block content %}
+
 <div class="project-top-header unselectable">
 	<h5 style="padding-top: 10px;display: inline-block;" >Settings</h5>
 </div>
 
+{% block userprofile %}{% include "profile/user_profile.html" %}{% endblock %}
+
 <div style="margin: 1rem 1rem 1rem 1rem;">
-			Reminders : on/off
-		<input type="checkbox" class="switch_1">
-		<div>
-			<button id="eda" type="button" class="btn btn-outline-primary" style="margin-top: 15px;">Edit Account Information</button>
-		</div>
-		<div class="wrapper" id="edit_info_box"></div>
+	Reminders : on/off
+	<input type="checkbox" class="switch_1">
+	<div>
+		<button id="" type="button" class="btn btn-outline-primary" style="margin-top: 15px;" onclick="openForm(this)">
+			Edit Account Information
+		</button>
+	</div>
+	<div class="wrapper" id="edit_info_box"></div>
 </div>
 
+{% block editProfile %}{% include "profile/change_profile_form.html" %}{% endblock %}
 
-</div>
-<script>
-	function checkpassword(form){
-		if (form.pw1.value != form.pw2.value)
-		{
-			alert('The 2 passwords do not match.');
-			return false;
-		}
-	} else {
-		return true;
-	}
-</script>
+<style>
+div.changeProfileForm {
+	position: absolute;
+	margin:auto;
+	width: 540px;
+	height: 700px;
+	user-select:none;
+	color: black;
+	background-color: white;
+	font-family:serif;
+	text-align: center;
+}
+</style>
 {% endblock %}

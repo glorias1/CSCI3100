@@ -310,7 +310,27 @@ def help_(request):
     return  render(request, 'help.html')
 
 def settings_(request):
-    return  render(request, 'settings.html')
+    target = User.objects.get(id=request.user.id)
+    target_profile = Profile.objects.get(user_id=target.id)
+    pati_project = request.user.members
+    own_project = request.user.owner
+    ##update here
+    if request.method == "POST":
+        target.username = request.POST.get('cUsername')
+        target.email = request.POST.get('cEmail')
+        target.private = request.POST.get('Privacy')
+        target.save()
+        target_profile.gender = request.POST.get('gender')
+        target_profile.date_birth = request.POST.get('birthday')
+        target_profile.description = request.POST.get('sdes')
+        target_profile.save()
+    context={
+        'user': target,
+        'profile': target_profile,
+        'pproject': pati_project,
+        'oproject': own_project
+    }
+    return  render(request, 'settings.html', context)
 
 def create_project(request):
     createproject = Project()
@@ -565,6 +585,12 @@ def view_task(request, id1 , id2):
             target_file_id = request.POST.get('delete_file')
             target_file = File.objects.get(id = target_file_id)
             target_file.delete()
+        elif request.POST.get('download_file'):
+            file = File.objects.get(id =request.POST.get('download_file'))
+            filename = file.file.name.split('/')[-1]
+            response = HttpResponse(file.file, content_type='text/plain')
+            response['Content-Disposition'] = 'attachment; filename=%s' % filename
+            return response
     return render(request, 'task.html', context)
 
 def download(request, id):

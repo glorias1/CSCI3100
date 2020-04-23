@@ -48,7 +48,9 @@
 
     </div>
     <hr>
-      upload file:
+    <div>
+      <h6 class="unselectable">Upload file:</h6>
+    </div>
       <form method="POST" enctype="multipart/form-data">
           {% csrf_token %}
           <input type="hidden" value="1" id="myfile_flag" name="myfile_flag">

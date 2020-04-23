@@ -1,0 +1,24 @@
+{% block userprofile %}
+<div class="container" style="margin: 3rem;">
+    <div>
+        YOUR USER PROFILE:
+    </div>
+    <div style="margin-left: 3rem;">
+        <div>
+            <h3>{{user.username}}</h3>
+            Join date: {{user.date_joined}}<br>
+            Last login: {{user.last_login}}<br>
+            Email: {{user.email}}<br>
+        </div>
+        <div>
+            Gender: {{profile.gender}}<br>
+            Birthday: {{profile.date_birth}}<br>
+            Self description: {{profile.description}}<br>
+        </div>
+        <div>
+            You participate in {{pproject.all.count}} projects.<br>
+            You own  {{oproject.all.count}} projects.
+        </div>
+    </div>
+</div>
+{% endblock %}

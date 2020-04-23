@@ -8,8 +8,11 @@ from django.db.models.signals import post_save
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    #username = models.ForeignKey(User, on_delete=models.CASCADE)
+    gender = models.CharField(max_length=6, default='Hidden')
+    date_birth = models.DateField(null=True)
+    description = models.TextField(default="Leave some words to decribe youself.")
     private = models.BooleanField(default=False)
+    #image=models.ImageField()
 
 @receiver(post_save, sender=User)
 def update_user_profile(sender, instance, created, **kwargs):
