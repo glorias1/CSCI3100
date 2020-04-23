@@ -35,7 +35,7 @@ class Budgetplan(models.Model):
 
 class Budget(models.Model):
     transition_id =         models.AutoField(primary_key=True)
-    belong_project =        models.ForeignKey('Project', on_delete=models.CASCADE)
+    belong_plan =           models.ForeignKey(Budgetplan, on_delete=models.CASCADE)
     transition_category =   models.CharField(max_length=10, blank=True, null=True)  # expense/ capital
     transition_type =       models.CharField(max_length=30, blank=True, null=True)  # expense: manpower,.../ capital:caoital...
     name =                  models.CharField(max_length=50, blank=True, null=True)  # if it is capital, name='capital'
