@@ -1,6 +1,7 @@
-from django.http import HttpResponseRedirect, FileResponse, StreamingHttpResponse
+from django.http import HttpResponseRedirect, FileResponse, StreamingHttpResponse,JsonResponse
 from datetime import datetime
 from django.shortcuts import render, redirect
+from django.core import serializers
 # Create your views here.
 from django.http import HttpResponse
 from django.contrib import messages
@@ -15,6 +16,8 @@ from .forms import *
 from .models import *
 import time
 import os
+import json
+
 
 #this add capital
 def create_budget(request, id1):
@@ -296,7 +299,7 @@ def signup_view(request):
 def schedule(request):
     days = [31,28,31,30,31,30,31,31,30,31,30,31]
     months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
-    user_tasks = Tasks.objects.filter(incharge = request.user)
+    user_tasks = Tasks.objects.filter(incharge = request.user).order_by('-due_date')
     today = datetime.now()
     #print((str(today.month))+'haaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa')
     this_month = int(str(today.month))
@@ -309,7 +312,10 @@ def schedule(request):
     for each_date in user_tasks_date:
         array.append(int(each_date.due_date.strftime('%d')))
     print(array)
-    context = {'user_tasks':user_tasks, 'today':today, 'this_month':this_month, 'get_days':range(1,get_days+1),'days_of_tasks':array}
+    js_data = json.dumps(serializers.serialize('json',user_tasks))
+    
+    context = {'user_tasks':user_tasks, 'today':today, 'this_month':this_month, 'get_days':range(1,get_days+1),'js_data':js_data,'days_of_tasks':array}
+    
     return  render(request, 'schedule.html',context)
 
 
