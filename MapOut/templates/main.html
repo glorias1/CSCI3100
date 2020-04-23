@@ -4,13 +4,13 @@
     <h2>Welcome back! {{request.user.username}}</h2>
 </div>
 <div class="card-deck unselectable" style="margin:1rem">
-    <div class="card unselectable rounded" style="width: 20em; height: 20em;">
+    <div class="card unselectable rounded" style="width: 20rem; height: 40rem;">
         <div class="card-header"><i class="fas fa-file-alt"></i> 
-            <div style="width: 2rem;display: inline;margin-left: 1rem;">
+            <div style="display: inline;margin-left: 1rem;">
             </div>
             Upcoming Tasks
         </div>
-        <div class="card-body">
+        <div class="card-body" style="overflow: auto">
             <div class="card-text">
                 {% if mytasks %}
                     <table class="card-table table table-striped">
@@ -35,14 +35,14 @@
             </div>
         </div>
     </div>
-    <div class="card unselectable rounded" style="width: 20em; height: 20em;">
+    <div class="card unselectable rounded" style="width: 20rem; height: 40rem;">
         <div class="card-header"><i class="fas fa-project-diagram"></i> 
-            <div style="width: 2rem;display: inline;margin-left: 1rem;">
+            <div style="display: inline;margin-left: 1rem;">
             </div>
             Opening projects
         </div>
-        <div class="card-body">
-            <div class="card-text">
+        <div class="card-body" style="overflow: auto">
+            <div class="card-text" >
                 {% if myprojects %}
                     <table class="card-table table table-striped">
                         <thead>
