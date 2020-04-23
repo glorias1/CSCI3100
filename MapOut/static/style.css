@@ -325,3 +325,7 @@ div.joinFormStyle{
 	font-family:serif;
 	text-align: center;
 }
+
+.card:hover {
+	box-shadow: -2px 1px 15px 1px rgba(216, 206, 172,0.5);
+  }
