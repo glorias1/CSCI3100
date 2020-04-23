@@ -75,8 +75,8 @@
                         <td>{{one_file.filename}}</td>
                         <td>{{one_file.file.size|filesizeformat}}</td>
                         <td>{{one_file.last_modify}}</td>
-                        <td><form method="POST">{% csrf_token %}<input type="hidden" value="{{one_file.id}}" id="download_file" name="download_file"><button type="submit" class="btn btn-dark"><i class="fas fa-arrow-down"></i></button></td>
-                        <td><input type="hidden" value="{{one_file.id}}" id="delete_file" name="delete_file"><button type="submit" class="btn btn-dark"><i class="fas fa-trash-alt"></i></button></form></td>
+                        <td><form method="POST">{% csrf_token %}<input type="hidden" value="{{one_file.id}}" id="download_file" name="download_file"><button type="submit" class="btn btn-dark"><i class="fas fa-arrow-down"></i></button></form></td>
+                        <td><form method="POST">{% csrf_token %}<input type="hidden" value="{{one_file.id}}" id="delete_file" name="delete_file"><button type="submit" class="btn btn-dark"><i class="fas fa-trash-alt"></i></button></form></td>
                     </tr>
                   {% endfor %}
                 {% else %}
