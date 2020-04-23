@@ -16,13 +16,6 @@ from .models import *
 import time
 import os
 
-
-def index_budgets(request):
-    if request.method == 'POST':
-        if request.POST.get('createplan'):
-            return render(request, 'budget/create_plan.html')
-    return render(request, 'budget/index.html')
-
 #this add capital
 def create_budget(request, id1):
     viewing_project = Project.objects.get(id = id1)
