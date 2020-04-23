@@ -397,7 +397,6 @@ def view_project(request, id):
     senders = []
     for i in join_requests:
         senders.append(User.objects.get(id = i.user_id))
-    print(senders)
     all_announcement = Announcement.objects.filter(belong_project = viewing_project).order_by('-pinned')
 
     try:
@@ -420,7 +419,7 @@ def view_project(request, id):
         'msgs':msgs,
         'join_requests':join_requests,
         'non_r_msg': non_r_msg,
-        'all_announcement':all_announcement
+        'all_announcement':all_announcement,
         'senders': senders
     }
     ##action when a form is submitted
