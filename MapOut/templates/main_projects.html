@@ -7,7 +7,7 @@
 {% if projects %}
 	<div class="card-deck" style="margin: 1rem 1rem 1rem 1rem;">
 		{% for one_project in projects %}
-		<a href="{% url 'viewproject' one_project.id %}"><div class="card" style="width: 15rem;height: 15rem; display: inline-block; margin:0.3rem;">
+		<a href="{% url 'viewproject' one_project.id %}"><div class="card " style="width: 15rem;height: 15rem; display: inline-block; margin:0.3rem;">
 			<div class="card-header">
 				<h5 class="card-title">{{one_project.project_name}}</h5>
 			</div>
