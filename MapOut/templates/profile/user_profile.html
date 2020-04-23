@@ -1,23 +1,52 @@
 {% block userprofile %}
 <div class="container" style="margin: 3rem;">
-    <div>
-        YOUR USER PROFILE:
+    <div >
+        <h5>YOUR USER PROFILE:</h5>
     </div>
     <div style="margin-left: 3rem;">
-        <div>
+        <div class="row">
+            <div class="col-1">
+                
+            </div>
             <h3>{{user.username}}</h3>
-            Join date: {{user.date_joined}}<br>
-            Last login: {{user.last_login}}<br>
-            Email: {{user.email}}<br>
-        </div>
+        </div><br>
         <div>
-            Gender: {{profile.gender}}<br>
-            Birthday: {{profile.date_birth}}<br>
-            Self description: {{profile.description}}<br>
-        </div>
-        <div>
-            You participate in {{pproject.all.count}} projects.<br>
-            You own  {{oproject.all.count}} projects.
+            <table class="table table-hover">
+                <tbody>
+                    <tr>
+                        <th scope="row">Join date</th>
+                        <td>{{user.date_joined}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Last login</th>
+                        <td>{{user.last_login}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Email</th>
+                        <td>{{user.email}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Gender</th>
+                        <td>{{profile.gender}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Birthday</th>
+                        <td>{{profile.date_birth}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Self description</th>
+                        <td>{{profile.description}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Participated projects</th>
+                        <td>{{pproject.all.count}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Owned Projects</th>
+                        <td>{{oproject.all.count}}</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
