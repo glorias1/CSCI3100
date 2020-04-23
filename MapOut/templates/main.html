@@ -3,13 +3,16 @@
 <div style="padding: 1rem;color:coral" class="unselectable">
     <h2>Welcome back! {{request.user.username}}</h2>
 </div>
-<div class="card-deck unselectable" style="margin:1rem 1rem 1rem 1rem;">
-    <div class="card unselectable rounded" style="width: 20rem;height: 20rem;">
-        <div class="card-header"><i class="fas fa-file-alt"></i> <div style="width: 2rem;display: inline;margin-left: 1rem;"></div>Upcoming Tasks
+<div class="card-deck unselectable" style="margin:1rem">
+    <div class="card unselectable rounded" style="width: 20em; height: 20em;">
+        <div class="card-header"><i class="fas fa-file-alt"></i> 
+            <div style="width: 2rem;display: inline;margin-left: 1rem;">
+            </div>
+            Upcoming Tasks
         </div>
         <div class="card-body">
             <div class="card-text">
-                <table class="table table-striped">
+                <table class="card-table table table-striped">
                     {% if mytasks %}
                     <thead>
                         <tr>
@@ -32,21 +35,30 @@
             </div>
         </div>
     </div>
-    <div class="card unselectable rounded">
-        <div class="card-header"><i class="fas fa-project-diagram"></i> <div style="width: 2rem;display: inline;margin-left: 1rem;"></div>Opening projects
+    <div class="card unselectable rounded" style="width: 20em; height: 20em;">
+        <div class="card-header"><i class="fas fa-project-diagram"></i> 
+            <div style="width: 2rem;display: inline;margin-left: 1rem;">
+            </div>
+            Opening projects
         </div>
         <div class="card-body">
-            {% if myprojects %}
-                <table class="table table-stripped">
-                    <tbody>
-                        {% for one_project in myprojects %}
-                            <tr><td>{{one_project.project_name}}</td></tr>    
-                        {% endfor %}
-                    </tbody>
-                </table>
-            {% else %}
-                <i>You currently do not have any opening project. Create one by clicking the plus sign.</i>
-            {% endif %}
+            <div class="card-text">
+                {% if myprojects %}
+                    <table class="card-table table table-striped">
+                        <tbody>
+                            {% for one_project in myprojects %}
+                                <tr>
+                                    <td>
+                                        {{one_project.project_name}}
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                {% else %}
+                    <i>You currently do not have any opening project. Create one by clicking the plus sign.</i>
+                {% endif %}
+            </div>
         </div>
     </div>
 </div>
