@@ -3,7 +3,7 @@ from datetime import datetime
 from django.shortcuts import render, redirect
 # Create your views here.
 from django.http import HttpResponse
-from django.contrib import messages as ms
+from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.core.files.storage import FileSystemStorage
@@ -221,21 +221,16 @@ def index_projects(request):
     projects = Project.objects.filter(members = request.user).order_by('closed')
     all_public_project = Project.objects.filter(private = False).order_by('project_name')
     request_list=[]
-    for i in JoinMessage.objects.filter(user_id = request.user.id):#filting the project id that have message sent by current user.
-        request_list.append(i.pj_id)
+    for i in JoinMessage.objects.filter(user_id = request.user.id, not_reply=True):#filting the project id that have message sent by current user.
+        request_list.append(Project.objects.get(id=i.pj_id))
     tasks = Tasks.objects.filter(belong_project__in = projects)  ##filter all the task in the list of project objects
     if request.method == 'POST':
-        if check_password(request.POST.get('va_password'), request.user.password):
-            join_request = JoinMessage()
-            join_request.pj = Project.objects.get(id=request.POST.get('JPID'))
-            join_request.user = request.user
-            join_request.message = request.POST.get('message')
-            join_request.save()
-            ms.success(request,"Your request have been sent out successfully.")
-            return HttpResponseRedirect(request.path)
-        else:
-            ms.error(request,"Please type in the correct password.")
-            return HttpResponseRedirect(request.path)
+        join_request = JoinMessage()
+        join_request.pj = Project.objects.get(id=request.POST.get('JPID'))
+        join_request.user = request.user
+        join_request.message = request.POST.get('message')
+        join_request.save()
+        return HttpResponseRedirect(request.path)
     context = {
         'projects':projects, 
         'tasks':tasks, 
@@ -264,7 +259,7 @@ def pw_enter(request):
             send_mail('Reset Password', plain_msg,
                 'mapoutproject@gmail.com',[email],
                 html_message=html_msg)
-            ms.info(request, 'Email sent!')
+            messages.info(request, 'Email sent!')
             return redirect("home")
     else:
         return render(request, 'registration/password_reset_form.html')
@@ -280,7 +275,7 @@ def login_view1(request):
             return HttpResponseRedirect("request.path_info")
             #return redirect('index.html')
         else:
-            return render_to_response(request, 'home.html')
+            return render(request, 'home.html')
 
 def logout1(request):
     logout(request)
