@@ -240,25 +240,6 @@ def index_tasks(request):
 def login_btn(request):
     return render(request, 'registration/login.html') 
 
-###need modify!!
-'''
-def pw_enter(request):
-    if request.method == 'POST':
-        form = AuthenticationForm(data=request.POST)
-        if form.is_valid():
-            email = form.cleaned_data.get('email')
-            html_msg = render_to_string('registration/reset_email.html', {'content': 'request.user.username'})
-            plain_msg = strip_tags(html_msg)
-            send_mail('Reset Password', plain_msg,
-                'mapoutproject@gmail.com',[email],
-                html_message=html_msg)
-            return redirect("home.html")
-    else:
-        return render(request, 'registration/password_reset_form.html')
-
-    #####
-    '''
-
 def login_view1(request):
     if request.user.is_authenticated(): 
         return HttpResponseRedirect('/index/')
@@ -604,6 +585,12 @@ def view_task(request, id1 , id2):
             target_file_id = request.POST.get('delete_file')
             target_file = File.objects.get(id = target_file_id)
             target_file.delete()
+        elif request.POST.get('download_file'):
+            file = File.objects.get(id =request.POST.get('download_file'))
+            filename = file.file.name.split('/')[-1]
+            response = HttpResponse(file.file, content_type='text/plain')
+            response['Content-Disposition'] = 'attachment; filename=%s' % filename
+            return response
     return render(request, 'task.html', context)
 
 def download(request, id):
