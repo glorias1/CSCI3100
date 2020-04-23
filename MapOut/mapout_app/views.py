@@ -183,7 +183,8 @@ def view_budget(request, id3): # id3 is project id \
         "net": net,
         "net_percent": net_percent,
         "arg": arg,
-        "viewing_project": viewing_project
+        "viewing_project": viewing_project,
+        "is_member": is_member
     }
         #return render(request, 'budget/view_plan.html', context)
     return render(request, 'budget/view_plan.html',context)
@@ -336,7 +337,7 @@ def create_project(request):
             messages.success(request, 'You have successfully created a project.')
             send_mail(
                 'Welcome To MapOut!',
-                'Dear @'+ request.user.username + '\nYou have successfully created project' + createproject.project_name + 
+                'Dear @'+ request.user.username + '\nYou have successfully created project ' + createproject.project_name + 
                 'on MapOut. Have fun!\n Best, \nMapOut Team',
                 'mapoutproject@gmail.com',
                 [request.user.email],
