@@ -23,7 +23,6 @@ from mapout_app.views import *
 from django.views.generic.base import RedirectView
 
 urlpatterns = [
-    path('budget/index/', index_budgets, name='index_budgets'),             ##budget plans
     re_path(r'^project/(?P<id1>\d+)/addbudget/', create_budget, name='createbudget'),         ##budget plans
     re_path(r'^project/(?P<id1>\d+)/addbudget2/', create_budget_2, name='createbudget2'),     ##budget plans
     re_path(r'^project/(?P<id3>\d+)/viewplan/', view_budget, name='viewbudget'),    ## view budget
