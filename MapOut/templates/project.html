@@ -92,6 +92,31 @@
         {% endif %}
       </div>
       <hr>
+      <div style="margin-bottom: 1rem;">
+        <h6 class="unselectable">Announcement: 
+          {% if is_member %}
+          <button class="btn btn-sm" type="button" data-toggle="modal" data-target="#newModal"><i class="fas fa-plus fa-xs"></i></button>
+          {% endif %}</h6>
+          {% if all_announcement %}
+          <div>
+            {% with all_announcement|first as no1 %}
+              1. {{no1.message}}{% if no1.pinned == True %}<i class="fas fa-map-pin" style="margin-left:2rem;"></i>{% endif %}
+            {% endwith %}
+          </div>
+            <div id="moreannouncement" style="display: none;">
+              {% for one_announcement in all_announcement %}
+                {% if forloop.counter != 1 %}
+                  <hr style="width: 85%;">{{forloop.counter}}. {{one_announcement.message}}{% if one_announcement.pinned == True %}<i class="fas fa-map-pin" style="margin-left:2rem;"></i>{% endif %}<br>
+                {% endif %}
+              {% endfor %}
+            </div>
+            <button id="btn1" onclick="showmore()" class="btn btn-light">show more</button>
+            <button id="btn2" onclick="showless()" class="btn btn-light">show less</button>
+          {% else %}
+            <i>None</i>
+        {% endif %}
+      </div>
+      <hr>
       <!--list of task and discussion-->
       <div class="card-group">
         <div class="card rounded" style="border: none;">
@@ -355,6 +380,63 @@
       </div>
     </div>
 
+        <div class="modal fade" tabindex="-1" role="dialog" id="newModal">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Add announcement</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form method="POST"  >
+              {% csrf_token %}
+            <p>Please enter the new announcement:</p>
+            <textarea class="form-control" name="new_announcement" id="new_announcement" required></textarea>
+            <p>Pin</p>
+            <input type="radio" name="pin" value="True">Yes<br>
+            <input type="radio" name="pin" value="False">No
+          </div>
+          <div class="modal-footer">
+            
+              <input type="submit" class="btn btn-info" value="Change">
+            </form>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--div of add announcement modal-->
+    <!--<div class="modal fade" tabindex="-1" role="dialog" id="addannouncementModal">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Add anouncement</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form method="POST"  >
+              {% csrf_token %}
+            <p>Please enter the new Announcement:</p>
+            <textarea class="form-control" name="new_announcement_message" id="new_announcement_message"></textarea>
+            <p>Pin</p>
+            <input type="radio" name="pin" value="True">Yes<br>
+            <input type="radio" name="pin" value="False">No
+          </div>
+          <div class="modal-footer">
+            
+              <input type="submit" class="btn btn-info" value="Add">
+            </form>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+          </div>
+        </div>
+      </div>
+    </div>-->
+
     {% else %}
     <span>You does not belong to this project.</span>
     {% endif %}
@@ -369,43 +451,14 @@
           function successmessage(){
             document.getElementById('deletedmessage').style.display = "block";
           }
+          function showmore(){
+            document.getElementById('moreannouncement').style.display = "block";
+          }
+          function showless(){
+            document.getElementById('moreannouncement').style.display = "none";
+          }
       </script>
-      <script>
-        const roomName = JSON.parse(document.getElementById('room-name').textContent);
 
-        const chatSocket = new WebSocket(
-            'ws://'
-            + window.location.host
-            + '/ws/chat/'
-            + roomName
-            + '/'
-        );
-
-        chatSocket.onmessage = function(e) {
-            const data = JSON.parse(e.data);
-            document.querySelector('#chat-log').value += (data.message + '\n');
-        };
-
-        chatSocket.onclose = function(e) {
-            console.error('Chat socket closed unexpectedly');
-        };
-
-        document.querySelector('#chat-message-input').focus();
-        document.querySelector('#chat-message-input').onkeyup = function(e) {
-            if (e.keyCode === 13) {  // enter, return
-                document.querySelector('#chat-message-submit').click();
-            }
-        };
-
-        document.querySelector('#chat-message-submit').onclick = function(e) {
-            const messageInputDom = document.querySelector('#chat-message-input');
-            const message = messageInputDom.value;
-            chatSocket.send(JSON.stringify({
-                'message': message
-            }));
-            messageInputDom.value = '';
-        };
-    </script>
 
       
 {% endblock %}

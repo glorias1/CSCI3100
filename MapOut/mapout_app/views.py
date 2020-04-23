@@ -398,6 +398,8 @@ def view_project(request, id):
     for i in join_requests:
         senders.append(User.objects.get(id = i.user_id))
     print(senders)
+    all_announcement = Announcement.objects.filter(belong_project = viewing_project).order_by('-pinned')
+
     try:
         if viewing_project.owner.get(id = request.user.id):
             is_owner = True
@@ -418,6 +420,7 @@ def view_project(request, id):
         'msgs':msgs,
         'join_requests':join_requests,
         'non_r_msg': non_r_msg,
+        'all_announcement':all_announcement
         'senders': senders
     }
     ##action when a form is submitted
@@ -481,6 +484,13 @@ def view_project(request, id):
             target_msg = JoinMessage.objects.get(id=request.POST.get('reject'))
             target_msg.not_reply=False
             target_msg.save()
+        elif request.POST.get('new_announcement'):
+            new = Announcement()
+            new.belong_project = viewing_project
+            new.message = request.POST.get('new_announcement')
+            if request.POST.get('pin'):
+                new.pinned = request.POST.get('pin')
+            new.save()
 
     return render(request, 'project.html', context)
 
