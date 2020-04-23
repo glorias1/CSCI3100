@@ -298,7 +298,7 @@ def signup_view(request):
             raw_password = form.cleaned_data.get('password1')
             send_mail(
                         'Welcome To MapOut!',
-                        'Dear @'+ username + '\nYou have successfully registered on MapOut. Have Fun!:)\n Best, \nMapOut Team',
+                        'Dear @'+ username + ',\nYou have successfully registered on MapOut. Have Fun!:)\nBest, \nMapOut Team',
                         'mapoutproject@gmail.com',
                         [user.email],
                         fail_silently=False,
@@ -352,11 +352,11 @@ def create_project(request):
             createproject.members.add(request.user)   ##add current user as a member
             createbudgetplan.belong_project = createproject
             createbudgetplan.save()
-            messages.success(request, 'You have successfully created a project.')
+            #messages.success(request, 'You have successfully created a project.')
             send_mail(
-                'Welcome To MapOut!',
-                'Dear @'+ request.user.username + '\nYou have successfully created project' + createproject.project_name + 
-                'on MapOut. Have fun!\n Best, \nMapOut Team',
+                'Project Created!',
+                'Dear @'+ request.user.username + ',\nYou have successfully created project ' + createproject.project_name + 
+                ' on MapOut. Have fun!\nBest, \nMapOut Team',
                 'mapoutproject@gmail.com',
                 [request.user.email],
                 fail_silently=False,
@@ -443,11 +443,28 @@ def view_project(request, id):
             if User.objects.get(username=target_user_name):
                 target_user = User.objects.get(username=target_user_name)
                 viewing_project.members.add(target_user)
+                send_mail(
+                    'You are now a memeber of Project' + viewing_project.project_name + '!',
+                    'Dear @'+ target_user.username + ',\nYou were added to the project ' + viewing_project.project_name + ' by @' + request.user.username + 
+                    ' on MapOut. \n\nYou can now view, edit and monitor your project after login MapOut! If you need help, please check the help center.\n\nHave fun! \n\nBest, \nMapOut Team',
+                    'mapoutproject@gmail.com',
+                    [target_user.email],
+                    fail_silently=False,
+                )
         ##remove a member
         elif request.POST.get('remove_name'):
             target_user_id = request.POST.get('remove_name')
             target_user = viewing_project.members.get(id=target_user_id)
             viewing_project.members.remove(target_user)
+            send_mail(
+                        'You were removed from project ' + viewing_project.project_name + '.',
+                        'Dear @'+ target_user.username + ',\nYou were removed from the project ' 
+                        + viewing_project.project_name + ' by @' + request.user.username + 
+                        ' on MapOut. \n\nIf you need help, please check the help center.\n\nHave fun! \n\nBest, \nMapOut Team',
+                        'mapoutproject@gmail.com',
+                        [target_user.email],
+                        fail_silently=False,
+            )
             try:
                 if viewing_project.owner.get(id=target_user_id):
                     viewing_project.owner.remove(target_user)
