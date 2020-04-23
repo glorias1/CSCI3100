@@ -32,7 +32,8 @@ urlpatterns = [
     path('', RedirectView.as_view(url='/home/')),              ##redirect to /home/ if empty url
     path('accounts/', include('django.contrib.auth.urls')),     ##for account use(no .html return)
     path('accounts/login/', login_view1, name='login'),         ##page for login 
-    path('accounts/login/password_reset_form', pw_enter, name='password_reset_form'), ##input email to reset password
+    #path('accounts/reset-password', pw_enter, name='password_reset'), ##input email to reset password
+    #path('accounts/email-sent', )
     #path('accounts/login/password_reset_confirm', pw_con, name='password_reset_confirm'),
     #path('accounts/login/reset', reset_confirmed, name='password_reset_confirm'), #jump to reset page
     path('accounts/signup/', signup_view, name='signup'),       ##page for sign up (maybe can add email verrification if have time)

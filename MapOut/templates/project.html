@@ -98,7 +98,21 @@
           <button class="btn btn-sm" type="button" data-toggle="modal" data-target="#newModal"><i class="fas fa-plus fa-xs"></i></button>
           {% endif %}</h6>
           {% if all_announcement %}
-          <div>
+            <div style="margin-bottom: 1rem;">
+              {% with reverse_ordered_announcements|first as lastA %}
+                {{lastA.id}}. {{lastA.message}}{% if no1.pinned == True %}<i class="fas fa-map-pin" style="margin-left:2rem;"></i>{% endif %}
+              {% endwith %}
+            </div>
+            <div id="moreannouncement" style="display: none;">
+              {% for one_announcement in reverse_ordered_announcements %}
+                {% if forloop.counter != 1 %}
+                  <div style="margin-bottom: 1rem;">
+                    <hr style="width: 85%;">{{one_announcement.id}}. {{one_announcement.message}}{% if one_announcement.pinned == True %}<i class="fas fa-map-pin" style="margin-left:2rem;"></i>{% endif %}<br>
+                  </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+          <!--<div style="margin-bottom: 1rem;">
             {% with all_announcement|first as no1 %}
               1. {{no1.message}}{% if no1.pinned == True %}<i class="fas fa-map-pin" style="margin-left:2rem;"></i>{% endif %}
             {% endwith %}
@@ -109,7 +123,7 @@
                   <hr style="width: 85%;">{{forloop.counter}}. {{one_announcement.message}}{% if one_announcement.pinned == True %}<i class="fas fa-map-pin" style="margin-left:2rem;"></i>{% endif %}<br>
                 {% endif %}
               {% endfor %}
-            </div>
+            </div>-->
             <button id="btn1" onclick="showmore()" class="btn btn-light">show more</button>
             <button id="btn2" onclick="showless()" class="btn btn-light">show less</button>
           {% else %}

@@ -3,6 +3,7 @@
 a {
     color: white;
     font-family: Calibri;
+
     }
 </style>
 {% block content %}
@@ -11,7 +12,7 @@ a {
   <div class="overlay-div">
     <nav class="navbar navbar-expand-md navbar-dark">
       <div class="container-fluid">
-      <a herf="{% url 'home' %}"><img src="{% static "logo_small.png" %}" alt=""></a>
+      <a href="{% url 'home' %}"><img src="{% static "logo_small.png" %}" alt=""></a>
         <ul class="navbar-nav navbar-right"> <!--make it rightside-->
           <li class="nav-item navbar-dark"><button class="btn  btn-outline-light" style="border:none;font-size: 18px;" href="./about_us.html" data-toggle="modal" data-target="#about-modal">About Us</button></li>
 			<!--modal for about us-->
@@ -24,7 +25,6 @@ a {
 					</div>	
 				  <div class="modal-body" >
 					  <font color="#000">
-					  		(!!!!!!this is copy from init doc to tmp use!!!!!!)<br>
 						  MapOut offers an online web-based platform for project members to maintain their project progress. MapOut proposes to provide the users with better coordination of their projects. Having an overview of everyone’s progress and sharing materials would not be difficult anymore. MapOut makes project management no longer a vexing task.
 						  </font>
 					</div>

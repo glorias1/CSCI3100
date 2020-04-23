@@ -6,6 +6,7 @@ from django.core import serializers
 from django.http import HttpResponse
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.views import PasswordResetView
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.core.files.storage import FileSystemStorage
 from django.urls import reverse
@@ -186,7 +187,8 @@ def view_budget(request, id3): # id3 is project id \
         "net": net,
         "net_percent": net_percent,
         "arg": arg,
-        "viewing_project": viewing_project
+        "viewing_project": viewing_project,
+        "is_member": is_member
     }
         #return render(request, 'budget/view_plan.html', context)
     return render(request, 'budget/view_plan.html',context)
@@ -238,20 +240,24 @@ def index_tasks(request):
 def login_btn(request):
     return render(request, 'registration/login.html') 
 
+###need modify!!
+'''
 def pw_enter(request):
     if request.method == 'POST':
         form = AuthenticationForm(data=request.POST)
         if form.is_valid():
             email = form.cleaned_data.get('email')
-            html_msg = render_to_string('reset_email.html', {'content': 'request.user.username'})
+            html_msg = render_to_string('registration/reset_email.html', {'content': 'request.user.username'})
             plain_msg = strip_tags(html_msg)
             send_mail('Reset Password', plain_msg,
                 'mapoutproject@gmail.com',[email],
                 html_message=html_msg)
-            messages.info(request, 'Email sent!')
-            return redirect("home")
+            return redirect("home.html")
     else:
         return render(request, 'registration/password_reset_form.html')
+
+    #####
+    '''
 
 def login_view1(request):
     if request.user.is_authenticated(): 
@@ -282,7 +288,7 @@ def signup_view(request):
             raw_password = form.cleaned_data.get('password1')
             send_mail(
                         'Welcome To MapOut!',
-                        'Dear @'+ username + '\nYou have successfully registered on MapOut. Have Fun!:)\n Best, \nMapOut Team',
+                        'Dear @'+ username + ',\nYou have successfully registered on MapOut. \n\nHave Fun!:)\n\nBest, \nMapOut Team',
                         'mapoutproject@gmail.com',
                         [user.email],
                         fail_silently=False,
@@ -339,11 +345,11 @@ def create_project(request):
             createproject.members.add(request.user)   ##add current user as a member
             createbudgetplan.belong_project = createproject
             createbudgetplan.save()
-            messages.success(request, 'You have successfully created a project.')
+            #messages.success(request, 'You have successfully created a project.')
             send_mail(
-                'Welcome To MapOut!',
-                'Dear @'+ request.user.username + '\nYou have successfully created project' + createproject.project_name + 
-                'on MapOut. Have fun!\n Best, \nMapOut Team',
+                'Project Created!',
+                'Dear @'+ request.user.username + ',\nYou have successfully created project ' + createproject.project_name + 
+                ' on MapOut. Have fun!\nBest, \nMapOut Team',
                 'mapoutproject@gmail.com',
                 [request.user.email],
                 fail_silently=False,
@@ -389,7 +395,12 @@ def view_project(request, id):
     senders = []
     for i in join_requests:
         senders.append(User.objects.get(id = i.user_id))
+
     all_announcement = Announcement.objects.filter(belong_project = viewing_project).order_by('-pinned')
+    reverse_ordered_announcements = Announcement.objects.filter(belong_project = viewing_project).order_by('-id')
+
+    print(all_announcement)
+    print(reverse_ordered_announcements)
 
     try:
         if viewing_project.owner.get(id = request.user.id):
@@ -406,12 +417,14 @@ def view_project(request, id):
         'tasks':tasks, 'is_owner':is_owner, 
         'project_members_not_owner':project_members_not_owner, 
         'project_members':project_members, 
+        'request': request,
         'is_member':is_member, 
         'all_leaders':all_leaders , 
         'msgs':msgs,
         'join_requests':join_requests,
         'non_r_msg': non_r_msg,
         'all_announcement':all_announcement,
+        'reverse_ordered_announcements':reverse_ordered_announcements,
         'senders': senders
     }
     ##action when a form is submitted
@@ -432,16 +445,41 @@ def view_project(request, id):
             if User.objects.get(username=target_user_name):
                 target_user = User.objects.get(username=target_user_name)
                 viewing_project.members.add(target_user)
+                send_mail(
+                    'You are now a memeber of Project' + viewing_project.project_name + '!',
+                    'Dear @'+ target_user.username + ',\nYou were added to the project ' + viewing_project.project_name + ' by @' + request.user.username + 
+                    ' on MapOut. \n\nYou can now view, edit and monitor your project after login MapOut! If you need help, please check the help center.\n\nHave fun! \n\nBest, \nMapOut Team',
+                    'mapoutproject@gmail.com',
+                    [target_user.email],
+                    fail_silently=False,
+                )
+                new_user_announce = Announcement()
+                new_user_announce.belong_project = viewing_project
+                new_user_announce.message = target_user_name + " just join our team!"
+                new_user_announce.save()
         ##remove a member
         elif request.POST.get('remove_name'):
             target_user_id = request.POST.get('remove_name')
             target_user = viewing_project.members.get(id=target_user_id)
             viewing_project.members.remove(target_user)
+            send_mail(
+                        'You were removed from project ' + viewing_project.project_name + '.',
+                        'Dear @'+ target_user.username + ',\nYou were removed from the project ' 
+                        + viewing_project.project_name + ' by @' + request.user.username + 
+                        ' on MapOut. \n\nIf you need help, please check the help center.\n\nHave fun! \n\nBest, \nMapOut Team',
+                        'mapoutproject@gmail.com',
+                        [target_user.email],
+                        fail_silently=False,
+            )
             try:
                 if viewing_project.owner.get(id=target_user_id):
                     viewing_project.owner.remove(target_user)
             except:
                 pass
+            new_user_announce = Announcement()
+            new_user_announce.belong_project = viewing_project
+            new_user_announce.message = target_user.username + " leave our team."
+            new_user_announce.save()
         elif request.POST.get('add_owner'):
             target_user_id = request.POST.get('add_owner')
             target_user = User.objects.get(id=target_user_id)
@@ -471,6 +509,10 @@ def view_project(request, id):
             viewing_project.members.add(sender)
             target_msg.not_reply=False
             target_msg.save()
+            new_user_announce = Announcement()
+            new_user_announce.belong_project = viewing_project
+            new_user_announce.message = sender.username + " just join our team!"
+            new_user_announce.save()
         elif request.POST.get('reject'):
             target_msg = JoinMessage.objects.get(id=request.POST.get('reject'))
             target_msg.not_reply=False
@@ -504,7 +546,14 @@ def view_task(request, id1 , id2):
             is_member = True
     except:
         is_member = False
-    context = {'viewing_project':viewing_project, 'task':task, 'taskfiles':taskfiles, 'is_incharge':is_incharge, 'project_members_not_in_charge':project_members_not_in_charge, 'is_member':is_member, 'project_members_in_charge':project_members_in_charge}
+    context = {
+        'viewing_project':viewing_project, 
+        'task':task, 'taskfiles':taskfiles, 
+        'is_incharge':is_incharge, 
+        'project_members_not_in_charge':project_members_not_in_charge, 
+        'is_member':is_member, 
+        'project_members_in_charge':project_members_in_charge
+        }
     if request.method =='POST':
         ##user add new incharge person from members of the project of the task
         if request.POST.get('add_incharge'):
