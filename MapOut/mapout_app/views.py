@@ -5,6 +5,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.views import PasswordResetView
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.core.files.storage import FileSystemStorage
 from django.urls import reverse
@@ -235,20 +236,24 @@ def index_tasks(request):
 def login_btn(request):
     return render(request, 'registration/login.html') 
 
+###need modify!!
+'''
 def pw_enter(request):
     if request.method == 'POST':
         form = AuthenticationForm(data=request.POST)
         if form.is_valid():
             email = form.cleaned_data.get('email')
-            html_msg = render_to_string('reset_email.html', {'content': 'request.user.username'})
+            html_msg = render_to_string('registration/reset_email.html', {'content': 'request.user.username'})
             plain_msg = strip_tags(html_msg)
             send_mail('Reset Password', plain_msg,
                 'mapoutproject@gmail.com',[email],
                 html_message=html_msg)
-            messages.info(request, 'Email sent!')
-            return redirect("home")
+            return redirect("home.html")
     else:
         return render(request, 'registration/password_reset_form.html')
+
+    #####
+    '''
 
 def login_view1(request):
     if request.user.is_authenticated(): 
@@ -279,7 +284,7 @@ def signup_view(request):
             raw_password = form.cleaned_data.get('password1')
             send_mail(
                         'Welcome To MapOut!',
-                        'Dear @'+ username + ',\nYou have successfully registered on MapOut. Have Fun!:)\nBest, \nMapOut Team',
+                        'Dear @'+ username + ',\nYou have successfully registered on MapOut. \n\nHave Fun!:)\n\nBest, \nMapOut Team',
                         'mapoutproject@gmail.com',
                         [user.email],
                         fail_silently=False,
