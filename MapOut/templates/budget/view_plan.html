@@ -9,8 +9,8 @@
   <div class="btn-group rounded " style="margin-left: 1rem;">
     <a href="{% url 'viewproject' viewing_project.id %}" class="btn btn-info"><i class="fas fa-arrow-left"></i> Back to project</a>
     {% if is_member %}
-    <a href="{% url 'createbudget' viewing_project.id %}" class="btn btn-dark">Add new expense</a>
-    <a href="{% url 'createbudget2' viewing_project.id %}" class="btn btn-dark">Add new budget</a>
+    <a href="{% url 'createbudget' viewing_project.id %}" class="btn btn-dark">Add new capital</a>
+    <a href="{% url 'createbudget2' viewing_project.id %}" class="btn btn-dark">Add new expense</a>
     {% endif %}
     
   </div>
@@ -122,11 +122,5 @@
         </tr>
   </tbody>
   </table>
-    
-<!--what is this?
-<form action="{% url 'index_budgets' %}" method="POST" style="color: black;margin-left: 1rem;margin-right: 1rem; ">
-  {% csrf_token %}
-  <button type="submit" class="btn btn-info" style="margin-left: 1rem;">Index</button>
-</form>-->
 
 {% endblock %}
