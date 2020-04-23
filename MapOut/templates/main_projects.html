@@ -60,7 +60,13 @@
 		</div>
 		<div class="table-responsive rounded">
 			<table id="allPPj" class="table table-light table-hover table-bordered table-striped rounded">
-				<caption>All of the {{ all_public_project.all.count }} public projects.</caption>
+				<caption>
+					Total {{ all_public_project.all.count }} public projects.<br>
+					Join status: <br>
+					<i class="fas fa-plus"></i>: you can submit a join request<br>
+					<i class="fa fa-check"></i>: submitted join request<br>
+					<i class="fas fa-times bg-sm"></i>: you are the member
+				</caption>
 				<thead>
 					<tr>
 						<th scope="col" class="table-info text-nowrap" onclick="Sorting(0)" style="width: 10%">PID</th>
@@ -81,13 +87,20 @@
 								</div>
 							</td>
 							<td>
+								<div class="text-center">
 									<a href="{% url 'viewproject' a_project.id %}" class="btn btn-info btn-sm"><i class="fas fa-search-plus"></i></a>
+								</div>
 							</td>
 							<td>
-								{% if cuser not in a_project.members.all and a_project.id not in request_list %}
+								<div class="text-center">
+									{% if cuser not in a_project.members.all and a_project not in request_list%}
 										<button id="j{{a_project.id}}" class="btn btn-info btn-sm" onclick="openForm(this)"><i class="fas fa-plus"></i></button>
-								{% else %} <i class="fas fa-times bg-sm"></i>		
-								{% endif %}
+									{% elif a_project in request_list %} 
+										<i class="fa fa-check"></i> 
+									{% else %} 
+										<i class="fas fa-times bg-sm"></i>
+									{% endif %}
+								</div>
 							</td>
 						</tr>
 					</tbody>
@@ -98,12 +111,16 @@
 			</table>
 		</div>
 	</div>
-
-	{% if messages%}
-		<div class="validationBox fade">
-			{{ message }}
-		</div>
-	{% endif %}
+	
+	<div>
+		{% if messages%}
+			<div class="validationBox fade">
+				{% for message in messages %}
+					<div {% if message.tags %} class="{{ message.tags }}" {% endif %} >{{ message }}</div>
+				{% endfor %}
+			</div>
+		{% endif %}
+	</div>
 
 	<script>
 		function Searching(){

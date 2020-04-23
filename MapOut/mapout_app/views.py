@@ -3,7 +3,7 @@ from datetime import datetime
 from django.shortcuts import render, redirect
 # Create your views here.
 from django.http import HttpResponse
-from django.contrib import messages as ms
+from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.core.files.storage import FileSystemStorage
@@ -16,13 +16,6 @@ from .models import *
 import time
 import os
 
-
-def index_budgets(request):
-    if request.method == 'POST':
-        if request.POST.get('createplan'):
-            return render(request, 'budget/create_plan.html')
-    return render(request, 'budget/index.html')
-
 #this add capital
 def create_budget(request, id1):
     viewing_project = Project.objects.get(id = id1)
@@ -33,7 +26,7 @@ def create_budget(request, id1):
                 transition_capital =                        Budget()
                 transition_capital.transition_category =    "budget"
                 transition_capital.transition_type =        request.POST.get('capital_transition_type')
-                transition_capital.belong_project =         Project.objects.get(id = id1)
+                transition_capital.belong_plan =            Budgetplan.objects.get(id = id1)
                 transition_capital.name =                   request.POST.get('capital_name')
                 transition_capital.description =            request.POST.get('capital_description')
                 transition_capital.amount =                 int(request.POST.get('capital_amount'))
@@ -50,7 +43,7 @@ def create_budget_2(request, id1):
                 transition_expense =                        Budget()
                 transition_expense.transition_category =    "expense"
                 transition_expense.transition_type =        request.POST.get('expense_transition_type')
-                transition_expense.belong_project =         Project.objects.get(id = id1)
+                transition_expense.belong_plan =            Budgetplan.objects.get(id = id1)
                 transition_expense.name =                   request.POST.get('expense_name')
                 transition_expense.description =            request.POST.get('expense_description')
                 transition_expense.amount =                 int(request.POST.get('expense_amount'))
@@ -71,17 +64,29 @@ def view_budget(request, id3): # id3 is project id \
     total_expense_professional_service = 0
     total_expense_miscellaneous = 0
     total_expense_other = 0
+    budget_capital_percent = 0      
+    budget_subsidize_percent = 0    
+    budget_other_percent = 0        
+    expense_manpower_percent = 0    
+    expense_equipment_percent = 0   
+    expense_transport_percent = 0   
+    expense_administrative_fee_percent = 0  
+    expense_consultant_fee_percent = 0      
+    expense_professional_service_percent = 0 
+    expense_miscellaneous_percent = 0
+    expense_other_percent = 0       
+    net = 0
+    net_percent = 0
     viewing_project = Project.objects.get(id = id3)
     viewing_plan = Budgetplan.objects.get(belong_project = viewing_project)
-    #all_budget_records = Budget.objects.filter(belong_plan = viewing_plan)
+    all_budget = Budget.objects.filter(belong_plan = viewing_plan)
     try:
         if viewing_project.members.get(id = request.user.id):
             is_member = True
     except:
         is_member = False
     ##filter out all capital/expense
-    all_budget = Budget.objects.filter(belong_project = viewing_project)
-    budget  = all_budget.filter(transition_category = 'capital')
+    budget  = all_budget.filter(transition_category = 'budget')
     expense = all_budget.filter(transition_category = 'expense')
     budget_capital =                all_budget.filter(transition_type = 'Capital')
     budget_subsidize =              all_budget.filter(transition_type = 'Subsidize')
@@ -120,16 +125,11 @@ def view_budget(request, id3): # id3 is project id \
         total_expense_miscellaneous += i.amount
     for i in expense_other:
         total_expense_other += i.amount
-    ##i changed to if-else to aviod divded by 0 ----winnie
-    if total_budget > 0:
+    if total_budget != 0:
         budget_capital_percent      = total_budget_capital  /total_budget*100
         budget_subsidize_percent    = total_budget_subsidize/total_budget*100
-        budget_other_percent        = total_budget_other    /total_budget*100  
-    else:
-        budget_capital_percent = 0
-        budget_subsidize_percent = 0
-        budget_other_percent = 0
-    if total_expense > 0:     
+        budget_other_percent        = total_budget_other    /total_budget*100 
+    if total_expense != 0:      
         expense_manpower_percent    = total_expense_manpower    /total_expense*100         
         expense_equipment_percent   = total_expense_equipment   /total_expense*100        
         expense_transport_percent   = total_expense_transport   /total_expense*100        
@@ -138,21 +138,9 @@ def view_budget(request, id3): # id3 is project id \
         expense_professional_service_percent    = total_expense_professional_service/total_expense*100
         expense_miscellaneous_percent   = total_expense_miscellaneous   /total_expense*100
         expense_other_percent           = total_expense_other           /total_expense*100 
-    else:
-        expense_manpower_percent = 0
-        expense_equipment_percent = 0
-        expense_transport_percent = 0
-        expense_administrative_fee_percent = 0
-        expense_consultant_fee_percent = 0
-        expense_professional_service_percent = 0
-        expense_miscellaneous_percent = 0
-        expense_other_percent = 0
     net = total_budget-total_expense
-    ##if-else avoid divide bby 0----winnie
     if total_budget != 0:
         net_percent = net/total_budget*100
-    else:
-        net_percent = 0
     arg = ""
     if net_percent>0:
         if net_percent>50:
@@ -193,11 +181,9 @@ def view_budget(request, id3): # id3 is project id \
         "expense_miscellaneous_percent": expense_miscellaneous_percent,
         "expense_other_percent"        : expense_other_percent,
         "net": net,
-        #"net_percent": net/total_budget*100,
         "net_percent": net_percent,
         "arg": arg,
-        "viewing_project": viewing_project,
-        "is_member":is_member
+        "viewing_project": viewing_project
     }
         #return render(request, 'budget/view_plan.html', context)
     return render(request, 'budget/view_plan.html',context)
@@ -221,21 +207,16 @@ def index_projects(request):
     projects = Project.objects.filter(members = request.user).order_by('closed')
     all_public_project = Project.objects.filter(private = False).order_by('project_name')
     request_list=[]
-    for i in JoinMessage.objects.filter(user_id = request.user.id):#filting the project id that have message sent by current user.
-        request_list.append(i.pj_id)
+    for i in JoinMessage.objects.filter(user_id = request.user.id, not_reply=True):#filting the project id that have message sent by current user.
+        request_list.append(Project.objects.get(id=i.pj_id))
     tasks = Tasks.objects.filter(belong_project__in = projects)  ##filter all the task in the list of project objects
     if request.method == 'POST':
-        if check_password(request.POST.get('va_password'), request.user.password):
-            join_request = JoinMessage()
-            join_request.pj = Project.objects.get(id=request.POST.get('JPID'))
-            join_request.user = request.user
-            join_request.message = request.POST.get('message')
-            join_request.save()
-            ms.success(request,"Your request have been sent out successfully.")
-            return HttpResponseRedirect(request.path)
-        else:
-            ms.error(request,"Please type in the correct password.")
-            return HttpResponseRedirect(request.path)
+        join_request = JoinMessage()
+        join_request.pj = Project.objects.get(id=request.POST.get('JPID'))
+        join_request.user = request.user
+        join_request.message = request.POST.get('message')
+        join_request.save()
+        return HttpResponseRedirect(request.path)
     context = {
         'projects':projects, 
         'tasks':tasks, 
@@ -264,7 +245,7 @@ def pw_enter(request):
             send_mail('Reset Password', plain_msg,
                 'mapoutproject@gmail.com',[email],
                 html_message=html_msg)
-            ms.info(request, 'Email sent!')
+            messages.info(request, 'Email sent!')
             return redirect("home")
     else:
         return render(request, 'registration/password_reset_form.html')
@@ -280,7 +261,7 @@ def login_view1(request):
             return HttpResponseRedirect("request.path_info")
             #return redirect('index.html')
         else:
-            return render_to_response(request, 'home.html')
+            return render(request, 'home.html')
 
 def logout1(request):
     logout(request)
@@ -402,7 +383,8 @@ def view_project(request, id):
     senders = []
     for i in join_requests:
         senders.append(User.objects.get(id = i.user_id))
-    print(senders)
+    all_announcement = Announcement.objects.filter(belong_project = viewing_project).order_by('-pinned')
+
     try:
         if viewing_project.owner.get(id = request.user.id):
             is_owner = True
@@ -423,6 +405,7 @@ def view_project(request, id):
         'msgs':msgs,
         'join_requests':join_requests,
         'non_r_msg': non_r_msg,
+        'all_announcement':all_announcement,
         'senders': senders
     }
     ##action when a form is submitted
@@ -503,6 +486,13 @@ def view_project(request, id):
             target_msg = JoinMessage.objects.get(id=request.POST.get('reject'))
             target_msg.not_reply=False
             target_msg.save()
+        elif request.POST.get('new_announcement'):
+            new = Announcement()
+            new.belong_project = viewing_project
+            new.message = request.POST.get('new_announcement')
+            if request.POST.get('pin'):
+                new.pinned = request.POST.get('pin')
+            new.save()
 
     return render(request, 'project.html', context)
 

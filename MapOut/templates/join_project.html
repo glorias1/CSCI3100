@@ -1,6 +1,6 @@
 {% block joinForm %}
 <div id="joinForm{{jpid}}" class="joinFormStyle border border-primary rounded" style="display: none;">
-        <h3>Join Project (PID: {{jpid}})</h3>
+        <h3 style="margin: 3rem 0rem;">Join Project (PID: {{jpid}})</h3>
     <div class="form-group"></div>
         {% if form.errors %}
             <span style="color: red;"><p>ERROR</p></span>
@@ -15,10 +15,6 @@
                 <div class="col">
                     <label for="message{{jpid}}">Message to owners:</label>
                     <textarea class="form-control rounded-0" name="message" id="message{{jpid}}" rows="3" required></textarea><br>
-                </div>
-                <div class="col">
-                    <label for="va_password{{jpid}}">Your Password (for varification):</label>
-                    <input class="form-control" type="password" name="va_password" value="" id="va_password{{jpid}}"><br>    
                 </div>
                 <div class="col">
                     <input type="submit" value="Submit" class="btn btn-outline-primary">
