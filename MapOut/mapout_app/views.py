@@ -15,8 +15,6 @@ from .forms import *
 from .models import *
 import time
 import os
-from fullcalendar.models import CalendarEvent
-from fullcalendar.util import events_to_json, calendar_options
 
 
 def index_budgets(request):
@@ -398,10 +396,15 @@ def view_project(request, id):
     project_leader = viewing_project.owner.all()
     project_members_not_owner = viewing_project.members.exclude(id__in = project_leader)
     msgs = Chat.objects.filter(belong_project = viewing_project).order_by('sent_date')
+    #for join messages handling
     join_requests = JoinMessage.objects.filter(pj_id = viewing_project.id)
-    non_r_msg = join_requests.filter(not_reply = True)
+    non_r_msg = join_requests.filter(not_reply = True)  ## see if the request user is the owner of the project
+    senders = []
+    for i in join_requests:
+        senders.append(User.objects.get(id = i.user_id))
+    print(senders)
     all_announcement = Announcement.objects.filter(belong_project = viewing_project).order_by('-pinned')
-    ## see if the request user is the owner of the project
+
     try:
         if viewing_project.owner.get(id = request.user.id):
             is_owner = True
@@ -423,6 +426,7 @@ def view_project(request, id):
         'join_requests':join_requests,
         'non_r_msg': non_r_msg,
         'all_announcement':all_announcement
+        'senders': senders
     }
     ##action when a form is submitted
     if request.method=='POST':

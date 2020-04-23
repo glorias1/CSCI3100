@@ -3,8 +3,8 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                {% if join_requests %}
-                    <h5 class="modal-title">You have {{join_requests.all.count}} request:</h5>
+                {% if non_r_msg %}
+                    <h5 class="modal-title">You have {{non_r_msg.all.count}} request:</h5>
                 {% else %}
                     <h5 class="modal-title">No join request</h5>
                 {% endif %}
@@ -14,7 +14,7 @@
             </div>
             <div class="modal-body">
                 <table id="allJR" class="table rounded">
-                    <caption>Total {{ join_requests.all.count }} join request.</caption>
+                    <caption>Total {{ non_r_msg.all.count }} join request.</caption>
                     <thead>
                         <tr>
                             <th scope="col" class="table-info text-nowrap">User</th>
@@ -26,7 +26,13 @@
                         {% if jq in non_r_msg%}
                             <tbody>
                                 <tr>
-                                    <td>{{ jq.user_id }}</td>
+                                    <td>
+                                        {% for ur in senders%}
+                                            {% if jq.user_id == ur.id%}
+                                                {{ur.username}}
+                                            {% endif %}
+                                        {% endfor %}
+                                    </td>
                                     <!--I want to show name, but dont know how.-->
                                     <td>{{ jq.message }}</td>
                                     <td>
@@ -49,4 +55,4 @@
         </div>
     </div>
 </div>
-{% endblock %}
+{% endblock requestModal %}
