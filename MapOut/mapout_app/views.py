@@ -33,7 +33,7 @@ def create_budget(request, id1):
                 transition_capital =                        Budget()
                 transition_capital.transition_category =    "budget"
                 transition_capital.transition_type =        request.POST.get('capital_transition_type')
-                transition_capital.belong_project =         Project.objects.get(id = id1)
+                transition_capital.belong_plan =            Budgetplan.objects.get(id = id1)
                 transition_capital.name =                   request.POST.get('capital_name')
                 transition_capital.description =            request.POST.get('capital_description')
                 transition_capital.amount =                 int(request.POST.get('capital_amount'))
@@ -50,7 +50,7 @@ def create_budget_2(request, id1):
                 transition_expense =                        Budget()
                 transition_expense.transition_category =    "expense"
                 transition_expense.transition_type =        request.POST.get('expense_transition_type')
-                transition_expense.belong_project =         Project.objects.get(id = id1)
+                transition_expense.belong_plan =            Budgetplan.objects.get(id = id1)
                 transition_expense.name =                   request.POST.get('expense_name')
                 transition_expense.description =            request.POST.get('expense_description')
                 transition_expense.amount =                 int(request.POST.get('expense_amount'))
@@ -71,17 +71,29 @@ def view_budget(request, id3): # id3 is project id \
     total_expense_professional_service = 0
     total_expense_miscellaneous = 0
     total_expense_other = 0
+    budget_capital_percent = 0      
+    budget_subsidize_percent = 0    
+    budget_other_percent = 0        
+    expense_manpower_percent = 0    
+    expense_equipment_percent = 0   
+    expense_transport_percent = 0   
+    expense_administrative_fee_percent = 0  
+    expense_consultant_fee_percent = 0      
+    expense_professional_service_percent = 0 
+    expense_miscellaneous_percent = 0
+    expense_other_percent = 0       
+    net = 0
+    net_percent = 0
     viewing_project = Project.objects.get(id = id3)
     viewing_plan = Budgetplan.objects.get(belong_project = viewing_project)
-    #all_budget_records = Budget.objects.filter(belong_plan = viewing_plan)
+    all_budget = Budget.objects.filter(belong_plan = viewing_plan)
     try:
         if viewing_project.members.get(id = request.user.id):
             is_member = True
     except:
         is_member = False
     ##filter out all capital/expense
-    all_budget = Budget.objects.filter(belong_project = viewing_project)
-    budget  = all_budget.filter(transition_category = 'capital')
+    budget  = all_budget.filter(transition_category = 'budget')
     expense = all_budget.filter(transition_category = 'expense')
     budget_capital =                all_budget.filter(transition_type = 'Capital')
     budget_subsidize =              all_budget.filter(transition_type = 'Subsidize')
@@ -120,16 +132,11 @@ def view_budget(request, id3): # id3 is project id \
         total_expense_miscellaneous += i.amount
     for i in expense_other:
         total_expense_other += i.amount
-    ##i changed to if-else to aviod divded by 0 ----winnie
-    if total_budget > 0:
+    if total_budget != 0:
         budget_capital_percent      = total_budget_capital  /total_budget*100
         budget_subsidize_percent    = total_budget_subsidize/total_budget*100
-        budget_other_percent        = total_budget_other    /total_budget*100  
-    else:
-        budget_capital_percent = 0
-        budget_subsidize_percent = 0
-        budget_other_percent = 0
-    if total_expense > 0:     
+        budget_other_percent        = total_budget_other    /total_budget*100 
+    if total_expense != 0:      
         expense_manpower_percent    = total_expense_manpower    /total_expense*100         
         expense_equipment_percent   = total_expense_equipment   /total_expense*100        
         expense_transport_percent   = total_expense_transport   /total_expense*100        
@@ -138,21 +145,9 @@ def view_budget(request, id3): # id3 is project id \
         expense_professional_service_percent    = total_expense_professional_service/total_expense*100
         expense_miscellaneous_percent   = total_expense_miscellaneous   /total_expense*100
         expense_other_percent           = total_expense_other           /total_expense*100 
-    else:
-        expense_manpower_percent = 0
-        expense_equipment_percent = 0
-        expense_transport_percent = 0
-        expense_administrative_fee_percent = 0
-        expense_consultant_fee_percent = 0
-        expense_professional_service_percent = 0
-        expense_miscellaneous_percent = 0
-        expense_other_percent = 0
     net = total_budget-total_expense
-    ##if-else avoid divide bby 0----winnie
     if total_budget != 0:
         net_percent = net/total_budget*100
-    else:
-        net_percent = 0
     arg = ""
     if net_percent>0:
         if net_percent>50:
@@ -193,11 +188,9 @@ def view_budget(request, id3): # id3 is project id \
         "expense_miscellaneous_percent": expense_miscellaneous_percent,
         "expense_other_percent"        : expense_other_percent,
         "net": net,
-        #"net_percent": net/total_budget*100,
         "net_percent": net_percent,
         "arg": arg,
-        "viewing_project": viewing_project,
-        "is_member":is_member
+        "viewing_project": viewing_project
     }
         #return render(request, 'budget/view_plan.html', context)
     return render(request, 'budget/view_plan.html',context)
