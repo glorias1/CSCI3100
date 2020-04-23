@@ -29,6 +29,11 @@ class Project(models.Model):
     def __str__(self):
         return self.project_name
 
+class Announcement(models.Model):
+    belong_project=models.ForeignKey(Project, on_delete=models.CASCADE)
+    message = models.TextField()
+    pinned = models.BooleanField(default=False)
+
 # Create your models here.
 class Budgetplan(models.Model):
     belong_project =        models.ForeignKey(Project, on_delete=models.CASCADE)

@@ -425,7 +425,7 @@ def view_project(request, id):
         'msgs':msgs,
         'join_requests':join_requests,
         'non_r_msg': non_r_msg,
-        'all_announcement':all_announcement
+        'all_announcement':all_announcement,
         'senders': senders
     }
     ##action when a form is submitted
