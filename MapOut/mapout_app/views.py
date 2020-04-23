@@ -94,7 +94,7 @@ def view_budget(request, id3): # id3 is project id \
     expense = all_budget.filter(transition_category = 'expense')
     budget_capital =                all_budget.filter(transition_type = 'Capital')
     budget_subsidize =              all_budget.filter(transition_type = 'Subsidize')
-    budget_other =                  all_budget.filter(transition_type = 'Other', transition_category = 'capital')
+    budget_other =                  all_budget.filter(transition_type = 'Others', transition_category = 'budget')
     expense_manpower =              all_budget.filter(transition_type = 'Manpower')
     expense_equipment =             all_budget.filter(transition_type = 'Equipment')
     expense_transport =             all_budget.filter(transition_type = 'Transport')
@@ -102,7 +102,7 @@ def view_budget(request, id3): # id3 is project id \
     expense_consultant_fee =        all_budget.filter(transition_type = 'Consultant_Fee')
     expense_professional_service =  all_budget.filter(transition_type = 'Professional_Service')
     expense_miscellaneous =         all_budget.filter(transition_type = 'Miscellaneous')
-    expense_other =                 all_budget.filter(transition_type = 'Other', transition_category = 'expense')
+    expense_other =                 all_budget.filter(transition_type = 'Others', transition_category = 'expense')
     for i in budget:
         total_budget += i.amount
     for i in expense:
