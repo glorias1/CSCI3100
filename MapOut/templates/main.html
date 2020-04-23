@@ -12,25 +12,25 @@
         </div>
         <div class="card-body">
             <div class="card-text">
-                <table class="card-table table table-striped">
-                    {% if mytasks %}
-                    <thead>
-                        <tr>
-                            <th>Task</th>
-                            <th>Due Date</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for one_task in mytasks %}
-                        <tr>
-                            <td>{{one_task.task_name}}</td>
-                            <td>{{one_task.due_date}}</td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
+                {% if mytasks %}
+                    <table class="card-table table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Task</th>
+                                <th>Due Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for one_task in mytasks %}
+                            <tr>
+                                <td>{{one_task.task_name}}</td>
+                                <td>{{one_task.due_date}}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
                 {% else %}
-                <i>You currently do not have any task. Create one by clicking the plus sign.</i>
+                    <i>You currently do not have any task. Create one by clicking the plus sign.</i>
                 {% endif %}
             </div>
         </div>
@@ -45,12 +45,15 @@
             <div class="card-text">
                 {% if myprojects %}
                     <table class="card-table table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Project Name</th>
+                            </tr>
+                        </thead>
                         <tbody>
                             {% for one_project in myprojects %}
                                 <tr>
-                                    <td>
-                                        {{one_project.project_name}}
-                                    </td>
+                                    <td>{{one_project.project_name}}</td>
                                 </tr>
                             {% endfor %}
                         </tbody>
