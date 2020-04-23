@@ -11,6 +11,7 @@ class Profile(models.Model):
     gender = models.CharField(max_length=6, default='Hidden')
     date_birth = models.DateField(null=True)
     description = models.TextField(default="Leave some words to decribe youself.")
+    icon = models.ImageField(null = True, blank=True)
     private = models.BooleanField(default=False)
     #image=models.ImageField()
 
