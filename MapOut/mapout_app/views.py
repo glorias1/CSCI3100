@@ -400,6 +400,7 @@ def view_project(request, id):
     msgs = Chat.objects.filter(belong_project = viewing_project).order_by('sent_date')
     join_requests = JoinMessage.objects.filter(pj_id = viewing_project.id)
     non_r_msg = join_requests.filter(not_reply = True)
+    all_announcement = Announcement.objects.filter(belong_project = viewing_project).order_by('-pinned')
     ## see if the request user is the owner of the project
     try:
         if viewing_project.owner.get(id = request.user.id):
@@ -420,7 +421,8 @@ def view_project(request, id):
         'all_leaders':all_leaders , 
         'msgs':msgs,
         'join_requests':join_requests,
-        'non_r_msg': non_r_msg
+        'non_r_msg': non_r_msg,
+        'all_announcement':all_announcement
     }
     ##action when a form is submitted
     if request.method=='POST':
@@ -483,6 +485,13 @@ def view_project(request, id):
             target_msg = JoinMessage.objects.get(id=request.POST.get('reject'))
             target_msg.not_reply=False
             target_msg.save()
+        elif request.POST.get('new_announcement'):
+            new = Announcement()
+            new.belong_project = viewing_project
+            new.message = request.POST.get('new_announcement')
+            if request.POST.get('pin'):
+                new.pinned = request.POST.get('pin')
+            new.save()
 
     return render(request, 'project.html', context)
 
