@@ -447,7 +447,7 @@ def view_project(request, id):
                 target_user = User.objects.get(username=target_user_name)
                 viewing_project.members.add(target_user)
                 send_mail(
-                    'You are now a memeber of Project' + viewing_project.project_name + '!',
+                    'You are now a memeber of Project ' + viewing_project.project_name + '!',
                     'Dear @'+ target_user.username + ',\nYou were added to the project ' + viewing_project.project_name + ' by @' + request.user.username + 
                     ' on MapOut. \n\nYou can now view, edit and monitor your project after login MapOut! If you need help, please check the help center.\n\nHave fun! \n\nBest, \nMapOut Team',
                     'mapoutproject@gmail.com',
