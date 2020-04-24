@@ -400,9 +400,6 @@ def view_project(request, id):
     all_announcement = Announcement.objects.filter(belong_project = viewing_project).order_by('-pinned')
     reverse_ordered_announcements = Announcement.objects.filter(belong_project = viewing_project).order_by('-id')
 
-    print(all_announcement)
-    print(reverse_ordered_announcements)
-
     try:
         if viewing_project.owner.get(id = request.user.id):
             is_owner = True
@@ -525,6 +522,12 @@ def view_project(request, id):
             if request.POST.get('pin'):
                 new.pinned = request.POST.get('pin')
             new.save()
+        elif request.POST.get('message'):
+            join_request = JoinMessage()
+            join_request.pj = Project.objects.get(id=request.POST.get('JPID'))
+            join_request.user = request.user
+            join_request.message = request.POST.get('message')
+            join_request.save()
 
     return render(request, 'project.html', context)
 
@@ -591,6 +594,12 @@ def view_task(request, id1 , id2):
             response = HttpResponse(file.file, content_type='text/plain')
             response['Content-Disposition'] = 'attachment; filename=%s' % filename
             return response
+        elif request.POST.get('message'):
+            join_request = JoinMessage()
+            join_request.pj = Project.objects.get(id=request.POST.get('JPID'))
+            join_request.user = request.user
+            join_request.message = request.POST.get('message')
+            join_request.save()
     return render(request, 'task.html', context)
 
 def download(request, id):
