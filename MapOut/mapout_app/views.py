@@ -221,6 +221,14 @@ def index_projects(request):
         join_request.user = request.user
         join_request.message = request.POST.get('message')
         join_request.save()
+        send_mail(
+                'Your Project was requested by @' + join_request.user.username + ' to join.',
+                'Dear @'+ join_request.pj.owner.username + ',\nYour Project ' + join_request.pj.project_name + ' was requested by @' + join_request.user.username +
+                ' to join. You can respond to this request on your project page. \n\nHave Fun!:)\n\nBest, \nMapOut Team',
+                'mapoutproject@gmail.com',
+                [join_request.pj.owner.email],
+                fail_silently=False,
+            )
         return HttpResponseRedirect(request.path)
     context = {
         'projects':projects, 
@@ -536,6 +544,14 @@ def view_project(request, id):
             join_request.user = request.user
             join_request.message = request.POST.get('message')
             join_request.save()
+            send_mail(
+                'Your Project was requested by @' + join_request.user.username + ' to join.',
+                'Dear @'+ join_request.pj.owner.username + ',\nYour Project ' + join_request.pj.project_name + ' was requested by @' + join_request.user.username +
+                ' to join. You can respond to this request on your project page. \n\nHave Fun!:)\n\nBest, \nMapOut Team',
+                'mapoutproject@gmail.com',
+                [join_request.pj.owner.email],
+                fail_silently=False,
+            )
 
     return render(request, 'project.html', context)
 
@@ -617,6 +633,14 @@ def view_task(request, id1 , id2):
             join_request.user = request.user
             join_request.message = request.POST.get('message')
             join_request.save()
+            send_mail(
+                'Your Project was requested by @' + join_request.user.username + ' to join.',
+                'Dear @'+ join_request.pj.owner.username + ',\nYour Project ' + join_request.pj.project_name + ' was requested by @' + join_request.user.username +
+                ' to join. You can respond to this request on your project page. \n\nHave Fun!:)\n\nBest, \nMapOut Team',
+                'mapoutproject@gmail.com',
+                [join_request.pj.owner.email],
+                fail_silently=False,
+            )
     return render(request, 'task.html', context)
 
 def download(request, id):
