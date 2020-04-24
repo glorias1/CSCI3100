@@ -561,6 +561,15 @@ def view_task(request, id1 , id2):
             add_incharge_id = request.POST.get('add_incharge')
             add_incharge_user = User.objects.get(id = add_incharge_id)
             task.incharge.add(add_incharge_user)
+            send_mail(
+                    'You are in charge of ' + task.task_name + '.',
+                    'Dear @'+ add_incharge_user.username + ',\nYou are in charge of ' + task.task_name + 'from the project '
+                    + viewing_project.project_name + ' by @' + request.user.username + 
+                    ' on MapOut. \n\nIf you need help, please check the help center.\n\nHave fun! \n\nBest, \nMapOut Team',
+                    'mapoutproject@gmail.com',
+                    [add_incharge_user.email],
+                    fail_silently=False,
+            )
         ##user upload files for this task
         elif request.POST.get('myfile_flag'):
             if request.FILES['myfile']:
