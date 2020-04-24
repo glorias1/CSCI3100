@@ -3,50 +3,65 @@
 <div style="padding: 1rem;color:coral" class="unselectable">
     <h2>Welcome back! {{request.user.username}}</h2>
 </div>
-<div class="card-deck unselectable" style="margin:1rem 1rem 1rem 1rem;">
-    <div class="card unselectable rounded" style="width: 20rem;height: 20rem;">
-        <div class="card-header"><i class="fas fa-file-alt"></i> <div style="width: 2rem;display: inline;margin-left: 1rem;"></div>Upcoming Tasks
+<div class="card-deck unselectable" style="margin:1rem">
+    <div class="card unselectable rounded" style="width: 20rem; height: 40rem;">
+        <div class="card-header"><i class="fas fa-file-alt"></i> 
+            <div style="display: inline;margin-left: 1rem;">
+            </div>
+            Upcoming Tasks
         </div>
-        <div class="card-body">
+        <div class="card-body" style="overflow: auto">
             <div class="card-text">
-                <table class="table table-striped">
-                    {% if mytasks %}
-                    <thead>
-                        <tr>
-                            <th>Task</th>
-                            <th>Due Date</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for one_task in mytasks %}
-                        <tr>
-                            <td>{{one_task.task_name}}</td>
-                            <td>{{one_task.due_date}}</td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
+                {% if mytasks %}
+                    <table class="card-table table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Task</th>
+                                <th>Due Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for one_task in mytasks %}
+                            <tr>
+                                <td>{{one_task.task_name}}</td>
+                                <td>{{one_task.due_date}}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
                 {% else %}
-                <i>You currently do not have any task. Create one by clicking the plus sign.</i>
+                    <i>You currently do not have any task. Create one by clicking the plus sign.</i>
                 {% endif %}
             </div>
         </div>
     </div>
-    <div class="card unselectable rounded">
-        <div class="card-header"><i class="fas fa-project-diagram"></i> <div style="width: 2rem;display: inline;margin-left: 1rem;"></div>Opening projects
+    <div class="card unselectable rounded" style="width: 20rem; height: 40rem;">
+        <div class="card-header"><i class="fas fa-project-diagram"></i> 
+            <div style="display: inline;margin-left: 1rem;">
+            </div>
+            Opening projects
         </div>
-        <div class="card-body">
-            {% if myprojects %}
-                <table class="table table-stripped">
-                    <tbody>
-                        {% for one_project in myprojects %}
-                            <tr><td>{{one_project.project_name}}</td></tr>    
-                        {% endfor %}
-                    </tbody>
-                </table>
-            {% else %}
-                <i>You currently do not have any opening project. Create one by clicking the plus sign.</i>
-            {% endif %}
+        <div class="card-body" style="overflow: auto">
+            <div class="card-text" >
+                {% if myprojects %}
+                    <table class="card-table table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Project Name</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for one_project in myprojects %}
+                                <tr>
+                                    <td>{{one_project.project_name}}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                {% else %}
+                    <i>You currently do not have any opening project. Create one by clicking the plus sign.</i>
+                {% endif %}
+            </div>
         </div>
     </div>
 </div>
