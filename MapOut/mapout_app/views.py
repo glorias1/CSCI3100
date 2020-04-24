@@ -508,6 +508,14 @@ def view_project(request, id):
             target_msg = JoinMessage.objects.get(id=request.POST.get('accept'))
             sender = User.objects.get(id=target_msg.user_id)
             viewing_project.members.add(sender)
+            send_mail(
+                    'You are now a memeber of Project ' + viewing_project.project_name + '!',
+                    'Dear @'+ sender.username + ',\nYou were accepted to the Project ' + viewing_project.project_name + ' by @' + request.user.username + 
+                    ' on MapOut. \n\nYou can now view, edit and monitor your project after login MapOut! If you need help, please check the help center.\n\nHave fun! \n\nBest, \nMapOut Team',
+                    'mapoutproject@gmail.com',
+                    [sender.email],
+                    fail_silently=False,
+                )
             target_msg.not_reply=False
             target_msg.save()
             new_user_announce = Announcement()
