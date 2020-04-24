@@ -29,7 +29,7 @@
     <div>
       <h6 class="unselectable" >Task person-in-charge:</h6>
       {% for one_user in project_members_in_charge %}
-          {{one_user.username}}
+          {{one_user.username}}<br>
       {% endfor %}
     </div>
     <hr>
@@ -49,14 +49,14 @@
     </div>
     <hr>
     <div>
-      <h6 class="unselectable">Upload file:</h6>
+      {% if is_member %} <h6 class="unselectable">Upload file:</h6>{% endif %}
     </div>
-      <form method="POST" enctype="multipart/form-data">
+    {% if is_member %}<form method="POST" enctype="multipart/form-data">
           {% csrf_token %}
           <input type="hidden" value="1" id="myfile_flag" name="myfile_flag">
           <input type="file" name="myfile" id="myfile"z class="btn btn-light  form-control-file">
           <button type="submit" class="btn btn-light">Upload</button>
-        </form>
+        </form>{% endif %}
         <table class="table table-dark table-hover rounded">
             <thead>
                   <tr>
@@ -65,7 +65,7 @@
                   <th>Size</th>
                   <th>Last Update</th>
                   <th>Download</th>
-                  <th>Delete</th>
+                  {% if is_member %}<th>Delete</th> {% endif %}
                   </tr>
             </thead>
             <tbody>

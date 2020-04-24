@@ -444,7 +444,7 @@ def view_project(request, id):
                 target_user = User.objects.get(username=target_user_name)
                 viewing_project.members.add(target_user)
                 send_mail(
-                    'You are now a memeber of Project' + viewing_project.project_name + '!',
+                    'You are now a memeber of Project ' + viewing_project.project_name + '!',
                     'Dear @'+ target_user.username + ',\nYou were added to the project ' + viewing_project.project_name + ' by @' + request.user.username + 
                     ' on MapOut. \n\nYou can now view, edit and monitor your project after login MapOut! If you need help, please check the help center.\n\nHave fun! \n\nBest, \nMapOut Team',
                     'mapoutproject@gmail.com',
@@ -505,6 +505,14 @@ def view_project(request, id):
             target_msg = JoinMessage.objects.get(id=request.POST.get('accept'))
             sender = User.objects.get(id=target_msg.user_id)
             viewing_project.members.add(sender)
+            send_mail(
+                    'You are now a memeber of Project ' + viewing_project.project_name + '!',
+                    'Dear @'+ sender.username + ',\nYou were accepted to the Project ' + viewing_project.project_name + ' by @' + request.user.username + 
+                    ' on MapOut. \n\nYou can now view, edit and monitor your project after login MapOut! If you need help, please check the help center.\n\nHave fun! \n\nBest, \nMapOut Team',
+                    'mapoutproject@gmail.com',
+                    [sender.email],
+                    fail_silently=False,
+                )
             target_msg.not_reply=False
             target_msg.save()
             new_user_announce = Announcement()
@@ -564,6 +572,15 @@ def view_task(request, id1 , id2):
             add_incharge_id = request.POST.get('add_incharge')
             add_incharge_user = User.objects.get(id = add_incharge_id)
             task.incharge.add(add_incharge_user)
+            send_mail(
+                    'You are now in charge of ' + task.task_name + '.',
+                    'Dear @'+ add_incharge_user.username + ',\nYou are in charge of ' + task.task_name + 'from the project '
+                    + viewing_project.project_name + ' assigned by @' + request.user.username + 
+                    ' on MapOut. \n\nIf you need help, please check the help center.\n\nHave fun! \n\nBest, \nMapOut Team',
+                    'mapoutproject@gmail.com',
+                    [add_incharge_user.email],
+                    fail_silently=False,
+            )
         ##user upload files for this task
         elif request.POST.get('myfile_flag'):
             if request.FILES['myfile']:
