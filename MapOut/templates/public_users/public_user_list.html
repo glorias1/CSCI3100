@@ -1,0 +1,47 @@
+{% block UsersList %}
+    <div style="margin: 1rem">
+        <!-- Search form -->
+        <div class="md-form active-cyan active-cyan-2 mb-3">
+            <form method="get">
+                <input id="search" name="search" class="form-control col-12" type="text" onkeyup="Searching()" 
+                    placeholder="Search For Public Projects (By PID or Project Name)" aria-label="Search">
+            </form>
+        </div>
+        <div class="table-responsive rounded" style="overflow: auto">
+            <table id="allPPj" class="table table-light table-hover table-bordered table-striped rounded">
+                <caption>
+                    Total {{ pusers.all.count }} public users.<br>
+                </caption>
+                <thead>
+                    <tr>
+                        <th scope="col" class="table-info text-nowrap" onclick="Sorting(0)" style="width: 10%">User ID</th>
+                        <th scope="col" class="table-info text-nowrap" onclick="Sorting(1)" style="width: 60%">User Name</th>
+                        <th scope="col" class="table-info text-nowrap" onclick="Sorting(2)" style="width: 10%"># of Project Participated</th>
+                        <th scope="col" class="table-info text-nowrap" style="width: 10%">View profile</th>
+                    </tr>
+                </thead>
+                {% for a_puser in pusers_list%}
+                    <tbody>
+                        <tr>
+                            <td>{{ a_puser.id }}</td>
+                            <td>{{ a_puser.username }}</td>
+                            <td>
+                                <div style=" vertical-align: middle; margin: auto">
+                                    {{a_puser.members.all.count}}
+                                </div>
+                            </td>
+                            <td>
+                                {% if cuser != a_puser %}
+                                <div class="text-center">
+                                    <a href="{% url 'viewprofile' a_puser.id %}" class="btn btn-info btn-sm"><i class="fas fa-search"></i></a>
+                                </div>
+                                {% endif %}
+                            </td>
+                        </tr>
+                    </tbody>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+    {% block Searchfun %} {% include '../search_function.html'%} {% endblock %}
+{% endblock %}

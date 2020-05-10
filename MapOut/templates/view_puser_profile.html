@@ -1,0 +1,10 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+{% if user %}
+    <div class="project-top-header unselectable">
+        <h5 style="padding-top: 10px;display: inline-block;" >{{user.username}}'s Profile</h5>
+    </div>
+    {% block PUprofile %}{% include "public_users/PU_profile.html" %}{% endblock %}
+{% endif %}
+{% endblock %}

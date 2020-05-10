@@ -342,6 +342,39 @@ def settings_(request):
     }
     return  render(request, 'settings.html', context)
 
+
+
+
+def allpublicuser(request):
+
+    pusers = Profile.objects.filter(private=False)
+    pusers_list = []
+    pati_project = []
+    for u in pusers:
+        pusers_list.append(User.objects.get(id=u.user_id))
+    context = {
+        'pusers':pusers, 
+        'pusers_list':pusers_list, 
+        'pati_project':pati_project,
+        'cuser':request.user
+    }
+    return render(request, 'main_public_user.html', context)
+
+def viewprofile(request, id):
+    target = User.objects.get(id=id)
+    target_profile = Profile.objects.get(user_id=target.id)
+    pati_project = target.members
+    own_project = target.owner
+    context={
+        'user': target,
+        'profile': target_profile,
+        'pproject': pati_project,
+        'oproject': own_project
+    }
+    return render(request, 'view_puser_profile.html', context)
+
+
+
 def create_project(request):
     createproject = Project()
     createbudgetplan = Budgetplan()

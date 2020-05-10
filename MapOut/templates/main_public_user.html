@@ -1,0 +1,10 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+{% if pusers %}
+    <div class="project-top-header unselectable">
+        <h5 style="padding-top: 10px;display: inline-block;" >Public Users</h5>
+    </div>
+    {% block UsersList %}{% include "public_users/public_user_list.html" %}{% endblock %}
+{% endif %}
+{% endblock %}
