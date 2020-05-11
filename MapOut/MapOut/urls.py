@@ -23,19 +23,17 @@ from mapout_app.views import *
 from django.views.generic.base import RedirectView
 
 urlpatterns = [
-    re_path(r'^project/(?P<id1>\d+)/addbudget/', create_budget, name='createbudget'),         ##budget plans
-    re_path(r'^project/(?P<id1>\d+)/addbudget2/', create_budget_2, name='createbudget2'),     ##budget plans
-    re_path(r'^project/(?P<id3>\d+)/viewplan/', view_budget, name='viewbudget'),    ## view budget
-    
     path('admin/', admin.site.urls),                            ##admin page
     path('home/', home, name='home'),                           ##home page before log in
     path('', RedirectView.as_view(url='/home/')),              ##redirect to /home/ if empty url
     path('accounts/', include('django.contrib.auth.urls')),     ##for account use(no .html return)
     path('accounts/login/', login_view1, name='login'),         ##page for login 
+
     #path('accounts/reset-password', pw_enter, name='password_reset'), ##input email to reset password
     #path('accounts/email-sent', )
     #path('accounts/login/password_reset_confirm', pw_con, name='password_reset_confirm'),
     #path('accounts/login/reset', reset_confirmed, name='password_reset_confirm'), #jump to reset page
+    
     path('accounts/signup/', signup_view, name='signup'),       ##page for sign up (maybe can add email verrification if have time)
     path('logout/', logout1),                                   ##url of logout
     path('index/', index, name='index'),                        ##home page, user can see their nearest dueing task or other things
@@ -48,10 +46,12 @@ urlpatterns = [
     path('createtask', create_task, name='createtask'),                 ##user enter task name and description and due date to create a new task
     re_path(r'^project/(?P<id>\d+)/$', view_project, name='viewproject'),       ##dynamic detailed page of a project, have chatroom and list of task, team leader can close/delete the project, add new members and add team leader 
     re_path(r'^project/(?P<id1>\d+)/task/(?P<id2>\d+)/$', view_task, name='viewtask'),       ##dynamic detailed page of a task, can upload file and delete file and download file, user can set the task as finished
+
+    re_path(r'^project/(?P<id1>\d+)/addbudget/', create_budget, name='createbudget'),         ##budget plans
+    re_path(r'^project/(?P<id1>\d+)/addbudget2/', create_budget_2, name='createbudget2'),     ##budget plans
+    re_path(r'^project/(?P<id3>\d+)/viewplan/', view_budget, name='viewbudget'),    ## view budget
     
-    #re_path(r'^projects/join/(?P<pid>\d+)/$', join_project, name='join_project'),
     path('allpublicuser/', allpublicuser, name='allpublicuser'),
     re_path(r'^allpublicuser/(?P<id>\d+)/$', viewprofile, name='viewprofile'),
-
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

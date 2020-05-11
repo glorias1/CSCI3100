@@ -5,7 +5,7 @@ from django.dispatch import receiver
 from django.db.models.signals import post_save
 
 
-
+# User profile model.
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     gender = models.CharField(max_length=6, default='Hidden')
@@ -21,6 +21,7 @@ def update_user_profile(sender, instance, created, **kwargs):
         Profile.objects.create(user=instance)
     instance.profile.save()
 
+# Project model.
 class Project(models.Model):
     project_name = models.CharField(max_length=100)
     project_description = models.TextField()
@@ -33,15 +34,17 @@ class Project(models.Model):
     def __str__(self):
         return self.project_name
 
+# Announcement model.
 class Announcement(models.Model):
     belong_project=models.ForeignKey(Project, on_delete=models.CASCADE)
     message = models.TextField()
     pinned = models.BooleanField(default=False)
 
-# Create your models here.
+# Budgetplan model.
 class Budgetplan(models.Model):
     belong_project =        models.ForeignKey(Project, on_delete=models.CASCADE)
 
+# Budget model.
 class Budget(models.Model):
     transition_id =         models.AutoField(primary_key=True)
     belong_plan =           models.ForeignKey(Budgetplan, on_delete=models.CASCADE, null=True)
@@ -54,6 +57,7 @@ class Budget(models.Model):
     def __str__(self):
         return self.budget_transition_id
 
+# JoinMessage model.
 class JoinMessage(models.Model):
     pj = models.ForeignKey(Project, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -63,6 +67,7 @@ class JoinMessage(models.Model):
     def __str__(self):
         return self.message
 
+# Tasks model.
 class Tasks(models.Model):
     task_name = models.CharField(max_length=100)
     task_description = models.TextField()
@@ -75,7 +80,8 @@ class Tasks(models.Model):
 
     def __str__(self):
         return self.task_name
-    
+
+# Chat model.
 class Chat(models.Model):
     belong_project = models.ForeignKey(Project, on_delete=models.CASCADE)
     speaker = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -85,6 +91,7 @@ class Chat(models.Model):
     def __str__(self):
         return self.belong_project
 
+# File model.
 class File(models.Model):
     belong_task = models.ForeignKey(Tasks, on_delete=models.CASCADE)
     filename = models.CharField(max_length=50)

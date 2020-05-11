@@ -2,7 +2,6 @@ from django.http import HttpResponseRedirect, FileResponse, StreamingHttpRespons
 from datetime import datetime
 from django.shortcuts import render, redirect
 from django.core import serializers
-# Create your views here.
 from django.http import HttpResponse
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
@@ -19,8 +18,9 @@ import time
 import os
 import json
 
+# This file contain all the view, which are functions connecting front-end and database.
 
-#this add capital
+# Adding a new capital.
 def create_budget(request, id1):
     viewing_project = Project.objects.get(id = id1)
     viewing_plan = Budgetplan.objects.get(belong_project = viewing_project)
@@ -37,7 +37,7 @@ def create_budget(request, id1):
                 transition_capital.save()
     return render(request, 'budget/create_plan.html', context)
 
-##this is add expense
+# Adding a new expense.
 def create_budget_2(request, id1):
     viewing_project = Project.objects.get(id = id1)
     viewing_plan = Budgetplan.objects.get(belong_project = viewing_project)
@@ -54,6 +54,7 @@ def create_budget_2(request, id1):
                 transition_expense.save()
     return render(request, 'budget/create_plan_2.html', context)
 
+# Reading the budget plan by a project id.
 def view_budget(request, id3): # id3 is project id \
     total_budget  = 0
     total_expense = 0
@@ -89,7 +90,7 @@ def view_budget(request, id3): # id3 is project id \
             is_member = True
     except:
         is_member = False
-    ##filter out all capital/expense
+    # filter out all capital/expense
     budget  = all_budget.filter(transition_category = 'budget')
     expense = all_budget.filter(transition_category = 'expense')
     budget_capital =                all_budget.filter(transition_type = 'Capital')
@@ -190,12 +191,13 @@ def view_budget(request, id3): # id3 is project id \
         "viewing_project": viewing_project,
         "is_member": is_member
     }
-        #return render(request, 'budget/view_plan.html', context)
     return render(request, 'budget/view_plan.html',context)
 
+# Rendering home page.
 def home(request):
     return render(request, 'home.html')
 
+# Rendering index page after user login.
 def index(request):
     if not request.user.is_authenticated:
         not_loggedin = True
@@ -207,30 +209,23 @@ def index(request):
         context = {'mytasks':mytasks, 'myprojects':myprojects}
         return render(request, 'main.html', context)
 
+# Handling the index page of project.
 def index_projects(request):
     #get the projects involed by the current user
     projects = Project.objects.filter(members = request.user).order_by('closed')
     all_public_project = Project.objects.filter(private = False).order_by('project_name')
     request_list=[]
-    for i in JoinMessage.objects.filter(user_id = request.user.id, not_reply=True):#filting the project id that have message sent by current user.
+    # filting the project id that have message sent by current user.
+    for i in JoinMessage.objects.filter(user_id = request.user.id, not_reply=True):
         request_list.append(Project.objects.get(id=i.pj_id))
-    tasks = Tasks.objects.filter(belong_project__in = projects)  ##filter all the task in the list of project objects
+    # filter all the task in the list of project objects
+    tasks = Tasks.objects.filter(belong_project__in = projects)
     if request.method == 'POST':
         join_request = JoinMessage()
         join_request.pj = Project.objects.get(id=request.POST.get('JPID'))
         join_request.user = request.user
         join_request.message = request.POST.get('message')
         join_request.save()
-        '''
-        send_mail(
-                'Your Project was requested by @' + join_request.user.username + ' to join.',
-                'Dear @'+ join_request.pj.owner.username + ',\nYour Project ' + join_request.pj.project_name + ' was requested by @' + join_request.user.username +
-                ' to join. You can respond to this request on your project page. \n\nHave Fun!:)\n\nBest, \nMapOut Team',
-                'mapoutproject@gmail.com',
-                [join_request.pj.owner.email],
-                fail_silently=False,
-            )
-        '''
         return HttpResponseRedirect(request.path)
     context = {
         'projects':projects, 
@@ -241,7 +236,7 @@ def index_projects(request):
         }
     return render(request, 'main_projects.html', context)
 
-
+# Handling the index page of tasks.
 def index_tasks(request):
     tasks = Tasks.objects.filter(incharge = request.user).order_by('finish')
     context = {'tasks':tasks}
@@ -250,6 +245,7 @@ def index_tasks(request):
 def login_btn(request):
     return render(request, 'registration/login.html') 
 
+# Handling user login with authentication.
 def login_view1(request):
     if request.user.is_authenticated(): 
         return HttpResponseRedirect('/index/')
@@ -267,6 +263,7 @@ def logout1(request):
     logout(request)
     return render(request, 'home.html')
 
+# Handling user signup.
 def signup_view(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
@@ -292,17 +289,15 @@ def signup_view(request):
         form = SignUpForm()
     return render(request, 'registration/signup.html', {'form': form})
 
-
+# A schedule function. (could be the future enhancement.)
 def schedule(request):
     days = [31,28,31,30,31,30,31,31,30,31,30,31]
     months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
     user_tasks = Tasks.objects.filter(incharge = request.user).order_by('-due_date')
     today = datetime.now()
-    #print((str(today.month))+'haaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa')
     this_month = int(str(today.month))
     get_days = days[this_month-1]
     this_month = months[this_month-1]
-    #print(str(get_days) + 'YOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO')
     user_tasks = user_tasks.filter(due_date__year = today.year, due_date__month = today.month).order_by('due_date')
     user_tasks_date = user_tasks.all()
     array = []
@@ -319,12 +314,13 @@ def schedule(request):
 def help_(request):
     return  render(request, 'help.html')
 
+# Handling the user profile setting.
 def settings_(request):
     target = User.objects.get(id=request.user.id)
     target_profile = Profile.objects.get(user_id=target.id)
     pati_project = request.user.members
     own_project = request.user.owner
-    ##update here
+    # handle the update request.
     if request.method == "POST":
         target.username = request.POST.get('cUsername')
         target.email = request.POST.get('cEmail')
@@ -342,11 +338,8 @@ def settings_(request):
     }
     return  render(request, 'settings.html', context)
 
-
-
-
+# Handling the index page of pubilc user.
 def allpublicuser(request):
-
     pusers = Profile.objects.filter(private=False)
     pusers_list = []
     pati_project = []
@@ -360,6 +353,7 @@ def allpublicuser(request):
     }
     return render(request, 'main_public_user.html', context)
 
+# A function retrieving the user data for the user profile page.
 def viewprofile(request, id):
     target = User.objects.get(id=id)
     target_profile = Profile.objects.get(user_id=target.id)
@@ -373,8 +367,7 @@ def viewprofile(request, id):
     }
     return render(request, 'view_puser_profile.html', context)
 
-
-
+# Creating a new project.
 def create_project(request):
     createproject = Project()
     createbudgetplan = Budgetplan()
@@ -402,7 +395,7 @@ def create_project(request):
             return HttpResponseRedirect(reverse('viewproject', args=[createproject.id]))
     return render(request, 'create_project.html')
 
-
+# Creating a new task.
 def create_task(request):
     ##send the list of projects 
     projects = Project.objects.filter(members = request.user)
@@ -424,6 +417,7 @@ def create_task(request):
             return HttpResponseRedirect(reverse('viewtask', args=[createtask.belong_project.id,createtask.id]))
     return render(request, 'create_task.html', options)
 
+# Handling the functions for a particular project page.
 def view_project(request, id):
     ##see the detail page of a project
     viewing_project = Project.objects.get(id=id)
@@ -433,13 +427,14 @@ def view_project(request, id):
     project_leader = viewing_project.owner.all()
     project_members_not_owner = viewing_project.members.exclude(id__in = project_leader)
     msgs = Chat.objects.filter(belong_project = viewing_project).order_by('sent_date')
-    #for join messages handling
+    # handling join messages
     join_requests = JoinMessage.objects.filter(pj_id = viewing_project.id)
     non_r_msg = join_requests.filter(not_reply = True)  ## see if the request user is the owner of the project
     senders = []
     for i in join_requests:
         senders.append(User.objects.get(id = i.user_id))
 
+    # handling announcement addition and data retrieving.
     all_announcement = Announcement.objects.filter(belong_project = viewing_project).order_by('-pinned')
     reverse_ordered_announcements = Announcement.objects.filter(belong_project = viewing_project).order_by('-id')
 
@@ -579,19 +574,10 @@ def view_project(request, id):
             join_request.user = request.user
             join_request.message = request.POST.get('message')
             join_request.save()
-            '''
-            send_mail(
-                'Your Project was requested by @' + join_request.user.username + ' to join.',
-                'Dear @'+ join_request.pj.owner.username + ',\nYour Project ' + join_request.pj.project_name + ' was requested by @' + join_request.user.username +
-                ' to join. You can respond to this request on your project page. \n\nHave Fun!:)\n\nBest, \nMapOut Team',
-                'mapoutproject@gmail.com',
-                [join_request.pj.owner.email],
-                fail_silently=False,
-            )
-            '''
 
     return render(request, 'project.html', context)
 
+# Handling the functions for a particular task page for a particular project.
 def view_task(request, id1 , id2):
     ## view the detail page of a task
     task = Tasks.objects.get(id = id2)
@@ -620,7 +606,7 @@ def view_task(request, id1 , id2):
         'project_members_in_charge':project_members_in_charge
         }
     if request.method =='POST':
-        ##user add new incharge person from members of the project of the task
+        # user add new incharge person from members of the project of the task
         if request.POST.get('add_incharge'):
             add_incharge_id = request.POST.get('add_incharge')
             add_incharge_user = User.objects.get(id = add_incharge_id)
@@ -634,7 +620,7 @@ def view_task(request, id1 , id2):
                     [add_incharge_user.email],
                     fail_silently=False,
             )
-        ##user upload files for this task
+        # user upload files for this task
         elif request.POST.get('myfile_flag'):
             if request.FILES['myfile']:
                 uploadfile.belong_task = Tasks.objects.get(id = id2)
@@ -670,18 +656,9 @@ def view_task(request, id1 , id2):
             join_request.user = request.user
             join_request.message = request.POST.get('message')
             join_request.save()
-            '''
-            send_mail(
-                'Your Project was requested by @' + join_request.user.username + ' to join.',
-                'Dear @'+ join_request.pj.owner.username + ',\nYour Project ' + join_request.pj.project_name + ' was requested by @' + join_request.user.username +
-                ' to join. You can respond to this request on your project page. \n\nHave Fun!:)\n\nBest, \nMapOut Team',
-                'mapoutproject@gmail.com',
-                [join_request.pj.owner.email],
-                fail_silently=False,
-            )
-            '''
     return render(request, 'task.html', context)
 
+# The shared file download function.
 def download(request, id):
     target_file = File.objects.get(id = id)
     target_file_name = target_file.filename
