@@ -4,48 +4,48 @@
 	<div class="project-top-header unselectable">
 		<h5 style="padding-top: 10px;display: inline-block;" >Your Projects</h5>
 	</div>
-{% if projects %}
-	<div class="card-deck" style="margin: 1rem 1rem 1rem 1rem;">
-		{% for one_project in projects %}
-		<a href="{% url 'viewproject' one_project.id %}"><div class="card " style="width: 15rem;height: 15rem; display: inline-block; margin:0.3rem;">
-			<div class="card-header">
-				<h5 class="card-title">{{one_project.project_name}}</h5>
-			</div>
-			<div class="card-body text-muted">
-				{% if one_project.closed == False %}
-					<span class="badge badge-light" ><span style="color: chartreuse;">●</span> Open</span>
-				{% else %}
-					<span class="badge badge-light" ><span style="color:crimson;">●</span> Closed</span>
-				{% endif %}
-				{% if one_project.private == False %}
-				<span class="badge badge-light" ><span style="color: chartreuse;">●</span> Public</span>
-				{% else %}
-				<span class="badge badge-light" ><span style="color:crimson;">●</span> Private</span>
-				{% endif %}
-				<br>
-				<h7 class="card-subtitle mb-2 text-muted">Tasks</h7><br>
-				{% if tasks %}
-					{% for one_task in tasks %}
-						{% if forloop.counter < 5 %}
-							{% if one_task.belong_project == one_project  %}
-								<li class="card-text">{{one_task.task_name}}</li>
+	{% if projects %}
+		<div class="card-deck" style="margin: 1rem 1rem 1rem 1rem;">
+			{% for one_project in projects %}
+			<a href="{% url 'viewproject' one_project.id %}"><div class="card " style="width: 15rem;height: 15rem; display: inline-block; margin:0.3rem;">
+				<div class="card-header">
+					<h5 class="card-title">{{one_project.project_name}}</h5>
+				</div>
+				<div class="card-body text-muted">
+					{% if one_project.closed == False %}
+						<span class="badge badge-light" ><span style="color: chartreuse;">●</span> Open</span>
+					{% else %}
+						<span class="badge badge-light" ><span style="color:crimson;">●</span> Closed</span>
+					{% endif %}
+					{% if one_project.private == False %}
+						<span class="badge badge-light" ><span style="color: chartreuse;">●</span> Public</span>
+					{% else %}
+						<span class="badge badge-light" ><span style="color:crimson;">●</span> Private</span>
+					{% endif %}
+					<br>
+					<h7 class="card-subtitle mb-2 text-muted">Tasks</h7><br>
+					{% if tasks %}
+						{% for one_task in tasks %}
+							{% if forloop.counter < 5 %}
+								{% if one_task.belong_project == one_project  %}
+									<li class="card-text">{{one_task.task_name}}</li>
+								{% endif %}
+							{% else %}
+								<p>...</p>
 							{% endif %}
-						{% else %}
-						<p>...</p>
-						{% endif %}
-					{% endfor %}
-				{% else %}
-				<i>No task in this project currently.</i>
-				{% endif %}
-			</div>
-		</div></a>
-		{% endfor %}
-	</div>
-{% else %}
-	<div class="no-project-pic unselectable" style="margin: 1rem 1rem 1rem 1rem;">
-		<img src="{% static "project.png" %}" width="400px" style="margin: 0 auto;display: block"><br><div style="margin: 0 auto;display: block;width: 30rem;">You don't have any projects! Click the plus sign to create one.</div>
-	</div>
-{% endif %}
+						{% endfor %}
+					{% else %}
+						<i>No task in this project currently.</i>
+					{% endif %}
+				</div>
+			</div></a>
+			{% endfor %}
+		</div>
+	{% else %}
+		<div class="no-project-pic unselectable" style="margin: 1rem 1rem 1rem 1rem;">
+			<img src="{% static "project.png" %}" width="400px" style="margin: 0 auto;display: block"><br><div style="margin: 0 auto;display: block;width: 30rem;">You don't have any projects! Click the plus sign to create one.</div>
+		</div>
+	{% endif %}
 
 	<div class="project-top-header unselectable">
 		<h5 style="padding-top: 10px;display: inline-block;" >Public Area</h5>
