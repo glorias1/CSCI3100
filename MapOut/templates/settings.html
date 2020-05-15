@@ -1,10 +1,8 @@
 {% extends 'index.html'%}
 {% block content %}
-
 <div class="project-top-header unselectable">
 	<h5 style="padding-top: 10px;display: inline-block;" >Settings</h5>
 </div>
-
 {% block userprofile %}{% include "profile/user_profile.html" %}{% endblock %}
 
 <div style="margin: 1rem">
@@ -17,9 +15,7 @@
 	</div>
 	<div class="wrapper" id="edit_info_box"></div>
 </div>
-
 {% block editProfile %}{% include "profile/change_profile_form.html" %}{% endblock %}
-
 <style>
 div.changeProfileForm {
 	position: absolute;

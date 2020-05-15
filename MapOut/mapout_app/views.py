@@ -17,9 +17,7 @@ from .models import *
 import time
 import os
 import json
-
 # This file contain all the view, which are functions connecting front-end and database.
-
 # Adding a new capital.
 def create_budget(request, id1):
     viewing_project = Project.objects.get(id = id1)
@@ -305,11 +303,8 @@ def schedule(request):
         array.append(int(each_date.due_date.strftime('%d')))
     print(array)
     js_data = json.dumps(serializers.serialize('json',user_tasks))
-    
     context = {'user_tasks':user_tasks, 'today':today, 'this_month':this_month, 'get_days':range(1,get_days+1),'js_data':js_data,'days_of_tasks':array}
-    
     return  render(request, 'schedule.html',context)
-
 
 def help_(request):
     return  render(request, 'help.html')
@@ -391,7 +386,6 @@ def create_project(request):
                 [request.user.email],
                 fail_silently=False,
             )
-            
             return HttpResponseRedirect(reverse('viewproject', args=[createproject.id]))
     return render(request, 'create_project.html')
 
@@ -433,7 +427,6 @@ def view_project(request, id):
     senders = []
     for i in join_requests:
         senders.append(User.objects.get(id = i.user_id))
-
     # handling announcement addition and data retrieving.
     all_announcement = Announcement.objects.filter(belong_project = viewing_project).order_by('-pinned')
     reverse_ordered_announcements = Announcement.objects.filter(belong_project = viewing_project).order_by('-id')
@@ -474,7 +467,6 @@ def view_project(request, id):
         elif request.POST.get('closeyes'):
             viewing_project.closed = True
             viewing_project.save()
-
         ##user add new members into the project
         elif request.POST.get('add_name'):
             target_user_name = request.POST.get('add_name')
@@ -574,7 +566,6 @@ def view_project(request, id):
             join_request.user = request.user
             join_request.message = request.POST.get('message')
             join_request.save()
-
     return render(request, 'project.html', context)
 
 # Handling the functions for a particular task page for a particular project.

@@ -10,8 +10,6 @@
    {% endif %}
    <form method="POST" action="{% url 'login' %}" style="color: black;margin-left: 1rem;margin-right: 1rem; ">
       {% csrf_token %}
-   
-
       <label for="username">User name:</label><br>
       <input class="form-control" type="text" name="username" value="" id="username"><br>
       <label for="password">Password:</label><br>
@@ -22,6 +20,5 @@
       <a href="{% url 'password_reset' %}"  class="btn btn-outline-primary" style="margin-left: 1rem;">Forget password</a>
     </form>
   </div>
-       
 </div>
 {% endblock %}

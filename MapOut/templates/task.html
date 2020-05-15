@@ -214,7 +214,6 @@
           <textarea class="form-control" name="change_task_description" id="change_task_description">{{task.task_description}}</textarea>
         </div>
         <div class="modal-footer">
-          
             <input type="submit" class="btn btn-info" value="Change">
           </form>
           <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
@@ -233,5 +232,4 @@
       {% block joinForm %}{% include 'join_project.html' with jpid=viewing_project.id %}{% endblock %}
     {% endif %}
   </div>
-
 {% endblock %}

@@ -1,4 +1,3 @@
-
 {% extends 'index.html' %}
 {% load static %}
 {% block content %}
@@ -25,19 +24,10 @@
         <label for="capital_amount">Budget Amount:</label>
         <input id="capital_amount-submit" type="text" name="capital_amount" value=""><br>
       <button type="submit" class="btn btn-info" style="margin-left: 1rem;">Add Budget</button>
-      
     </form>
     <div style="margin-top: 1rem;">
     <a class="btn btn-info" href="{% url 'viewbudget' viewing_project.id %}" style="margin;"><i class="fas fa-arrow-left"></i> Go back to budget plan</a>
     </div>
-
-    <!--<form action="{% url 'createbudget' viewing_project.id %}" method="POST" style="color: black;margin-left: 1rem;margin-right: 1rem; ">
-      {% csrf_token %}
-      <button type="submit" class="btn btn-outline-primary" style="margin-left: 1rem;">New Expense</button>
-    </form>-->
-    
-
-
     <p style="margin-left: 1rem;">{{ form }}</p>
   </div>
 {% endblock %}

@@ -29,13 +29,10 @@
           <label for="expense_amount">Budget Amount:</label>
           <input id ="expense_amount-submit" type="text" name="expense_amount" value=""><br><br>
       <button type="submit" class="btn btn-info" style="margin-left: 1rem;">Add Expense</button>
-      
     </form>
     <div style="margin-top: 1rem;">
     <a class="btn btn-info" href="{% url 'viewbudget' viewing_project.id %}" ><i class="fas fa-arrow-left"></i> Go back to budget plan</a>
     </div>
-
     <p style="margin-left: 1rem;">{{ form }}</p>
   </div>
-       
 {% endblock %}

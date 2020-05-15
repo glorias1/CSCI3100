@@ -2,7 +2,6 @@ from django import forms
 from .models import *
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-
 #user signup form.
 class SignUpForm(UserCreationForm):
     email = forms.EmailField(max_length=254, help_text='Required. Input a valid email address.')
@@ -18,4 +17,3 @@ class SignUpForm(UserCreationForm):
             'username': forms.TextInput(attrs = {'class':'input', 'size': '40'}),
             'email': forms.EmailInput(attrs = {'class':'input', 'size': '40'}),
         }
-
