@@ -17,8 +17,20 @@ from .models import *
 import time
 import os
 import json
-# This file contain all the view, which are functions connecting front-end and database.
-# Adding a new capital.
+
+# This file contain all the views, which are functions connecting front-end and database.
+
+
+'''
+<---------------------------------------BUDGET PLAN FUNCTION------------------------------------------>
+#   The 3 functions all belong to budget page.
+'''
+
+'''
+#   * create_budget*
+#   We use create_budget function to get users' requestion of creating a budget plan.
+#   After calling this function, a budget plan of the requested project will be create. 
+'''
 def create_budget(request, id1):
     viewing_project = Project.objects.get(id = id1)
     viewing_plan = Budgetplan.objects.get(belong_project = viewing_project)
@@ -35,7 +47,11 @@ def create_budget(request, id1):
                 transition_capital.save()
     return render(request, 'budget/create_plan.html', context)
 
-# Adding a new expense.
+'''
+#   * create_budget_2 *
+#   This function is handling the request of adding new expenses.
+#   After calling, the budget plan will be updated automatically.
+'''
 def create_budget_2(request, id1):
     viewing_project = Project.objects.get(id = id1)
     viewing_plan = Budgetplan.objects.get(belong_project = viewing_project)
@@ -52,7 +68,11 @@ def create_budget_2(request, id1):
                 transition_expense.save()
     return render(request, 'budget/create_plan_2.html', context)
 
-# Reading the budget plan by a project id.
+'''
+#   * view_budget *
+#   This function is used to update and handle view request the values of every entry, e.g. expenses and capital
+#   View the project with the required project id
+'''
 def view_budget(request, id3): # id3 is project id \
     total_budget  = 0
     total_expense = 0
@@ -191,11 +211,22 @@ def view_budget(request, id3): # id3 is project id \
     }
     return render(request, 'budget/view_plan.html',context)
 
-# Rendering home page.
+'''
+<--------------------------------END OF BUDGET PLAN FUNCTION------------------------------------------>
+'''
+
+'''
+<-----------------------------------Home & Index page------------------------------------------------->
+#   Home page is the page shows to user when s/he has not logged in.
+#   Index page is the page shows to user after s/he logged in with all the information of projects, tasks, etc.
+#   Index page of projects is the page that shows all projects, i.e. private project of requested user and public projects.
+'''
 def home(request):
     return render(request, 'home.html')
 
-# Rendering index page after user login.
+'''
+#   Redirect to index page after user logged in.
+'''
 def index(request):
     if not request.user.is_authenticated:
         not_loggedin = True
@@ -207,7 +238,10 @@ def index(request):
         context = {'mytasks':mytasks, 'myprojects':myprojects}
         return render(request, 'main.html', context)
 
-# Handling the index page of project.
+'''
+#   Handle the view request of the project index page 
+#   This page shows the overview of all projects
+'''
 def index_projects(request):
     #get the projects involed by the current user
     projects = Project.objects.filter(members = request.user).order_by('closed')
@@ -234,16 +268,23 @@ def index_projects(request):
         }
     return render(request, 'main_projects.html', context)
 
-# Handling the index page of tasks.
+'''
+#   Handling the view of tasks on index page
+'''
 def index_tasks(request):
     tasks = Tasks.objects.filter(incharge = request.user).order_by('finish')
     context = {'tasks':tasks}
     return render(request, 'main_tasks.html', context)
 
+'''
+#   Redirect to the login page
+'''
 def login_btn(request):
     return render(request, 'registration/login.html') 
 
-# Handling user login with authentication.
+'''
+#   Handle user login request with authentication.
+'''
 def login_view1(request):
     if request.user.is_authenticated(): 
         return HttpResponseRedirect('/index/')
@@ -261,7 +302,9 @@ def logout1(request):
     logout(request)
     return render(request, 'home.html')
 
-# Handling user signup.
+'''
+#   Handle sign up request and send confirmation email
+'''
 def signup_view(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
@@ -286,8 +329,16 @@ def signup_view(request):
     else:
         form = SignUpForm()
     return render(request, 'registration/signup.html', {'form': form})
+'''
+<-------------------------------END OF Home & Index page--------------------------------------------->
+'''
 
-# A schedule function. (could be the future enhancement.)
+'''
+<-----------------------------------Schedule Function------------------------------------------------>
+#   Schedule function should have a further enhancement.
+#   Schedule function is used to show the due dates of tasks and projects.
+#   The below function handles the view request of schdule page.
+'''
 def schedule(request):
     days = [31,28,31,30,31,30,31,31,30,31,30,31]
     months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
@@ -304,12 +355,25 @@ def schedule(request):
     print(array)
     js_data = json.dumps(serializers.serialize('json',user_tasks))
     context = {'user_tasks':user_tasks, 'today':today, 'this_month':this_month, 'get_days':range(1,get_days+1),'js_data':js_data,'days_of_tasks':array}
-    return  render(request, 'schedule.html',context)
+    
+    return render(request, 'schedule.html',context)
+'''
+<------------------------------------End of Schedule Function----------------------------------------->
+'''
 
+'''
+<--------------------------------------------Other pages--------------------------------------------->
+1.  Help center: This is the page to show some tutorials about how to use MapOut
+2.  Setting: This is the page for user to reset the user info. This page is embedded in Profile page.
+3.  Public Users: This is the page showing all public users. Users who set their privacy as public will be shown on this page.
+4.  Profile: This is a page for user to view their personal information. Users can change their setting here.
+'''
+
+#   Redirect to help center page
 def help_(request):
     return  render(request, 'help.html')
 
-# Handling the user profile setting.
+#   Handle the request of user to reset profile
 def settings_(request):
     target = User.objects.get(id=request.user.id)
     target_profile = Profile.objects.get(user_id=target.id)
@@ -333,7 +397,7 @@ def settings_(request):
     }
     return  render(request, 'settings.html', context)
 
-# Handling the index page of pubilc user.
+#   Handle the request of user to view list of public users
 def allpublicuser(request):
     pusers = Profile.objects.filter(private=False)
     pusers_list = []
@@ -348,7 +412,7 @@ def allpublicuser(request):
     }
     return render(request, 'main_public_user.html', context)
 
-# A function retrieving the user data for the user profile page.
+#   A function retrieving the user data for the user profile page.
 def viewprofile(request, id):
     target = User.objects.get(id=id)
     target_profile = Profile.objects.get(user_id=target.id)
@@ -361,8 +425,19 @@ def viewprofile(request, id):
         'oproject': own_project
     }
     return render(request, 'view_puser_profile.html', context)
+'''
+<-----------------------------------End of Other pages------------------------------------------->
+'''
 
-# Creating a new project.
+'''
+<-----------------------------------Creat Project Function---------------------------------------->
+#   This is the main function of MapOut.
+#   The functions below help handling the request of user to create a project and tasks of the
+#   specific project, also include some functions under the project page, e.g. chat room, download file, etc.
+'''
+
+#   Handle the request to creat new projects. 
+#   Notification emails will be sent after successful creation.
 def create_project(request):
     createproject = Project()
     createbudgetplan = Budgetplan()
@@ -389,7 +464,7 @@ def create_project(request):
             return HttpResponseRedirect(reverse('viewproject', args=[createproject.id]))
     return render(request, 'create_project.html')
 
-# Creating a new task.
+#   Handle the request of creating new tasks of the requested project. Each task only belongs to one project.
 def create_task(request):
     ##send the list of projects 
     projects = Project.objects.filter(members = request.user)
@@ -411,7 +486,10 @@ def create_task(request):
             return HttpResponseRedirect(reverse('viewtask', args=[createtask.belong_project.id,createtask.id]))
     return render(request, 'create_task.html', options)
 
-# Handling the functions for a particular project page.
+#   Handle the view request of one specific project. 
+#   Also handle the changes request of project setting, e.g. adding members, project name, etc.
+#   Changes will be updated immediately.
+
 def view_project(request, id):
     ##see the detail page of a project
     viewing_project = Project.objects.get(id=id)
@@ -427,7 +505,8 @@ def view_project(request, id):
     senders = []
     for i in join_requests:
         senders.append(User.objects.get(id = i.user_id))
-    # handling announcement addition and data retrieving.
+
+    #   Handle the view of Announcement, which is a notification board
     all_announcement = Announcement.objects.filter(belong_project = viewing_project).order_by('-pinned')
     reverse_ordered_announcements = Announcement.objects.filter(belong_project = viewing_project).order_by('-id')
 
@@ -458,16 +537,19 @@ def view_project(request, id):
     }
     ##action when a form is submitted
     if request.method=='POST':
-        ##user delete the project
+        #   Handle the request of deleting the project
         if request.POST.get('deleteyes'):
             viewing_project.delete()
             time.sleep(3)
             return redirect('/index/')
-        ##user close this project
+        
+        #   Handle the request of closing the project
         elif request.POST.get('closeyes'):
             viewing_project.closed = True
             viewing_project.save()
-        ##user add new members into the project
+
+        #   Handle the reques of adding new member
+        #   Notification email of being added will be sent to the newly added members 
         elif request.POST.get('add_name'):
             target_user_name = request.POST.get('add_name')
             if User.objects.get(username=target_user_name):
@@ -485,7 +567,9 @@ def view_project(request, id):
                 new_user_announce.belong_project = viewing_project
                 new_user_announce.message = target_user_name + " just join our team!"
                 new_user_announce.save()
-        ##remove a member
+        
+        #   Handle the request of removing an existing member
+        #   Notification email of being removed will be sent to the removed members
         elif request.POST.get('remove_name'):
             target_user_id = request.POST.get('remove_name')
             target_user = viewing_project.members.get(id=target_user_id)
@@ -508,22 +592,37 @@ def view_project(request, id):
             new_user_announce.belong_project = viewing_project
             new_user_announce.message = target_user.username + " leave our team."
             new_user_announce.save()
+
+        #   Handle the request of adding new ower of the project
         elif request.POST.get('add_owner'):
             target_user_id = request.POST.get('add_owner')
             target_user = User.objects.get(id=target_user_id)
             viewing_project.owner.add(target_user)
+
+        #   Handle the request of changing the name of one project
         elif request.POST.get('change_project_name'):
             viewing_project.project_name = request.POST.get('change_project_name')
             viewing_project.save()
+
+        #   Handle the request of changing project description
         elif request.POST.get('change_project_description'):
             viewing_project.project_description = request.POST.get('change_project_description')
             viewing_project.save()
+
+        #   Handle the request of making the project public. 
+        #   Public projects will be seen on Project index page by other users.
         elif request.POST.get('make_public'):
             viewing_project.private = False
             viewing_project.save()
+
+        #   Handle the request of making the project private. 
+        #   Public projects will be NOT seen on Project index page by other users.
         elif request.POST.get('make_private'):
             viewing_project.private = True
             viewing_project.save()
+
+        #   Handle the request of viewing the chat texts.
+        #   The chate room of one project is embedded on the project main page.
         elif request.POST.get('chat_text'):
             newchatmessage = Chat()
             newchatmessage.belong_project = viewing_project
@@ -531,6 +630,11 @@ def view_project(request, id):
             newchatmessage.speaker = request.user
             newchatmessage.sent_date = datetime.now()
             newchatmessage.save()
+
+        #   Handle the request of a user to accept the requests of other members to join this project
+        #   The user who requested to join will receive notification email after being accepted
+        #   Once being accepted, the user will have the access to make changes of the project.
+        #   Announcement will be made upon the acceptance.
         elif request.POST.get('accept'):
             target_msg = JoinMessage.objects.get(id=request.POST.get('accept'))
             sender = User.objects.get(id=target_msg.user_id)
@@ -549,10 +653,15 @@ def view_project(request, id):
             new_user_announce.belong_project = viewing_project
             new_user_announce.message = sender.username + " just join our team!"
             new_user_announce.save()
+
+        #   Handle the request of a user to reject the requests of other members to join this project
         elif request.POST.get('reject'):
             target_msg = JoinMessage.objects.get(id=request.POST.get('reject'))
             target_msg.not_reply=False
             target_msg.save()
+
+        #   Handle the request of making new announcement.
+        #   Announments on the board will be seen by everyone in the project or every user if the project is public
         elif request.POST.get('new_announcement'):
             new = Announcement()
             new.belong_project = viewing_project
@@ -560,6 +669,7 @@ def view_project(request, id):
             if request.POST.get('pin'):
                 new.pinned = request.POST.get('pin')
             new.save()
+
         elif request.POST.get('message'):
             join_request = JoinMessage()
             join_request.pj = Project.objects.get(id=request.POST.get('JPID'))
@@ -568,7 +678,8 @@ def view_project(request, id):
             join_request.save()
     return render(request, 'project.html', context)
 
-# Handling the functions for a particular task page for a particular project.
+#   Handle the request of viewing a particular task of a particular project.
+#   Other actions, similar to project main page, will be handled under this function.
 def view_task(request, id1 , id2):
     ## view the detail page of a task
     task = Tasks.objects.get(id = id2)
@@ -597,7 +708,8 @@ def view_task(request, id1 , id2):
         'project_members_in_charge':project_members_in_charge
         }
     if request.method =='POST':
-        # user add new incharge person from members of the project of the task
+        #   Handle the request of adding new person-in-charge of the viewing project
+        #   Email notification will be sent to the new pic
         if request.POST.get('add_incharge'):
             add_incharge_id = request.POST.get('add_incharge')
             add_incharge_user = User.objects.get(id = add_incharge_id)
@@ -611,7 +723,8 @@ def view_task(request, id1 , id2):
                     [add_incharge_user.email],
                     fail_silently=False,
             )
-        # user upload files for this task
+
+        # Handle the request of uploading new files
         elif request.POST.get('myfile_flag'):
             if request.FILES['myfile']:
                 uploadfile.belong_task = Tasks.objects.get(id = id2)
@@ -619,28 +732,40 @@ def view_task(request, id1 , id2):
                 uploadfile.filename = request.FILES['myfile'].name
                 uploadfile.last_modify = datetime.now()
                 uploadfile.save()
+
+        # Handle the request of stating the task is finished
         elif request.POST.get('finished'):
             task.finish = True
             task.save()
+        # Handle the request of stating the task is not yet finished
         elif request.POST.get('unfinished'):
             task.finish = False
             task.save()
+
+        # Handle the request of changing the name of task
         elif request.POST.get('change_task_name'):
             task.task_name = request.POST.get('change_task_name')
             task.save()
+
+        # Handle the request of changing the description of task
         elif request.POST.get('change_task_description'):
             task.task_description = request.POST.get('change_task_description')
             task.save()
+
+        # Handle the request of deleting the uploaded files of task
         elif request.POST.get('delete_file'):
             target_file_id = request.POST.get('delete_file')
             target_file = File.objects.get(id = target_file_id)
             target_file.delete()
+
+        # Handle the request of downloading the uploaded files of task
         elif request.POST.get('download_file'):
             file = File.objects.get(id =request.POST.get('download_file'))
             filename = file.file.name.split('/')[-1]
             response = HttpResponse(file.file, content_type='text/plain')
             response['Content-Disposition'] = 'attachment; filename=%s' % filename
             return response
+
         elif request.POST.get('message'):
             join_request = JoinMessage()
             join_request.pj = Project.objects.get(id=request.POST.get('JPID'))
@@ -649,7 +774,7 @@ def view_task(request, id1 , id2):
             join_request.save()
     return render(request, 'task.html', context)
 
-# The shared file download function.
+# Handle the download file request in backend
 def download(request, id):
     target_file = File.objects.get(id = id)
     target_file_name = target_file.filename
@@ -661,3 +786,7 @@ def download(request, id):
     response['Content-Type'] =  'image/png'
     response['Content-Disposition'] = 'attachment;filename="%s"' % (urlquote(target_file_name))
     return response
+
+'''
+<-----------------------------------End of Project functions------------------------------------------->
+'''
