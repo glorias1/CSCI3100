@@ -3,6 +3,7 @@ from .models import *
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
+#user signup form.
 class SignUpForm(UserCreationForm):
     email = forms.EmailField(max_length=254, help_text='Required. Input a valid email address.')
     password1 = forms.CharField(label="Password", widget=forms.PasswordInput(attrs = {'class':'input', 'size': '40'}))

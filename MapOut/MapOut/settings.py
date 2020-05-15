@@ -79,9 +79,9 @@ DATABASES = {
 'ENGINE': 'django.db.backends.mysql',
 'NAME': 'real_mapout_db',
 'USER': 'root',
-'PASSWORD': '',
-'HOST': '',
-'PORT': '',
+'PASSWORD': 'qqq123',
+'HOST': '127.0.0.1',
+'PORT': '3306',
 }
 }
 
@@ -105,6 +105,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
@@ -125,8 +126,8 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'mapoutproject@gmail.com'
 EMAIL_HOST_PASSWORD = 'csci3100'
 EMAIL_USE_TLS = True
-EMAIL_USE_SSL = False
 ACCOUNT_EMAIL_VERIFICATION = 'none'
+EMAIL_USE_SSL = False
 
 
 # Static files (CSS, JavaScript, Images)
